@@ -1,12 +1,9 @@
-/**
- * Created by babatundeadeola on 08/11/2016.
- */
 import java.sql.*;
 
 public class Test {
         public static void main(String[] args) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
             Connection con = null;
-            Statement stmt = null;
+            Statement stmt;
             try{
                 Class.forName("com.mysql.jdbc.Driver").newInstance();
                 String DB = "jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61";
