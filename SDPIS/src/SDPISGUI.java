@@ -70,6 +70,48 @@ public class SDPISGUI extends JFrame {
         setSize(500,600);
         setLocationRelativeTo(null);
 
+        JTextField txtTitle = new JTextField();
+        JTextField txtFName = new JTextField();
+        JTextField txtLName = new JTextField();
+
+        //comboboxes date of birth
+        JComboBox days = new JComboBox();
+        JComboBox months = new JComboBox();
+        JComboBox years = new JComboBox();
+
+        days.addItem("Day");
+        int[] intDays = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31};
+        days.addItem(intDays);
+
+        months.addItem("Month");
+        int[] intMonths = {1,2,3,4,5,6,7,8,9,10,11,12};
+        months.addItem(intMonths);
+
+        years.addItem("Year");
+        for(int i=1900;i<=2100;i++) {
+            years.addItem(i);
+        }
+
+        JTextField txtPhone = new JTextField();
+
+        //combobox subscription types
+        String[] subTypes = { "NHS", "Maintenance", "Oral", "Repair"};
+        JComboBox subList = new JComboBox(subTypes);
+
+        JTextField txtHousenum = new JTextField();
+        JTextField txtStreet = new JTextField();
+        JTextField txtAddressCity = new JTextField();
+        JTextField txtAddressRegion = new JTextField();
+        JTextField txtPostCode = new JTextField();
+
+        JPanel inputsPanel = new JPanel();
+//        inputsPanel.add();
+//        inputsPanel.add();
+//        inputsPanel.add();
+//        inputsPanel.add();
+//        inputsPanel.add();
+
+
 
     }
 }

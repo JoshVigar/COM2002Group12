@@ -8,7 +8,7 @@ public class SystemViewer {
 
     public static void main(String[] args) throws IOException {
 
-        new SDPISGUI().WelcomeGUI();
+        new SDPISGUI().RegisterPage();
 
     }
 }
