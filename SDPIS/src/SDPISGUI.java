@@ -9,9 +9,10 @@ import java.awt.event.ActionListener;
 public class SDPISGUI extends JFrame {
 
 
-    public SDPISGUI() {
+    public void WelcomeGUI() {
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
+        setLocationRelativeTo(null);
 
         JButton btnSec = new JButton("Secretary");
         btnSec.addActionListener(
@@ -30,6 +31,7 @@ public class SDPISGUI extends JFrame {
                 }
             }
         );
+
         JButton btnHyg = new JButton("Hygenist");
         btnHyg.addActionListener(
             new ActionListener(){
@@ -45,22 +47,29 @@ public class SDPISGUI extends JFrame {
         buttonPanel.add(btnDen);
         buttonPanel.add(btnHyg);
 
-        int borderHeight = (int)(this.getHeight()*0.1);
-        int borderWidth = (int)(this.getWidth()*0.1);
+        JLabel title = new JLabel("Welcome to Sheffield Dental Practice");
+
+        int bHeight = (int)(this.getHeight()*0.1);
+        int bWidth = (int)(this.getWidth()*0.1);
 
         Container contentPane = getContentPane();
-        contentPane.setLayout(new BorderLayout(borderWidth,borderHeight));
+        contentPane.setLayout(new BorderLayout());
+        contentPane.add(title, BorderLayout.NORTH);
         contentPane.add(buttonPanel, BorderLayout.CENTER);
-
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
 
-
-    public static void main(String[] args) {
-        SDPISGUI welcomeScreen = new SDPISGUI();
-        welcomeScreen.setVisible(true);
+    public void SecretaryGUI(){
 
     }
 
+    public void RegisterPage(){
+        setTitle("Sheffield Dental Practice");
+        setSize(500,600);
+        setLocationRelativeTo(null);
+
+
+    }
 }
