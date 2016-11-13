@@ -19,7 +19,8 @@ public class SDPISGUI extends JFrame {
         btnSec.addActionListener(
              new ActionListener(){
                  public void actionPerformed(ActionEvent e){
-                     //Go to Secretary view
+                     new SDPISGUI().RegisterPage();
+                     setVisible(false);
                  }
              }
         );
@@ -53,11 +54,14 @@ public class SDPISGUI extends JFrame {
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
 
+        JPanel mPanel = new JPanel();
+        mPanel.setLayout(new BorderLayout());
+        mPanel.add(title, BorderLayout.NORTH);
+        mPanel.add(buttonPanel, BorderLayout.CENTER);
+        mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
+
         Container contentPane = getContentPane();
-        contentPane.setLayout(new BorderLayout());
-        contentPane.add(title, BorderLayout.NORTH);
-        contentPane.add(buttonPanel, BorderLayout.CENTER);
-        buttonPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
+        contentPane.add(mPanel);
 
         //Don't forget to pack!
         pack();
@@ -136,12 +140,26 @@ public class SDPISGUI extends JFrame {
 
 
 
-        //adding to the content pane
+        JLabel title = new JLabel("Please enter your details:");
+
+        int bHeight = (int)(this.getHeight()*0.1);
+        int bWidth = (int)(this.getWidth()*0.1);
+
+        JPanel mPanel = new JPanel();
+        mPanel.setLayout(new BorderLayout());
+        mPanel.add(title,BorderLayout.NORTH);
+
+        JPanel cPanel = new JPanel();
+        cPanel.add(inputsPanel);
+        cPanel.add(dobPanel);
+        cPanel.add(inputsPanel2);
+        cPanel.setLayout(new BoxLayout(cPanel, BoxLayout.Y_AXIS));
+        mPanel.add(cPanel,BorderLayout.SOUTH);
+        mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
+
         Container contentPane = getContentPane();
-        contentPane.setLayout(new BorderLayout());
-        contentPane.add(inputsPanel, BorderLayout.NORTH);
-        contentPane.add(dobPanel, BorderLayout.CENTER);
-        contentPane.add(inputsPanel2, BorderLayout.SOUTH);
+        contentPane.add(mPanel);
+
 
 
         //Don't forget to pack!
