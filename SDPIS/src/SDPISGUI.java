@@ -3,24 +3,25 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Array;
+import java.util.Set;
 
 /**
  * Created by Josh on 08/11/2016.
  */
 public class SDPISGUI extends JFrame {
-
-
+    public void SetTitleNSize(){
+        this.setTitle("Sheffield Dental Practice");
+        this.setSize(500,600);
+    }
 
     public void WelcomeGUI() {
-        setTitle("Sheffield Dental Practice");
-        setSize(500,600);
+        SetTitleNSize();
 
         JButton btnSec = new JButton("Secretary");
         btnSec.addActionListener(
              new ActionListener(){
                  public void actionPerformed(ActionEvent e){
-                     new SDPISGUI().RegisterPage();
-                     setVisible(false);
+                     new SDPISGUI().SecretaryGUI();
                  }
              }
         );
@@ -29,7 +30,7 @@ public class SDPISGUI extends JFrame {
         btnDen.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-                    //Go to Dentist view
+                    new SDPISGUI().DentistGUI();
                 }
             }
         );
@@ -38,7 +39,7 @@ public class SDPISGUI extends JFrame {
         btnHyg.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-                    //Go to Hygenist view
+                    new SDPISGUI().HygienistGUI();
                 }
             }
         );
@@ -72,12 +73,163 @@ public class SDPISGUI extends JFrame {
     }
 
     public void SecretaryGUI(){
+        SetTitleNSize();
+
+        JButton btnApp = new JButton("View Appointments Calendar");
+        btnApp.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        //open calendar
+                    }
+                }
+        );
+
+        JButton btnReg = new JButton("Register Patient");
+        btnReg.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        new SDPISGUI().RegisterPage();
+                    }
+                }
+        );
+
+        JButton btnMP = new JButton("Manage Patients");
+        btnMP.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        //View/edit patients outstanding balance
+                        //View treatment record
+                        //
+                    }
+                }
+        );
+
+        JButton btnBA = new JButton("Book Appointments");
+        btnBA.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        //Go to book appointment page
+                    }
+                }
+        );
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(0, 1));
+        buttonPanel.add(btnApp);
+        buttonPanel.add(btnReg);
+        buttonPanel.add(btnMP);
+        buttonPanel.add(btnBA);
+
+        JButton back = new JButton("Go Back");
+        back.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                       WelcomeGUI();
+                    }
+                }
+        );
+
+        JLabel title = new JLabel("Secretary View");
+
+        int bHeight = (int)(this.getHeight()*0.1);
+        int bWidth = (int)(this.getWidth()*0.1);
+        Container contentPane = getContentPane();
+        contentPane.setLayout(new BorderLayout());
+        contentPane.add(title, BorderLayout.NORTH);
+        contentPane.add(buttonPanel, BorderLayout.CENTER);
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
+
+
+        //Don't forget to pack!
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+
 
     }
 
-    public void RegisterPage(){
+    public void DentistGUI(){
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
+        JButton btnChk = new JButton("Finish Appointment");
+        btnChk.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        //Go to finish appointment view
+                    }
+                }
+        );
+        JButton btnView = new JButton("View Appointments");
+        btnView.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        //Go to Appointments
+                    }
+                }
+        );
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(0, 1));
+        buttonPanel.add(btnChk);
+        buttonPanel.add(btnView);
+
+        JLabel title = new JLabel("Dentist View");
+
+        int bHeight = (int)(this.getHeight()*0.1);
+        int bWidth = (int)(this.getWidth()*0.1);
+
+        Container contentPane = getContentPane();
+        contentPane.setLayout(new BorderLayout());
+        contentPane.add(title, BorderLayout.NORTH);
+        contentPane.add(buttonPanel, BorderLayout.CENTER);
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
+
+        //Don't forget to pack!
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+    public void HygienistGUI(){
+        setTitle("Sheffield Dental Practice");
+        setSize(500,600);
+        JButton btnChk = new JButton("Finish Appointment");
+        btnChk.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        //Go to finish appointment view
+                    }
+                }
+        );
+        JButton btnView = new JButton("View Appointments");
+        btnView.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        //Go to appointments
+                    }
+                }
+        );
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(0, 1));
+        buttonPanel.add(btnChk);
+        buttonPanel.add(btnView);
+
+        JLabel title = new JLabel("Hygienist View");
+
+        int bHeight = (int)(this.getHeight()*0.1);
+        int bWidth = (int)(this.getWidth()*0.1);
+
+        Container contentPane = getContentPane();
+        contentPane.setLayout(new BorderLayout());
+        contentPane.add(title, BorderLayout.NORTH);
+        contentPane.add(buttonPanel, BorderLayout.CENTER);
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
+        //Don't forget to pack!
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+
+    public void RegisterPage(){
+        SetTitleNSize();
 
         JTextField txtTitle = new JTextField(20);
         JTextField txtFName = new JTextField(20);
@@ -165,8 +317,6 @@ public class SDPISGUI extends JFrame {
         //Don't forget to pack!
         pack();
         setLocationRelativeTo(null);
-
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
     }
