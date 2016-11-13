@@ -12,7 +12,6 @@ public class SDPISGUI extends JFrame {
     public void WelcomeGUI() {
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
-        setLocationRelativeTo(null);
 
         JButton btnSec = new JButton("Secretary");
         btnSec.addActionListener(
@@ -57,6 +56,11 @@ public class SDPISGUI extends JFrame {
         contentPane.add(title, BorderLayout.NORTH);
         contentPane.add(buttonPanel, BorderLayout.CENTER);
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
+
+        //Don't forget to pack!
+        pack();
+        setLocationRelativeTo(null);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
@@ -80,22 +84,23 @@ public class SDPISGUI extends JFrame {
         JComboBox years = new JComboBox();
 
         days.addItem("Day");
-        int[] intDays = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31};
-        days.addItem(intDays);
+        String[] strDays = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14"
+                ,"15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
+        days.addItem(strDays);
 
         months.addItem("Month");
-        int[] intMonths = {1,2,3,4,5,6,7,8,9,10,11,12};
-        months.addItem(intMonths);
+        String[] strMonths = {"1","2","3","4","5","6","7","8","9","10","11","12"};
+        months.addItem(strMonths);
 
         years.addItem("Year");
-        for(int i=1900;i<=2100;i++) {
-            years.addItem(i);
-        }
+//        for(int i=1900;i<=2100;i++) {
+//            years.addItem(i);
+//        }
 
         JTextField txtPhone = new JTextField();
 
         //combobox subscription types
-        String[] subTypes = { "NHS", "Maintenance", "Oral", "Repair"};
+        String[] subTypes = { "None", "NHS", "Maintenance", "Oral", "Repair"};
         JComboBox subList = new JComboBox(subTypes);
 
         JTextField txtHousenum = new JTextField();
@@ -105,13 +110,26 @@ public class SDPISGUI extends JFrame {
         JTextField txtPostCode = new JTextField();
 
         JPanel inputsPanel = new JPanel();
-//        inputsPanel.add();
-//        inputsPanel.add();
-//        inputsPanel.add();
-//        inputsPanel.add();
-//        inputsPanel.add();
+        inputsPanel.add(txtTitle);
+        inputsPanel.add(txtFName);
+        inputsPanel.add(txtLName);
 
+        JPanel inputsPanel2 = new JPanel();
+        inputsPanel2.add(txtPhone);
+        inputsPanel2.add(subList);
+        inputsPanel2.add(txtHousenum);
+        inputsPanel2.add(txtStreet);
+        inputsPanel2.add(txtAddressCity);
+        inputsPanel2.add(txtAddressRegion);
+        inputsPanel2.add(txtPostCode);
 
+        JPanel dobPanel = new JPanel();
+        dobPanel.add(days);
+        dobPanel.add(months);
+        dobPanel.add(years);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
 
     }
 }
