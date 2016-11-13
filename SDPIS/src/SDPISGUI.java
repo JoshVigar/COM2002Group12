@@ -1,8 +1,10 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Array;
+import java.util.Calendar;
 import java.util.Set;
 
 /**
@@ -108,7 +110,7 @@ public class SDPISGUI extends JFrame {
         btnBA.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        //Go to book appointment page
+                        new SDPISGUI().BookAppointment();
                     }
                 }
         );
@@ -146,6 +148,46 @@ public class SDPISGUI extends JFrame {
         setVisible(true);
 
 
+    }
+
+    public void BookAppointment(){
+
+        SetTitleNSize();
+
+        JLabel title = new JLabel("Enter Appointment Details");
+        JLabel pID = new JLabel("PatientID:");
+        JLabel partner = new JLabel("Partner:");
+        JLabel sTime = new JLabel("Start Time:");
+        JLabel tType = new JLabel("Treatment Type:");
+        JTextField txtPID = new JTextField(20);
+        JTextField txtPartner = new JTextField(20);
+        JTextField txtStart = new JTextField(20);
+        JTextField txtType = new JTextField(20);
+
+        JPanel inputsPanel = new JPanel();
+        inputsPanel.add(pID);
+        inputsPanel.add(txtPID);
+        inputsPanel.add(partner);
+        inputsPanel.add(txtPartner);
+        inputsPanel.add(sTime);
+        inputsPanel.add(txtStart);
+        inputsPanel.add(tType);
+        inputsPanel.add(txtType);
+        inputsPanel.setLayout(new BoxLayout(inputsPanel, BoxLayout.Y_AXIS));
+
+        int bHeight = (int)(this.getHeight()*0.1);
+        int bWidth = (int)(this.getWidth()*0.1);
+
+        Container contentpane = getContentPane();
+        contentpane.add(title, BorderLayout.NORTH);
+        contentpane.add(inputsPanel, BorderLayout.SOUTH);
+
+        inputsPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
+
+        //Don't forget to pack!
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     public void DentistGUI(){
