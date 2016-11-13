@@ -2,11 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 
 /**
  * Created by Josh on 08/11/2016.
  */
 public class SDPISGUI extends JFrame {
+
 
 
     public void WelcomeGUI() {
@@ -72,11 +74,10 @@ public class SDPISGUI extends JFrame {
     public void RegisterPage(){
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
-        setLocationRelativeTo(null);
 
-        JTextField txtTitle = new JTextField();
-        JTextField txtFName = new JTextField();
-        JTextField txtLName = new JTextField();
+        JTextField txtTitle = new JTextField(20);
+        JTextField txtFName = new JTextField(20);
+        JTextField txtLName = new JTextField(20);
 
         //comboboxes date of birth
         JComboBox days = new JComboBox();
@@ -84,35 +85,38 @@ public class SDPISGUI extends JFrame {
         JComboBox years = new JComboBox();
 
         days.addItem("Day");
-        String[] strDays = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14"
-                ,"15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
-        days.addItem(strDays);
+        for(int i=1;i<=31;i++) {
+            days.addItem(new Integer(i));
+        }
 
         months.addItem("Month");
-        String[] strMonths = {"1","2","3","4","5","6","7","8","9","10","11","12"};
-        months.addItem(strMonths);
+        for(int i=1;i<=12;i++) {
+            months.addItem(new Integer(i));
+        }
 
         years.addItem("Year");
-//        for(int i=1900;i<=2100;i++) {
-//            years.addItem(i);
-//        }
+        for(int i=1900;i<=2100;i++) {
+            years.addItem(new Integer(i));
+        }
 
-        JTextField txtPhone = new JTextField();
+        JTextField txtPhone = new JTextField(20);
 
         //combobox subscription types
         String[] subTypes = { "None", "NHS", "Maintenance", "Oral", "Repair"};
         JComboBox subList = new JComboBox(subTypes);
 
-        JTextField txtHousenum = new JTextField();
-        JTextField txtStreet = new JTextField();
-        JTextField txtAddressCity = new JTextField();
-        JTextField txtAddressRegion = new JTextField();
-        JTextField txtPostCode = new JTextField();
+        JTextField txtHousenum = new JTextField(20);
+        JTextField txtStreet = new JTextField(20);
+        JTextField txtAddressCity = new JTextField(20);
+        JTextField txtAddressRegion = new JTextField(20);
+        JTextField txtPostCode = new JTextField(20);
+        JButton submit = new JButton("Submit");
 
         JPanel inputsPanel = new JPanel();
         inputsPanel.add(txtTitle);
         inputsPanel.add(txtFName);
         inputsPanel.add(txtLName);
+        inputsPanel.setLayout(new BoxLayout(inputsPanel, BoxLayout.Y_AXIS));
 
         JPanel inputsPanel2 = new JPanel();
         inputsPanel2.add(txtPhone);
@@ -122,11 +126,27 @@ public class SDPISGUI extends JFrame {
         inputsPanel2.add(txtAddressCity);
         inputsPanel2.add(txtAddressRegion);
         inputsPanel2.add(txtPostCode);
+        inputsPanel2.add(submit);
+        inputsPanel2.setLayout(new BoxLayout(inputsPanel2, BoxLayout.Y_AXIS));
 
         JPanel dobPanel = new JPanel();
         dobPanel.add(days);
         dobPanel.add(months);
         dobPanel.add(years);
+
+
+
+        //adding to the content pane
+        Container contentPane = getContentPane();
+        contentPane.setLayout(new BorderLayout());
+        contentPane.add(inputsPanel, BorderLayout.NORTH);
+        contentPane.add(dobPanel, BorderLayout.CENTER);
+        contentPane.add(inputsPanel2, BorderLayout.SOUTH);
+
+
+        //Don't forget to pack!
+        pack();
+        setLocationRelativeTo(null);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
