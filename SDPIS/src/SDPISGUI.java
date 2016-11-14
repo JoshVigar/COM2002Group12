@@ -3,6 +3,8 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.lang.reflect.Array;
 import java.util.Calendar;
 import java.util.Set;
@@ -70,9 +72,20 @@ public class SDPISGUI extends JFrame {
         pack();
         setLocationRelativeTo(null);
 
+//        WelcomeGUI().addWindowListener(new WindowAdapter()
+//        {
+//            public void windowClosing(WindowEvent e)
+//            {
+//
+//            }
+//        });
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
+
+//    public void CloseNDisconnect{
+//
+//    }
 
     public void SecretaryGUI(){
         SetTitleNSize();
@@ -273,11 +286,15 @@ public class SDPISGUI extends JFrame {
     public void RegisterPage(){
         SetTitleNSize();
 
+        JLabel patientTitle = new JLabel("Title:");
         JTextField txtTitle = new JTextField(20);
+        JLabel fName = new JLabel("Forename:");
         JTextField txtFName = new JTextField(20);
+        JLabel lName = new JLabel("Surname:");
         JTextField txtLName = new JTextField(20);
 
         //comboboxes date of birth
+        JLabel dob = new JLabel("Date of Birth:");
         JComboBox days = new JComboBox();
         JComboBox months = new JComboBox();
         JComboBox years = new JComboBox();
@@ -297,37 +314,57 @@ public class SDPISGUI extends JFrame {
             years.addItem(new Integer(i));
         }
 
+        JLabel phone = new JLabel("Phone Number:");
         JTextField txtPhone = new JTextField(20);
 
         //combobox subscription types
+        JLabel sub = new JLabel("Subscription:");
         String[] subTypes = { "None", "NHS", "Maintenance", "Oral", "Repair"};
         JComboBox subList = new JComboBox(subTypes);
 
+        JLabel houseNum = new JLabel("House Number:");
         JTextField txtHousenum = new JTextField(20);
+        JLabel street = new JLabel("Street Name:");
         JTextField txtStreet = new JTextField(20);
+        JLabel city = new JLabel("City:");
         JTextField txtAddressCity = new JTextField(20);
+        JLabel region = new JLabel("Region:");
         JTextField txtAddressRegion = new JTextField(20);
+        JLabel postcode = new JLabel("Postcode:");
         JTextField txtPostCode = new JTextField(20);
-        JButton submit = new JButton("Submit");
+        JLabel submit = new JLabel("Submit:");
+        JButton bSubmit = new JButton("Submit");
 
         JPanel inputsPanel = new JPanel();
+        inputsPanel.add(patientTitle);
         inputsPanel.add(txtTitle);
+        inputsPanel.add(fName);
         inputsPanel.add(txtFName);
+        inputsPanel.add(lName);
         inputsPanel.add(txtLName);
         inputsPanel.setLayout(new BoxLayout(inputsPanel, BoxLayout.Y_AXIS));
 
         JPanel inputsPanel2 = new JPanel();
+        inputsPanel2.add(phone);
         inputsPanel2.add(txtPhone);
+        inputsPanel2.add(sub);
         inputsPanel2.add(subList);
+        inputsPanel2.add(houseNum);
         inputsPanel2.add(txtHousenum);
+        inputsPanel2.add(street);
         inputsPanel2.add(txtStreet);
+        inputsPanel2.add(city);
         inputsPanel2.add(txtAddressCity);
+        inputsPanel2.add(region);
         inputsPanel2.add(txtAddressRegion);
+        inputsPanel2.add(postcode);
         inputsPanel2.add(txtPostCode);
         inputsPanel2.add(submit);
+        inputsPanel2.add(bSubmit);
         inputsPanel2.setLayout(new BoxLayout(inputsPanel2, BoxLayout.Y_AXIS));
 
         JPanel dobPanel = new JPanel();
+        dobPanel.add(dob);
         dobPanel.add(days);
         dobPanel.add(months);
         dobPanel.add(years);
