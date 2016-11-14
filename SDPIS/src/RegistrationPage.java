@@ -38,7 +38,7 @@ public class RegistrationPage extends JFrame {
         }
 
         years.addItem("Year");
-        for(int i=1900;i<=2100;i++) {
+        for(int i=1900;i<=2016;i++) {
             years.addItem(new Integer(i));
         }
 

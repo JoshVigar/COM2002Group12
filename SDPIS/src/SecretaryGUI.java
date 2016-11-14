@@ -99,21 +99,38 @@ public class SecretaryGUI extends JFrame{
         JLabel partner = new JLabel("Partner:");
         JLabel sTime = new JLabel("Start Time:");
         JLabel tType = new JLabel("Treatment Type:");
-        JTextField txtPID = new JTextField(20);
-        JTextField txtPartner = new JTextField(20);
-        JTextField txtStart = new JTextField(20);
-        JTextField txtType = new JTextField(20);
+        final JTextField txtPID = new JTextField(20);
+        String[] partners = {"Dentist","Hygienist"};
+        final JComboBox Partner = new JComboBox(partners);
+        final JTextField txtStart = new JTextField(20);
+        String[] appTypes = { "Checkup", "Teeth Cleaning", "Composite Resin Filling", "Gold Crown", "Amalgam Filling"};
+        final JComboBox aType = new JComboBox(appTypes);
+        JButton bBook = new JButton("Book");
 
         JPanel inputsPanel = new JPanel();
         inputsPanel.add(pID);
         inputsPanel.add(txtPID);
         inputsPanel.add(partner);
-        inputsPanel.add(txtPartner);
+        inputsPanel.add(Partner);
         inputsPanel.add(sTime);
         inputsPanel.add(txtStart);
         inputsPanel.add(tType);
-        inputsPanel.add(txtType);
+        inputsPanel.add(aType);
+        inputsPanel.add(bBook);
         inputsPanel.setLayout(new BoxLayout(inputsPanel, BoxLayout.Y_AXIS));
+
+
+        bBook.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        String[] newBooking = {txtPID.getText(), (String)Partner.getSelectedItem(), txtStart.getText(),
+                                (String)aType.getSelectedItem()};
+
+                        System.out.print(Arrays.toString(newBooking));
+
+                    }
+                }
+        );
 
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
