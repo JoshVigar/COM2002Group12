@@ -24,6 +24,8 @@ public class DataB {
                 stmt.executeUpdate(sql);*/
 
                 stmt.close();
+
+                new WelcomeGUI().WelcomeGUI();
             }
             catch (SQLException ex) {
                 ex.printStackTrace(); }
