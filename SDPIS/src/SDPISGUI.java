@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Set;
 
@@ -287,17 +288,17 @@ public class SDPISGUI extends JFrame {
         SetTitleNSize();
 
         JLabel patientTitle = new JLabel("Title:");
-        JTextField txtTitle = new JTextField(20);
+        final JTextField txtTitle = new JTextField(20);
         JLabel fName = new JLabel("Forename:");
-        JTextField txtFName = new JTextField(20);
+        final JTextField txtFName = new JTextField(20);
         JLabel lName = new JLabel("Surname:");
-        JTextField txtLName = new JTextField(20);
+        final JTextField txtLName = new JTextField(20);
 
         //comboboxes date of birth
         JLabel dob = new JLabel("Date of Birth:");
-        JComboBox days = new JComboBox();
-        JComboBox months = new JComboBox();
-        JComboBox years = new JComboBox();
+        final JComboBox days = new JComboBox();
+        final JComboBox months = new JComboBox();
+        final JComboBox years = new JComboBox();
 
         days.addItem("Day");
         for(int i=1;i<=31;i++) {
@@ -315,23 +316,23 @@ public class SDPISGUI extends JFrame {
         }
 
         JLabel phone = new JLabel("Phone Number:");
-        JTextField txtPhone = new JTextField(20);
+        final JTextField txtPhone = new JTextField(20);
 
         //combobox subscription types
         JLabel sub = new JLabel("Subscription:");
         String[] subTypes = { "None", "NHS", "Maintenance", "Oral", "Repair"};
-        JComboBox subList = new JComboBox(subTypes);
+        final JComboBox subList = new JComboBox(subTypes);
 
         JLabel houseNum = new JLabel("House Number:");
-        JTextField txtHousenum = new JTextField(20);
+        final JTextField txtHousenum = new JTextField(20);
         JLabel street = new JLabel("Street Name:");
-        JTextField txtStreet = new JTextField(20);
+        final JTextField txtStreet = new JTextField(20);
         JLabel city = new JLabel("City:");
-        JTextField txtAddressCity = new JTextField(20);
+        final JTextField txtAddressCity = new JTextField(20);
         JLabel region = new JLabel("Region:");
-        JTextField txtAddressRegion = new JTextField(20);
+        final JTextField txtAddressRegion = new JTextField(20);
         JLabel postcode = new JLabel("Postcode:");
-        JTextField txtPostCode = new JTextField(20);
+        final JTextField txtPostCode = new JTextField(20);
         JLabel submit = new JLabel("Submit:");
         JButton bSubmit = new JButton("Submit");
 
@@ -372,6 +373,20 @@ public class SDPISGUI extends JFrame {
 
 
         JLabel title = new JLabel("Please enter your details:");
+
+
+        bSubmit.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        String[] newPatient = {txtTitle.getText(), txtFName.getText(), txtLName.getText(),
+                                years.getSelectedItem()+"-"+months.getSelectedItem()+"-"+days.getSelectedItem(), txtPhone.getText(), (String)subList.getSelectedItem(),
+                                txtHousenum.getText(), txtStreet.getText(), txtAddressCity.getText(), txtAddressRegion.getText(), txtPostCode.getText()};
+
+                        System.out.print(Arrays.toString(newPatient));
+
+                    }
+                }
+        );
 
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
