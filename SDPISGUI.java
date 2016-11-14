@@ -154,8 +154,8 @@ public class SDPISGUI extends JFrame {
     }
 
     public void DentistGUI(){
-        setTitle("Sheffield Dental Practice");
-        setSize(500,600);
+        SetTitleNSize();
+
         JButton btnChk = new JButton("Finish Appointment");
         btnChk.addActionListener(
                 new ActionListener(){
@@ -194,8 +194,8 @@ public class SDPISGUI extends JFrame {
         setVisible(true);
     }
     public void HygienistGUI(){
-        setTitle("Sheffield Dental Practice");
-        setSize(500,600);
+        SetTitleNSize();
+        
         JButton btnChk = new JButton("Finish Appointment");
         btnChk.addActionListener(
                 new ActionListener(){
@@ -352,6 +352,8 @@ public class SDPISGUI extends JFrame {
     }
 
     public void ViewAppointments() {
+
+        SetTitleNSize();
 
         Calendar calendar = Calendar.getInstance();
     }
