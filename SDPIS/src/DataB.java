@@ -11,45 +11,18 @@ public class DataB {
                 con = DriverManager.getConnection(DB);
 
                 stmt = con.createStatement();
-                //String sql = "INSERT INTO customer Values(0, Mr,defaul, Customer, 2000-01-20, 12345678912, 0, 10 S1 3PD";
-                //stmt.executeUpdate(sql);
-                String sql = "SELECT * FROM group_members";
-                ResultSet rs = stmt.executeQuery(sql);
-                //STEP 5: Extract data from result set
-                while(rs.next()){
-                    //Retrieve by column name
-                    String first = rs.getString("first_name");
-                    String last = rs.getString("last_name");
-                    int age = rs.getInt("age");
+                
+                /*String sql = "CREATE TABLE subscription(SubscriptionID INTEGER not NULL, SubscriptionTitle VARCHAR(40), MonthlyCost INTEGER, CheckUp INTEGER, HygieneVisits INTEGER, Repairs INTEGER, EndDate DATE, PRIMARY KEY (SubscriptionID))";
+                stmt.executeUpdate(sql);
+                sql = "CREATE TABLE address(AddressID VARCHAR(40), HouseNum INTEGER, Street VARCHAR(40), City VARCHAR(40), Region VARCHAR(40), PostCode VARCHAR(40), PRIMARY KEY (AddressID))";
+                stmt.executeUpdate(sql);
+                sql = "CREATE TABLE customer(ID INTEGER NOT NULL AUTO_INCREMENT, Title VARCHAR(10),FName VARCHAR(30), LName VARCHAR(30), BirthDate DATE, PhoneNum VARCHAR(15),SubscriptionID INTEGER, AddressID VARCHAR (40),PRIMARY KEY (ID), FOREIGN KEY (SubscriptionID) REFERENCES subscription(SubscriptionID),FOREIGN KEY (AddressID) REFERENCES address(AddressID))";
+                stmt.executeUpdate(sql);
+                sql= "CREATE TABLE visitType(TypeOfVisit VARCHAR(40) , Partner VARCHAR(40), Duration TIME, Cost INTEGER , PRIMARY KEY (TypeOfVisit))";
+                stmt.executeUpdate(sql);
+                sql ="CREATE TABLE appointment(ID INTEGER, TypeOfVisit VARCHAR(40), Partner VARCHAR(40), StartTime TIMESTAMP, EndTime TIMESTAMP, PRIMARY KEY (Partner, StartTime),FOREIGN KEY (ID) REFERENCES customer(ID),FOREIGN KEY (TypeOfVisit) REFERENCES visitType(TypeOfVisit))";
+                stmt.executeUpdate(sql);*/
 
-                    //Display values
-                    System.out.print("First: " + first);
-                    System.out.print(", Last: " + last);
-                    System.out.println(", Age: " + age);
-                }
-                sql = "SELECT * FROM customer";
-                rs = stmt.executeQuery(sql);
-                while(rs.next()){
-                    //Retrieve by column name
-                    int id = rs.getInt("ID");
-                    String title = rs.getString("Title");
-                    String first = rs.getString("Fname");
-                    String last = rs.getString("Lname");
-                    Date dob = rs.getDate("BirthDate");
-                    String phone = rs.getString("PhoneNum");
-                    int subId = rs.getInt("SubscriptionID");
-                    String address = rs.getString("AddressID");
-
-                    //Display values
-                    System.out.print("ID: " + id);
-                    System.out.print(", Title: " + title);
-                    System.out.print(", First: " + first);
-                    System.out.print(", Last: " + last);
-                    System.out.print(", DOB: " + dob);
-                    System.out.print("Phone: " + phone);
-                    System.out.print("SubID: " + subId);
-                    System.out.print("AddressID: " + address);
-                }
                 stmt.close();
             }
             catch (SQLException ex) {
@@ -60,6 +33,6 @@ public class DataB {
                 }
             }
 
-            new SDPISGUI().WelcomeGUI();
+            //new SDPISGUI().WelcomeGUI();
         }
 }
