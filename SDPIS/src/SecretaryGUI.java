@@ -11,9 +11,11 @@ public class SecretaryGUI extends JFrame{
 
     public void SecretaryGUI(){
 
+        //Set title and size of Secretary frame
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
 
+        //create view appointments calendar button and add its actionListener
         JButton btnApp = new JButton("View Appointments Calendar");
         btnApp.addActionListener(
                 new ActionListener(){
@@ -23,6 +25,17 @@ public class SecretaryGUI extends JFrame{
                 }
         );
 
+        //Create check Out patient button and add its action Listener
+        JButton btnLog = new JButton("Check Out Patient");
+        btnLog.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        //open calendar
+                    }
+                }
+        );
+
+        //Create Register Patient button and add its action listener
         JButton btnReg = new JButton("Register Patient");
         btnReg.addActionListener(
                 new ActionListener(){
@@ -32,6 +45,7 @@ public class SecretaryGUI extends JFrame{
                 }
         );
 
+        //Create Manage Patients button and add its action listener
         JButton btnMP = new JButton("Manage Patients");
         btnMP.addActionListener(
                 new ActionListener(){
@@ -43,6 +57,7 @@ public class SecretaryGUI extends JFrame{
                 }
         );
 
+        //Create Book Appointments button and add its action listener
         JButton btnBA = new JButton("Book Appointments");
         btnBA.addActionListener(
                 new ActionListener(){
@@ -52,26 +67,21 @@ public class SecretaryGUI extends JFrame{
                 }
         );
 
+        //create a buttonPanel and add all buttons to it
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(0, 1));
         buttonPanel.add(btnApp);
+        buttonPanel.add(btnLog);
         buttonPanel.add(btnReg);
         buttonPanel.add(btnMP);
         buttonPanel.add(btnBA);
 
-        JButton back = new JButton("Go Back");
-        back.addActionListener(
-                new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-                        new WelcomeGUI();
-                    }
-                }
-        );
-
         JLabel title = new JLabel("Secretary View");
 
+        //create ints to represent borders for contents of the panel
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
+        //get the contentPane add the title and buttonPanel.
         Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
         contentPane.add(title, BorderLayout.NORTH);
@@ -79,18 +89,16 @@ public class SecretaryGUI extends JFrame{
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
 
 
-        //Don't forget to pack!
+        //Don't forget to pack! and setVisible to true
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
 
-
     }
-
-
 
     public void BookAppointment(){
 
+        //Set title and size of Secretary frame
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
 

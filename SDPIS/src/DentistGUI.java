@@ -9,9 +9,13 @@ import java.awt.event.ActionListener;
 public class DentistGUI extends JFrame {
 
     public void DentistGUI(){
+        //Set title and size of dentist frame
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
+
+        //create a buttton to finish an appointment
         JButton btnChk = new JButton("Finish Appointment");
+        //add button action listener
         btnChk.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
@@ -19,7 +23,10 @@ public class DentistGUI extends JFrame {
                     }
                 }
         );
+
+        //add button to view appointments
         JButton btnView = new JButton("View Appointments");
+        //add button action listener
         btnView.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
@@ -27,6 +34,8 @@ public class DentistGUI extends JFrame {
                     }
                 }
         );
+
+        //create a buttonPanel and add all buttons to it
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(0, 1));
         buttonPanel.add(btnChk);
@@ -34,9 +43,11 @@ public class DentistGUI extends JFrame {
 
         JLabel title = new JLabel("Dentist View");
 
+        //create ints to represent borders for contents of the panel
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
 
+        //get the contentPane add the title and buttons.
         Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
         contentPane.add(title, BorderLayout.NORTH);
@@ -46,6 +57,7 @@ public class DentistGUI extends JFrame {
         //Don't forget to pack!
         pack();
         setLocationRelativeTo(null);
+        //set frame visibility to true.
         setVisible(true);
     }
 

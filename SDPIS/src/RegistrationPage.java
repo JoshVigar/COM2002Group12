@@ -10,10 +10,12 @@ import java.util.Arrays;
 public class RegistrationPage extends JFrame {
 
     public void RegisterPage(){
+        //Set title and size of registration frame
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
 
-
+        //Create registration form
+        //Create titled text fields
         JLabel patientTitle = new JLabel("Title:");
         final JTextField txtTitle = new JTextField(20);
         JLabel fName = new JLabel("Forename:");
@@ -27,6 +29,7 @@ public class RegistrationPage extends JFrame {
         final JComboBox months = new JComboBox();
         final JComboBox years = new JComboBox();
 
+        //Use for loops to create the date options
         days.addItem("Day");
         for(int i=1;i<=31;i++) {
             days.addItem(new Integer(i));
@@ -42,6 +45,7 @@ public class RegistrationPage extends JFrame {
             years.addItem(new Integer(i));
         }
 
+        //Titled text field for phone number
         JLabel phone = new JLabel("Phone Number:");
         final JTextField txtPhone = new JTextField(20);
 
@@ -50,6 +54,7 @@ public class RegistrationPage extends JFrame {
         String[] subTypes = { "None", "NHS", "Maintenance", "Oral", "Repair"};
         final JComboBox subList = new JComboBox(subTypes);
 
+        //create text fields to collect address information
         JLabel houseNum = new JLabel("House Number:");
         final JTextField txtHousenum = new JTextField(20);
         JLabel street = new JLabel("Street Name:");
@@ -60,9 +65,12 @@ public class RegistrationPage extends JFrame {
         final JTextField txtAddressRegion = new JTextField(20);
         JLabel postcode = new JLabel("Postcode:");
         final JTextField txtPostCode = new JTextField(20);
+
+        //create submit button
         JLabel submit = new JLabel("Submit:");
         JButton bSubmit = new JButton("Submit");
 
+        //create a panel and add title and name input fields.
         JPanel inputsPanel = new JPanel();
         inputsPanel.add(patientTitle);
         inputsPanel.add(txtTitle);
@@ -72,6 +80,7 @@ public class RegistrationPage extends JFrame {
         inputsPanel.add(txtLName);
         inputsPanel.setLayout(new BoxLayout(inputsPanel, BoxLayout.Y_AXIS));
 
+        //create panel and add registration form input fields.
         JPanel inputsPanel2 = new JPanel();
         inputsPanel2.add(phone);
         inputsPanel2.add(txtPhone);
@@ -91,17 +100,16 @@ public class RegistrationPage extends JFrame {
         inputsPanel2.add(bSubmit);
         inputsPanel2.setLayout(new BoxLayout(inputsPanel2, BoxLayout.Y_AXIS));
 
+        //create a panel and add D.O.B comboBox
         JPanel dobPanel = new JPanel();
         dobPanel.add(dob);
         dobPanel.add(days);
         dobPanel.add(months);
         dobPanel.add(years);
 
-
-
         JLabel title = new JLabel("Please enter your details:");
 
-
+        //add action listener to submit button
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
@@ -115,9 +123,11 @@ public class RegistrationPage extends JFrame {
                 }
         );
 
+        //create ints to represent borders for contents of the panel
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
 
+        //create a new panel to contain the title and the input field panels
         JPanel mPanel = new JPanel();
         mPanel.setLayout(new BorderLayout());
         mPanel.add(title,BorderLayout.NORTH);
@@ -130,12 +140,13 @@ public class RegistrationPage extends JFrame {
         mPanel.add(cPanel,BorderLayout.SOUTH);
         mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
 
+        //add the mpanel to the contentPane
         Container contentPane = getContentPane();
         contentPane.add(mPanel);
 
 
 
-        //Don't forget to pack!
+        //Don't forget to pack! and setVisible to true.
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
