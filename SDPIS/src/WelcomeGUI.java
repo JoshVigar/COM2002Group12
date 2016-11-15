@@ -74,19 +74,10 @@ public class WelcomeGUI extends JFrame {
         pack();
         setLocationRelativeTo(null);
 
-//        WelcomeGUI().addWindowListener(new WindowAdapter()
-//        {
-//            public void windowClosing(WindowEvent e)
-//            {
-//
-//            }
-//        });
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
 
-//    public void CloseNDisconnect{
-//
-//    }
 
 }

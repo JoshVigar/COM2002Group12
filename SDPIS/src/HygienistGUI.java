@@ -52,6 +52,7 @@ public class HygienistGUI extends JFrame {
         contentPane.setLayout(new BorderLayout());
         contentPane.add(title, BorderLayout.NORTH);
         contentPane.add(buttonPanel, BorderLayout.CENTER);
+        contentPane.add(btnBack, BorderLayout.SOUTH);
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
         //Don't forget to pack!
         pack();
