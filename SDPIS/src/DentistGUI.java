@@ -36,6 +36,9 @@ public class DentistGUI extends JFrame {
                     }
                 }
         );
+
+
+        //create a buttonPanel and add all buttons to it
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(0, 1));
         buttonPanel.add(btnChk);
@@ -50,13 +53,13 @@ public class DentistGUI extends JFrame {
         contentPane.setLayout(new BorderLayout());
         contentPane.add(title, BorderLayout.NORTH);
         contentPane.add(buttonPanel, BorderLayout.CENTER);
-        contentPane.add(btnBack, BorderLayout.SOUTH);
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
 
         //Don't forget to pack!
         pack();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //set frame visibility to true.
         setVisible(true);
     }
 
