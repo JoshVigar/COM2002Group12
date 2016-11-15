@@ -28,6 +28,7 @@ public class SecretaryGUI extends JFrame{
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         new RegistrationPage().RegisterPage();
+                        dispose();
                     }
                 }
         );
@@ -48,6 +49,17 @@ public class SecretaryGUI extends JFrame{
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         new SecretaryGUI().BookAppointment();
+                        dispose();
+                    }
+                }
+        );
+
+        JButton btnBack = new JButton("Go Back");
+        btnBack.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        setVisible(false);
+                        new WelcomeGUI().WelcomeGUI();
                     }
                 }
         );
@@ -59,14 +71,6 @@ public class SecretaryGUI extends JFrame{
         buttonPanel.add(btnMP);
         buttonPanel.add(btnBA);
 
-        JButton back = new JButton("Go Back");
-        back.addActionListener(
-                new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-                        new WelcomeGUI();
-                    }
-                }
-        );
 
         JLabel title = new JLabel("Secretary View");
 
@@ -76,12 +80,14 @@ public class SecretaryGUI extends JFrame{
         contentPane.setLayout(new BorderLayout());
         contentPane.add(title, BorderLayout.NORTH);
         contentPane.add(buttonPanel, BorderLayout.CENTER);
+        contentPane.add(btnBack, BorderLayout.SOUTH);
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
 
 
         //Don't forget to pack!
         pack();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
 
@@ -125,9 +131,18 @@ public class SecretaryGUI extends JFrame{
                     public void actionPerformed(ActionEvent e){
                         String[] newBooking = {txtPID.getText(), (String)Partner.getSelectedItem(), txtStart.getText(),
                                 (String)aType.getSelectedItem()};
-
                         System.out.print(Arrays.toString(newBooking));
 
+                    }
+                }
+        );
+
+        JButton btnBack = new JButton("Go Back");
+        btnBack.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        dispose();
+                        new SecretaryGUI().SecretaryGUI();
                     }
                 }
         );
@@ -137,13 +152,15 @@ public class SecretaryGUI extends JFrame{
 
         Container contentpane = getContentPane();
         contentpane.add(title, BorderLayout.NORTH);
-        contentpane.add(inputsPanel, BorderLayout.SOUTH);
+        contentpane.add(inputsPanel, BorderLayout.CENTER);
+        contentpane.add(btnBack, BorderLayout.SOUTH);
 
         inputsPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
 
         //Don't forget to pack!
         pack();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
 

@@ -115,6 +115,16 @@ public class RegistrationPage extends JFrame {
                 }
         );
 
+        JButton btnBack = new JButton("Go Back");
+        btnBack.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        dispose();
+                        new SecretaryGUI().SecretaryGUI();
+                    }
+                }
+        );
+
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
 
@@ -132,12 +142,14 @@ public class RegistrationPage extends JFrame {
 
         Container contentPane = getContentPane();
         contentPane.add(mPanel);
+        contentPane.add(btnBack, BorderLayout.SOUTH);
 
 
 
         //Don't forget to pack!
         pack();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
     }

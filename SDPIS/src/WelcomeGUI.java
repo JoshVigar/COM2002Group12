@@ -21,6 +21,7 @@ public class WelcomeGUI extends JFrame {
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         new SecretaryGUI().SecretaryGUI();
+                        setVisible(false);
                     }
                 }
         );
@@ -30,6 +31,7 @@ public class WelcomeGUI extends JFrame {
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         new DentistGUI().DentistGUI();
+                        setVisible(false);
                     }
                 }
         );
@@ -39,6 +41,7 @@ public class WelcomeGUI extends JFrame {
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         new HygienistGUI().HygienistGUI();
+                        setVisible(false);
                     }
                 }
         );
