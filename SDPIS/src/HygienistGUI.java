@@ -23,7 +23,8 @@ public class HygienistGUI extends JFrame {
         btnView.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        //Go to appointments
+                        dispose();
+                        new ViewAppointments().ViewHygienistAppointments();
                     }
                 }
         );

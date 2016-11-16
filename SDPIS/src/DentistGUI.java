@@ -23,7 +23,8 @@ public class DentistGUI extends JFrame {
         btnView.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        //Go to Appointments
+                        dispose();
+                        new ViewAppointments().ViewDentistAppointments();
                     }
                 }
         );
