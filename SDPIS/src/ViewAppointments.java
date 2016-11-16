@@ -193,14 +193,14 @@ public class ViewAppointments extends JFrame {
         hygPanel.add(friTitle);
         hygPanel.add(friCalendar);
 
-        //int bHeight = (int)(this.getHeight()*0.1);
-        //int bWidth = (int)(this.getWidth()*0.1);
+        int bHeight = (int)(this.getHeight()*0.1);
+        int bWidth = (int)(this.getWidth()*0.1);
 
         JPanel mPanel = new JPanel();
         mPanel.setLayout(new BorderLayout());
         mPanel.add(title, BorderLayout.NORTH);
         mPanel.add(hygPanel, BorderLayout.CENTER);
-        //mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
+        mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
         container.add(mPanel);
 
         //Don't forget to pack!

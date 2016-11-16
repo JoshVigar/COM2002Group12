@@ -126,11 +126,6 @@ public class RegistrationPage extends JFrame {
 
 
 
-
-
-
-
-
         JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
                 new ActionListener(){
