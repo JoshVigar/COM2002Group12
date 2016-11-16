@@ -115,6 +115,9 @@ public class ViewAppointments extends JFrame {
         //mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
         container.add(mPanel);
 
+        //Don't forget to pack!
+        pack();
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
@@ -224,6 +227,9 @@ public class ViewAppointments extends JFrame {
         //mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
         container.add(mPanel);
 
+        //Don't forget to pack!
+        pack();
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
