@@ -1,3 +1,6 @@
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
@@ -234,9 +237,25 @@ public class ViewAppointments extends JFrame {
         setVisible(true);
     }
 
-    public static void main(String[] args){
-        ViewAppointments appointments = new ViewAppointments();
-        appointments.ViewDentistAppointments();
+    public void ViewSecretaryAppointments(){
+        JTabbedPane tabbedPane = new JTabbedPane();
 
+        JComponent panel1 = new JButton("This is a button");
+        tabbedPane.addTab("Tab 1",null, panel1, null);
+
+        JComponent panel2 = new JButton("This is a button");
+        tabbedPane.addTab("Tab 2", null, panel2, null);
+
+        JFrame frame = new JFrame("TabbedPaneDemo");
+
+        //Add content to the window.
+        add(tabbedPane, BorderLayout.CENTER);
+
+        //Display the window.
+        pack();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
+
 }
