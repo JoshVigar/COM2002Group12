@@ -1,10 +1,8 @@
 import java.awt.BorderLayout;
 import java.awt.Container;
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTable;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -96,6 +94,16 @@ public class ViewAppointments extends JFrame {
         denPanel.add(friTitle);
         denPanel.add(friCalendar);
 
+        JButton btnBack = new JButton("Go Back");
+        btnBack.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        dispose();
+                        new DentistGUI().DentistGUI();
+                    }
+                }
+        );
+
         //int bHeight = (int)(this.getHeight()*0.1);
         //int bWidth = (int)(this.getWidth()*0.1);
 
@@ -103,6 +111,7 @@ public class ViewAppointments extends JFrame {
         mPanel.setLayout(new BorderLayout());
         mPanel.add(title, BorderLayout.NORTH);
         mPanel.add(denPanel, BorderLayout.CENTER);
+        mPanel.add(btnBack, BorderLayout.SOUTH);
         //mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
         container.add(mPanel);
 
@@ -182,6 +191,16 @@ public class ViewAppointments extends JFrame {
         JLabel thurTitle = new JLabel("Thursday:");
         JLabel friTitle = new JLabel("Friday:");
 
+        JButton btnBack = new JButton("Go Back");
+        btnBack.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        dispose();
+                        new HygienistGUI().HygienistGUI();
+                    }
+                }
+        );
+
         JPanel hygPanel = new JPanel();
         hygPanel.add(monTitle);
         hygPanel.add(monCalendar);
@@ -201,6 +220,7 @@ public class ViewAppointments extends JFrame {
         mPanel.setLayout(new BorderLayout());
         mPanel.add(title, BorderLayout.NORTH);
         mPanel.add(hygPanel, BorderLayout.CENTER);
+        mPanel.add(btnBack, BorderLayout.SOUTH);
         //mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
         container.add(mPanel);
 
