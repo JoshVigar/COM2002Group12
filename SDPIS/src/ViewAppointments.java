@@ -13,12 +13,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewAppointments extends JFrame {
 
-    public void ViewDentistAppointments() {
-        setTitle("Sheffield Dental Practice");
-        setSize(1300,600);
-
-        Container container = getContentPane();
-
+    public JPanel HygienistCalendar() {
         String[] columnNames  = {"Time","Appointment"};
 
         Object[][] monData = {
@@ -78,7 +73,88 @@ public class ViewAppointments extends JFrame {
         JTable thurCalendar = new JTable(thurData,columnNames);
         JTable friCalendar = new JTable(friData,columnNames);
 
-        JLabel title = new JLabel("Dentist Appointments Calendar: Week of...");
+        JLabel monTitle = new JLabel("Monday:");
+        JLabel tueTitle = new JLabel("Tuesday:");
+        JLabel wedTitle = new JLabel("Wednesday:");
+        JLabel thurTitle = new JLabel("Thursday:");
+        JLabel friTitle = new JLabel("Friday:");
+
+        JPanel hygPanel = new JPanel();
+        hygPanel.add(monTitle);
+        hygPanel.add(monCalendar);
+        hygPanel.add(tueTitle);
+        hygPanel.add(tueCalendar);
+        hygPanel.add(wedTitle);
+        hygPanel.add(wedCalendar);
+        hygPanel.add(thurTitle);
+        hygPanel.add(thurCalendar);
+        hygPanel.add(friTitle);
+        hygPanel.add(friCalendar);
+
+        return hygPanel;
+
+    }
+
+    public JPanel DentistCalendar() {
+        String[] columnNames  = {"Time","Appointment"};
+
+        Object[][] monData = {
+                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
+                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
+                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
+                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
+                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
+                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
+                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
+                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
+        };
+        Object[][] tueData = {
+                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
+                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
+                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
+                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
+                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
+                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
+                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
+                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
+        };
+        Object[][] wedData = {
+                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
+                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
+                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
+                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
+                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
+                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
+                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
+                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
+        };
+        Object[][] thurData = {
+                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
+                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
+                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
+                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
+                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
+                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
+                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
+                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
+        };
+        Object[][] friData = {
+                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
+                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
+                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
+                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
+                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
+                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
+                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
+                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
+        };
+
+        JTable monCalendar = new JTable(monData,columnNames);
+        JTable tueCalendar = new JTable(tueData,columnNames);
+        JTable wedCalendar = new JTable(wedData,columnNames);
+        JTable thurCalendar = new JTable(thurData,columnNames);
+        JTable friCalendar = new JTable(friData,columnNames);
+
         JLabel monTitle = new JLabel("Monday:");
         JLabel tueTitle = new JLabel("Tuesday:");
         JLabel wedTitle = new JLabel("Wednesday:");
@@ -97,12 +173,53 @@ public class ViewAppointments extends JFrame {
         denPanel.add(friTitle);
         denPanel.add(friCalendar);
 
+        return denPanel;
+    }
+
+    public void ViewDentistAppointments() {
+        setTitle("Sheffield Dental Practice");
+        setSize(1300,600);
+
+        Container container = getContentPane();
+
+        JLabel title = new JLabel("Dentist Appointments: Date");
+        String[] columnNames  = {"Time","Appointment"};
+
+        Object[][] data = {
+                {"9:00", ""}, {"9:20", ""}, {"9:40", ""},
+                {"10.00", ""}, {"10:20", ""}, {"10:40", ""},
+                {"11:00", ""}, {"11:20", ""}, {"11:40", ""},
+                {"12:00", ""}, {"12:20", ""}, {"12:40", ""},
+                {"13:00", ""}, {"13:20", ""}, {"13:40", ""},
+                {"14:00", ""}, {"14:20", ""}, {"14:40", ""},
+                {"15:00", ""}, {"15:20", ""}, {"15:40", ""},
+                {"16:00", ""}, {"16:20", ""}, {"16:40", ""},
+        };
+        JTable dayCalendar = new JTable(data,columnNames);
+
         JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         dispose();
                         new DentistGUI().DentistGUI();
+                    }
+                }
+        );
+        JButton nextDay = new JButton("Next Day ->");
+        nextDay.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                       //next days calendar
+                    }
+                }
+        );
+
+        JButton previousDay = new JButton("<- Previous Day");
+        previousDay.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        //previous days calendar
                     }
                 }
         );
@@ -113,7 +230,9 @@ public class ViewAppointments extends JFrame {
         JPanel mPanel = new JPanel();
         mPanel.setLayout(new BorderLayout());
         mPanel.add(title, BorderLayout.NORTH);
-        mPanel.add(denPanel, BorderLayout.CENTER);
+        mPanel.add(previousDay, BorderLayout.LINE_START);
+        mPanel.add(dayCalendar, BorderLayout.CENTER);
+        mPanel.add(nextDay, BorderLayout.LINE_END);
         mPanel.add(btnBack, BorderLayout.SOUTH);
         //mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
         container.add(mPanel);
@@ -131,71 +250,20 @@ public class ViewAppointments extends JFrame {
 
         Container container = getContentPane();
 
+        JLabel title = new JLabel("Hygienist Appointments: Date");
         String[] columnNames  = {"Time","Appointment"};
 
-        Object[][] monData = {
-                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
-                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
-                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
-                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
-                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
-                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
-                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
-                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
+        Object[][] data = {
+                {"9:00", ""}, {"9:20", ""}, {"9:40", ""},
+                {"10.00", ""}, {"10:20", ""}, {"10:40", ""},
+                {"11:00", ""}, {"11:20", ""}, {"11:40", ""},
+                {"12:00", ""}, {"12:20", ""}, {"12:40", ""},
+                {"13:00", ""}, {"13:20", ""}, {"13:40", ""},
+                {"14:00", ""}, {"14:20", ""}, {"14:40", ""},
+                {"15:00", ""}, {"15:20", ""}, {"15:40", ""},
+                {"16:00", ""}, {"16:20", ""}, {"16:40", ""},
         };
-        Object[][] tueData = {
-                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
-                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
-                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
-                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
-                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
-                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
-                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
-                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
-        };
-        Object[][] wedData = {
-                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
-                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
-                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
-                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
-                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
-                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
-                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
-                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
-        };
-        Object[][] thurData = {
-                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
-                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
-                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
-                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
-                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
-                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
-                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
-                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
-        };
-        Object[][] friData = {
-                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
-                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
-                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
-                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
-                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
-                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
-                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
-                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
-        };
-
-        JTable monCalendar = new JTable(monData,columnNames);
-        JTable tueCalendar = new JTable(tueData,columnNames);
-        JTable wedCalendar = new JTable(wedData,columnNames);
-        JTable thurCalendar = new JTable(thurData,columnNames);
-        JTable friCalendar = new JTable(friData,columnNames);
-
-        JLabel title = new JLabel("Hygienist Appointments Calendar: Week of...");
-        JLabel monTitle = new JLabel("Monday:");
-        JLabel tueTitle = new JLabel("Tuesday:");
-        JLabel wedTitle = new JLabel("Wednesday:");
-        JLabel thurTitle = new JLabel("Thursday:");
-        JLabel friTitle = new JLabel("Friday:");
+        JTable dayCalendar = new JTable(data,columnNames);
 
         JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
@@ -206,28 +274,35 @@ public class ViewAppointments extends JFrame {
                     }
                 }
         );
+        JButton nextDay = new JButton("Next Day ->");
+        nextDay.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        //next days calendar
+                    }
+                }
+        );
 
-        JPanel hygPanel = new JPanel();
-        hygPanel.add(monTitle);
-        hygPanel.add(monCalendar);
-        hygPanel.add(tueTitle);
-        hygPanel.add(tueCalendar);
-        hygPanel.add(wedTitle);
-        hygPanel.add(wedCalendar);
-        hygPanel.add(thurTitle);
-        hygPanel.add(thurCalendar);
-        hygPanel.add(friTitle);
-        hygPanel.add(friCalendar);
+        JButton previousDay = new JButton("<- Previous Day");
+        previousDay.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        //previous days calendar
+                    }
+                }
+        );
 
-        int bHeight = (int)(this.getHeight()*0.1);
-        int bWidth = (int)(this.getWidth()*0.1);
+        //int bHeight = (int)(this.getHeight()*0.1);
+        //int bWidth = (int)(this.getWidth()*0.1);
 
         JPanel mPanel = new JPanel();
         mPanel.setLayout(new BorderLayout());
         mPanel.add(title, BorderLayout.NORTH);
-        mPanel.add(hygPanel, BorderLayout.CENTER);
+        mPanel.add(previousDay, BorderLayout.LINE_START);
+        mPanel.add(dayCalendar, BorderLayout.CENTER);
+        mPanel.add(nextDay, BorderLayout.LINE_END);
         mPanel.add(btnBack, BorderLayout.SOUTH);
-        mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
+        //mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
         container.add(mPanel);
 
         //Don't forget to pack!
@@ -240,11 +315,32 @@ public class ViewAppointments extends JFrame {
     public void ViewSecretaryAppointments(){
         JTabbedPane tabbedPane = new JTabbedPane();
 
-        JComponent panel1 = new JButton("This is a button");
-        tabbedPane.addTab("Tab 1",null, panel1, null);
+        JLabel denTitle = new JLabel("Dentist Weekly Calendar for Week ...");
+        JLabel hygTitle = new JLabel("Hygienist Weekly Calendar for Week ...");
 
-        JComponent panel2 = new JButton("This is a button");
-        tabbedPane.addTab("Tab 2", null, panel2, null);
+        JButton btnBack = new JButton("Go Back");
+        btnBack.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        dispose();
+                        new SecretaryGUI().SecretaryGUI();
+                    }
+                }
+        );
+
+        JPanel dentist = new JPanel();
+        dentist.add(denTitle,BorderLayout.NORTH);
+        dentist.add(DentistCalendar(),BorderLayout.CENTER);
+        dentist.add(btnBack,BorderLayout.SOUTH);
+
+        tabbedPane.addTab("Dentist Appointments",null,dentist, null);
+
+        JPanel hygienist = new JPanel();
+        hygienist.add(hygTitle,BorderLayout.NORTH);
+        hygienist.add(HygienistCalendar(),BorderLayout.CENTER);
+        hygienist.add(btnBack,BorderLayout.SOUTH);
+
+        tabbedPane.addTab("Hygienist Appointments", null,hygienist, null);
 
         JFrame frame = new JFrame("TabbedPaneDemo");
 
