@@ -2,14 +2,22 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
+import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.time.*;
+import java.text.*;
 
 /**
  * Created by User on 14/11/2016.
  */
-public class RegistrationPage extends JFrame {
+public class RegistrationPage  extends JFrame {
 
-    public void RegisterPage(){
+
+    public void RegisterPage() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+
+        final DataAccessBase reg = new DataAccessBase("jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61");
+
         //Set title and size of registration frame
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
@@ -51,7 +59,7 @@ public class RegistrationPage extends JFrame {
 
         //combobox subscription types
         JLabel sub = new JLabel("Subscription:");
-        String[] subTypes = { "None", "NHS", "Maintenance", "Oral", "Repair"};
+        String[] subTypes = { "None", "NHS Free Plan", "Maintenance PLan", "Oral Health Plan", "Dental Repair Plan"};
         final JComboBox subList = new JComboBox(subTypes);
 
         //create text fields to collect address information
@@ -113,25 +121,44 @@ public class RegistrationPage extends JFrame {
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        String[] newPatient = {txtTitle.getText(), txtFName.getText(), txtLName.getText(),
-                                years.getSelectedItem()+"-"+months.getSelectedItem()+"-"+days.getSelectedItem(), txtPhone.getText(), (String)subList.getSelectedItem(),
-                                txtHousenum.getText(), txtStreet.getText(), txtAddressCity.getText(), txtAddressRegion.getText(), txtPostCode.getText()};
+                        LocalDate localDate = LocalDate.now();
+                        String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate.plusYears(1));
 
+                        String[] newPatient = {txtTitle.getText(), txtFName.getText(), txtLName.getText(),
+                                years.getSelectedItem()+"-"+months.getSelectedItem()+"-"+days.getSelectedItem(),
+                                txtPhone.getText(), (String)subList.getSelectedItem(), txtHousenum.getText(),
+                                txtStreet.getText(), txtAddressCity.getText(), txtAddressRegion.getText(), txtPostCode.getText()};
+
+                        String firstSubscription = "INSERT INTO Subscription (SubscriptionTitle, MonthlyCost, CheckUp,"+
+                                " HygieneVisit, Repair, EndDate) VALUES (";
+                        if((String)subList.getSelectedItem() == "None"){
+                            firstSubscription += "'"+(String)subList.getSelectedItem()+"',0,0,0,0"+", '"+endDate+"')";
+                        }else if((String)subList.getSelectedItem() == "NHS FREE PLAN"){
+                            firstSubscription += "'"+(String)subList.getSelectedItem()+"', 0,2,2,6"+", '"+endDate+"')";
+                        }else if((String)subList.getSelectedItem() == "Maintenance PLan"){
+                            firstSubscription += "'"+(String)subList.getSelectedItem()+"', 15,2,2,0"+", '"+endDate+"')";
+                        }else if((String)subList.getSelectedItem() == "Oral Health Plan"){
+                            firstSubscription += "'"+(String)subList.getSelectedItem()+"', 21,2,4,0"+", '"+endDate+"')";
+                        }else if((String)subList.getSelectedItem() == "Dental Repair Plan"){
+                            firstSubscription += "'"+(String)subList.getSelectedItem()+"', 36,2,2,2"+", '"+endDate+"')";
+                        }
+                        reg.updateData(firstSubscription);
+
+                        String address = "INSERT INTO Address (AddressID, HouseNum, Street, City, Region, PostCode)"+
+                                " VALUES ('"+txtHousenum.getText()+" "+txtPostCode.getText()+"', '"+txtHousenum.getText()+"', '"+
+                                txtStreet.getText()+"', '"+txtAddressCity.getText()+"', '"+txtAddressRegion.getText()+"', '"+
+                                txtPostCode.getText()+"')";
+                        reg.updateData(address);
+
+                        //details to insert into customer table
+                        String customer = "INSERT INTO Customer (Title, FName, LName, BirthDate, PhoneNum, AddressID)"+
+                                " VALUES ('"+ txtTitle.getText()+"', '"+txtFName.getText()+"', '"+txtLName.getText()+"', '"+
+                                years.getSelectedItem()+"-"+months.getSelectedItem()+"-"+days.getSelectedItem()+"', '"+
+                                txtPhone.getText()+"', '"+txtHousenum.getText()+" "+txtPostCode.getText()+"')";
+                        reg.updateData(customer);
                         System.out.print(Arrays.toString(newPatient));
 
-                    }
-                }
-        );
 
-
-
-
-        JButton btnBack = new JButton("Go Back");
-        btnBack.addActionListener(
-                new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-                        dispose();
-                        new SecretaryGUI().SecretaryGUI();
                     }
                 }
         );
@@ -139,8 +166,6 @@ public class RegistrationPage extends JFrame {
         //create ints to represent borders for contents of the panel
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
-
-
 
         //create a new panel to contain the title and the input field panels
         JPanel mPanel = new JPanel();
@@ -158,14 +183,12 @@ public class RegistrationPage extends JFrame {
         //add the mpanel to the contentPane
         Container contentPane = getContentPane();
         contentPane.add(mPanel);
-        contentPane.add(btnBack, BorderLayout.SOUTH);
 
 
 
         //Don't forget to pack! and setVisible to true.
         pack();
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
     }

@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.Arrays;
 
 /**
@@ -29,7 +30,17 @@ public class SecretaryGUI extends JFrame{
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         dispose();
-                        new RegistrationPage().RegisterPage();
+                        try {
+                            new RegistrationPage().RegisterPage();
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        } catch (ClassNotFoundException e1) {
+                            e1.printStackTrace();
+                        } catch (IllegalAccessException e1) {
+                            e1.printStackTrace();
+                        } catch (InstantiationException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
         );

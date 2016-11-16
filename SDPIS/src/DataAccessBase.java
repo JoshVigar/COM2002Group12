@@ -1,4 +1,3 @@
-
 import java.sql.*;
 
 public class DataAccessBase {
@@ -6,16 +5,16 @@ public class DataAccessBase {
 	private String _connectionString;
 	private Statement _statement;
 	private int _result;
-    private ResultSet _rs;
-	
+	private ResultSet _rs;
+
 	public DataAccessBase(String connectionString)throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException{
 		_connectionString = connectionString;
-		
+
 	}
 
-	private Connection getConnection(String connectionString)throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException
+	private Connection getConnection()throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException
 	{
-        Class.forName("com.mysql.jdbc.Driver").newInstance();
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
 		Connection SqlCon = DriverManager.getConnection(_connectionString);
 		return SqlCon;
 	}
@@ -30,10 +29,10 @@ public class DataAccessBase {
 		}
 		return procedure;
 	}
-	
+
 	protected int updateData(String update){
 		try{
-			Connection sqlCon = getConnection(_connectionString);
+			Connection sqlCon = getConnection();
 			_statement = sqlCon.createStatement();
 			_result = _statement.executeUpdate(update);
 			sqlCon.close();
@@ -45,13 +44,13 @@ public class DataAccessBase {
 			return _result;
 		}
 	}
-	
+
 	protected ResultSet getData(String query) {
 		try{
-            Connection sqlCon = getConnection(_connectionString);
+			Connection sqlCon = getConnection();
 			_statement = sqlCon.createStatement();
 			_rs = _statement.executeQuery(query);
-			return _rs;
+			sqlCon.close();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} finally {
