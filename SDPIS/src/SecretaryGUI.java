@@ -55,7 +55,7 @@ public class SecretaryGUI extends JFrame{
         );
 
         JButton btnChk = new JButton("Check Out Patient");
-        btnBA.addActionListener(
+        btnChk.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         dispose();
@@ -121,16 +121,17 @@ public class SecretaryGUI extends JFrame{
         JPanel inputsPanel = new JPanel();
         inputsPanel.add(ptnr);
         inputsPanel.add(partner);
-        inputsPanel.add(sTime);
-        inputsPanel.setLayout(new BoxLayout(inputsPanel, BoxLayout.Y_AXIS));
 
         JPanel timePanel = new JPanel();
+        timePanel.add(sTime);
         timePanel.add(hr);
         timePanel.add(min);
 
         JPanel mPanel = new JPanel();
         mPanel.add(inputsPanel);
         mPanel.add(timePanel);
+
+        mPanel.setLayout(new BoxLayout(mPanel, BoxLayout.Y_AXIS));
 
 
         bSubmit.addActionListener(
