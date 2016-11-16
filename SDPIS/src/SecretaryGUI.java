@@ -54,12 +54,23 @@ public class SecretaryGUI extends JFrame{
                 }
         );
 
+        JButton btnChk = new JButton("Check Out Patient");
+        btnBA.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        dispose();
+                        new SecretaryGUI().CheckoutPatient();
+                    }
+                }
+        );
+
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(0, 1));
         buttonPanel.add(btnApp);
         buttonPanel.add(btnReg);
         buttonPanel.add(btnMP);
         buttonPanel.add(btnBA);
+        buttonPanel.add(btnChk);
 
         JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
@@ -152,7 +163,7 @@ public class SecretaryGUI extends JFrame{
         contentpane.add(btnBack, BorderLayout.SOUTH);
 
 
-        inputsPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
+        mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
 
         //Don't forget to pack!
         pack();
