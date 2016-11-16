@@ -318,8 +318,18 @@ public class ViewAppointments extends JFrame {
         JLabel denTitle = new JLabel("Dentist Weekly Calendar for Week ...");
         JLabel hygTitle = new JLabel("Hygienist Weekly Calendar for Week ...");
 
-        JButton btnBack = new JButton("Go Back");
-        btnBack.addActionListener(
+        JButton btnBackDen = new JButton("Go Back");
+        btnBackDen.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        dispose();
+                        new SecretaryGUI().SecretaryGUI();
+                    }
+                }
+        );
+
+        JButton btnBackHyg = new JButton("Go Back");
+        btnBackHyg.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         dispose();
@@ -331,14 +341,14 @@ public class ViewAppointments extends JFrame {
         JPanel dentist = new JPanel();
         dentist.add(denTitle,BorderLayout.NORTH);
         dentist.add(DentistCalendar(),BorderLayout.CENTER);
-        dentist.add(btnBack,BorderLayout.SOUTH);
+        dentist.add(btnBackDen,BorderLayout.SOUTH);
 
         tabbedPane.addTab("Dentist Appointments",null,dentist, null);
 
         JPanel hygienist = new JPanel();
         hygienist.add(hygTitle,BorderLayout.NORTH);
         hygienist.add(HygienistCalendar(),BorderLayout.CENTER);
-        hygienist.add(btnBack,BorderLayout.SOUTH);
+        hygienist.add(btnBackHyg,BorderLayout.SOUTH);
 
         tabbedPane.addTab("Hygienist Appointments", null,hygienist, null);
 

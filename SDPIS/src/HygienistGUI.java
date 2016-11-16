@@ -15,7 +15,8 @@ public class HygienistGUI extends JFrame {
         btnChk.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        //Go to finish appointment view
+                        dispose();
+                        //Wherever this shit is
                     }
                 }
         );
