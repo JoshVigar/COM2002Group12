@@ -19,7 +19,7 @@ public class ManagePatients extends JFrame {
         final JTextField txtPID = new JTextField(20);
         JLabel fName = new JLabel("Forename:");
         final JTextField txtFName = new JTextField(20);
-        JLabel sName = new JLabel("Sirname:");
+        JLabel sName = new JLabel("Surname:");
         final JTextField txtSName = new JTextField(20);
         String[] sub = {"Subscribe","Cancel Subscription"};
         JLabel operation= new JLabel("Operation:");
