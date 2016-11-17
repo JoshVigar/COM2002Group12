@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5424831f-d4cb-4eaa-9bdb-e08e07d4e57c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/RegistrationPage$1.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/RegistrationPage$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/RegistrationPage.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/RegistrationPage.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/DentistGUI$1.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/DentistGUI$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/DentistGUI$2.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/DentistGUI$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/DentistGUI.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/DentistGUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/HygienistGUI$1.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/HygienistGUI$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/HygienistGUI$2.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/HygienistGUI$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/HygienistGUI.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/HygienistGUI.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/BookAppointment.java" afterPath="$PROJECT_DIR$/SDPIS/src/BookAppointment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/DentistGUI.java" afterPath="$PROJECT_DIR$/SDPIS/src/DentistGUI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/HygienistGUI.java" afterPath="$PROJECT_DIR$/SDPIS/src/HygienistGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/ManagePatients.java" afterPath="$PROJECT_DIR$/SDPIS/src/ManagePatients.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/RegistrationPage.java" afterPath="$PROJECT_DIR$/SDPIS/src/RegistrationPage.java" />
     </list>
     <ignored path="COM2002Group12.iws" />
@@ -30,109 +33,131 @@
     <favorites_list name="COM2002Group12" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="DataB.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SDPIS/src/DataB.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="531">
-              <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SecretaryGUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SDPIS/src/SecretaryGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="114" column="5" selection-start-line="114" selection-start-column="5" selection-end-line="114" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DentistGUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SDPIS/src/DentistGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="76" column="49" selection-start-line="76" selection-start-column="49" selection-end-line="76" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WelcomeGUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SDPIS/src/WelcomeGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HygienistGUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SDPIS/src/HygienistGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="91" column="52" selection-start-line="91" selection-start-column="52" selection-end-line="91" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ManagePatients.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SDPIS/src/ManagePatients.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-744">
-              <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1353#1728#0" expanded="true" />
-                <element signature="e#1727#1728#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BookAppointment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SDPIS/src/BookAppointment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="27" column="113" selection-start-line="27" selection-start-column="113" selection-end-line="27" selection-end-column="113" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewAppointments.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SDPIS/src/ViewAppointments.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1896">
-              <caret line="342" column="53" selection-start-line="342" selection-start-column="53" selection-end-line="342" selection-end-column="53" />
-              <folding>
-                <element signature="e#13152#13371#0" expanded="true" />
-                <element signature="e#13370#13371#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegistrationPage.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SDPIS/src/RegistrationPage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.66756177">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+          <file leaf-file-name="DataB.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SDPIS/src/DataB.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="531">
+                  <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SecretaryGUI.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/SDPIS/src/SecretaryGUI.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-44">
+                  <caret line="55" column="10" selection-start-line="47" selection-start-column="8" selection-end-line="55" selection-end-column="10" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DentistGUI.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SDPIS/src/DentistGUI.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="242">
+                  <caret line="76" column="49" selection-start-line="76" selection-start-column="49" selection-end-line="76" selection-end-column="49" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="WelcomeGUI.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SDPIS/src/WelcomeGUI.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="575">
+                  <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="HygienistGUI.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SDPIS/src/HygienistGUI.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="374">
+                  <caret line="87" column="28" selection-start-line="87" selection-start-column="28" selection-end-line="87" selection-end-column="28" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ManagePatients.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SDPIS/src/ManagePatients.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="290">
+                  <caret line="19" column="57" selection-start-line="19" selection-start-column="57" selection-end-line="19" selection-end-column="57" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#1012#1315#0" expanded="true" />
+                    <element signature="e#1314#1315#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="BookAppointment.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SDPIS/src/BookAppointment.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="601">
+                  <caret line="180" column="33" selection-start-line="180" selection-start-column="33" selection-end-line="180" selection-end-column="33" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#6313#6761#0" expanded="true" />
+                    <element signature="e#6760#6761#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ViewAppointments.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SDPIS/src/ViewAppointments.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1830">
+                  <caret line="342" column="53" selection-start-line="342" selection-start-column="53" selection-end-line="342" selection-end-column="53" />
+                  <folding>
+                    <element signature="e#13152#13371#0" expanded="true" />
+                    <element signature="e#13370#13371#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="BookAppointment.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/SDPIS/src/BookAppointment.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1258">
+                  <caret line="88" column="94" selection-start-line="88" selection-start-column="33" selection-end-line="88" selection-end-column="94" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="RegistrationPage.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SDPIS/src/RegistrationPage.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="597">
+                  <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -158,11 +183,11 @@
         <option value="$PROJECT_DIR$/SDPIS/src/ViewAppointments.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/WelcomeGUI.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/SecretaryGUI.java" />
-        <option value="$PROJECT_DIR$/SDPIS/src/ManagePatients.java" />
-        <option value="$PROJECT_DIR$/SDPIS/src/HygienistGUI.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/DentistGUI.java" />
-        <option value="$PROJECT_DIR$/SDPIS/src/BookAppointment.java" />
+        <option value="$PROJECT_DIR$/SDPIS/src/HygienistGUI.java" />
+        <option value="$PROJECT_DIR$/SDPIS/src/ManagePatients.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/RegistrationPage.java" />
+        <option value="$PROJECT_DIR$/SDPIS/src/BookAppointment.java" />
       </list>
     </option>
   </component>
@@ -646,7 +671,14 @@
       <option name="project" value="LOCAL" />
       <updated>1479388514041</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Did some validation for register">
+      <created>1479393353516</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1479393353516</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -733,7 +765,8 @@
     <MESSAGE value="Added second back button to tabbed calendar" />
     <MESSAGE value="Added registration confirmation + misc reg page stuff" />
     <MESSAGE value="Finished Book Appointment screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished Book Appointment screen" />
+    <MESSAGE value="Did some validation for register" />
+    <option name="LAST_COMMIT_MESSAGE" value="Did some validation for register" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -784,8 +817,8 @@
           <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1353#1728#0" expanded="true" />
-            <element signature="e#1727#1728#0" expanded="true" />
+            <element signature="e#1012#1315#0" expanded="true" />
+            <element signature="e#1314#1315#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -796,6 +829,8 @@
           <caret line="21" column="52" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#6313#6761#0" expanded="true" />
+            <element signature="e#6760#6761#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -941,46 +976,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SDPIS/src/ManagePatients.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-744">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1353#1728#0" expanded="true" />
-            <element signature="e#1727#1728#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SDPIS/src/HygienistGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="91" column="52" selection-start-line="91" selection-start-column="52" selection-end-line="91" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SDPIS/src/BookAppointment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="27" column="113" selection-start-line="27" selection-start-column="113" selection-end-line="27" selection-end-column="113" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SDPIS/src/SecretaryGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="114" column="5" selection-start-line="114" selection-start-column="5" selection-end-line="114" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SDPIS/src/DentistGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -989,9 +984,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SDPIS/src/HygienistGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="87" column="28" selection-start-line="87" selection-start-column="28" selection-end-line="87" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SDPIS/src/ViewAppointments.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1896">
+        <state relative-caret-position="1830">
           <caret line="342" column="53" selection-start-line="342" selection-start-column="53" selection-end-line="342" selection-end-column="53" />
           <folding>
             <element signature="e#13152#13371#0" expanded="true" />
@@ -1000,11 +1003,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SDPIS/src/ManagePatients.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="19" column="57" selection-start-line="19" selection-start-column="57" selection-end-line="19" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1012#1315#0" expanded="true" />
+            <element signature="e#1314#1315#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SDPIS/src/RegistrationPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
+        <state relative-caret-position="597">
+          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SDPIS/src/BookAppointment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="601">
+          <caret line="180" column="33" selection-start-line="180" selection-start-column="33" selection-end-line="180" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6313#6761#0" expanded="true" />
+            <element signature="e#6760#6761#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SDPIS/src/SecretaryGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-44">
+          <caret line="55" column="10" selection-start-line="47" selection-start-column="8" selection-end-line="55" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
