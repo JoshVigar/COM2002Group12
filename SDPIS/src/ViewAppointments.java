@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -204,25 +205,15 @@ public class ViewAppointments extends JFrame {
         mPanel.add(title, BorderLayout.NORTH);
 
         try {
-            int size = 0;
-            while(rs.next()) {
-                size++;
-            }
-            JLabel[] appointments;
-            appointments = new JLabel[size];
-            int count = 0;
             while(rs.next()) {
                 int id = rs.getInt("ID");
                 String type = rs.getString("TypeOfVisit");
                 Time startTime = rs.getTime("StartTime");
-                String appoint = "Start Time: "+ startTime+" Customer ID: "+id+" Visit Type: "+type;
-                appointments[count] = new JLabel(appoint);
 
-                count+=1;
+                String appoint = "Start Time: "+ startTime+" Customer ID: "+id+" Visit Type: "+type;
+                System.out.println(" "+appoint);
             }
-            for(int i = 0; i < appointments.length; i++){
-                mPanel.add(appointments[i], BorderLayout.CENTER);
-            }
+            //mPanel.add(jtext, BorderLayout.CENTER);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -239,6 +230,7 @@ public class ViewAppointments extends JFrame {
 
         //int bHeight = (int)(this.getHeight()*0.1);
         //int bWidth = (int)(this.getWidth()*0.1);
+
 
         mPanel.add(btnBack, BorderLayout.SOUTH);
         //mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
