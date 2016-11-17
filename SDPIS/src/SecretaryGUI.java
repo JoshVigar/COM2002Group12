@@ -141,8 +141,10 @@ public class SecretaryGUI extends JFrame{
         JPanel mPanel = new JPanel();
         mPanel.add(inputsPanel);
         mPanel.add(timePanel);
+        mPanel.add(bSubmit);
 
         mPanel.setLayout(new BoxLayout(mPanel, BoxLayout.Y_AXIS));
+        mPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
 
         bSubmit.addActionListener(

@@ -121,48 +121,61 @@ public class RegistrationPage  extends JFrame {
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        LocalDate localDate = LocalDate.now();
-                        String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate.plusYears(1));
+                        boolean val = false;
 
-                        String[] newPatient = {txtTitle.getText(), txtFName.getText(), txtLName.getText(),
-                                years.getSelectedItem()+"-"+months.getSelectedItem()+"-"+days.getSelectedItem(),
-                                txtPhone.getText(), (String)subList.getSelectedItem(), txtHousenum.getText(),
-                                txtStreet.getText(), txtAddressCity.getText(), txtAddressRegion.getText(), txtPostCode.getText()};
 
-                        String firstSubscription = "INSERT INTO Subscription (SubscriptionTitle, MonthlyCost, CheckUp,"+
-                                " HygieneVisit, Repair, EndDate) VALUES (";
-                        if((String)subList.getSelectedItem() == "None"){
-                            firstSubscription += "'"+(String)subList.getSelectedItem()+"',0,0,0,0"+", '"+endDate+"')";
-                        }else if((String)subList.getSelectedItem() == "NHS FREE PLAN"){
-                            firstSubscription += "'"+(String)subList.getSelectedItem()+"', 0,2,2,6"+", '"+endDate+"')";
-                        }else if((String)subList.getSelectedItem() == "Maintenance PLan"){
-                            firstSubscription += "'"+(String)subList.getSelectedItem()+"', 15,2,2,0"+", '"+endDate+"')";
-                        }else if((String)subList.getSelectedItem() == "Oral Health Plan"){
-                            firstSubscription += "'"+(String)subList.getSelectedItem()+"', 21,2,4,0"+", '"+endDate+"')";
-                        }else if((String)subList.getSelectedItem() == "Dental Repair Plan"){
-                            firstSubscription += "'"+(String)subList.getSelectedItem()+"', 36,2,2,2"+", '"+endDate+"')";
+
+
+
+                        if (val = true) {
+                            LocalDate localDate = LocalDate.now();
+                            String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate.plusYears(1));
+
+                            int validation = 0;
+
+                            String[] newPatient = {txtTitle.getText(), txtFName.getText(), txtLName.getText(),
+                                    years.getSelectedItem() + "-" + months.getSelectedItem() + "-" + days.getSelectedItem(),
+                                    txtPhone.getText(), (String) subList.getSelectedItem(), txtHousenum.getText(),
+                                    txtStreet.getText(), txtAddressCity.getText(), txtAddressRegion.getText(), txtPostCode.getText()};
+
+                            String firstSubscription = "INSERT INTO Subscription (SubscriptionTitle, MonthlyCost, CheckUp," +
+                                    " HygieneVisit, Repair, EndDate) VALUES (";
+                            if ((String) subList.getSelectedItem() == "None") {
+                                firstSubscription += "'" + (String) subList.getSelectedItem() + "',0,0,0,0" + ", '" + endDate + "')";
+                            } else if ((String) subList.getSelectedItem() == "NHS FREE PLAN") {
+                                firstSubscription += "'" + (String) subList.getSelectedItem() + "', 0,2,2,6" + ", '" + endDate + "')";
+                            } else if ((String) subList.getSelectedItem() == "Maintenance PLan") {
+                                firstSubscription += "'" + (String) subList.getSelectedItem() + "', 15,2,2,0" + ", '" + endDate + "')";
+                            } else if ((String) subList.getSelectedItem() == "Oral Health Plan") {
+                                firstSubscription += "'" + (String) subList.getSelectedItem() + "', 21,2,4,0" + ", '" + endDate + "')";
+                            } else if ((String) subList.getSelectedItem() == "Dental Repair Plan") {
+                                firstSubscription += "'" + (String) subList.getSelectedItem() + "', 36,2,2,2" + ", '" + endDate + "')";
+                            }
+                            validation += reg.updateData(firstSubscription);
+
+
+                            String address = "INSERT INTO Address (AddressID, HouseNum, Street, City, Region, PostCode)" +
+                                    " VALUES ('" + txtHousenum.getText() + " " + txtPostCode.getText() + "', '" + txtHousenum.getText() + "', '" +
+                                    txtStreet.getText() + "', '" + txtAddressCity.getText() + "', '" + txtAddressRegion.getText() + "', '" +
+                                    txtPostCode.getText() + "')";
+                            validation += reg.updateData(address);
+
+
+                            //details to insert into customer table
+                            String customer = "INSERT INTO Customer (Title, FName, LName, BirthDate, PhoneNum, AddressID)" +
+                                    " VALUES ('" + txtTitle.getText() + "', '" + txtFName.getText() + "', '" + txtLName.getText() + "', '" +
+                                    years.getSelectedItem() + "-" + months.getSelectedItem() + "-" + days.getSelectedItem() + "', '" +
+                                    txtPhone.getText() + "', '" + txtHousenum.getText() + " " + txtPostCode.getText() + "')";
+                            validation = +reg.updateData(customer);
+                            //TO BE REMOVED LATER
+                            System.out.print(Arrays.toString(newPatient));
+
+                            if (validation > 1) {
+                                JOptionPane.showMessageDialog(null, "New Patient Added");
+                                dispose();
+                                new SecretaryGUI().SecretaryGUI();
+                            }
                         }
-                        reg.updateData(firstSubscription);
-
-                        String address = "INSERT INTO Address (AddressID, HouseNum, Street, City, Region, PostCode)"+
-                                " VALUES ('"+txtHousenum.getText()+" "+txtPostCode.getText()+"', '"+txtHousenum.getText()+"', '"+
-                                txtStreet.getText()+"', '"+txtAddressCity.getText()+"', '"+txtAddressRegion.getText()+"', '"+
-                                txtPostCode.getText()+"')";
-                        reg.updateData(address);
-
-                        //details to insert into customer table
-                        String customer = "INSERT INTO Customer (Title, FName, LName, BirthDate, PhoneNum, AddressID)"+
-                                " VALUES ('"+ txtTitle.getText()+"', '"+txtFName.getText()+"', '"+txtLName.getText()+"', '"+
-                                years.getSelectedItem()+"-"+months.getSelectedItem()+"-"+days.getSelectedItem()+"', '"+
-                                txtPhone.getText()+"', '"+txtHousenum.getText()+" "+txtPostCode.getText()+"')";
-                        reg.updateData(customer);
-                        //TO BE REMOVED LATER
-                        System.out.print(Arrays.toString(newPatient));
-
-                        JOptionPane.showMessageDialog(null,"New Patient Added");
-                        dispose();
-                        new SecretaryGUI().SecretaryGUI();
-
                     }
                 }
         );

@@ -16,12 +16,15 @@ public class BookAppointment extends JFrame{
         JLabel title = new JLabel("Enter Appointment Details");
         JLabel pID = new JLabel("PatientID:");
         JLabel partner = new JLabel("Partner:");
-        JLabel sTime = new JLabel("Start Time:");
         JLabel tType = new JLabel("Treatment Type:");
         final JTextField txtPID = new JTextField(20);
         String[] partners = {"Dentist","Hygienist"};
         final JComboBox Partner = new JComboBox(partners);
-        final JTextField txtStart = new JTextField(20);
+        JLabel sTime = new JLabel("Appointment Start Time:");
+        String[] hour = {"Hour","09","10","11","12","14","15","16","17"};
+        String[] minute = {"Minute","00","20","40"};
+        final JComboBox hr = new JComboBox(hour);
+        final JComboBox min = new JComboBox(minute);
         String[] appTypes = { "Checkup", "Teeth Cleaning", "Composite Resin Filling", "Gold Crown", "Amalgam Filling"};
         final JComboBox aType = new JComboBox(appTypes);
         JButton bBook = new JButton("Book");
@@ -48,13 +51,17 @@ public class BookAppointment extends JFrame{
             years.addItem(new Integer(i));
         }
 
+        JPanel timePanel = new JPanel();
+        timePanel.add(sTime);
+        timePanel.add(hr);
+        timePanel.add(min);
+
         JPanel inputsPanel = new JPanel();
         inputsPanel.add(pID);
         inputsPanel.add(txtPID);
         inputsPanel.add(partner);
         inputsPanel.add(Partner);
-        inputsPanel.add(sTime);
-        inputsPanel.add(txtStart);
+        inputsPanel.add(timePanel);
         inputsPanel.add(tType);
         inputsPanel.add(aType);
         inputsPanel.setLayout(new BoxLayout(inputsPanel, BoxLayout.Y_AXIS));
@@ -76,7 +83,8 @@ public class BookAppointment extends JFrame{
         bBook.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        String[] newBooking = {txtPID.getText(), (String)Partner.getSelectedItem(), txtStart.getText(),
+                        String[] newBooking = {txtPID.getText(), (String)Partner.getSelectedItem(),
+                                (String)hr.getSelectedItem()+":"+(String)min.getSelectedItem(),
                                 (String)aType.getSelectedItem()};
 
                         System.out.print(Arrays.toString(newBooking));
