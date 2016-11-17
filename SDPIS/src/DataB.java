@@ -25,14 +25,14 @@ public class DataB {
                         " AddressID VARCHAR (40),PRIMARY KEY (ID),"+
                         "FOREIGN KEY (AddressID) REFERENCES Address(AddressID))";
                 stmt.executeUpdate(sql);
-                sql= "CREATE TABLE VisitType(TypeOfVisit VARCHAR(40) , Partner VARCHAR(40), Duration TIME, Cost INTEGER ,"+
+                sql= "CREATE TABLE VisitType(TypeOfVisit VARCHAR(40) , Partner VARCHAR(40), Duration INTEGER, Cost INTEGER ,"+
                         " PRIMARY KEY (TypeOfVisit))";
                 stmt.executeUpdate(sql);
-                sql ="CREATE TABLE Appointment(ID INTEGER, TypeOfVisit VARCHAR(40), Partner VARCHAR(40), StartTime TIMESTAMP,"+
-                        " EndTime TIMESTAMP, PRIMARY KEY (Partner, StartTime),FOREIGN KEY (ID) REFERENCES Customer(ID),"+
-                        "FOREIGN KEY (TypeOfVisit) REFERENCES VisitType(TypeOfVisit))";
+                sql ="CREATE TABLE Appointment(ID INTEGER, TypeOfVisit VARCHAR(40), Partner VARCHAR(40), ADate DATE ,StartTime TIME,"+
+                    " EndTime TIME, State VARCHAR(10),PRIMARY KEY (Partner,ADate,StartTime),FOREIGN KEY (ID) REFERENCES Customer(ID),"+
+                    "FOREIGN KEY (TypeOfVisit) REFERENCES VisitType(TypeOfVisit))";
                 stmt.executeUpdate(sql);
-*/
+
 
             String sql = "SELECT * FROM Customer";
             ResultSet rs = stmt.executeQuery(sql);
@@ -94,8 +94,39 @@ public class DataB {
                 System.out.println(" EndDate:"+g);
             }
 
+            stmt.executeUpdate("INSERT INTO VisitType VALUES ('HygieneVisit', 'Hygienist', 20, 45)");
+            stmt.executeUpdate("INSERT INTO VisitType VALUES ('CheckUp', 'Dentist', 20, 45)");
+            stmt.executeUpdate("INSERT INTO VisitType VALUES ('Silver Almagam Filling', 'Dentist', 60, 90)");
+            stmt.executeUpdate("INSERT INTO VisitType VALUES ('White Composite Resin Filling', 'Dentist', 60, 150)");
+            stmt.executeUpdate("INSERT INTO VisitType VALUES ('Gold Crown Fitting', 'Dentist', 60, 500)");
+
+            stmt.executeUpdate("ALTER TABLE Appointment ADD FINISHED BOOLEAN");
             stmt.close();
 
+            stmt.executeUpdate("DROP TABLE Appointment");
+
+
+            //stmt.executeUpdate("INSERT INTO Appointment VALUES(1,'CheckUp','Dentist','2016-11-17','09:00:00','09:20:00','Active')");
+            //stmt.executeUpdate("INSERT INTO Appointment VALUES(2,'HygieneVisit','Hygienist','2016-11-17','09:00:00','09:20:00','Active')");
+            //stmt.executeUpdate("INSERT INTO Appointment VALUES(1,'CheckUp','Dentist','2016-11-17','09:20:00','09:40:00','Active')");
+            //stmt.executeUpdate("INSERT INTO Appointment VALUES(2,'HygieneVisit','Hygienist','2016-11-17','09:20:00','09:40:00','Cancelled')");
+
+            //stmt.executeUpdate("INSERT INTO Appointment VALUES(1,'CheckUp','Dentist','2016-11-17','09:40:00','10:00:00','Active')");
+            //stmt.executeUpdate("INSERT INTO Appointment VALUES(1,'CheckUp','Dentist','2016-11-17','10:00:00','10:20:00','Active')");
+            //stmt.executeUpdate("INSERT INTO Appointment VALUES(1,'CheckUp','Dentist','2016-11-17','10:20:00','10:40:00','Active')");
+            //stmt.executeUpdate("INSERT INTO Appointment VALUES(1,'HygieneVisit','Hygienist','2016-11-17','10:00:00','10:20:00','Active')");
+
+            String sql = "SELECT ID,TypeOfVisit,ADate,StartTime,EndTime FROM Appointment WHERE Partner = 'Dentist' AND State = 'Active'";
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()) {
+                int id = rs.getInt("ID");
+                String type = rs.getString("TypeOfVisit");
+                Date dates = rs.getDate("ADate");
+                Time startTime = rs.getTime("StartTime");
+                Time endTime = rs.getTime("EndTime");
+                String appoint = "Date: "+ dates+" Start Time: "+ startTime+" End Time: "+endTime+" Customer ID: "+id+" Visit Type: "+type;
+                System.out.println(appoint);
+            }*/
             new WelcomeGUI().WelcomeGUI();
         }
         catch (SQLException ex) {

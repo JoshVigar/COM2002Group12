@@ -122,11 +122,6 @@ public class RegistrationPage  extends JFrame {
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         boolean val = false;
-
-
-
-
-
                         if (val = true) {
                             LocalDate localDate = LocalDate.now();
                             String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate.plusYears(1));

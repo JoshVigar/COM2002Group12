@@ -5,6 +5,11 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -12,6 +17,11 @@ import javax.swing.table.DefaultTableModel;
  * Created by jodi on 16/11/2016.
  */
 public class ViewAppointments extends JFrame {
+
+    DataAccessBase view = new DataAccessBase("jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61");
+
+    public ViewAppointments() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+    }
 
     public JPanel HygienistCalendar() {
         String[] columnNames  = {"Time","Appointment"};
@@ -182,20 +192,40 @@ public class ViewAppointments extends JFrame {
 
         Container container = getContentPane();
 
-        JLabel title = new JLabel("Dentist Appointments: Date");
-        String[] columnNames  = {"Time","Appointment"};
+        LocalDate localDate = LocalDate.now();
+        String date = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate);
 
-        Object[][] data = {
-                {"9:00", ""}, {"9:20", ""}, {"9:40", ""},
-                {"10.00", ""}, {"10:20", ""}, {"10:40", ""},
-                {"11:00", ""}, {"11:20", ""}, {"11:40", ""},
-                {"12:00", ""}, {"12:20", ""}, {"12:40", ""},
-                {"13:00", ""}, {"13:20", ""}, {"13:40", ""},
-                {"14:00", ""}, {"14:20", ""}, {"14:40", ""},
-                {"15:00", ""}, {"15:20", ""}, {"15:40", ""},
-                {"16:00", ""}, {"16:20", ""}, {"16:40", ""},
-        };
-        JTable dayCalendar = new JTable(data,columnNames);
+        JLabel title = new JLabel("Dentist Appointments: " + date);
+        String sql = "SELECT ID,TypeOfVisit,StartTime FROM Appointment WHERE ADate = '"+date+"' AND Partner = 'Dentist' AND State = 'Active'";
+        ResultSet rs = view.getData(sql);
+
+        JPanel mPanel = new JPanel();
+        mPanel.setLayout(new BorderLayout());
+        mPanel.add(title, BorderLayout.NORTH);
+
+        try {
+            int size = 0;
+            while(rs.next()) {
+                size++;
+            }
+            JLabel[] appointments;
+            appointments = new JLabel[size];
+            int count = 0;
+            while(rs.next()) {
+                int id = rs.getInt("ID");
+                String type = rs.getString("TypeOfVisit");
+                Time startTime = rs.getTime("StartTime");
+                String appoint = "Start Time: "+ startTime+" Customer ID: "+id+" Visit Type: "+type;
+                appointments[count] = new JLabel(appoint);
+
+                count+=1;
+            }
+            for(int i = 0; i < appointments.length; i++){
+                mPanel.add(appointments[i], BorderLayout.CENTER);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
@@ -206,33 +236,10 @@ public class ViewAppointments extends JFrame {
                     }
                 }
         );
-        JButton nextDay = new JButton("Next Day ->");
-        nextDay.addActionListener(
-                new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-                       //next days calendar
-                    }
-                }
-        );
-
-        JButton previousDay = new JButton("<- Previous Day");
-        previousDay.addActionListener(
-                new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-                        //previous days calendar
-                    }
-                }
-        );
 
         //int bHeight = (int)(this.getHeight()*0.1);
         //int bWidth = (int)(this.getWidth()*0.1);
 
-        JPanel mPanel = new JPanel();
-        mPanel.setLayout(new BorderLayout());
-        mPanel.add(title, BorderLayout.NORTH);
-        mPanel.add(previousDay, BorderLayout.LINE_START);
-        mPanel.add(dayCalendar, BorderLayout.CENTER);
-        mPanel.add(nextDay, BorderLayout.LINE_END);
         mPanel.add(btnBack, BorderLayout.SOUTH);
         //mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
         container.add(mPanel);

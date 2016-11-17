@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 /**
  * Created by User on 14/11/2016.
@@ -25,7 +26,17 @@ public class HygienistGUI extends JFrame {
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         dispose();
-                        new ViewAppointments().ViewHygienistAppointments();
+                        try {
+                            new ViewAppointments().ViewHygienistAppointments();
+                        } catch (ClassNotFoundException e1) {
+                            e1.printStackTrace();
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        } catch (InstantiationException e1) {
+                            e1.printStackTrace();
+                        } catch (IllegalAccessException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
         );

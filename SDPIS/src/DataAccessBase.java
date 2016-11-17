@@ -50,7 +50,6 @@ public class DataAccessBase {
 			Connection sqlCon = getConnection();
 			_statement = sqlCon.createStatement();
 			_rs = _statement.executeQuery(query);
-			sqlCon.close();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} finally {
