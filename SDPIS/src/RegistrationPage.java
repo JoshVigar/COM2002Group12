@@ -49,7 +49,7 @@ public class RegistrationPage  extends JFrame {
         }
 
         years.addItem("Year");
-        for(int i=1900;i<=2016;i++) {
+        for(int i=1900;i<=(int)(Calendar.getInstance().get(Calendar.YEAR));i++) {
             years.addItem(new Integer(i));
         }
 
@@ -123,11 +123,27 @@ public class RegistrationPage  extends JFrame {
                     public void actionPerformed(ActionEvent e){
                         boolean val = false;
 
+                        //checking months and days for consistency eg. No 31st of February
+                        if((months.getSelectedIndex() == 4
+                                || months.getSelectedIndex() == 6 || months.getSelectedIndex() == 9
+                                || months.getSelectedIndex() == 11)&& days.getSelectedIndex()>=31){
+                            JOptionPane.showMessageDialog(null, "Invalid day selected");
+                            val = false;
+                        }else if((months.getSelectedIndex() == 2 && days.getSelectedIndex() >= 30
+                                && years.getSelectedIndex()%4 != 0)
+                                || months.getSelectedIndex() == 2 && days.getSelectedIndex() <= 29
+                                && years.getSelectedIndex()%4 == 0 ){
+                            JOptionPane.showMessageDialog(null, "Invalid day selected");
+                            val = false;
+                            //checking year is in acceptable range
+                        }else if(Integer.parseInt((String)years.getSelectedItem()) > (int)(Calendar.getInstance().get(Calendar.YEAR))){
+                            JOptionPane.showMessageDialog(null, "Invalid input, Year is in future");
+                            val = false;
+                        }else val = true;
 
 
 
-
-                        if (val = true) {
+                        if (val) {
                             LocalDate localDate = LocalDate.now();
                             String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate.plusYears(1));
 
