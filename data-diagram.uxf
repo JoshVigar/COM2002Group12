@@ -4,18 +4,20 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>310</x>
-      <y>50</y>
-      <w>280</w>
-      <h>130</h>
+      <x>270</x>
+      <y>40</y>
+      <w>180</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>&lt;&lt;table&gt;&gt;
-Patient
+Customer
 --
-patientID:Integer &lt;&lt;PK&gt;&gt; &lt;&lt;FK&gt;&gt;
-forename:String
-surname:String
-subscription:Subscription
+customerID:Integer &lt;&lt;PK&gt;&gt;
+title:String[10]
+forename:String[30]
+surname:String[30]
+dob:Date
+phoneNumber:String[15]
 addressID:Address &lt;&lt;FK&gt;&gt;
 
 
@@ -25,20 +27,20 @@ addressID:Address &lt;&lt;FK&gt;&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>40</x>
-      <y>260</y>
-      <w>210</w>
+      <x>300</x>
+      <y>330</y>
+      <w>170</w>
       <h>150</h>
     </coordinates>
     <panel_attributes>&lt;&lt;table&gt;&gt;
 Address
 --
 addressID:Integer &lt;&lt;PK&gt;&gt;
-houseName:String
-streetName:String
-city:String
-region:String
-postcode:String
+houseNum:String[40]
+street:String[40]
+city:String[40]
+region:String[40]
+postcode:String[40]
 
 
 </panel_attributes>
@@ -47,20 +49,20 @@ postcode:String
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>570</x>
-      <y>250</y>
-      <w>210</w>
-      <h>150</h>
+      <x>500</x>
+      <y>60</y>
+      <w>190</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>&lt;&lt;table&gt;&gt;
-Appointments
+Appointment
 --
 appointmentID:Integer &lt;&lt;PK&gt;&gt;
-patientID:Patient &lt;&lt;FK&gt;&gt;
-partner:Partner
-startTime:Date
-endTime:Date
-type:Treatment
+type:String[40] &lt;&lt;FK&gt;&gt;
+partner:String[40]
+startTime:Time
+endTime:Time
+
 
 
 </panel_attributes>
@@ -69,13 +71,13 @@ type:Treatment
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>290</x>
-      <y>260</y>
+      <x>1190</x>
+      <y>150</y>
       <w>230</w>
       <h>130</h>
     </coordinates>
     <panel_attributes>&lt;&lt;table&gt;&gt;
-Treatment Record
+Treatment Record ????
 --
 patientID:Patient &lt;&lt;PK&gt;&gt;
 treatmentsHad:Treatments
@@ -89,36 +91,96 @@ outstandingBalance:Real
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
+    <id>UMLClass</id>
     <coordinates>
-      <x>130</x>
-      <y>170</y>
-      <w>250</w>
+      <x>510</x>
+      <y>320</y>
+      <w>160</w>
       <h>110</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;90.0;230.0;10.0</additional_attributes>
+    <panel_attributes>&lt;&lt;table&gt;&gt;
+Visit Type
+--
+typeOfVisit:String[40] &lt;&lt;PK&gt;&gt;
+partner:String[40]
+duration:Time
+cost:Integer
+
+
+</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
+    <id>UMLClass</id>
     <coordinates>
-      <x>340</x>
-      <y>170</y>
-      <w>70</w>
-      <h>110</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;90.0;50.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>470</x>
-      <y>170</y>
+      <x>720</x>
+      <y>160</y>
       <w>190</w>
-      <h>100</h>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;table&gt;&gt;
+Subscription
+--
+subscriptionID:Integer &lt;&lt;PK&gt;&gt; 
+subscriptionTitle:String[40]
+monthlyCost:Integer
+checkUp:Integer
+hygieneVisit:Integer
+repair:Integer
+endDate:Date
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>180</y>
+      <w>50</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>170.0;80.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;140.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>190</y>
+      <w>60</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>40.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>190</y>
+      <w>120</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..n Customer
+m2=1 Domicile
+</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>180</y>
+      <w>150</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n Appointment
+m2=1 Type
+</panel_attributes>
+    <additional_attributes>30.0;10.0;10.0;140.0</additional_attributes>
   </element>
 </diagram>

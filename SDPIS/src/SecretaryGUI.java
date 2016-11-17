@@ -15,7 +15,7 @@ public class SecretaryGUI extends JFrame{
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
 
-        JButton btnApp = new JButton("View Appointments Calendar");
+        JButton btnApp = new JButton("View Appointment Calendar");
         btnApp.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
@@ -65,17 +65,27 @@ public class SecretaryGUI extends JFrame{
                 }
         );
 
-        JButton btnBA = new JButton("Book Appointments");
+        JButton btnBA = new JButton("Book Appointment");
         btnBA.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         dispose();
-                        new BookAppointment().BookAppointment();
+                        try {
+                            new BookAppointment().BookAppointment();
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        } catch (ClassNotFoundException e1) {
+                            e1.printStackTrace();
+                        } catch (IllegalAccessException e1) {
+                            e1.printStackTrace();
+                        } catch (InstantiationException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
         );
 
-        JButton btnChk = new JButton("Check Out Patient");
+        JButton btnChk = new JButton("Checkout Patient");
         btnChk.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
@@ -93,7 +103,7 @@ public class SecretaryGUI extends JFrame{
         buttonPanel.add(btnBA);
         buttonPanel.add(btnChk);
 
-        JButton btnBack = new JButton("Go Back");
+        JButton btnBack = new JButton("Back");
         btnBack.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
@@ -128,7 +138,7 @@ public class SecretaryGUI extends JFrame{
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
 
-        JLabel title = new JLabel("Enter Appointment Details To Finish");
+        JLabel title = new JLabel("Enter Appointment Details To Finish:");
         JLabel ptnr = new JLabel("Partner:");
         String[] partners = {"Dentist","Hygienist"};
         final JComboBox partner = new JComboBox(partners);
@@ -168,7 +178,7 @@ public class SecretaryGUI extends JFrame{
                 }
         );
 
-        JButton btnBack = new JButton("Go Back");
+        JButton btnBack = new JButton("Back");
         btnBack.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
