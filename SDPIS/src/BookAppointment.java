@@ -26,6 +26,28 @@ public class BookAppointment extends JFrame{
         final JComboBox aType = new JComboBox(appTypes);
         JButton bBook = new JButton("Book");
 
+        //comboboxes date of appointment
+        JLabel date = new JLabel("Date of Appointment:");
+        final JComboBox days = new JComboBox();
+        final JComboBox months = new JComboBox();
+        final JComboBox years = new JComboBox();
+
+        //Use for loops to create the date options
+        days.addItem("Day");
+        for(int i=1;i<=31;i++) {
+            days.addItem(new Integer(i));
+        }
+
+        months.addItem("Month");
+        for(int i=1;i<=12;i++) {
+            months.addItem(new Integer(i));
+        }
+
+        years.addItem("Year");
+        for(int i=2015;i<=2017;i++) {
+            years.addItem(new Integer(i));
+        }
+
         JPanel inputsPanel = new JPanel();
         inputsPanel.add(pID);
         inputsPanel.add(txtPID);
@@ -35,8 +57,20 @@ public class BookAppointment extends JFrame{
         inputsPanel.add(txtStart);
         inputsPanel.add(tType);
         inputsPanel.add(aType);
-        inputsPanel.add(bBook);
         inputsPanel.setLayout(new BoxLayout(inputsPanel, BoxLayout.Y_AXIS));
+
+        //create a panel and add D.O.B comboBox
+        JPanel dPanel = new JPanel();
+        dPanel.add(date);
+        dPanel.add(days);
+        dPanel.add(months);
+        dPanel.add(years);
+
+        JPanel mPanel = new JPanel();
+        mPanel.add(inputsPanel);
+        mPanel.add(dPanel);
+        mPanel.add(bBook);
+        mPanel.setLayout(new BoxLayout(mPanel, BoxLayout.Y_AXIS));
 
 
         bBook.addActionListener(
@@ -66,11 +100,11 @@ public class BookAppointment extends JFrame{
 
         Container contentpane = getContentPane();
         contentpane.add(title, BorderLayout.NORTH);
-        contentpane.add(inputsPanel, BorderLayout.CENTER);
+        contentpane.add(mPanel, BorderLayout.CENTER);
         contentpane.add(btnBack, BorderLayout.SOUTH);
 
 
-        inputsPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
+        mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
 
         //Don't forget to pack!
         pack();

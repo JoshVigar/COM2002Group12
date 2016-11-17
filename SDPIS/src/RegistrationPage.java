@@ -156,9 +156,23 @@ public class RegistrationPage  extends JFrame {
                                 years.getSelectedItem()+"-"+months.getSelectedItem()+"-"+days.getSelectedItem()+"', '"+
                                 txtPhone.getText()+"', '"+txtHousenum.getText()+" "+txtPostCode.getText()+"')";
                         reg.updateData(customer);
+                        //TO BE REMOVED LATER
                         System.out.print(Arrays.toString(newPatient));
 
+                        JOptionPane.showMessageDialog(null,"New Patient Added");
+                        dispose();
+                        new SecretaryGUI().SecretaryGUI();
 
+                    }
+                }
+        );
+
+        JButton btnBack = new JButton("Go Back");
+        btnBack.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        dispose();
+                        new SecretaryGUI().SecretaryGUI();
                     }
                 }
         );
@@ -183,12 +197,14 @@ public class RegistrationPage  extends JFrame {
         //add the mpanel to the contentPane
         Container contentPane = getContentPane();
         contentPane.add(mPanel);
+        contentPane.add(btnBack, BorderLayout.SOUTH);
 
 
 
         //Don't forget to pack! and setVisible to true.
         pack();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
     }
