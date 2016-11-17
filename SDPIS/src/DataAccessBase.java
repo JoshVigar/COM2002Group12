@@ -19,7 +19,7 @@ public class DataAccessBase {
 		return SqlCon;
 	}
 
-	protected String getProcedure(String fstPart, String[] sndPart){
+	/*protected String getProcedure(String fstPart, String[] sndPart){
 		String procedure = fstPart;
 		for(int i=0;i<sndPart.length;i++){
 			if(i != 0)
@@ -28,7 +28,7 @@ public class DataAccessBase {
 				procedure += sndPart[i];
 		}
 		return procedure;
-	}
+	}*/
 
 	protected int updateData(String update){
 		try{
@@ -50,7 +50,6 @@ public class DataAccessBase {
 			Connection sqlCon = getConnection();
 			_statement = sqlCon.createStatement();
 			_rs = _statement.executeQuery(query);
-			sqlCon.close();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} finally {
@@ -59,5 +58,10 @@ public class DataAccessBase {
 			}
 			return null;
 		}
+	}
+
+	protected void closeConnection()throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException{
+		Connection sqlCon = getConnection();
+		sqlCon.close();
 	}
 }

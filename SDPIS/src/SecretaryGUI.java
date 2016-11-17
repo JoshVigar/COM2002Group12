@@ -60,7 +60,17 @@ public class SecretaryGUI extends JFrame{
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         dispose();
-                        new BookAppointment().BookAppointment();
+                        try {
+                            new BookAppointment().BookAppointment();
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        } catch (ClassNotFoundException e1) {
+                            e1.printStackTrace();
+                        } catch (IllegalAccessException e1) {
+                            e1.printStackTrace();
+                        } catch (InstantiationException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
         );
