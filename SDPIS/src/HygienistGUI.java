@@ -69,8 +69,8 @@ public class HygienistGUI extends JFrame {
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
 
-        JLabel title = new JLabel("Enter Appointment Time To Log Visit");
-        JLabel sTime = new JLabel("Appointment Start Time:");
+        JLabel title = new JLabel("Enter Appointment Time To Log Visit:");
+        JLabel sTime = new JLabel("Start Time:");
         String[] hour = {"Hour","09","10","11","12","14","15","16","17"};
         String[] minute = {"Minute","00","20","40"};
         final JComboBox hr = new JComboBox(hour);
@@ -103,12 +103,12 @@ public class HygienistGUI extends JFrame {
                 }
         );
 
-        JButton btnBack = new JButton("Go Back");
+        JButton btnBack = new JButton("Back");
         btnBack.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         dispose();
-                        new HygienistGUI().FinishAppointmment();
+                        new HygienistGUI().HygienistGUI();
                     }
                 }
         );

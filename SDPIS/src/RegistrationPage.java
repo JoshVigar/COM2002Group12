@@ -196,7 +196,7 @@ public class RegistrationPage  extends JFrame {
                 }
         );
 
-        JButton btnBack = new JButton("Go Back");
+        JButton btnBack = new JButton("Back");
         btnBack.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){

@@ -72,11 +72,11 @@ public class DentistGUI extends JFrame {
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
 
-        JLabel title = new JLabel("Enter Appointment Information To Log Visit");
+        JLabel title = new JLabel("Enter Appointment Information To Log Visit:");
         JLabel type = new JLabel("Treatment type:");
         String[] tType = {"Checkup","","","",""};
         final JComboBox Type = new JComboBox(tType);
-        JLabel sTime = new JLabel("Appointment Start Time:");
+        JLabel sTime = new JLabel("Start Time:");
         String[] hour = {"Hour","09","10","11","12","14","15","16","17"};
         String[] minute = {"Minute","00","20","40"};
         final JComboBox hr = new JComboBox(hour);
@@ -107,7 +107,7 @@ public class DentistGUI extends JFrame {
                 }
         );
 
-        JButton btnBack = new JButton("Go Back");
+        JButton btnBack = new JButton("Back");
         btnBack.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
@@ -120,10 +120,10 @@ public class DentistGUI extends JFrame {
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
 
-        Container contentpane = getContentPane();
-        contentpane.add(title, BorderLayout.NORTH);
-        contentpane.add(mPanel, BorderLayout.CENTER);
-        contentpane.add(btnBack, BorderLayout.SOUTH);
+        Container contentPane = getContentPane();
+        contentPane.add(title, BorderLayout.NORTH);
+        contentPane.add(mPanel, BorderLayout.CENTER);
+        contentPane.add(btnBack, BorderLayout.SOUTH);
 
 
         mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));

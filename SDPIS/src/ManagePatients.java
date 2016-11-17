@@ -50,7 +50,7 @@ public class ManagePatients extends JFrame {
                 }
         );
 
-        JButton btnBack = new JButton("Go Back");
+        JButton btnBack = new JButton("Back");
         btnBack.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
@@ -63,10 +63,10 @@ public class ManagePatients extends JFrame {
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
 
-        Container contentpane = getContentPane();
-        contentpane.add(title, BorderLayout.NORTH);
-        contentpane.add(inputsPanel, BorderLayout.CENTER);
-        contentpane.add(btnBack, BorderLayout.SOUTH);
+        Container contentPane = getContentPane();
+        contentPane.add(title, BorderLayout.NORTH);
+        contentPane.add(inputsPanel, BorderLayout.CENTER);
+        contentPane.add(btnBack, BorderLayout.SOUTH);
 
 
         inputsPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
