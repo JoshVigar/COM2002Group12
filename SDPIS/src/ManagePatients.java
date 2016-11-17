@@ -17,10 +17,6 @@ public class ManagePatients extends JFrame {
         JLabel title = new JLabel("Enter Patient Details");
         JLabel pID = new JLabel("PatientID:");
         final JTextField txtPID = new JTextField(20);
-        JLabel fName = new JLabel("Forename:");
-        final JTextField txtFName = new JTextField(20);
-        JLabel sName = new JLabel("Surname:");
-        final JTextField txtSName = new JTextField(20);
         String[] sub = {"Subscribe","Cancel Subscription"};
         JLabel operation= new JLabel("Operation:");
         final JComboBox Sub = new JComboBox(sub);
@@ -29,10 +25,6 @@ public class ManagePatients extends JFrame {
         JPanel inputsPanel = new JPanel();
         inputsPanel.add(pID);
         inputsPanel.add(txtPID);
-        inputsPanel.add(fName);
-        inputsPanel.add(txtFName);
-        inputsPanel.add(sName);
-        inputsPanel.add(txtSName);
         inputsPanel.add(operation);
         inputsPanel.add(Sub);
         inputsPanel.setLayout(new BoxLayout(inputsPanel, BoxLayout.Y_AXIS));
@@ -41,8 +33,7 @@ public class ManagePatients extends JFrame {
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        String[] managedPatient = {txtPID.getText(), (String)Sub.getSelectedItem(), txtFName.getText(),
-                                txtSName.getText()};
+                        String[] managedPatient = {txtPID.getText(), (String)Sub.getSelectedItem()};
 
                         System.out.print(Arrays.toString(managedPatient));
 

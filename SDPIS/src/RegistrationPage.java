@@ -63,7 +63,7 @@ public class RegistrationPage  extends JFrame {
         final JComboBox subList = new JComboBox(subTypes);
 
         //create text fields to collect address information
-        JLabel houseNum = new JLabel("House Number:");
+        JLabel houseNum = new JLabel("House Number/Name:");
         final JTextField txtHousenum = new JTextField(20);
         JLabel street = new JLabel("Street Name:");
         final JTextField txtStreet = new JTextField(20);

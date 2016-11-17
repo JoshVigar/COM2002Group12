@@ -86,10 +86,8 @@ public class HygienistGUI extends JFrame {
         JPanel mPanel = new JPanel();
         mPanel.add(timePanel);
         mPanel.add(bSubmit);
-
-
         mPanel.setLayout(new BoxLayout(mPanel, BoxLayout.Y_AXIS));
-        mPanel.setAlignmentX(mPanel.LEFT_ALIGNMENT);
+
 
 
         bSubmit.addActionListener(
