@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -121,7 +122,7 @@ public class RegistrationPage  extends JFrame {
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        boolean val = false;
+                        boolean val = true;
 
                         //checking months and days for consistency eg. No 31st of February
                         if((months.getSelectedIndex() == 4
@@ -134,14 +135,26 @@ public class RegistrationPage  extends JFrame {
                                 || months.getSelectedIndex() == 2 && days.getSelectedIndex() <= 29
                                 && years.getSelectedIndex()%4 == 0 ){
                             JOptionPane.showMessageDialog(null, "Invalid day selected");
-                            val = false;
+                            val = false;}
                             //checking year is in acceptable range
-                        }else if(Integer.parseInt((String)years.getSelectedItem()) > (int)(Calendar.getInstance().get(Calendar.YEAR))){
-                            JOptionPane.showMessageDialog(null, "Invalid input, Year is in future");
-                            val = false;
-                        }else val = true;
+//                        }else if(Integer.parseInt(years.getSelectedItem().toString()) > (int)(Calendar.getInstance().get(Calendar.YEAR))){
+//                            JOptionPane.showMessageDialog(null, "Invalid input, Year is in future");
+//                            val = false;
+//                        }
 
+                        if(txtTitle.getText().trim().equals(""))val = false;
+                        if(txtFName.getText().trim().equals(""))val = false;
+                        if(txtLName.getText().trim().equals(""))val = false;
+                        if(txtPhone.getText().trim().equals(""))val = false;
+                        if(txtHousenum.getText().trim().equals(""))val = false;
+                        if(txtStreet.getText().trim().equals(""))val = false;
+                        if(txtAddressCity.getText().trim().equals(""))val = false;
+                        if(txtAddressRegion.getText().trim().equals(""))val = false;
+                        if(txtPostCode.getText().trim().equals(""))val = false;
 
+                        if(!val){
+                            JOptionPane.showMessageDialog(null, "Invalid input, some field(s) is blank or unselected");
+                        }
 
                         if (val) {
                             LocalDate localDate = LocalDate.now();
@@ -155,36 +168,74 @@ public class RegistrationPage  extends JFrame {
                                     txtStreet.getText(), txtAddressCity.getText(), txtAddressRegion.getText(), txtPostCode.getText()};
 
                             String firstSubscription = "INSERT INTO Subscription (SubscriptionTitle, MonthlyCost, CheckUp," +
-                                    " HygieneVisit, Repair, EndDate) VALUES (";
-                            if ((String) subList.getSelectedItem() == "None") {
+                                    " HygieneVisit, Repair, EndDate) VALUES(";
+                            if (((String)subList.getSelectedItem()).equals("None")){
                                 firstSubscription += "'" + (String) subList.getSelectedItem() + "',0,0,0,0" + ", '" + endDate + "')";
-                            } else if ((String) subList.getSelectedItem() == "NHS FREE PLAN") {
+                            } else if (((String) subList.getSelectedItem()).equals("NHS Free Plan")) {
                                 firstSubscription += "'" + (String) subList.getSelectedItem() + "', 0,2,2,6" + ", '" + endDate + "')";
-                            } else if ((String) subList.getSelectedItem() == "Maintenance PLan") {
+                            } else if (((String) subList.getSelectedItem()).equals("Maintenance Plan")) {
                                 firstSubscription += "'" + (String) subList.getSelectedItem() + "', 15,2,2,0" + ", '" + endDate + "')";
-                            } else if ((String) subList.getSelectedItem() == "Oral Health Plan") {
+                            } else if (((String) subList.getSelectedItem()).equals("Oral Health Plan")) {
                                 firstSubscription += "'" + (String) subList.getSelectedItem() + "', 21,2,4,0" + ", '" + endDate + "')";
-                            } else if ((String) subList.getSelectedItem() == "Dental Repair Plan") {
+                            } else if (((String) subList.getSelectedItem()).equals("Dental Repair Plan")) {
                                 firstSubscription += "'" + (String) subList.getSelectedItem() + "', 36,2,2,2" + ", '" + endDate + "')";
                             }
-                            validation += reg.updateData(firstSubscription);
+                            reg.updateData(firstSubscription);
 
+                            try {
+                                reg.closeConnection();
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
+                            } catch (ClassNotFoundException e1) {
+                                e1.printStackTrace();
+                            } catch (IllegalAccessException e1) {
+                                e1.printStackTrace();
+                            } catch (InstantiationException e1) {
+                                e1.printStackTrace();
+                            }
 
-                            String address = "INSERT INTO Address (AddressID, HouseNum, Street, City, Region, PostCode)" +
-                                    " VALUES ('" + txtHousenum.getText() + " " + txtPostCode.getText() + "', '" + txtHousenum.getText() + "', '" +
-                                    txtStreet.getText() + "', '" + txtAddressCity.getText() + "', '" + txtAddressRegion.getText() + "', '" +
-                                    txtPostCode.getText() + "')";
-                            validation += reg.updateData(address);
+                            boolean validateAdress = true;
+                            String adID =txtHousenum.getText() + " " + txtPostCode.getText();
+                            String getAdressID = "SELECT AddressID FROM Address";
+                            try {
+                                ResultSet rs = reg.getData(getAdressID);
+                                while(rs.next()) {
+                                    if (rs.getString("AddressID").equals(adID)) {
+                                        validateAdress = false;
+                                    }
+                                }
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
+                            }
 
+                            if(validateAdress) {
+                                String address = "INSERT INTO Address (AddressID, HouseNum, Street, City, Region, PostCode)" +
+                                        " VALUES ('" + txtHousenum.getText() + " " + txtPostCode.getText() + "', '" + txtHousenum.getText() + "', '" +
+                                        txtStreet.getText() + "', '" + txtAddressCity.getText() + "', '" + txtAddressRegion.getText() + "', '" +
+                                        txtPostCode.getText() + "')";
+                                reg.updateData(address);
+
+                                try {
+                                    reg.closeConnection();
+                                } catch (SQLException e1) {
+                                    e1.printStackTrace();
+                                } catch (ClassNotFoundException e1) {
+                                    e1.printStackTrace();
+                                } catch (IllegalAccessException e1) {
+                                    e1.printStackTrace();
+                                } catch (InstantiationException e1) {
+                                    e1.printStackTrace();
+                                }
+                            }
 
                             //details to insert into customer table
                             String customer = "INSERT INTO Customer (Title, FName, LName, BirthDate, PhoneNum, AddressID)" +
                                     " VALUES ('" + txtTitle.getText() + "', '" + txtFName.getText() + "', '" + txtLName.getText() + "', '" +
                                     years.getSelectedItem() + "-" + months.getSelectedItem() + "-" + days.getSelectedItem() + "', '" +
                                     txtPhone.getText() + "', '" + txtHousenum.getText() + " " + txtPostCode.getText() + "')";
-                            validation = +reg.updateData(customer);
+                            reg.updateData(customer);
                             //TO BE REMOVED LATER
-                            System.out.print(Arrays.toString(newPatient));
+                            //System.out.print(Arrays.toString(newPatient));
 
                             if (validation > 1) {
                                 JOptionPane.showMessageDialog(null, "New Patient Added");

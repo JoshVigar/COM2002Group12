@@ -89,8 +89,7 @@ public class SecretaryGUI extends JFrame{
         btnChk.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        dispose();
-                        new SecretaryGUI().CheckoutPatient();
+                        //Search for finished appointments and check out the patients
                     }
                 }
         );

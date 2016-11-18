@@ -26,7 +26,7 @@ public class BookAppointment extends JFrame{
         String[] partners = {"Dentist","Hygienist"};
         final JComboBox Partner = new JComboBox(partners);
         JLabel sTime = new JLabel("Appointment Start Time:");
-        final String[] hour = {"Hour","09","10","11","12","14","15","16","17"};
+        final String[] hour = {"Hour","09","10","11","12","14","15","16"};
         String[] minute = {"Minute","00","20","40"};
         final JComboBox hr = new JComboBox(hour);
         final JComboBox min = new JComboBox(minute);
@@ -91,19 +91,8 @@ public class BookAppointment extends JFrame{
                     public void actionPerformed(ActionEvent e) {
 
                         boolean val = true;
-                        boolean skiperror = false;
 
-                        //checking months and days for consistency eg. No 31st of February, no "Month"/"Day"
-                        if (days.getSelectedIndex() == 0) {
-                            skiperror = true;
-                        }
-                        if (months.getSelectedIndex() == 0) {
-                            skiperror = true;
-                        }
-                        if (years.getSelectedIndex() == 0) {
-                            skiperror = true;
-                        }
-
+                        //checking months and days for consistency eg. No 31st of February
                         if ((months.getSelectedIndex() == 4
                                 || months.getSelectedIndex() == 6 || months.getSelectedIndex() == 9
                                 || months.getSelectedIndex() == 11) && days.getSelectedIndex() >= 31) {
@@ -116,36 +105,18 @@ public class BookAppointment extends JFrame{
                             JOptionPane.showMessageDialog(null, "Invalid day selected");
                             val = false;
                             //checking year is in acceptable range
-                        } else if (!skiperror) {
-                            if (Integer.parseInt(years.getSelectedItem().toString()) > (int) (Calendar.getInstance().get(Calendar.YEAR))) {
-                                JOptionPane.showMessageDialog(null, "Invalid input, Year is in future");
-                                val = false;
-                            }
+                        }
+                        if (years.getSelectedItem().equals("Year") || (months.getSelectedItem().equals("Month") || days.getSelectedItem().equals("Day"))){
+                            val = false;
                         }
 
-                        if (txtPID.getText() == null) {
+                        if (txtPID.getText().trim().equals("")) {
                             val = false;
                         }
-                        if (years.getSelectedItem() == null) {
-                            val = false;
-                        }
-                        if (months.getSelectedItem() == null) {
-                            val = false;
-                        }
-                        if (days.getSelectedItem() == null) {
-                            val = false;
-                        }
-                        if (hr.getSelectedItem() == null) {
-                            val = false;
-                        }
-                        if (min.getSelectedItem() == null) {
-                            val = false;
-                        }
-                        if (aType.getSelectedItem() == null) {
-                            val = false;
-                        }
-                        if (Partner.getSelectedItem() == null) {
-                            val = false;
+
+
+                        if(!val){
+                            JOptionPane.showMessageDialog(null, "Invalid input, some field(s) is blank or incorrect");
                         }
 
                         if (val) {
