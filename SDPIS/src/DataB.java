@@ -29,7 +29,7 @@ public class DataB {
                         " PRIMARY KEY (TypeOfVisit))";
                 stmt.executeUpdate(sql);
                 sql ="CREATE TABLE Appointment(ID INTEGER, TypeOfVisit VARCHAR(40), Partner VARCHAR(40), ADate DATE ,StartTime TIME,"+
-                    " EndTime TIME, State VARCHAR(10),PRIMARY KEY (Partner,ADate,StartTime),FOREIGN KEY (ID) REFERENCES Customer(ID),"+
+                    " EndTime TIME, State VARCHAR(10), Cost INTEGER,PRIMARY KEY (Partner,ADate,StartTime),FOREIGN KEY (ID) REFERENCES Customer(ID),"+
                     "FOREIGN KEY (TypeOfVisit) REFERENCES VisitType(TypeOfVisit))";
                 stmt.executeUpdate(sql);
 
@@ -126,7 +126,14 @@ public class DataB {
                 Time endTime = rs.getTime("EndTime");
                 String appoint = "Date: "+ dates+" Start Time: "+ startTime+" End Time: "+endTime+" Customer ID: "+id+" Visit Type: "+type;
                 System.out.println(appoint);
-            }*/
+            }
+
+            stmt.executeUpdate("DROP TABLE Appointment");
+            String sql ="CREATE TABLE Appointment(ID INTEGER, TypeOfVisit VARCHAR(40), Partner VARCHAR(40), ADate DATE ,StartTime TIME,"+
+                    " EndTime TIME, State VARCHAR(10), Cost INTEGER,PRIMARY KEY (Partner,ADate,StartTime),FOREIGN KEY (ID) REFERENCES Customer(ID),"+
+                    "FOREIGN KEY (TypeOfVisit) REFERENCES VisitType(TypeOfVisit))";
+            stmt.executeUpdate(sql);
+            */
             new WelcomeGUI().WelcomeGUI();
         }
         catch (SQLException ex) {

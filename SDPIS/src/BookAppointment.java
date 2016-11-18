@@ -18,18 +18,22 @@ public class BookAppointment extends JFrame{
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
 
+        //Creating labels and text fields
         JLabel title = new JLabel("Enter Appointment Details");
         JLabel pID = new JLabel("PatientID:");
-        JLabel partner = new JLabel("Partner:");
+        final JLabel partner = new JLabel("Partner:");
         JLabel tType = new JLabel("Treatment Type:");
         final JTextField txtPID = new JTextField(20);
         String[] partners = {"Dentist","Hygienist"};
         final JComboBox Partner = new JComboBox(partners);
         JLabel sTime = new JLabel("Appointment Start Time:");
-        final String[] hour = {"Hour","09","10","11","12","14","15","16"};
+
+        //Creating the combobox for the hours and minutes entries for appointments
+        String[] hour = {"Hour","09","10","11","12","14","15","16"};
         String[] minute = {"Minute","00","20","40"};
         final JComboBox hr = new JComboBox(hour);
         final JComboBox min = new JComboBox(minute);
+        //combo boxes for types of appointments
         String[] appTypes = { "CheckUp", "HygieneVisit" , "White Composite Resin Filling", "Gold Crown", "Silver Amalgam Filling"};
         final JComboBox aType = new JComboBox(appTypes);
         JButton bBook = new JButton("Book");
@@ -57,11 +61,20 @@ public class BookAppointment extends JFrame{
             years.addItem(new Integer(i));
         }
 
+        //making panel for time of appointment
         JPanel timePanel = new JPanel();
         timePanel.add(sTime);
         timePanel.add(hr);
         timePanel.add(min);
 
+        //create a panel and add date comboBox
+        JPanel dPanel = new JPanel();
+        dPanel.add(date);
+        dPanel.add(days);
+        dPanel.add(months);
+        dPanel.add(years);
+
+        //panel for the rest of the inputs
         JPanel inputsPanel = new JPanel();
         inputsPanel.add(pID);
         inputsPanel.add(txtPID);
@@ -72,13 +85,7 @@ public class BookAppointment extends JFrame{
         inputsPanel.add(aType);
         inputsPanel.setLayout(new BoxLayout(inputsPanel, BoxLayout.Y_AXIS));
 
-        //create a panel and add date comboBox
-        JPanel dPanel = new JPanel();
-        dPanel.add(date);
-        dPanel.add(days);
-        dPanel.add(months);
-        dPanel.add(years);
-
+        //adding panels to a main panel
         JPanel mPanel = new JPanel();
         mPanel.add(inputsPanel);
         mPanel.add(dPanel);
@@ -86,24 +93,15 @@ public class BookAppointment extends JFrame{
         mPanel.setLayout(new BoxLayout(mPanel, BoxLayout.Y_AXIS));
 
 
+        //button to book appointment
         bBook.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
 
+                        //boolean for validation
                         boolean val = true;
-                        boolean skiperror = false;
 
-                        //checking months and days for consistency eg. No 31st of February, no "Month"/"Day"
-                        if (days.getSelectedIndex() == 0) {
-                            skiperror = true;
-                        }
-                        if (months.getSelectedIndex() == 0) {
-                            skiperror = true;
-                        }
-                        if (years.getSelectedIndex() == 0) {
-                            skiperror = true;
-                        }
-
+                        //checking months and days for consistency eg. No 31st of February
                         if ((months.getSelectedIndex() == 4
                                 || months.getSelectedIndex() == 6 || months.getSelectedIndex() == 9
                                 || months.getSelectedIndex() == 11) && days.getSelectedIndex() >= 31) {
@@ -115,39 +113,21 @@ public class BookAppointment extends JFrame{
                                 && years.getSelectedIndex() % 4 == 0) {
                             JOptionPane.showMessageDialog(null, "Invalid day selected");
                             val = false;
-                            //checking year is in acceptable range
-                        } else if (!skiperror) {
-                            if (Integer.parseInt(years.getSelectedItem().toString()) > (int) (Calendar.getInstance().get(Calendar.YEAR))) {
-                                JOptionPane.showMessageDialog(null, "Invalid input, Year is in future");
-                                val = false;
-                            }
                         }
-
-                        if (txtPID.getText() == null) {
-                            val = false;
-                        }
-                        if (years.getSelectedItem() == null) {
-                            val = false;
-                        }
-                        if (months.getSelectedItem() == null) {
-                            val = false;
-                        }
-                        if (days.getSelectedItem() == null) {
-                            val = false;
-                        }
-                        if (hr.getSelectedItem() == null) {
-                            val = false;
-                        }
-                        if (min.getSelectedItem() == null) {
-                            val = false;
-                        }
-                        if (aType.getSelectedItem() == null) {
-                            val = false;
-                        }
-                        if (Partner.getSelectedItem() == null) {
+                        if (years.getSelectedItem().equals("Year") || (months.getSelectedItem().equals("Month") || days.getSelectedItem().equals("Day"))){
                             val = false;
                         }
 
+                        //Checking the text fields have something in them
+                        if (txtPID.getText().trim().equals("")) {
+                            val = false;
+                        }
+                        //message if fields are not filled/unselected
+                        if(!val){
+                            JOptionPane.showMessageDialog(null, "Invalid input, some field is blank or incorrect");
+                        }
+
+                        //if validation succeeds then add entry to database
                         if (val) {
                             String getVisitDuration = "SELECT Duration FROM VisitType Where TypeOfVisit='"
                                     + (String) aType.getSelectedItem() + "'";
@@ -161,14 +141,17 @@ public class BookAppointment extends JFrame{
                                 e1.printStackTrace();
                             }
 
-                            int minutes = Integer.parseInt(min.getSelectedItem().toString());
-                            int hours = Integer.parseInt(hr.getSelectedItem().toString());
+                            int startMinutes = Integer.parseInt(min.getSelectedItem().toString());
+                            int startHours = Integer.parseInt(hr.getSelectedItem().toString());
 
-                            if (dur + minutes >= 60) {
-                                minutes = minutes + dur - 60;
-                                hours += 1;
+                            int endMinutes=0;
+                            int endHours=0;
+
+                            if (dur + startMinutes >= 60) {
+                                endMinutes = startMinutes + dur - 60;
+                                endHours = startHours + 1;
                             } else {
-                                minutes += dur;
+                                endMinutes = startMinutes + dur;
                             }
 
                             try {
@@ -183,20 +166,43 @@ public class BookAppointment extends JFrame{
                                 e1.printStackTrace();
                             }
 
-                            int startH, endH, startM, endM, iterator = 0;
-                            boolean validateBooking = true;
-                            String getClientsID = "SELECT ID FROM Customer";
+                            int startH, endH, startM, endM,newSM = 0;
+                            boolean validateBooking = true, validateID = true;
+                            String getClientsID = "SELECT ID FROM Appointment Where (ADate = '"
+                                    + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" +
+                                    days.getSelectedItem().toString()+"'";
+                            for(int i =0;i<dur;i+=20){
+                                if(i==0)
+                                    getClientsID = getClientsID + " AND StartTime = '" + startHours + ":" + startMinutes + ":00')";
+                                else if(startMinutes+i<60)
+                                    getClientsID = getClientsID + " OR (ADate = '"
+                                            + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" +
+                                            days.getSelectedItem().toString()+"' AND StartTime = '" + startHours + ":" + (startMinutes+i) + ":00') ";
+                                else {
+                                    newSM+=20;
+                                    getClientsID = getClientsID + " OR (ADate = '"
+                                            + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" +
+                                            days.getSelectedItem().toString()+"' AND StartTime = '" + (startHours + 1) + ":" + newSM + ":00'";
+                                }
+                            }
+                            System.out.println(getClientsID);//toremove
                             ResultSet clientsID = reg.getData(getClientsID);
                             try {
                                 while (clientsID.next()) {
-                                    if (clientsID.getInt("ID") == Integer.parseInt(txtPID.getText()))
-                                        iterator += 1;
+                                    if(!clientsID.wasNull()) {
+                                        if (clientsID.getInt("ID") == Integer.parseInt(txtPID.getText().trim()))
+                                            validateID = false;
+                                        System.out.println(clientsID.getInt("ID"));
+                                    }else{
+                                        validateID = true;
+                                    }
+                                }
+                                if (!validateID) {
+                                    validateBooking = false;
                                 }
                             } catch (SQLException e1) {
                                 e1.printStackTrace();
                             }
-                            if (iterator == 0)
-                                validateBooking = false;
                             try {
                                 reg.closeConnection();
                             } catch (SQLException e1) {
@@ -208,19 +214,30 @@ public class BookAppointment extends JFrame{
                             } catch (InstantiationException e1) {
                                 e1.printStackTrace();
                             }
-                            String getOtherAppointments = "SELECT * FROM Appointment WHERE ADate = '"
+                            String getOtherAppointments = "SELECT ID,StartTime,EndTime FROM Appointment WHERE ADate = '"
                                     + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
-                                    + days.getSelectedItem().toString() + "'";
+                                    + days.getSelectedItem().toString() + "' AND Partner = '" + Partner.getSelectedItem().toString() + "'";
                             ResultSet appointmentDT = reg.getData(getOtherAppointments);
                             try {
                                 while (appointmentDT.next()) {
-                                    startH = Integer.parseInt(appointmentDT.getTime("StartTime").toString().substring(0, 1));
-                                    startM = Integer.parseInt(appointmentDT.getTime("StartTime").toString().substring(3, 4));
-                                    endH = Integer.parseInt(appointmentDT.getTime("EndTime").toString().substring(0, 1));
-                                    endM = Integer.parseInt(appointmentDT.getTime("EndTime").toString().substring(3, 4));
+                                    if(!appointmentDT.wasNull()) {
+                                        startH = Integer.parseInt(appointmentDT.getTime("StartTime").toString().substring(0, 2));
+                                        startM = Integer.parseInt(appointmentDT.getTime("StartTime").toString().substring(3, 5));
+                                        endH = Integer.parseInt(appointmentDT.getTime("EndTime").toString().substring(0, 2));
+                                        endM = Integer.parseInt(appointmentDT.getTime("EndTime").toString().substring(3, 5));
 
-                                    if (startH * 60 + startM + dur >= endH * 60 + endM) {
-                                        validateBooking = false;
+                                        System.out.println("Customer ID " + appointmentDT.getInt("ID"));
+                                        System.out.println(startH);
+                                        System.out.println(startM);
+                                        System.out.println(endH);
+                                        System.out.println(endM);
+
+                                        if (((startHours*60 + startMinutes) >= (startH*60 + startM)
+                                                && (startHours*60 + startMinutes) <= (endH*60 + endM))
+                                                || (startHours*60 + startMinutes) >= (startH*60 + startM)
+                                                && (endHours*60 + endMinutes) <= (endH*60 + endM)) {
+                                            validateBooking = false;
+                                        }
                                     }
                                 }
                             } catch (SQLException e1) {
@@ -239,21 +256,24 @@ public class BookAppointment extends JFrame{
                                 e1.printStackTrace();
                             }
 
-                            if (validateBooking == true) {
+                            if (validateBooking) {
                                 String newBooking = "INSERT INTO Appointment VALUES(" + txtPID.getText() + ", '" +
                                         (String) aType.getSelectedItem() + "', '" + (String) Partner.getSelectedItem() + "', '" +
                                         years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" +
                                         days.getSelectedItem().toString() + "', '" + hr.getSelectedItem().toString() + ":"
                                         + min.getSelectedItem().toString() + ":00', '"
-                                        + Integer.toString(hours) + ":" + Integer.toString(minutes) + ":00', 'Active')";
+                                        + Integer.toString(endHours) + ":" + Integer.toString(endMinutes) + ":00', 'Active', 0)";
                                 reg.updateData(newBooking);
+                            }else{
+                                JOptionPane.showMessageDialog(null, "This Appointment time is unavailable. Please Select another.");
                             }
                         }
                     }
                 }
         );
 
-        JButton btnBack = new JButton("Go Back");
+        //Add back button and event listener
+        JButton btnBack = new JButton("Back");
         btnBack.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
@@ -263,19 +283,22 @@ public class BookAppointment extends JFrame{
                 }
         );
 
+        //work out height and width for the window
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
 
+        //add items to contentpane and manage the layout
         Container contentPane = getContentPane();
         contentPane.add(title, BorderLayout.NORTH);
         contentPane.add(mPanel, BorderLayout.CENTER);
         contentPane.add(btnBack, BorderLayout.SOUTH);
 
-
+        //add the borders
         mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
 
         //Don't forget to pack!
         pack();
+        //setting the location in the window and the close operation
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -284,13 +307,16 @@ public class BookAppointment extends JFrame{
 
     public void CancelAppointment(){
 
+        //initialise the window
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
 
+        //Add title and text fields
         JLabel title = new JLabel("Enter Appointment Details");
         JLabel pID = new JLabel("PatientID:");
         final JTextField txtPID = new JTextField(20);
 
+        //add time combobox
         JLabel sTime = new JLabel("Appointment Start Time:");
         String[] hour = {"Hour","09","10","11","12","14","15","16","17"};
         String[] minute = {"Minute","00","20","40"};
@@ -304,6 +330,7 @@ public class BookAppointment extends JFrame{
         final JComboBox years = new JComboBox();
         JButton bSubmit = new JButton();
 
+        //making the panel for selecting time
         JPanel timePanel = new JPanel();
         timePanel.add(sTime);
         timePanel.add(hr);
@@ -332,6 +359,7 @@ public class BookAppointment extends JFrame{
         dPanel.add(months);
         dPanel.add(years);
 
+        //adding all inputs to one panel
         JPanel inputsPanel = new JPanel();
         inputsPanel.add(pID);
         inputsPanel.add(txtPID);
@@ -339,10 +367,11 @@ public class BookAppointment extends JFrame{
         inputsPanel.add(dPanel);
         inputsPanel.add(bSubmit);
 
-
+        //Set the layout of the inputspanel
         inputsPanel.setLayout(new BoxLayout(inputsPanel, BoxLayout.Y_AXIS));
 
 
+        //add the enevt handler for the submit button for canceling an appointment
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
@@ -355,6 +384,7 @@ public class BookAppointment extends JFrame{
                 }
         );
 
+        //adding the back button and it's event handler
         JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
                 new ActionListener(){
@@ -365,19 +395,22 @@ public class BookAppointment extends JFrame{
                 }
         );
 
+        //for adding borders to the components
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
 
+        //adding the panels to contentpane
         Container contentpane = getContentPane();
         contentpane.add(title, BorderLayout.NORTH);
         contentpane.add(inputsPanel, BorderLayout.CENTER);
         contentpane.add(btnBack, BorderLayout.SOUTH);
 
-
+        //setting the border for the inputs
         inputsPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
 
         //Don't forget to pack!
         pack();
+        //setting the location in the window and the close operation
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
