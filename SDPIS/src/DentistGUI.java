@@ -58,7 +58,7 @@ public class DentistGUI extends JFrame {
         buttonPanel.add(btnChk);
         buttonPanel.add(btnView);
 
-        JLabel title = new JLabel("Dentist View");
+        JLabel title = new JLabel("Dentist Page");
 
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
@@ -118,7 +118,7 @@ public class DentistGUI extends JFrame {
                 }
         );
 
-        JButton btnBack = new JButton("Back");
+        JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){

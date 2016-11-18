@@ -253,7 +253,7 @@ public class BookAppointment extends JFrame{
                 }
         );
 
-        JButton btnBack = new JButton("Back");
+        JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
