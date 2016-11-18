@@ -18,6 +18,7 @@ public class BookAppointment extends JFrame{
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
 
+        //Creating labels and text fields
         JLabel title = new JLabel("Enter Appointment Details");
         JLabel pID = new JLabel("PatientID:");
         final JLabel partner = new JLabel("Partner:");
@@ -26,10 +27,13 @@ public class BookAppointment extends JFrame{
         String[] partners = {"Dentist","Hygienist"};
         final JComboBox Partner = new JComboBox(partners);
         JLabel sTime = new JLabel("Appointment Start Time:");
-        final String[] hour = {"Hour","09","10","11","12","14","15","16"};
+
+        //Creating the combobox for the hours and minutes entries for appointments
+        String[] hour = {"Hour","09","10","11","12","14","15","16"};
         String[] minute = {"Minute","00","20","40"};
         final JComboBox hr = new JComboBox(hour);
         final JComboBox min = new JComboBox(minute);
+        //combo boxes for types of appointments
         String[] appTypes = { "CheckUp", "HygieneVisit" , "White Composite Resin Filling", "Gold Crown", "Silver Amalgam Filling"};
         final JComboBox aType = new JComboBox(appTypes);
         JButton bBook = new JButton("Book");
@@ -57,11 +61,20 @@ public class BookAppointment extends JFrame{
             years.addItem(new Integer(i));
         }
 
+        //making panel for time of appointment
         JPanel timePanel = new JPanel();
         timePanel.add(sTime);
         timePanel.add(hr);
         timePanel.add(min);
 
+        //create a panel and add date comboBox
+        JPanel dPanel = new JPanel();
+        dPanel.add(date);
+        dPanel.add(days);
+        dPanel.add(months);
+        dPanel.add(years);
+
+        //panel for the rest of the inputs
         JPanel inputsPanel = new JPanel();
         inputsPanel.add(pID);
         inputsPanel.add(txtPID);
@@ -72,13 +85,7 @@ public class BookAppointment extends JFrame{
         inputsPanel.add(aType);
         inputsPanel.setLayout(new BoxLayout(inputsPanel, BoxLayout.Y_AXIS));
 
-        //create a panel and add date comboBox
-        JPanel dPanel = new JPanel();
-        dPanel.add(date);
-        dPanel.add(days);
-        dPanel.add(months);
-        dPanel.add(years);
-
+        //adding panels to a main panel
         JPanel mPanel = new JPanel();
         mPanel.add(inputsPanel);
         mPanel.add(dPanel);
@@ -86,10 +93,12 @@ public class BookAppointment extends JFrame{
         mPanel.setLayout(new BoxLayout(mPanel, BoxLayout.Y_AXIS));
 
 
+        //button to book appointment
         bBook.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
 
+                        //boolean for validation
                         boolean val = true;
 
                         //checking months and days for consistency eg. No 31st of February
@@ -104,21 +113,21 @@ public class BookAppointment extends JFrame{
                                 && years.getSelectedIndex() % 4 == 0) {
                             JOptionPane.showMessageDialog(null, "Invalid day selected");
                             val = false;
-                            //checking year is in acceptable range
                         }
                         if (years.getSelectedItem().equals("Year") || (months.getSelectedItem().equals("Month") || days.getSelectedItem().equals("Day"))){
                             val = false;
                         }
 
+                        //Checking the text fields have something in them
                         if (txtPID.getText().trim().equals("")) {
                             val = false;
                         }
-
-
+                        //message if fields are not filled/unselected
                         if(!val){
-                            JOptionPane.showMessageDialog(null, "Invalid input, some field(s) is blank or incorrect");
+                            JOptionPane.showMessageDialog(null, "Invalid input, some field is blank or incorrect");
                         }
 
+                        //if validation succeeds then add entry to database
                         if (val) {
                             String getVisitDuration = "SELECT Duration FROM VisitType Where TypeOfVisit='"
                                     + (String) aType.getSelectedItem() + "'";
@@ -245,6 +254,7 @@ public class BookAppointment extends JFrame{
                 }
         );
 
+        //Add back button and event listener
         JButton btnBack = new JButton("Back");
         btnBack.addActionListener(
                 new ActionListener(){
@@ -255,19 +265,22 @@ public class BookAppointment extends JFrame{
                 }
         );
 
+        //work out height and width for the window
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
 
+        //add items to contentpane and manage the layout
         Container contentPane = getContentPane();
         contentPane.add(title, BorderLayout.NORTH);
         contentPane.add(mPanel, BorderLayout.CENTER);
         contentPane.add(btnBack, BorderLayout.SOUTH);
 
-
+        //add the borders
         mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
 
         //Don't forget to pack!
         pack();
+        //setting the location in the window and the close operation
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -276,13 +289,16 @@ public class BookAppointment extends JFrame{
 
     public void CancelAppointment(){
 
+        //initialise the window
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
 
+        //Add title and text fields
         JLabel title = new JLabel("Enter Appointment Details");
         JLabel pID = new JLabel("PatientID:");
         final JTextField txtPID = new JTextField(20);
 
+        //add time combobox
         JLabel sTime = new JLabel("Appointment Start Time:");
         String[] hour = {"Hour","09","10","11","12","14","15","16","17"};
         String[] minute = {"Minute","00","20","40"};
@@ -296,6 +312,7 @@ public class BookAppointment extends JFrame{
         final JComboBox years = new JComboBox();
         JButton bSubmit = new JButton();
 
+        //making the panel for selecting time
         JPanel timePanel = new JPanel();
         timePanel.add(sTime);
         timePanel.add(hr);
@@ -324,6 +341,7 @@ public class BookAppointment extends JFrame{
         dPanel.add(months);
         dPanel.add(years);
 
+        //adding all inputs to one panel
         JPanel inputsPanel = new JPanel();
         inputsPanel.add(pID);
         inputsPanel.add(txtPID);
@@ -331,10 +349,11 @@ public class BookAppointment extends JFrame{
         inputsPanel.add(dPanel);
         inputsPanel.add(bSubmit);
 
-
+        //Set the layout of the inputspanel
         inputsPanel.setLayout(new BoxLayout(inputsPanel, BoxLayout.Y_AXIS));
 
 
+        //add the enevt handler for the submit button for canceling an appointment
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
@@ -347,6 +366,7 @@ public class BookAppointment extends JFrame{
                 }
         );
 
+        //adding the back button and it's event handler
         JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
                 new ActionListener(){
@@ -357,19 +377,22 @@ public class BookAppointment extends JFrame{
                 }
         );
 
+        //for adding borders to the components
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
 
+        //adding the panels to contentpane
         Container contentpane = getContentPane();
         contentpane.add(title, BorderLayout.NORTH);
         contentpane.add(inputsPanel, BorderLayout.CENTER);
         contentpane.add(btnBack, BorderLayout.SOUTH);
 
-
+        //setting the border for the inputs
         inputsPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
 
         //Don't forget to pack!
         pack();
+        //setting the location in the window and the close operation
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
