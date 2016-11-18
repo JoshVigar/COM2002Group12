@@ -83,7 +83,7 @@ public class DentistGUI extends JFrame {
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
 
-        JLabel title = new JLabel("Enter Appointment Information To Log Visit:");
+        JLabel title = new JLabel("Enter Appointment Time To Log Visit:");
         JLabel type = new JLabel("Treatment type:");
         String[] tType = {"Checkup","","","",""};
         final JComboBox Type = new JComboBox(tType);
