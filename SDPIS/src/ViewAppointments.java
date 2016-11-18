@@ -197,12 +197,21 @@ public class ViewAppointments extends JFrame {
         String date = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate);
 
         JLabel title = new JLabel("Dentist Appointments: " + date);
-        String sql = "SELECT ID,TypeOfVisit,StartTime FROM Appointment WHERE ADate = '"+date+"' AND Partner = 'Dentist' AND State = 'Active'";
+        String sql = "SELECT ID,TypeOfVisit,StartTime FROM Appointment WHERE ADate = '2016-11-17' AND Partner = 'Dentist' AND State = 'Active'";
         ResultSet rs = view.getData(sql);
 
         JPanel mPanel = new JPanel();
         mPanel.setLayout(new BorderLayout());
         mPanel.add(title, BorderLayout.NORTH);
+
+        JTextArea textArea = new JTextArea();
+        textArea.setMargin(new Insets(10,10,10,10));
+        textArea.setEditable(false);
+        JScrollPane areaScrollPane = new JScrollPane(textArea);
+        areaScrollPane.setVerticalScrollBarPolicy(
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        areaScrollPane.setPreferredSize(new Dimension(300, 300));
+        String newLine = "\n";
 
         try {
             while(rs.next()) {
@@ -212,8 +221,9 @@ public class ViewAppointments extends JFrame {
 
                 String appoint = "Start Time: "+ startTime+" Customer ID: "+id+" Visit Type: "+type;
                 System.out.println(" "+appoint);
+                textArea.append(appoint + newLine);
             }
-            //mPanel.add(jtext, BorderLayout.CENTER);
+            mPanel.add(textArea, BorderLayout.CENTER);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -249,20 +259,39 @@ public class ViewAppointments extends JFrame {
 
         Container container = getContentPane();
 
-        JLabel title = new JLabel("Hygienist Appointments: Date");
-        String[] columnNames  = {"Time","Appointment"};
+        LocalDate localDate = LocalDate.now();
+        String date = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate);
 
-        Object[][] data = {
-                {"9:00", ""}, {"9:20", ""}, {"9:40", ""},
-                {"10.00", ""}, {"10:20", ""}, {"10:40", ""},
-                {"11:00", ""}, {"11:20", ""}, {"11:40", ""},
-                {"12:00", ""}, {"12:20", ""}, {"12:40", ""},
-                {"13:00", ""}, {"13:20", ""}, {"13:40", ""},
-                {"14:00", ""}, {"14:20", ""}, {"14:40", ""},
-                {"15:00", ""}, {"15:20", ""}, {"15:40", ""},
-                {"16:00", ""}, {"16:20", ""}, {"16:40", ""},
-        };
-        JTable dayCalendar = new JTable(data,columnNames);
+        JLabel title = new JLabel("Hygienist Appointments: "+localDate);
+        String sql = "SELECT ID,TypeOfVisit,StartTime FROM Appointment WHERE ADate = '2016-11-17' AND Partner = 'Hygienist' AND State = 'Active'";
+        ResultSet rs = view.getData(sql);
+
+        JPanel mPanel = new JPanel();
+        mPanel.setLayout(new BorderLayout());
+        mPanel.add(title, BorderLayout.NORTH);
+
+        JTextArea textArea = new JTextArea();
+        textArea.setMargin(new Insets(10,10,10,10));
+        textArea.setEditable(false);
+        JScrollPane areaScrollPane = new JScrollPane(textArea);
+        areaScrollPane.setVerticalScrollBarPolicy(
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        areaScrollPane.setPreferredSize(new Dimension(300, 300));
+        String newLine = "\n";
+
+        try {
+            while(rs.next()) {
+                int id = rs.getInt("ID");
+                String type = rs.getString("TypeOfVisit");
+                Time startTime = rs.getTime("StartTime");
+                String appoint = "Start Time: "+ startTime+" Customer ID: "+id+" Visit Type: "+type;
+                System.out.println(" "+appoint);
+                textArea.append(appoint + newLine);
+            }
+            mPanel.add(textArea, BorderLayout.CENTER);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
@@ -273,33 +302,10 @@ public class ViewAppointments extends JFrame {
                     }
                 }
         );
-        JButton nextDay = new JButton("Next Day ->");
-        nextDay.addActionListener(
-                new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-                        //next days calendar
-                    }
-                }
-        );
-
-        JButton previousDay = new JButton("<- Previous Day");
-        previousDay.addActionListener(
-                new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-                        //previous days calendar
-                    }
-                }
-        );
 
         //int bHeight = (int)(this.getHeight()*0.1);
         //int bWidth = (int)(this.getWidth()*0.1);
 
-        JPanel mPanel = new JPanel();
-        mPanel.setLayout(new BorderLayout());
-        mPanel.add(title, BorderLayout.NORTH);
-        mPanel.add(previousDay, BorderLayout.LINE_START);
-        mPanel.add(dayCalendar, BorderLayout.CENTER);
-        mPanel.add(nextDay, BorderLayout.LINE_END);
         mPanel.add(btnBack, BorderLayout.SOUTH);
         //mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
         container.add(mPanel);

@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.Arrays;
 
 /**
@@ -26,7 +27,17 @@ public class DentistGUI extends JFrame {
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         dispose();
-                        new ViewAppointments().ViewDentistAppointments();
+                        try {
+                            new ViewAppointments().ViewDentistAppointments();
+                        } catch (ClassNotFoundException e1) {
+                            e1.printStackTrace();
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        } catch (InstantiationException e1) {
+                            e1.printStackTrace();
+                        } catch (IllegalAccessException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
         );
