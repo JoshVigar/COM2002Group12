@@ -22,7 +22,7 @@ public class SecretaryGUI extends JFrame{
                     public void actionPerformed(ActionEvent e){
                         dispose();
                         try {
-                            new ViewAppointments().ViewSecretaryAppointments();
+                            new ViewAppointments().startDate();
                         } catch (ClassNotFoundException e1) {
                             e1.printStackTrace();
                         } catch (SQLException e1) {
