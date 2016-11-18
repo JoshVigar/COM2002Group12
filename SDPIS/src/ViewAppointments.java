@@ -202,7 +202,7 @@ public class ViewAppointments extends JFrame {
         //Title of panel
         JLabel title = new JLabel("Dentist Appointments: " + date);
         //create string to represent sql query
-        String sql = "SELECT ID,TypeOfVisit,StartTime FROM Appointment WHERE ADate = '2016-11-17' AND Partner = 'Dentist' AND State = 'Active'";
+        String sql = "SELECT ID,TypeOfVisit,StartTime FROM Appointment WHERE ADate = '"+ date +"' AND Partner = 'Dentist' AND State = 'Active'";
         //store result set of executing Query
         ResultSet rs = view.getData(sql);
 
@@ -223,14 +223,17 @@ public class ViewAppointments extends JFrame {
 
         try {
             //loop through result set appending each appointment to the textArea
-            while(rs.next()) {
-                int id = rs.getInt("ID");
-                String type = rs.getString("TypeOfVisit");
-                Time startTime = rs.getTime("StartTime");
-
-                String appoint = "Start Time: "+ startTime+" Customer ID: "+id+" Visit Type: "+type;
-                System.out.println(" "+appoint);
-                textArea.append(appoint + newLine);
+            if (!rs.next()){
+                textArea.append("No Appointments today");
+            }else {
+                while (rs.next()) {
+                    int id = rs.getInt("ID");
+                    String type = rs.getString("TypeOfVisit");
+                    Time startTime = rs.getTime("StartTime");
+                    String appoint = "Start Time: " + startTime + " Customer ID: " + id + " Visit Type: " + type;
+                    System.out.println(" " + appoint);
+                    textArea.append(appoint + newLine);
+                }
             }
             //add textArea to the panel
             mPanel.add(textArea, BorderLayout.CENTER);
@@ -249,11 +252,11 @@ public class ViewAppointments extends JFrame {
                 }
         );
 
-        //int bHeight = (int)(this.getHeight()*0.1);
-        //int bWidth = (int)(this.getWidth()*0.1);
+        int bHeight = (int)(this.getHeight()*0.05);
+        int bWidth = (int)(this.getWidth()*0.05);
         //add back button to panel
         mPanel.add(btnBack, BorderLayout.SOUTH);
-        //mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
+        mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
         container.add(mPanel);
 
         //Don't forget to pack! and setVisible to true
@@ -278,7 +281,7 @@ public class ViewAppointments extends JFrame {
         //Title of panel
         JLabel title = new JLabel("Hygienist Appointments: "+localDate);
         //create string to represent sql query
-        String sql = "SELECT ID,TypeOfVisit,StartTime FROM Appointment WHERE ADate = '2016-11-17' AND Partner = 'Hygienist' AND State = 'Active'";
+        String sql = "SELECT ID,TypeOfVisit,StartTime FROM Appointment WHERE ADate = '"+date+"' AND Partner = 'Hygienist' AND State = 'Active'";
         //store result set of executing Query
         ResultSet rs = view.getData(sql);
 
@@ -299,13 +302,17 @@ public class ViewAppointments extends JFrame {
 
         //loop through result set appending each appointment to the textArea
         try {
-            while(rs.next()) {
-                int id = rs.getInt("ID");
-                String type = rs.getString("TypeOfVisit");
-                Time startTime = rs.getTime("StartTime");
-                String appoint = "Start Time: "+ startTime+" Customer ID: "+id+" Visit Type: "+type;
-                System.out.println(" "+appoint);
-                textArea.append(appoint + newLine);
+            if (!rs.next()){
+                textArea.append("No Appointments today");
+            }else {
+                while (rs.next()) {
+                    int id = rs.getInt("ID");
+                    String type = rs.getString("TypeOfVisit");
+                    Time startTime = rs.getTime("StartTime");
+                    String appoint = "Start Time: " + startTime + " Customer ID: " + id + " Visit Type: " + type;
+                    System.out.println(" " + appoint);
+                    textArea.append(appoint + newLine);
+                }
             }
             //add textArea to the panel
             mPanel.add(textArea, BorderLayout.CENTER);
@@ -324,11 +331,11 @@ public class ViewAppointments extends JFrame {
                 }
         );
 
-        //int bHeight = (int)(this.getHeight()*0.1);
-        //int bWidth = (int)(this.getWidth()*0.1);
+        int bHeight = (int)(this.getHeight()*0.05);
+        int bWidth = (int)(this.getWidth()*0.05);
         //add back button to panel
         mPanel.add(btnBack, BorderLayout.SOUTH);
-        //mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
+        mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
         container.add(mPanel);
 
         //Don't forget to pack! and setVisible to true
