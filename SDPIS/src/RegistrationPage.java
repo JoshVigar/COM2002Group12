@@ -122,7 +122,7 @@ public class RegistrationPage  extends JFrame {
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        boolean val = false;
+                        boolean val = true;
 
                         //checking months and days for consistency eg. No 31st of February
                         if((months.getSelectedIndex() == 4
@@ -135,14 +135,26 @@ public class RegistrationPage  extends JFrame {
                                 || months.getSelectedIndex() == 2 && days.getSelectedIndex() <= 29
                                 && years.getSelectedIndex()%4 == 0 ){
                             JOptionPane.showMessageDialog(null, "Invalid day selected");
-                            val = false;
+                            val = false;}
                             //checking year is in acceptable range
-                        }else if(Integer.parseInt(years.getSelectedItem().toString()) > (int)(Calendar.getInstance().get(Calendar.YEAR))){
-                            JOptionPane.showMessageDialog(null, "Invalid input, Year is in future");
-                            val = false;
-                        }else val = true;
+//                        }else if(Integer.parseInt(years.getSelectedItem().toString()) > (int)(Calendar.getInstance().get(Calendar.YEAR))){
+//                            JOptionPane.showMessageDialog(null, "Invalid input, Year is in future");
+//                            val = false;
+//                        }
 
+                        if(txtTitle.getText().trim().equals(""))val = false;
+                        if(txtFName.getText().trim().equals(""))val = false;
+                        if(txtLName.getText().trim().equals(""))val = false;
+                        if(txtPhone.getText().trim().equals(""))val = false;
+                        if(txtHousenum.getText().trim().equals(""))val = false;
+                        if(txtStreet.getText().trim().equals(""))val = false;
+                        if(txtAddressCity.getText().trim().equals(""))val = false;
+                        if(txtAddressRegion.getText().trim().equals(""))val = false;
+                        if(txtPostCode.getText().trim().equals(""))val = false;
 
+                        if(!val){
+                            JOptionPane.showMessageDialog(null, "Invalid input, some field(s) is blank or unselected");
+                        }
 
                         if (val) {
                             LocalDate localDate = LocalDate.now();
