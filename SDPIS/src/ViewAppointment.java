@@ -15,7 +15,7 @@ import java.util.Date;
  * Created by babatundeadeola on 18/11/2016.
  */
 public class ViewAppointment extends JFrame {
-    DataAccessBase view = new DataAccessBase("jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61");
+    private DataAccessBase view = new DataAccessBase("jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61");
 
     public ViewAppointment() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
     }
