@@ -156,7 +156,6 @@ public class RegistrationPage  extends JFrame {
                             LocalDate localDate = LocalDate.now();
                             String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate.plusYears(1));
 
-                            int validation = 0;
 
                             String[] newPatient = {txtTitle.getText(), txtFName.getText(), txtLName.getText(),
                                     years.getSelectedItem() + "-" + months.getSelectedItem() + "-" + days.getSelectedItem(),
@@ -230,14 +229,11 @@ public class RegistrationPage  extends JFrame {
                                     years.getSelectedItem() + "-" + months.getSelectedItem() + "-" + days.getSelectedItem() + "', '" +
                                     txtPhone.getText() + "', '" + txtHousenum.getText() + " " + txtPostCode.getText() + "')";
                             reg.updateData(customer);
-                            //TO BE REMOVED LATER
-                            //System.out.print(Arrays.toString(newPatient));
 
-                            if (validation > 1) {
-                                JOptionPane.showMessageDialog(null, "New Patient Added");
-                                dispose();
-                                new SecretaryGUI().SecretaryGUI();
-                            }
+                            dispose();
+                            new SecretaryGUI().SecretaryGUI();
+
+
                         }
                     }
                 }

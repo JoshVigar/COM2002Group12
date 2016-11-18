@@ -185,7 +185,7 @@ public class BookAppointment extends JFrame{
                                             days.getSelectedItem().toString()+"' AND StartTime = '" + (startHours + 1) + ":" + newSM + ":00'";
                                 }
                             }
-                            System.out.println(getClientsID);//toremove
+
                             ResultSet clientsID = reg.getData(getClientsID);
                             try {
                                 while (clientsID.next()) {
@@ -264,6 +264,8 @@ public class BookAppointment extends JFrame{
                                         + min.getSelectedItem().toString() + ":00', '"
                                         + Integer.toString(endHours) + ":" + Integer.toString(endMinutes) + ":00', 'Active', 0)";
                                 reg.updateData(newBooking);
+                                dispose();
+                                new SecretaryGUI().SecretaryGUI();
                             }else{
                                 JOptionPane.showMessageDialog(null, "This Appointment time is unavailable. Please Select another.");
                             }

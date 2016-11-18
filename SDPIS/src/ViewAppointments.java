@@ -510,7 +510,7 @@ public class ViewAppointments extends JFrame {
 
         tabbedPane.addTab("Hygienist Appointments", null, hygienist, null);
 
-        JFrame frame = new JFrame("TabbedPaneDemo");
+        JFrame frame = new JFrame("View Appointments");
 
         //Add content to the window.
         add(tabbedPane, BorderLayout.CENTER);
