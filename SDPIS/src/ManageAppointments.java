@@ -9,9 +9,6 @@ import java.util.Calendar;
  */
 public class ManageAppointments extends JFrame{
 
-    public static void main(String args[]){
-        new ManageAppointments().ManageAppointments();
-    }
 
     public void ManageAppointments(){
         //setting initial window settings
@@ -76,7 +73,7 @@ public class ManageAppointments extends JFrame{
         dPanel.add(months);
         dPanel.add(years);
 
-        JButton bSubmit = new JButton("Go Back");
+        JButton bSubmit = new JButton("Submit");
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
@@ -113,20 +110,16 @@ public class ManageAppointments extends JFrame{
         sePanel.setLayout(new BorderLayout());
         sePanel.add(title, BorderLayout.NORTH);
         sePanel.add(subPanel, BorderLayout.CENTER);
-        sePanel.add(btnBack, BorderLayout.SOUTH);
-
-
 
         int bHeight = (int) (this.getHeight() * 0.05);
         int bWidth = (int) (this.getWidth() * 0.05);
-        sePanel.add(btnBack, BorderLayout.SOUTH);
-        sePanel.setBorder(BorderFactory.createEmptyBorder(bHeight, bWidth, bHeight, bWidth));
-
-
 
         //get content pane
         Container container = getContentPane();
         container.add(sePanel);
+        container.add(btnBack, BorderLayout.SOUTH);
+
+        sePanel.setBorder(BorderFactory.createEmptyBorder(bHeight, bWidth, bHeight, bWidth));
 
         //Don't forget to pack! and setVisible to true
         pack();
