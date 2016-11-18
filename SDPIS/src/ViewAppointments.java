@@ -13,6 +13,7 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -186,12 +187,13 @@ public class ViewAppointments extends JFrame {
     }
 
     public void startDate() {
+        JTabbedPane tabbedPane = new JTabbedPane();
+
         //Set title and size of frame
         setTitle("Sheffield Dental Practice");
         setSize(1300, 600);
 
-        //get content pane
-        Container container = getContentPane();
+
         //Title of panel
         JLabel title = new JLabel("Select Calendar Start Date");
         //current date
@@ -228,10 +230,10 @@ public class ViewAppointments extends JFrame {
         dpanel.add(bSubmit);
 
         //create a panel set its layout, add a title
-        JPanel mPanel = new JPanel();
-        mPanel.setLayout(new BorderLayout());
-        mPanel.add(title, BorderLayout.NORTH);
-        mPanel.add(dpanel, BorderLayout.CENTER);
+        JPanel vaPanel = new JPanel();
+        vaPanel.setLayout(new BorderLayout());
+        vaPanel.add(title, BorderLayout.NORTH);
+        vaPanel.add(dpanel, BorderLayout.CENTER);
 
 
         bSubmit.addActionListener(
@@ -267,9 +269,106 @@ public class ViewAppointments extends JFrame {
         int bHeight = (int) (this.getHeight() * 0.05);
         int bWidth = (int) (this.getWidth() * 0.05);
         //add back button to panel
-        mPanel.add(btnBack, BorderLayout.SOUTH);
-        mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight, bWidth, bHeight, bWidth));
-        container.add(mPanel);
+        vaPanel.add(btnBack, BorderLayout.SOUTH);
+        vaPanel.setBorder(BorderFactory.createEmptyBorder(bHeight, bWidth, bHeight, bWidth));
+
+        tabbedPane.addTab("Partner Appointments", null, vaPanel, null);
+
+        JLabel pID = new JLabel("PatientID:");
+        final JTextField txtPID = new JTextField(20);
+
+        JLabel partner = new JLabel("Partner:");
+        String[] partners = {"Dentist","Hygienist"};
+        final JComboBox Partner = new JComboBox(partners);
+
+        JPanel pPanel = new JPanel();
+        pPanel.add(pID);
+        pPanel.add(txtPID);
+
+        JPanel partPanel = new JPanel();
+        partPanel.add(partner);
+        partPanel.add(Partner);
+
+        JLabel sTime = new JLabel("Appointment Start Time:");
+        final String[] hour = {"Hour","09","10","11","12","14","15","16"};
+        String[] minute = {"Minute","00","20","40"};
+        final JComboBox hr = new JComboBox(hour);
+        final JComboBox min = new JComboBox(minute);
+
+        JPanel timePanel = new JPanel();
+        timePanel.add(sTime);
+        timePanel.add(hr);
+        timePanel.add(min);
+
+        //comboboxes date of appointment
+        JLabel date2 = new JLabel("Date of Appointment:");
+        final JComboBox days2 = new JComboBox();
+        final JComboBox months2 = new JComboBox();
+        final JComboBox years2 = new JComboBox();
+
+        //Use for loops to create the date options
+        days2.addItem("Day");
+        for(int i=1;i<=31;i++) {
+            days2.addItem(new Integer(i));
+        }
+
+        months2.addItem("Month");
+        for(int i=1;i<=12;i++) {
+            months2.addItem(new Integer(i));
+        }
+
+        years2.addItem("Year");
+        for(int i = (int)(Calendar.getInstance().get(Calendar.YEAR)); i<=
+                (int)(Calendar.getInstance().get(Calendar.YEAR))+1; i++) {
+            years2.addItem(new Integer(i));
+        }
+
+        //create a panel and add date comboBox
+        JPanel dPanel2 = new JPanel();
+        dPanel2.add(date2);
+        dPanel2.add(days2);
+        dPanel2.add(months2);
+        dPanel2.add(years2);
+
+        JButton btnBack2 = new JButton("Go Back");
+        btnBack2.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        dispose();
+                        new SecretaryGUI().SecretaryGUI();
+                    }
+                }
+        );
+
+        JPanel subPanel = new JPanel();
+        subPanel.add(pPanel);
+        subPanel.add(partPanel);
+        subPanel.add(timePanel);
+        subPanel.add(dPanel2);
+
+        subPanel.setLayout(new BoxLayout(subPanel, BoxLayout.Y_AXIS));
+
+        //create a panel for the appointment search
+        JPanel sePanel = new JPanel();
+        sePanel.setLayout(new BorderLayout());
+        sePanel.add(title, BorderLayout.NORTH);
+        sePanel.add(subPanel, BorderLayout.CENTER);
+        sePanel.add(btnBack2, BorderLayout.SOUTH);
+
+
+
+        int bHeight2 = (int) (this.getHeight() * 0.05);
+        int bWidth2 = (int) (this.getWidth() * 0.05);
+        sePanel.add(btnBack2, BorderLayout.SOUTH);
+        sePanel.setBorder(BorderFactory.createEmptyBorder(bHeight2, bWidth2, bHeight2, bWidth2));
+
+        tabbedPane.addTab("Search Appointments", null, sePanel, null);
+
+
+
+        //get content pane
+        Container container = getContentPane();
+        container.add(tabbedPane);
 
         //Don't forget to pack! and setVisible to true
         pack();

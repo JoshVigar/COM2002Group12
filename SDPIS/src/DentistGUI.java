@@ -13,7 +13,8 @@ public class DentistGUI extends JFrame {
     public void DentistGUI(){
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
-        JButton btnChk = new JButton("Finish Appointment");
+        JButton btnChk
+                = new JButton("Finish Appointment");
         btnChk.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
