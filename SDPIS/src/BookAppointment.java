@@ -87,75 +87,167 @@ public class BookAppointment extends JFrame{
 
 
         bBook.addActionListener(
-                new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-                        /*String[] newBooking = {txtPID.getText(), (String)Partner.getSelectedItem(),
-                                (String)hr.getSelectedItem()+":"+(String)min.getSelectedItem(),
-                                (String)aType.getSelectedItem()};*/
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
 
-                        String getVisitDuration = "SELECT Duration FROM VisitType Where TypeOfVisit='"
-                                + (String)aType.getSelectedItem() +"'";
-                        int dur = 0;
-                        ResultSet rs = reg.getData(getVisitDuration);
-                        try {
-                            while(rs.next()) {
-                                dur = rs.getInt("Duration");
+                        boolean val = true;
+                        boolean skiperror = false;
+
+                        //checking months and days for consistency eg. No 31st of February, no "Month"/"Day"
+                        if (days.getSelectedIndex() == 0) {
+                            skiperror = true;
+                        }
+                        if (months.getSelectedIndex() == 0) {
+                            skiperror = true;
+                        }
+                        if (years.getSelectedIndex() == 0) {
+                            skiperror = true;
+                        }
+
+                        if ((months.getSelectedIndex() == 4
+                                || months.getSelectedIndex() == 6 || months.getSelectedIndex() == 9
+                                || months.getSelectedIndex() == 11) && days.getSelectedIndex() >= 31) {
+                            JOptionPane.showMessageDialog(null, "Invalid day selected");
+                            val = false;
+                        } else if ((months.getSelectedIndex() == 2 && days.getSelectedIndex() >= 30
+                                && years.getSelectedIndex() % 4 != 0)
+                                || months.getSelectedIndex() == 2 && days.getSelectedIndex() <= 29
+                                && years.getSelectedIndex() % 4 == 0) {
+                            JOptionPane.showMessageDialog(null, "Invalid day selected");
+                            val = false;
+                            //checking year is in acceptable range
+                        } else if (!skiperror) {
+                            if (Integer.parseInt(years.getSelectedItem().toString()) > (int) (Calendar.getInstance().get(Calendar.YEAR))) {
+                                JOptionPane.showMessageDialog(null, "Invalid input, Year is in future");
+                                val = false;
                             }
-                        } catch (SQLException e1) {
-                            e1.printStackTrace();
                         }
 
-                        int minutes = Integer.parseInt(min.getSelectedItem().toString());
-                        int hours = Integer.parseInt(hr.getSelectedItem().toString());
-
-                        if(dur + minutes>=60){
-                            minutes = minutes +dur -60;
-                            hours += 1;
-                        }else {
-                            minutes += dur;
+                        if (txtPID.getText() == null) {
+                            val = false;
+                        }
+                        if (years.getSelectedItem() == null) {
+                            val = false;
+                        }
+                        if (months.getSelectedItem() == null) {
+                            val = false;
+                        }
+                        if (days.getSelectedItem() == null) {
+                            val = false;
+                        }
+                        if (hr.getSelectedItem() == null) {
+                            val = false;
+                        }
+                        if (min.getSelectedItem() == null) {
+                            val = false;
+                        }
+                        if (aType.getSelectedItem() == null) {
+                            val = false;
+                        }
+                        if (Partner.getSelectedItem() == null) {
+                            val = false;
                         }
 
-                        int startH, endH,startM, endM;
-                        boolean validateBooking = true;
-                        String getOtherAppointments = "SELECT * FROM Appointment WHERE ADate = '"
-                                + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
-                                + days.getSelectedItem().toString()+"'";
-                        ResultSet appointmentDT = reg.getData(getOtherAppointments);
-                        try {
-                            while(appointmentDT.next()){
-                                startH = Integer.parseInt(appointmentDT.getTime("StartTime").toString().substring(0,1));
-                                startM = Integer.parseInt(appointmentDT.getTime("StartTime").toString().substring(3,4));
-                                endH = Integer.parseInt(appointmentDT.getTime("EndTime").toString().substring(0,1));
-                                endM = Integer.parseInt(appointmentDT.getTime("EndTime").toString().substring(3,4));
-
-                                if(startH*60+startM+dur>=endH*60+endM){
-                                    validateBooking = false;
+                        if (val) {
+                            String getVisitDuration = "SELECT Duration FROM VisitType Where TypeOfVisit='"
+                                    + (String) aType.getSelectedItem() + "'";
+                            int dur = 0;
+                            ResultSet rs = reg.getData(getVisitDuration);
+                            try {
+                                while (rs.next()) {
+                                    dur = rs.getInt("Duration");
                                 }
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
                             }
-                        } catch (SQLException e1) {
-                            e1.printStackTrace();
-                        }
 
-                        try {
-                            reg.closeConnection();
-                        } catch (SQLException e1) {
-                            e1.printStackTrace();
-                        } catch (ClassNotFoundException e1) {
-                            e1.printStackTrace();
-                        } catch (IllegalAccessException e1) {
-                            e1.printStackTrace();
-                        } catch (InstantiationException e1) {
-                            e1.printStackTrace();
-                        }
+                            int minutes = Integer.parseInt(min.getSelectedItem().toString());
+                            int hours = Integer.parseInt(hr.getSelectedItem().toString());
 
-                        if(validateBooking == true) {
-                            String newBooking = "INSERT INTO Appointment VALUES(" + txtPID.getText() + ", '" +
-                                    (String) aType.getSelectedItem() + "', '" + (String) Partner.getSelectedItem() + "', '" +
-                                    years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" +
-                                    days.getSelectedItem().toString() + "', '"+  hr.getSelectedItem().toString() + ":"
-                                    + min.getSelectedItem().toString() + ":00', '"
-                                    + Integer.toString(hours) + ":" + Integer.toString(minutes) + ":00', 'Active')";
-                            reg.updateData(newBooking);
+                            if (dur + minutes >= 60) {
+                                minutes = minutes + dur - 60;
+                                hours += 1;
+                            } else {
+                                minutes += dur;
+                            }
+
+                            try {
+                                reg.closeConnection();
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
+                            } catch (ClassNotFoundException e1) {
+                                e1.printStackTrace();
+                            } catch (IllegalAccessException e1) {
+                                e1.printStackTrace();
+                            } catch (InstantiationException e1) {
+                                e1.printStackTrace();
+                            }
+
+                            int startH, endH, startM, endM, iterator = 0;
+                            boolean validateBooking = true;
+                            String getClientsID = "SELECT ID FROM Customer";
+                            ResultSet clientsID = reg.getData(getClientsID);
+                            try {
+                                while (clientsID.next()) {
+                                    if (clientsID.getInt("ID") == Integer.parseInt(txtPID.getText()))
+                                        iterator += 1;
+                                }
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
+                            }
+                            if (iterator == 0)
+                                validateBooking = false;
+                            try {
+                                reg.closeConnection();
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
+                            } catch (ClassNotFoundException e1) {
+                                e1.printStackTrace();
+                            } catch (IllegalAccessException e1) {
+                                e1.printStackTrace();
+                            } catch (InstantiationException e1) {
+                                e1.printStackTrace();
+                            }
+                            String getOtherAppointments = "SELECT * FROM Appointment WHERE ADate = '"
+                                    + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
+                                    + days.getSelectedItem().toString() + "'";
+                            ResultSet appointmentDT = reg.getData(getOtherAppointments);
+                            try {
+                                while (appointmentDT.next()) {
+                                    startH = Integer.parseInt(appointmentDT.getTime("StartTime").toString().substring(0, 1));
+                                    startM = Integer.parseInt(appointmentDT.getTime("StartTime").toString().substring(3, 4));
+                                    endH = Integer.parseInt(appointmentDT.getTime("EndTime").toString().substring(0, 1));
+                                    endM = Integer.parseInt(appointmentDT.getTime("EndTime").toString().substring(3, 4));
+
+                                    if (startH * 60 + startM + dur >= endH * 60 + endM) {
+                                        validateBooking = false;
+                                    }
+                                }
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
+                            }
+
+                            try {
+                                reg.closeConnection();
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
+                            } catch (ClassNotFoundException e1) {
+                                e1.printStackTrace();
+                            } catch (IllegalAccessException e1) {
+                                e1.printStackTrace();
+                            } catch (InstantiationException e1) {
+                                e1.printStackTrace();
+                            }
+
+                            if (validateBooking == true) {
+                                String newBooking = "INSERT INTO Appointment VALUES(" + txtPID.getText() + ", '" +
+                                        (String) aType.getSelectedItem() + "', '" + (String) Partner.getSelectedItem() + "', '" +
+                                        years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" +
+                                        days.getSelectedItem().toString() + "', '" + hr.getSelectedItem().toString() + ":"
+                                        + min.getSelectedItem().toString() + ":00', '"
+                                        + Integer.toString(hours) + ":" + Integer.toString(minutes) + ":00', 'Active')";
+                                reg.updateData(newBooking);
+                            }
                         }
                     }
                 }
@@ -188,6 +280,7 @@ public class BookAppointment extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
+
 
     public void CancelAppointment(){
 
