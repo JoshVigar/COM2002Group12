@@ -98,19 +98,20 @@ public class HygienistGUI extends JFrame {
         final JComboBox min = new JComboBox(minute);
         JButton bSubmit = new JButton("Submit");
 
-
+        //creating the timepanel for selecting appointment time
         JPanel timePanel = new JPanel();
         timePanel.add(sTime);
         timePanel.add(hr);
         timePanel.add(min);
 
+        //adding elements to main panel
         JPanel mPanel = new JPanel();
         mPanel.add(timePanel);
         mPanel.add(bSubmit);
         mPanel.setLayout(new BoxLayout(mPanel, BoxLayout.Y_AXIS));
 
 
-
+        //event listener for submit button
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
@@ -122,6 +123,7 @@ public class HygienistGUI extends JFrame {
                 }
         );
 
+        //added back button and event listener
         JButton btnBack = new JButton("Back");
         btnBack.addActionListener(
                 new ActionListener(){
@@ -132,19 +134,22 @@ public class HygienistGUI extends JFrame {
                 }
         );
 
+        //for adding the border to the inputs
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
 
+        //add elements to contentpane and setting layout
         Container contentpane = getContentPane();
         contentpane.add(title, BorderLayout.NORTH);
         contentpane.add(mPanel, BorderLayout.CENTER);
         contentpane.add(btnBack, BorderLayout.SOUTH);
 
-
+        //adding the border to the inputs
         mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
 
         //Don't forget to pack!
         pack();
+        //setting position and close operation for window
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
