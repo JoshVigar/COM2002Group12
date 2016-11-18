@@ -88,7 +88,7 @@ public class DentistGUI extends JFrame {
         String[] tType = {"Checkup","","","",""};
         final JComboBox Type = new JComboBox(tType);
         JLabel sTime = new JLabel("Start Time:");
-        String[] hour = {"Hour","09","10","11","12","14","15","16","17"};
+        String[] hour = {"Hour","09","10","11","12","14","15","16"};
         String[] minute = {"Minute","00","20","40"};
         final JComboBox hr = new JComboBox(hour);
         final JComboBox min = new JComboBox(minute);
