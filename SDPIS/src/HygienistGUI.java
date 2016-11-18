@@ -81,11 +81,12 @@ public class HygienistGUI extends JFrame {
         //setting the location in the window and the close operation
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //set frame visibility to true.
         setVisible(true);
     }
 
     public void FinishAppointmment(){
-        //initialise the window settings
+        //initialising window settings
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
 

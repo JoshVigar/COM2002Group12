@@ -346,6 +346,7 @@ public class ViewAppointments extends JFrame {
     }
 
     public void ViewSecretaryAppointments(){
+        setTitle("Sheffield Dental Practice");
         JTabbedPane tabbedPane = new JTabbedPane();
 
         JLabel denTitle = new JLabel("Dentist Weekly Calendar for Week ...");
