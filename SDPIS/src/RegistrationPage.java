@@ -63,7 +63,7 @@ public class RegistrationPage  extends JFrame {
         final JComboBox subList = new JComboBox(subTypes);
 
         //create text fields to collect address information
-        JLabel houseNum = new JLabel("House Number/Name:");
+        final JLabel houseNum = new JLabel("House Number/Name:");
         final JTextField txtHousenum = new JTextField(20);
         JLabel street = new JLabel("Street Name:");
         final JTextField txtStreet = new JTextField(20);
@@ -121,9 +121,14 @@ public class RegistrationPage  extends JFrame {
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        boolean val = false;
+                        boolean val=true;
+                        boolean skiperror = false;
 
-                        //checking months and days for consistency eg. No 31st of February
+                        //checking months and days for consistency eg. No 31st of February, no "Month"/"Day"
+                        if (days.getSelectedIndex() == 0){ skiperror=true;}
+                        if (months.getSelectedIndex() == 0){ skiperror=true;}
+                        if (years.getSelectedIndex() == 0){ skiperror=true;}
+
                         if((months.getSelectedIndex() == 4
                                 || months.getSelectedIndex() == 6 || months.getSelectedIndex() == 9
                                 || months.getSelectedIndex() == 11)&& days.getSelectedIndex()>=31){
@@ -136,10 +141,21 @@ public class RegistrationPage  extends JFrame {
                             JOptionPane.showMessageDialog(null, "Invalid day selected");
                             val = false;
                             //checking year is in acceptable range
-                        }else if(Integer.parseInt((String)years.getSelectedItem()) > (int)(Calendar.getInstance().get(Calendar.YEAR))){
+                        }else if (!skiperror){
+                            if(Integer.parseInt(years.getSelectedItem().toString()) > (Calendar.getInstance().get(Calendar.YEAR))){
                             JOptionPane.showMessageDialog(null, "Invalid input, Year is in future");
-                            val = false;
-                        }else val = true;
+                            val = false;}
+                        }
+
+                        if (txtTitle.getText().equals("")){ val=false;}
+                        if (txtFName.getText().equals("")){ val=false;}
+                        if (txtLName.getText().equals("")){ val=false;}
+                        if (txtPhone.getText().equals("")){ val=false;}
+                        if (txtHousenum.getText().equals("")){ val=false;}
+                        if (txtStreet.getText().equals("")){ val=false;}
+                        if (txtAddressCity.getText().equals("")){ val=false;}
+                        if (txtAddressRegion.getText().equals("")){ val=false;}
+                        if (txtPostCode.getText().equals("")){ val=false;}
 
 
 
@@ -167,14 +183,14 @@ public class RegistrationPage  extends JFrame {
                             } else if ((String) subList.getSelectedItem() == "Dental Repair Plan") {
                                 firstSubscription += "'" + (String) subList.getSelectedItem() + "', 36,2,2,2" + ", '" + endDate + "')";
                             }
-                            validation += reg.updateData(firstSubscription);
+                            reg.updateData(firstSubscription);
 
 
                             String address = "INSERT INTO Address (AddressID, HouseNum, Street, City, Region, PostCode)" +
                                     " VALUES ('" + txtHousenum.getText() + " " + txtPostCode.getText() + "', '" + txtHousenum.getText() + "', '" +
                                     txtStreet.getText() + "', '" + txtAddressCity.getText() + "', '" + txtAddressRegion.getText() + "', '" +
                                     txtPostCode.getText() + "')";
-                            validation += reg.updateData(address);
+                            reg.updateData(address);
 
 
                             //details to insert into customer table
@@ -182,15 +198,15 @@ public class RegistrationPage  extends JFrame {
                                     " VALUES ('" + txtTitle.getText() + "', '" + txtFName.getText() + "', '" + txtLName.getText() + "', '" +
                                     years.getSelectedItem() + "-" + months.getSelectedItem() + "-" + days.getSelectedItem() + "', '" +
                                     txtPhone.getText() + "', '" + txtHousenum.getText() + " " + txtPostCode.getText() + "')";
-                            validation = +reg.updateData(customer);
+                            reg.updateData(customer);
                             //TO BE REMOVED LATER
                             System.out.print(Arrays.toString(newPatient));
 
-                            if (validation > 1) {
-                                JOptionPane.showMessageDialog(null, "New Patient Added");
-                                dispose();
-                                new SecretaryGUI().SecretaryGUI();
-                            }
+
+                            JOptionPane.showMessageDialog(null, "New Patient Added");
+                            dispose();
+                            new SecretaryGUI().SecretaryGUI();
+
                         }
                     }
                 }
