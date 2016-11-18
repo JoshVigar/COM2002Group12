@@ -20,7 +20,7 @@ public class BookAppointment extends JFrame{
 
         JLabel title = new JLabel("Enter Appointment Details");
         JLabel pID = new JLabel("PatientID:");
-        JLabel partner = new JLabel("Partner:");
+        final JLabel partner = new JLabel("Partner:");
         JLabel tType = new JLabel("Treatment Type:");
         final JTextField txtPID = new JTextField(20);
         String[] partners = {"Dentist","Hygienist"};
@@ -132,14 +132,17 @@ public class BookAppointment extends JFrame{
                                 e1.printStackTrace();
                             }
 
-                            int minutes = Integer.parseInt(min.getSelectedItem().toString());
-                            int hours = Integer.parseInt(hr.getSelectedItem().toString());
+                            int startMinutes = Integer.parseInt(min.getSelectedItem().toString());
+                            int startHours = Integer.parseInt(hr.getSelectedItem().toString());
 
-                            if (dur + minutes >= 60) {
-                                minutes = minutes + dur - 60;
-                                hours += 1;
+                            int minutes=0;
+                            int hours=0;
+
+                            if (dur + startMinutes >= 60) {
+                                minutes = startMinutes + dur - 60;
+                                hours = startHours + 1;
                             } else {
-                                minutes += dur;
+                                minutes = startMinutes + dur;
                             }
 
                             try {
@@ -154,13 +157,29 @@ public class BookAppointment extends JFrame{
                                 e1.printStackTrace();
                             }
 
-                            int startH, endH, startM, endM, iterator = 0;
+                            int startH, endH, startM, endM, iterator = 0,newSM = 0;
                             boolean validateBooking = true;
-                            String getClientsID = "SELECT ID FROM Customer";
+                            String getClientsID = "SELECT ID FROM Appointment Where ADate = '"
+                                    + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" +
+                                    days.getSelectedItem().toString()+"'";
+                            for(int i =0;i<dur;i+=20){
+                                if(i==0)
+                                    getClientsID = getClientsID + " AND StartTime = '" + startHours + ":" + startMinutes + ":00'";
+                                if(startMinutes+i<60)
+                                    getClientsID = getClientsID + " OR ADate = '"
+                                            + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" +
+                                            days.getSelectedItem().toString()+"' AND StartTime = '" + startHours + ":" + (startMinutes+i) + ":00'";
+                                else {
+                                    newSM+=20;
+                                    getClientsID = getClientsID + " OR ADate = '"
+                                            + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" +
+                                            days.getSelectedItem().toString()+"' AND StartTime = '" + (startHours + 1) + ":" + newSM + ":00'";
+                                }
+                            }
                             ResultSet clientsID = reg.getData(getClientsID);
                             try {
                                 while (clientsID.next()) {
-                                    if (clientsID.getInt("ID") == Integer.parseInt(txtPID.getText()))
+                                    if (clientsID.getInt("ID") == Integer.parseInt(txtPID.getText().trim()))
                                         iterator += 1;
                                 }
                             } catch (SQLException e1) {
@@ -181,7 +200,7 @@ public class BookAppointment extends JFrame{
                             }
                             String getOtherAppointments = "SELECT * FROM Appointment WHERE ADate = '"
                                     + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
-                                    + days.getSelectedItem().toString() + "'";
+                                    + days.getSelectedItem().toString() + "' AND Partner = '" + Partner.getSelectedItem().toString() + "'";
                             ResultSet appointmentDT = reg.getData(getOtherAppointments);
                             try {
                                 while (appointmentDT.next()) {
@@ -210,7 +229,7 @@ public class BookAppointment extends JFrame{
                                 e1.printStackTrace();
                             }
 
-                            if (validateBooking == true) {
+                            if (validateBooking) {
                                 String newBooking = "INSERT INTO Appointment VALUES(" + txtPID.getText() + ", '" +
                                         (String) aType.getSelectedItem() + "', '" + (String) Partner.getSelectedItem() + "', '" +
                                         years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" +
@@ -218,6 +237,8 @@ public class BookAppointment extends JFrame{
                                         + min.getSelectedItem().toString() + ":00', '"
                                         + Integer.toString(hours) + ":" + Integer.toString(minutes) + ":00', 'Active')";
                                 reg.updateData(newBooking);
+                            }else{
+                                JOptionPane.showMessageDialog(null, "This Appointment time is unavailable. Please Select another.");
                             }
                         }
                     }

@@ -60,7 +60,7 @@ public class RegistrationPage  extends JFrame {
 
         //combobox subscription types
         JLabel sub = new JLabel("Subscription:");
-        String[] subTypes = { "None", "NHS Free Plan", "Maintenance PLan", "Oral Health Plan", "Dental Repair Plan"};
+        String[] subTypes = { "None", "NHS Free Plan", "Maintenance Plan", "Oral Health Plan", "Dental Repair Plan"};
         final JComboBox subList = new JComboBox(subTypes);
 
         //create text fields to collect address information
@@ -136,11 +136,7 @@ public class RegistrationPage  extends JFrame {
                                 && years.getSelectedIndex()%4 == 0 ){
                             JOptionPane.showMessageDialog(null, "Invalid day selected");
                             val = false;}
-                            //checking year is in acceptable range
-//                        }else if(Integer.parseInt(years.getSelectedItem().toString()) > (int)(Calendar.getInstance().get(Calendar.YEAR))){
-//                            JOptionPane.showMessageDialog(null, "Invalid input, Year is in future");
-//                            val = false;
-//                        }
+
 
                         if(txtTitle.getText().trim().equals(""))val = false;
                         if(txtFName.getText().trim().equals(""))val = false;
