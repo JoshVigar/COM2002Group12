@@ -1,3 +1,5 @@
+import javafx.util.converter.LocalDateStringConverter;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import javax.swing.*;
@@ -11,6 +13,7 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,173 +27,10 @@ public class ViewAppointments extends JFrame {
     public ViewAppointments() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
     }
 
-    public JPanel HygienistCalendar() {
-        String[] columnNames  = {"Time","Appointment"};
-
-        Object[][] monData = {
-                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
-                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
-                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
-                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
-                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
-                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
-                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
-                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
-        };
-        Object[][] tueData = {
-                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
-                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
-                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
-                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
-                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
-                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
-                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
-                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
-        };
-        Object[][] wedData = {
-                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
-                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
-                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
-                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
-                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
-                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
-                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
-                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
-        };
-        Object[][] thurData = {
-                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
-                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
-                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
-                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
-                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
-                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
-                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
-                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
-        };
-        Object[][] friData = {
-                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
-                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
-                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
-                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
-                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
-                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
-                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
-                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
-        };
-
-        JTable monCalendar = new JTable(monData,columnNames);
-        JTable tueCalendar = new JTable(tueData,columnNames);
-        JTable wedCalendar = new JTable(wedData,columnNames);
-        JTable thurCalendar = new JTable(thurData,columnNames);
-        JTable friCalendar = new JTable(friData,columnNames);
-
-        JLabel monTitle = new JLabel("Monday:");
-        JLabel tueTitle = new JLabel("Tuesday:");
-        JLabel wedTitle = new JLabel("Wednesday:");
-        JLabel thurTitle = new JLabel("Thursday:");
-        JLabel friTitle = new JLabel("Friday:");
-
-        JPanel hygPanel = new JPanel();
-        hygPanel.add(monTitle);
-        hygPanel.add(monCalendar);
-        hygPanel.add(tueTitle);
-        hygPanel.add(tueCalendar);
-        hygPanel.add(wedTitle);
-        hygPanel.add(wedCalendar);
-        hygPanel.add(thurTitle);
-        hygPanel.add(thurCalendar);
-        hygPanel.add(friTitle);
-        hygPanel.add(friCalendar);
-
-        return hygPanel;
-
-    }
-
-    public JPanel DentistCalendar() {
-        String[] columnNames  = {"Time","Appointment"};
-
-        Object[][] monData = {
-                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
-                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
-                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
-                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
-                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
-                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
-                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
-                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
-        };
-        Object[][] tueData = {
-                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
-                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
-                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
-                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
-                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
-                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
-                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
-                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
-        };
-        Object[][] wedData = {
-                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
-                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
-                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
-                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
-                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
-                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
-                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
-                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
-        };
-        Object[][] thurData = {
-                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
-                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
-                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
-                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
-                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
-                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
-                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
-                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
-        };
-        Object[][] friData = {
-                {"9:00", ""},{"9:20", ""}, {"9:40", ""},
-                {"10.00", ""},{"10:20", ""}, {"10:40", ""},
-                {"11:00", ""},{"11:20", ""}, {"11:40", ""},
-                {"12:00", ""},{"12:20", ""}, {"12:40", ""},
-                {"13:00", ""},{"13:20", ""}, {"13:40", ""},
-                {"14:00", ""},{"14:20", ""}, {"14:40", ""},
-                {"15:00", ""},{"15:20", ""}, {"15:40", ""},
-                {"16:00", ""},{"16:20", ""}, {"16:40", ""},
-        };
-
-        JTable monCalendar = new JTable(monData,columnNames);
-        JTable tueCalendar = new JTable(tueData,columnNames);
-        JTable wedCalendar = new JTable(wedData,columnNames);
-        JTable thurCalendar = new JTable(thurData,columnNames);
-        JTable friCalendar = new JTable(friData,columnNames);
-
-        JLabel monTitle = new JLabel("Monday:");
-        JLabel tueTitle = new JLabel("Tuesday:");
-        JLabel wedTitle = new JLabel("Wednesday:");
-        JLabel thurTitle = new JLabel("Thursday:");
-        JLabel friTitle = new JLabel("Friday:");
-
-        JPanel denPanel = new JPanel();
-        denPanel.add(monTitle);
-        denPanel.add(monCalendar);
-        denPanel.add(tueTitle);
-        denPanel.add(tueCalendar);
-        denPanel.add(wedTitle);
-        denPanel.add(wedCalendar);
-        denPanel.add(thurTitle);
-        denPanel.add(thurCalendar);
-        denPanel.add(friTitle);
-        denPanel.add(friCalendar);
-
-        return denPanel;
-    }
-
     public void ViewDentistAppointments() {
         //Set title and size of frame
         setTitle("Sheffield Dental Practice");
-        setSize(1300,600);
+        setSize(1300, 600);
 
         //get content pane
         Container container = getContentPane();
@@ -202,7 +42,7 @@ public class ViewAppointments extends JFrame {
         //Title of panel
         JLabel title = new JLabel("Dentist Appointments: " + date);
         //create string to represent sql query
-        String sql = "SELECT ID,TypeOfVisit,StartTime FROM Appointment WHERE ADate = '"+ date +"' AND Partner = 'Dentist' AND State = 'Active'";
+        String sql = "SELECT ID,TypeOfVisit,StartTime FROM Appointment WHERE ADate = '" + date + "' AND Partner = 'Dentist' AND State = 'Active'";
         //store result set of executing Query
         ResultSet rs = view.getData(sql);
 
@@ -213,7 +53,7 @@ public class ViewAppointments extends JFrame {
 
         //create a text area to house appointment details
         JTextArea textArea = new JTextArea();
-        textArea.setMargin(new Insets(10,10,10,10));
+        textArea.setMargin(new Insets(10, 10, 10, 10));
         textArea.setEditable(false);
         JScrollPane areaScrollPane = new JScrollPane(textArea);
         areaScrollPane.setVerticalScrollBarPolicy(
@@ -223,9 +63,9 @@ public class ViewAppointments extends JFrame {
 
         try {
             //loop through result set appending each appointment to the textArea
-            if (!rs.next()){
+            if (!rs.next()) {
                 textArea.append("No Appointments today");
-            }else {
+            } else {
                 while (rs.next()) {
                     int id = rs.getInt("ID");
                     String type = rs.getString("TypeOfVisit");
@@ -244,19 +84,19 @@ public class ViewAppointments extends JFrame {
         //create go back button
         JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
-                new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
                         dispose();
                         new DentistGUI().DentistGUI();
                     }
                 }
         );
 
-        int bHeight = (int)(this.getHeight()*0.05);
-        int bWidth = (int)(this.getWidth()*0.05);
+        int bHeight = (int) (this.getHeight() * 0.05);
+        int bWidth = (int) (this.getWidth() * 0.05);
         //add back button to panel
         mPanel.add(btnBack, BorderLayout.SOUTH);
-        mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
+        mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight, bWidth, bHeight, bWidth));
         container.add(mPanel);
 
         //Don't forget to pack! and setVisible to true
@@ -269,7 +109,7 @@ public class ViewAppointments extends JFrame {
     public void ViewHygienistAppointments() {
         //Set title and size of frame
         setTitle("Sheffield Dental Practice");
-        setSize(1300,600);
+        setSize(1300, 600);
 
         //get content pane
         Container container = getContentPane();
@@ -279,9 +119,9 @@ public class ViewAppointments extends JFrame {
         String date = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate);
 
         //Title of panel
-        JLabel title = new JLabel("Hygienist Appointments: "+localDate);
+        JLabel title = new JLabel("Hygienist Appointments: " + localDate);
         //create string to represent sql query
-        String sql = "SELECT ID,TypeOfVisit,StartTime FROM Appointment WHERE ADate = '"+date+"' AND Partner = 'Hygienist' AND State = 'Active'";
+        String sql = "SELECT ID,TypeOfVisit,StartTime FROM Appointment WHERE ADate = '" + date + "' AND Partner = 'Hygienist' AND State = 'Active'";
         //store result set of executing Query
         ResultSet rs = view.getData(sql);
 
@@ -292,7 +132,7 @@ public class ViewAppointments extends JFrame {
 
         //create a text area to house appointment details
         JTextArea textArea = new JTextArea();
-        textArea.setMargin(new Insets(10,10,10,10));
+        textArea.setMargin(new Insets(10, 10, 10, 10));
         textArea.setEditable(false);
         JScrollPane areaScrollPane = new JScrollPane(textArea);
         areaScrollPane.setVerticalScrollBarPolicy(
@@ -302,9 +142,9 @@ public class ViewAppointments extends JFrame {
 
         //loop through result set appending each appointment to the textArea
         try {
-            if (!rs.next()){
+            if (!rs.next()) {
                 textArea.append("No Appointments today");
-            }else {
+            } else {
                 while (rs.next()) {
                     int id = rs.getInt("ID");
                     String type = rs.getString("TypeOfVisit");
@@ -323,19 +163,19 @@ public class ViewAppointments extends JFrame {
         //create go back button
         JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
-                new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
                         dispose();
                         new HygienistGUI().HygienistGUI();
                     }
                 }
         );
 
-        int bHeight = (int)(this.getHeight()*0.05);
-        int bWidth = (int)(this.getWidth()*0.05);
+        int bHeight = (int) (this.getHeight() * 0.05);
+        int bWidth = (int) (this.getWidth() * 0.05);
         //add back button to panel
         mPanel.add(btnBack, BorderLayout.SOUTH);
-        mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
+        mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight, bWidth, bHeight, bWidth));
         container.add(mPanel);
 
         //Don't forget to pack! and setVisible to true
@@ -345,45 +185,231 @@ public class ViewAppointments extends JFrame {
         setVisible(true);
     }
 
-    public void ViewSecretaryAppointments(){
+    public void startDate() {
+        //Set title and size of frame
+        setTitle("Sheffield Dental Practice");
+        setSize(1300, 600);
+
+        //get content pane
+        Container container = getContentPane();
+        //Title of panel
+        JLabel title = new JLabel("Select Calendar Start Date");
+        //current date
+        LocalDate localDate = LocalDate.now();
+        int year = localDate.getYear();
+        String date = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate);
+
+        //combobox for date
+        final JComboBox days = new JComboBox();
+        final JComboBox months = new JComboBox();
+        final JComboBox years = new JComboBox();
+        JButton bSubmit = new JButton("Submit");
+
+        //Use for loops to create the date options
+        days.addItem("Day");
+        for (int i = 1; i <= 31; i++) {
+            days.addItem(new Integer(i));
+        }
+
+        months.addItem("Month");
+        for (int i = 1; i <= 12; i++) {
+            months.addItem(new Integer(i));
+        }
+
+        years.addItem("Year");
+        for (int i = year; i <= year + 1; i++) {
+            years.addItem(new Integer(i));
+        }
+        //panel to store dates and submit button.
+        JPanel dpanel = new JPanel();
+        dpanel.add(days);
+        dpanel.add(months);
+        dpanel.add(years);
+        dpanel.add(bSubmit);
+
+        //create a panel set its layout, add a title
+        JPanel mPanel = new JPanel();
+        mPanel.setLayout(new BorderLayout());
+        mPanel.add(title, BorderLayout.NORTH);
+        mPanel.add(dpanel, BorderLayout.CENTER);
+
+
+        bSubmit.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        dispose();
+                        try {
+                            String startDate = years.getSelectedItem() + "-" + months.getSelectedItem() + "-" + days.getSelectedItem();
+                            new ViewAppointments().ViewSecretaryAppointments(startDate);
+                        } catch (ClassNotFoundException e1) {
+                            e1.printStackTrace();
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        } catch (InstantiationException e1) {
+                            e1.printStackTrace();
+                        } catch (IllegalAccessException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+                }
+        );
+        //create go back button
+        JButton btnBack = new JButton("Go Back");
+        btnBack.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        dispose();
+                        new HygienistGUI().HygienistGUI();
+                    }
+                }
+        );
+
+        int bHeight = (int) (this.getHeight() * 0.05);
+        int bWidth = (int) (this.getWidth() * 0.05);
+        //add back button to panel
+        mPanel.add(btnBack, BorderLayout.SOUTH);
+        mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight, bWidth, bHeight, bWidth));
+        container.add(mPanel);
+
+        //Don't forget to pack! and setVisible to true
+        pack();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+
+    public void ViewSecretaryAppointments(String startDate) {
         JTabbedPane tabbedPane = new JTabbedPane();
 
-        JLabel denTitle = new JLabel("Dentist Weekly Calendar for Week ...");
-        JLabel hygTitle = new JLabel("Hygienist Weekly Calendar for Week ...");
+        //start date of calendar
+        String startDay = startDate;
+        LocalDate appointDate = LocalDate.parse(startDay);
+        String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(appointDate.plusWeeks(1));
+
+        JLabel denTitle = new JLabel("Dentist Weekly Calendar from: " + startDay);
+        JLabel hygTitle = new JLabel("Hygienist Weekly Calendar from: " + startDay);
+
+        //dentist appointments
+        //create string to represent sql query
+        String sql = "SELECT ID,TypeOfVisit,ADate,StartTime FROM Appointment WHERE ADate BETWEEN '" + startDay + "' AND '" +
+                endDate + "' AND Partner = 'Dentist' AND State = 'Active'";
+        //store result set of executing Query
+        ResultSet rs = view.getData(sql);
+
+        //create a panel set its layout, add a title
+        JPanel mPanel = new JPanel();
+
+        //create a text area to house appointment details
+        JTextArea textArea = new JTextArea();
+        textArea.setMargin(new Insets(10, 10, 10, 10));
+        textArea.setEditable(false);
+        JScrollPane areaScrollPane = new JScrollPane(textArea);
+        areaScrollPane.setVerticalScrollBarPolicy(
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        areaScrollPane.setPreferredSize(new Dimension(300, 300));
+        String newLine = "\n";
+
+        try {
+            //loop through result set appending each appointment to the textArea
+            if (!rs.next()) {
+                textArea.append("No Appointments today");
+            } else {
+                while (rs.next()) {
+                    int id = rs.getInt("ID");
+                    String type = rs.getString("TypeOfVisit");
+                    Date appDay = rs.getDate("ADate");
+                    Time startTime = rs.getTime("StartTime");
+                    String appoint = "Date: "+appDay+" Start Time: " + startTime + " Customer ID: " + id +
+                            " Visit Type: " + type;
+                    System.out.println(" " + appoint);
+                    textArea.append(appoint + newLine);
+                }
+            }
+            //add textArea to the panel
+            mPanel.add(textArea, BorderLayout.CENTER);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         JButton btnBackDen = new JButton("Go Back");
         btnBackDen.addActionListener(
-                new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
                         dispose();
                         new SecretaryGUI().SecretaryGUI();
                     }
                 }
         );
 
+        //Hygienist calendar
+        //dentist appointments
+        //create string to represent sql query
+        sql = "SELECT ID,TypeOfVisit,ADate,StartTime FROM Appointment WHERE ADate BETWEEN '" + startDay + "' AND '" +
+                endDate + "' AND Partner = 'Hygienist' AND State = 'Active'";
+        //store result set of executing Query
+        rs = view.getData(sql);
+
+        //create a panel set its layout, add a title
+        JPanel hPanel = new JPanel();
+
+        //create a text area to house appointment details
+        JTextArea textArea1 = new JTextArea();
+        textArea1.setMargin(new Insets(10, 10, 10, 10));
+        textArea1.setEditable(false);
+        JScrollPane areaScrollPane1 = new JScrollPane(textArea1);
+        areaScrollPane.setVerticalScrollBarPolicy(
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        areaScrollPane1.setPreferredSize(new Dimension(300, 300));
+
+
+        try {
+            //loop through result set appending each appointment to the textArea
+            if (!rs.next()) {
+                textArea1.append("No Appointments today");
+            } else {
+                while (rs.next()) {
+                    int id = rs.getInt("ID");
+                    String type = rs.getString("TypeOfVisit");
+                    Date appDay = rs.getDate("ADate");
+                    Time startTime = rs.getTime("StartTime");
+                    String appoint = "Date: "+appDay+" Start Time: " + startTime + " Customer ID: " + id +
+                            " Visit Type: " + type;
+                    System.out.println(" " + appoint);
+                    textArea1.append(appoint + newLine);
+                }
+            }
+            //add textArea to the panel
+            hPanel.add(textArea1, BorderLayout.CENTER);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //go back button
         JButton btnBackHyg = new JButton("Go Back");
         btnBackHyg.addActionListener(
-                new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
                         dispose();
                         new SecretaryGUI().SecretaryGUI();
                     }
                 }
         );
 
+        //add details to the dentist panel
         JPanel dentist = new JPanel();
-        dentist.add(denTitle,BorderLayout.NORTH);
-        dentist.add(DentistCalendar(),BorderLayout.CENTER);
-        dentist.add(btnBackDen,BorderLayout.SOUTH);
+        dentist.add(denTitle, BorderLayout.NORTH);
+        dentist.add(textArea, BorderLayout.CENTER);
+        dentist.add(btnBackDen, BorderLayout.SOUTH);
 
-        tabbedPane.addTab("Dentist Appointments",null,dentist, null);
+        tabbedPane.addTab("Dentist Appointments", null, dentist, null);
 
+        //add details to the hygienist panel
         JPanel hygienist = new JPanel();
-        hygienist.add(hygTitle,BorderLayout.NORTH);
-        hygienist.add(HygienistCalendar(),BorderLayout.CENTER);
-        hygienist.add(btnBackHyg,BorderLayout.SOUTH);
+        hygienist.add(hygTitle, BorderLayout.NORTH);
+        hygienist.add(textArea1, BorderLayout.CENTER);
+        hygienist.add(btnBackHyg, BorderLayout.SOUTH);
 
-        tabbedPane.addTab("Hygienist Appointments", null,hygienist, null);
+        tabbedPane.addTab("Hygienist Appointments", null, hygienist, null);
 
         JFrame frame = new JFrame("TabbedPaneDemo");
 
@@ -396,5 +422,4 @@ public class ViewAppointments extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
 }
