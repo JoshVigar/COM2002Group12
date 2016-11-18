@@ -43,12 +43,12 @@ public class ViewAppointment extends JFrame {
 
         //Use for loops to create the date options
         days.addItem("Day");
-        for (int i = 1; i <= 31; i++) {
+        for (int i = 01; i <= 31; i++) {
             days.addItem(new Integer(i));
         }
 
         months.addItem("Month");
-        for (int i = 1; i <= 12; i++) {
+        for (int i = 01; i <= 12; i++) {
             months.addItem(new Integer(i));
         }
 
@@ -117,7 +117,7 @@ public class ViewAppointment extends JFrame {
 
     public void getAppointments(String date, String partner){
         String startDay = date;
-        String user = partner;
+        final String user = partner;
 
         if(!partner.equals("Secretary")){
             //Set title and size of frame
@@ -134,9 +134,189 @@ public class ViewAppointment extends JFrame {
                     "' AND Partner = '"+user+"' AND State = 'Active'";
             //store result set of executing Query
             ResultSet rs = view.getData(sql);
+            //create a panel set its layout, add a title
+            JPanel mPanel = new JPanel();
+            mPanel.setLayout(new BorderLayout());
+            mPanel.add(title, BorderLayout.NORTH);
+
+            //create a text area to house appointment details
+            JTextArea textArea = new JTextArea();
+            textArea.setMargin(new Insets(10, 10, 10, 10));
+            textArea.setEditable(false);
+            JScrollPane areaScrollPane = new JScrollPane(textArea);
+            areaScrollPane.setVerticalScrollBarPolicy(
+                    JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            areaScrollPane.setPreferredSize(new Dimension(300, 300));
+            String newLine = "\n";
+
+            try {
+                //loop through result set appending each appointment to the textArea
+                if (!rs.next()) {
+                    textArea.append("No Appointments today");
+                } else {
+                    while (rs.next()) {
+                        int id = rs.getInt("ID");
+                        String type = rs.getString("TypeOfVisit");
+                        Time startTime = rs.getTime("StartTime");
+                        String appoint = "Start Time: " + startTime + " Customer ID: " + id + " Visit Type: " + type;
+                        System.out.println(" " + appoint);
+                        textArea.append(appoint + newLine);
+                    }
+                }
+                //add textArea to the panel
+                mPanel.add(textArea, BorderLayout.CENTER);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            //create go back button
+            JButton btnBack = new JButton("Go Back");
+            btnBack.addActionListener(
+                    new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            dispose();
+                            if(user.equals("Dentist")) {
+                                new DentistGUI().DentistGUI();
+                            }else if(user.equals("Hygienist")){
+                                new HygienistGUI().HygienistGUI();
+                            }
+                        }
+                    }
+            );
+
+            int bHeight = (int) (this.getHeight() * 0.05);
+            int bWidth = (int) (this.getWidth() * 0.05);
+            //add back button to panel
+            mPanel.add(btnBack, BorderLayout.SOUTH);
+            mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight, bWidth, bHeight, bWidth));
+            container.add(mPanel);
+
+            //Don't forget to pack! and setVisible to true
+            pack();
+            setLocationRelativeTo(null);
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setVisible(true);
+
         }else{
-            LocalDate appointDate = LocalDate.parse(startDay);
+            //create a tabbed pane
+            JTabbedPane tabbedPane = new JTabbedPane();
+            LocalDate appointDate;
+            //start date and end date of calendar
+            if(startDay.length()<10){
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
+                appointDate = LocalDate.parse(startDay,formatter);
+            }else{
+                appointDate = LocalDate.parse(startDay);
+            }
             String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(appointDate.plusWeeks(1));
+
+            JLabel denTitle = new JLabel("Dentist Weekly Calendar from: " + startDay);
+            JLabel hygTitle = new JLabel("Hygienist Weekly Calendar from: " + startDay);
+
+            String sql = "SELECT ID,TypeOfVisit,Partner,ADate,StartTime FROM Appointment WHERE ADate BETWEEN '" +
+                    startDay + "' AND '" + endDate + "' AND State = 'Active'";
+
+            //store result set of executing Query
+            ResultSet rs = view.getData(sql);
+
+            //dentist panel
+            //JPanel dPanel = new JPanel();
+            //hygienist panel
+            //JPanel hPanel = new JPanel();
+
+            //create a text area to house appointment details
+            //dentist text area
+            JTextArea textArea = new JTextArea();
+            textArea.setMargin(new Insets(10, 10, 10, 10));
+            textArea.setEditable(false);
+            JScrollPane areaScrollPane = new JScrollPane(textArea);
+            areaScrollPane.setVerticalScrollBarPolicy(
+                    JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            areaScrollPane.setPreferredSize(new Dimension(300, 300));
+            String newLine = "\n";
+
+            //hygienist text area
+            JTextArea textArea1 = new JTextArea();
+            textArea1.setMargin(new Insets(10, 10, 10, 10));
+            textArea1.setEditable(false);
+            JScrollPane areaScrollPane1 = new JScrollPane(textArea1);
+            areaScrollPane.setVerticalScrollBarPolicy(
+                    JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            areaScrollPane1.setPreferredSize(new Dimension(300, 300));
+
+            try {
+                //loop through result set appending each appointment to the textArea
+                if (!rs.next()) {
+                    textArea.append("No Appointments this Week");
+                    textArea1.append("No Appointments this Week");
+                } else {
+                    while (rs.next()) {
+                        int id = rs.getInt("ID");
+                        String type = rs.getString("TypeOfVisit");
+                        String partners = rs.getString("Partner");
+                        Date appDay = rs.getDate("ADate");
+                        Time startTime = rs.getTime("StartTime");
+                        String appoint = "Date: "+appDay+" Start Time: " + startTime + " Customer ID: " + id +
+                                " Visit Type: " + type;
+                        System.out.println(" " + appoint);
+                        if(partners.equals("Dentist")) {
+                            textArea.append(appoint + newLine);
+                        }else if(partners.equals("Hygienist")){
+                            textArea1.append(appoint + newLine);
+                        }
+                    }
+                }
+                //add textArea to the panel
+                //dPanel.add(textArea, BorderLayout.CENTER);
+                //hPanel.add(textArea, BorderLayout.CENTER);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            //back button
+            JButton btnBackSec = new JButton("Go Back");
+            btnBackSec.addActionListener(
+                    new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            dispose();
+                            new SecretaryGUI().SecretaryGUI();
+                        }
+                    }
+            );
+            //go back button
+            JButton btnBackHyg = new JButton("Go Back");
+            btnBackHyg.addActionListener(
+                    new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            dispose();
+                            new SecretaryGUI().SecretaryGUI();
+                        }
+                    }
+            );
+            //add details to the dentist panel
+            JPanel dentist = new JPanel();
+            dentist.add(denTitle, BorderLayout.NORTH);
+            dentist.add(textArea, BorderLayout.CENTER);
+            dentist.add(btnBackSec, BorderLayout.SOUTH);
+
+            tabbedPane.addTab("Dentist Appointments", null, dentist, null);
+
+            //add details to the hygienist panel
+            JPanel hygienist = new JPanel();
+            hygienist.add(hygTitle, BorderLayout.NORTH);
+            hygienist.add(textArea1, BorderLayout.CENTER);
+            hygienist.add(btnBackHyg, BorderLayout.SOUTH);
+
+            tabbedPane.addTab("Hygienist Appointments", null, hygienist, null);
+
+            JFrame frame = new JFrame("TabbedPaneDemo");
+
+            //Add content to the window.
+            add(tabbedPane, BorderLayout.CENTER);
+
+            //Display the window.
+            pack();
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setLocationRelativeTo(null);
+            setVisible(true);
         }
     }
 }

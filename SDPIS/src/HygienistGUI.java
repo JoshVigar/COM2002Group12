@@ -28,7 +28,7 @@ public class HygienistGUI extends JFrame {
                     public void actionPerformed(ActionEvent e){
                         dispose();
                         try {
-                            new ViewAppointments().ViewHygienistAppointments();
+                            new ViewAppointment().startDate("Hygienist");
                         } catch (ClassNotFoundException e1) {
                             e1.printStackTrace();
                         } catch (SQLException e1) {
