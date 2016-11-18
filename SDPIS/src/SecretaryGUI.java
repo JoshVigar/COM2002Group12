@@ -102,7 +102,7 @@ public class SecretaryGUI extends JFrame{
         buttonPanel.add(btnBA);
         buttonPanel.add(btnChk);
 
-        JButton btnBack = new JButton("Back");
+        JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
@@ -112,7 +112,7 @@ public class SecretaryGUI extends JFrame{
                 }
         );
 
-        JLabel title = new JLabel("Secretary View");
+        JLabel title = new JLabel("Secretary Page");
 
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
@@ -177,7 +177,7 @@ public class SecretaryGUI extends JFrame{
                 }
         );
 
-        JButton btnBack = new JButton("Back");
+        JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
