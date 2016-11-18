@@ -35,6 +35,15 @@ public class SecretaryGUI extends JFrame{
                     }
                 }
         );
+        JButton btnMA = new JButton("View A Single Appointment");
+        btnMA.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        dispose();
+                        new ManageAppointments().ManageAppointments();
+                    }
+                }
+        );
 
         JButton btnReg = new JButton("Register Patient");
         btnReg.addActionListener(
@@ -99,6 +108,7 @@ public class SecretaryGUI extends JFrame{
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(0, 1));
         buttonPanel.add(btnApp);
+        buttonPanel.add(btnMA);
         buttonPanel.add(btnReg);
         buttonPanel.add(btnMP);
         buttonPanel.add(btnBA);

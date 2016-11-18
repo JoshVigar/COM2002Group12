@@ -8,8 +8,13 @@ import java.util.Calendar;
  * Created by User on 18/11/2016.
  */
 public class ManageAppointments extends JFrame{
+
+    public static void main(String args[]){
+        new ManageAppointments().ManageAppointments();
+    }
+
     public void ManageAppointments(){
-        //setting initial window ssettings
+        //setting initial window settings
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
 
@@ -42,37 +47,50 @@ public class ManageAppointments extends JFrame{
         timePanel.add(min);
 
         //comboboxes date of appointment
-        JLabel date2 = new JLabel("Date of Appointment:");
-        final JComboBox days2 = new JComboBox();
-        final JComboBox months2 = new JComboBox();
-        final JComboBox years2 = new JComboBox();
+        JLabel date = new JLabel("Date of Appointment:");
+        final JComboBox days = new JComboBox();
+        final JComboBox months = new JComboBox();
+        final JComboBox years = new JComboBox();
 
         //Use for loops to create the date options
-        days2.addItem("Day");
+        days.addItem("Day");
         for(int i=1;i<=31;i++) {
-            days2.addItem(new Integer(i));
+            days.addItem(new Integer(i));
         }
 
-        months2.addItem("Month");
+        months.addItem("Month");
         for(int i=1;i<=12;i++) {
-            months2.addItem(new Integer(i));
+            months.addItem(new Integer(i));
         }
 
-        years2.addItem("Year");
+        years.addItem("Year");
         for(int i = (int)(Calendar.getInstance().get(Calendar.YEAR)); i<=
                 (int)(Calendar.getInstance().get(Calendar.YEAR))+1; i++) {
-            years2.addItem(new Integer(i));
+            years.addItem(new Integer(i));
         }
 
         //create a panel and add date comboBox
-        JPanel dPanel2 = new JPanel();
-        dPanel2.add(date2);
-        dPanel2.add(days2);
-        dPanel2.add(months2);
-        dPanel2.add(years2);
+        JPanel dPanel = new JPanel();
+        dPanel.add(date);
+        dPanel.add(days);
+        dPanel.add(months);
+        dPanel.add(years);
 
-        JButton btnBack2 = new JButton("Go Back");
-        btnBack2.addActionListener(
+        JButton bSubmit = new JButton("Go Back");
+        bSubmit.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        //View Particular appointment
+                        //Here's an array of strings of all the data
+                        String[] appointmentData = {txtPID.getText(),Partner.getSelectedItem().toString(),
+                                hr.getSelectedItem().toString()+":"+min.getSelectedItem().toString(),
+                                years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" + days.getSelectedItem().toString()} ;
+                    }
+                }
+        );
+
+        JButton btnBack = new JButton("Go Back");
+        btnBack.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         dispose();
@@ -85,7 +103,8 @@ public class ManageAppointments extends JFrame{
         subPanel.add(pPanel);
         subPanel.add(partPanel);
         subPanel.add(timePanel);
-        subPanel.add(dPanel2);
+        subPanel.add(dPanel);
+        subPanel.add(bSubmit);
 
         subPanel.setLayout(new BoxLayout(subPanel, BoxLayout.Y_AXIS));
 
@@ -94,14 +113,14 @@ public class ManageAppointments extends JFrame{
         sePanel.setLayout(new BorderLayout());
         sePanel.add(title, BorderLayout.NORTH);
         sePanel.add(subPanel, BorderLayout.CENTER);
-        sePanel.add(btnBack2, BorderLayout.SOUTH);
+        sePanel.add(btnBack, BorderLayout.SOUTH);
 
 
 
-        int bHeight2 = (int) (this.getHeight() * 0.05);
-        int bWidth2 = (int) (this.getWidth() * 0.05);
-        sePanel.add(btnBack2, BorderLayout.SOUTH);
-        sePanel.setBorder(BorderFactory.createEmptyBorder(bHeight2, bWidth2, bHeight2, bWidth2));
+        int bHeight = (int) (this.getHeight() * 0.05);
+        int bWidth = (int) (this.getWidth() * 0.05);
+        sePanel.add(btnBack, BorderLayout.SOUTH);
+        sePanel.setBorder(BorderFactory.createEmptyBorder(bHeight, bWidth, bHeight, bWidth));
 
 
 
