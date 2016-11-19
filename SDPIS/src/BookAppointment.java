@@ -34,7 +34,7 @@ public class BookAppointment extends JFrame{
         final JComboBox hr = new JComboBox(hour);
         final JComboBox min = new JComboBox(minute);
         //combo boxes for types of appointments
-        String[] appTypes = { "CheckUp", "HygieneVisit" , "White Composite Resin Filling", "Gold Crown", "Silver Amalgam Filling"};
+        String[] appTypes = { "CheckUp", "HygieneVisit" , "White Composite Resin Filling", "Gold Crown Filling", "Silver Amalgam Filling"};
         final JComboBox aType = new JComboBox(appTypes);
         JButton bBook = new JButton("Book");
 
@@ -165,6 +165,7 @@ public class BookAppointment extends JFrame{
                             } catch (InstantiationException e1) {
                                 e1.printStackTrace();
                             }
+                            System.out.println(dur);
 
                             int startH, endH, startM, endM,newSM = 0;
                             boolean validateBooking = true, validateID = true;
@@ -172,17 +173,19 @@ public class BookAppointment extends JFrame{
                                     + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" +
                                     days.getSelectedItem().toString()+"'";
                             for(int i =0;i<dur;i+=20){
-                                if(i==0)
+                                if(i==0){
                                     getClientsID = getClientsID + " AND StartTime = '" + startHours + ":" + startMinutes + ":00')";
-                                else if(startMinutes+i<60)
+                                }
+                                else if(startMinutes+i<60){
                                     getClientsID = getClientsID + " OR (ADate = '"
                                             + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" +
                                             days.getSelectedItem().toString()+"' AND StartTime = '" + startHours + ":" + (startMinutes+i) + ":00') ";
+                                }
                                 else {
-                                    newSM+=20;
                                     getClientsID = getClientsID + " OR (ADate = '"
                                             + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" +
-                                            days.getSelectedItem().toString()+"' AND StartTime = '" + (startHours + 1) + ":" + newSM + ":00'";
+                                            days.getSelectedItem().toString()+"' AND StartTime = '" + (startHours + 1) + ":" + newSM + ":00') ";
+                                    newSM+=20;
                                 }
                             }
 

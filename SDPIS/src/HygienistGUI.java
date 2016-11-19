@@ -2,7 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 /**
@@ -21,7 +24,17 @@ public class HygienistGUI extends JFrame {
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         dispose();
-                        new HygienistGUI().FinishAppointmment();
+                        try {
+                            new HygienistGUI().FinishAppointmment();
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        } catch (ClassNotFoundException e1) {
+                            e1.printStackTrace();
+                        } catch (IllegalAccessException e1) {
+                            e1.printStackTrace();
+                        } catch (InstantiationException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
         );
@@ -85,7 +98,11 @@ public class HygienistGUI extends JFrame {
         setVisible(true);
     }
 
-    public void FinishAppointmment(){
+    public void FinishAppointmment()throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException{
+
+        final DataAccessBase reg = new DataAccessBase("jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61");
+
+
         //initialising window settings
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
@@ -112,13 +129,99 @@ public class HygienistGUI extends JFrame {
         mPanel.setLayout(new BoxLayout(mPanel, BoxLayout.Y_AXIS));
 
 
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDate localDate = LocalDate.now();
+        final String today = dtf.format(localDate);
+
         //event listener for submit button
         bSubmit.addActionListener(
                 new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-                        String[] FinishedApp = {(String)hr.getSelectedItem()+":"+(String)min.getSelectedItem()};
+                    public void actionPerformed(ActionEvent e){boolean appointmentExists = true;
+                        String visitType= "",genVT ="";
+                        int id = 0;
+                        String getVT = "SELECT TypeOfVisit,ID FROM Appointment Where (State = 'Active' "
+                                + "And Date = '" + today + "' AND StartTime = '" + hr.getSelectedItem().toString()
+                                +":"+ min.getSelectedItem().toString()+":00' AND Partner = 'Hygienist')";
+                        ResultSet rVT = reg.getData(getVT);
+                        try {
+                            while(rVT.next()){
+                                if(!rVT.wasNull()) {
+                                    visitType = rVT.getString("TypeOfVisit");
+                                    id = rVT.getInt("ID");
+                                }
+                                else
+                                    appointmentExists = false;
+                            }
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        }
+                        if(appointmentExists) {
+                            if (visitType.equals("CheckUp") || visitType.equals("HygieneVisit"))
+                                genVT = visitType;
+                            else
+                                genVT = "Repair";
+                            try {
+                                reg.closeConnection();
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
+                            } catch (ClassNotFoundException e1) {
+                                e1.printStackTrace();
+                            } catch (IllegalAccessException e1) {
+                                e1.printStackTrace();
+                            } catch (InstantiationException e1) {
+                                e1.printStackTrace();
+                            }
+                            boolean valRemainingSubs = true;
+                            int changedSubs = 0;
+                            String getRemainingSubs = "SELECT " + genVT + " FROM Subscription WHERE ID = " + id;
+                            ResultSet remainingSubs = reg.getData(getRemainingSubs);
+                            try {
+                                while (remainingSubs.next()) {
+                                    if (remainingSubs.getInt(0) > 0) {
+                                        changedSubs = remainingSubs.getInt(0) - 1;
+                                    } else {
+                                        valRemainingSubs = false;
+                                    }
+                                }
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
+                            }
+                            try {
+                                reg.closeConnection();
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
+                            } catch (ClassNotFoundException e1) {
+                                e1.printStackTrace();
+                            } catch (IllegalAccessException e1) {
+                                e1.printStackTrace();
+                            } catch (InstantiationException e1) {
+                                e1.printStackTrace();
+                            }
+                            int cost = 0;
+                            String updateSubs = "UPDATE Subscription SET " + genVT + " = " + changedSubs
+                                    + "WHERE SubscriptionID = " + id;
+                            if (valRemainingSubs) {
+                                reg.updateData(updateSubs);
+                            } else {
+                                String getCost = "SELECT Cost FROM VisitType Where TypeOfVisit = '" + visitType + "'";
+                                ResultSet rCost = reg.getData(getCost);
+                                try {
+                                    while (rCost.next()) {
+                                        cost = rCost.getInt("Cost");
+                                    }
+                                } catch (SQLException e1) {
+                                    e1.printStackTrace();
+                                }
+                            }
+                            String updateAppointment = "UPDATE Appointment SET State = 'Waiting' WHERE (State = 'Active' "
+                                    + "And Date = '" + today + "' AND StartTime = '" + hr.getSelectedItem().toString()
+                                    + ":" + min.getSelectedItem().toString() + ":00' AND Partner = 'Hygienist')";
+                            reg.updateData(updateAppointment);
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "This Appointment time is unavailable. Please Select another.");
 
-                        System.out.print(Arrays.toString(FinishedApp));
+                        }
 
                     }
                 }
