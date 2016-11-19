@@ -140,7 +140,7 @@ public class HygienistGUI extends JFrame {
                         String visitType= "",genVT ="";
                         int id = 0;
                         String getVT = "SELECT TypeOfVisit,ID FROM Appointment Where (State = 'Active' "
-                                + "And Date = '" + today + "' AND StartTime = '" + hr.getSelectedItem().toString()
+                                + "And ADate = '" + today + "' AND StartTime = '" + hr.getSelectedItem().toString()
                                 +":"+ min.getSelectedItem().toString()+":00' AND Partner = 'Hygienist')";
                         ResultSet rVT = reg.getData(getVT);
                         try {
@@ -214,7 +214,7 @@ public class HygienistGUI extends JFrame {
                                 }
                             }
                             String updateAppointment = "UPDATE Appointment SET State = 'Waiting' WHERE (State = 'Active' "
-                                    + "And Date = '" + today + "' AND StartTime = '" + hr.getSelectedItem().toString()
+                                    + "And ADate = '" + today + "' AND StartTime = '" + hr.getSelectedItem().toString()
                                     + ":" + min.getSelectedItem().toString() + ":00' AND Partner = 'Hygienist')";
                             reg.updateData(updateAppointment);
                         }

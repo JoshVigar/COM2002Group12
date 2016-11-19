@@ -82,6 +82,7 @@ public class ManageAppointments extends JFrame{
                         String[] appointmentData = {txtPID.getText(),Partner.getSelectedItem().toString(),
                                 hr.getSelectedItem().toString()+":"+min.getSelectedItem().toString(),
                                 years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" + days.getSelectedItem().toString()} ;
+
                     }
                 }
         );

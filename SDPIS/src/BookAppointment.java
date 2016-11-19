@@ -174,21 +174,23 @@ public class BookAppointment extends JFrame{
                                     days.getSelectedItem().toString()+"'";
                             for(int i =0;i<dur;i+=20){
                                 if(i==0){
-                                    getClientsID = getClientsID + " AND StartTime = '" + startHours + ":" + startMinutes + ":00')";
+                                    getClientsID = getClientsID + " AND StartTime = '" + startHours + ":" + startMinutes + ":00'" +
+                                            " AND State = 'Active')";
                                 }
                                 else if(startMinutes+i<60){
                                     getClientsID = getClientsID + " OR (ADate = '"
                                             + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" +
-                                            days.getSelectedItem().toString()+"' AND StartTime = '" + startHours + ":" + (startMinutes+i) + ":00') ";
+                                            days.getSelectedItem().toString()+"' AND StartTime = '" + startHours + ":" + (startMinutes+i) + ":00'" +
+                                            " AND State = 'Active')";
                                 }
                                 else {
                                     getClientsID = getClientsID + " OR (ADate = '"
                                             + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" +
-                                            days.getSelectedItem().toString()+"' AND StartTime = '" + (startHours + 1) + ":" + newSM + ":00') ";
+                                            days.getSelectedItem().toString()+"' AND StartTime = '" + (startHours + 1) + ":" + newSM + ":00'" +
+                                            " AND State = 'Active')";
                                     newSM+=20;
                                 }
                             }
-
                             ResultSet clientsID = reg.getData(getClientsID);
                             try {
                                 while (clientsID.next()) {
@@ -219,7 +221,8 @@ public class BookAppointment extends JFrame{
                             }
                             String getOtherAppointments = "SELECT ID,StartTime,EndTime FROM Appointment WHERE ADate = '"
                                     + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
-                                    + days.getSelectedItem().toString() + "' AND Partner = '" + Partner.getSelectedItem().toString() + "'";
+                                    + days.getSelectedItem().toString() + "' AND Partner = '" + Partner.getSelectedItem().toString() + "'" +
+                                    "  AND State = 'Active'";
                             ResultSet appointmentDT = reg.getData(getOtherAppointments);
                             try {
                                 while (appointmentDT.next()) {
