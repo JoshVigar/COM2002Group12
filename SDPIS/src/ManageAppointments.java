@@ -15,7 +15,7 @@ public class ManageAppointments extends JFrame{
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
 
-        JLabel title = new JLabel("Choose Details for a Single Appoitment");
+        JLabel title = new JLabel("Choose Details for a Single Appointment");
 
         JLabel pID = new JLabel("PatientID:");
         final JTextField txtPID = new JTextField(20);

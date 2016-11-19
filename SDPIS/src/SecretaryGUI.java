@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.io.File;
+import java.io.PrintStream;
 
 /**
  * Created by User on 14/11/2016.
@@ -99,7 +101,8 @@ public class SecretaryGUI extends JFrame{
         btnChk.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        //Search for finished appointments and check out the patients
+                        dispose();
+                        new SecretaryGUI().CheckoutPatient();
                     }
                 }
         );
@@ -126,7 +129,7 @@ public class SecretaryGUI extends JFrame{
         );
 
         //create title label
-        JLabel title = new JLabel("Secretary View");
+        JLabel title = new JLabel("Secretary Page");
 
         //adding border to the inputs
         int bHeight = (int)(this.getHeight()*0.1);
@@ -196,9 +199,12 @@ public class SecretaryGUI extends JFrame{
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        String[] FinishedApp = {(String)partner.getSelectedItem(),(String)hr.getSelectedItem()+":"+(String)min.getSelectedItem()};
-
-                        System.out.print(Arrays.toString(FinishedApp));
+                        String finishedApp = (String)partner.getSelectedItem()+(String)hr.getSelectedItem()+":"+(String)min.getSelectedItem();
+                       // File file = new File("receipt.txt");
+                       // PrintStream printStreamToFile = new PrintStream(file);
+                       // System.setOut(printStreamToFile);
+                        //System.out.println("Hello I am writing to File xyz.txt");
+                        System.out.println(finishedApp);
 
                     }
                 }

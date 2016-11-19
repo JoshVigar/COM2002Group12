@@ -74,7 +74,7 @@ public class HygienistGUI extends JFrame {
         buttonPanel.add(btnView);
 
         //create title label
-        JLabel title = new JLabel("Hygienist View");
+        JLabel title = new JLabel("Hygienist Page");
 
         //for adding borders
         int bHeight = (int)(this.getHeight()*0.1);
@@ -222,7 +222,8 @@ public class HygienistGUI extends JFrame {
                             JOptionPane.showMessageDialog(null, "This Appointment time is unavailable. Please Select another.");
 
                         }
-
+                        dispose();
+                        new HygienistGUI().HygienistGUI();
                     }
                 }
         );

@@ -214,6 +214,8 @@ public class DentistGUI extends JFrame {
                             JOptionPane.showMessageDialog(null, "This Appointment time is unavailable. Please Select another.");
 
                         }
+                        dispose();
+                        new DentistGUI().DentistGUI();
                     }
                 }
         );
