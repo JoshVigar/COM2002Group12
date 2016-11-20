@@ -11,6 +11,19 @@ import java.util.Arrays;
 /**
  * Created by User on 14/11/2016.
  */
+
+/*
+public int bookVacation(String partner, String date){
+                        String updateAppointments = "UPDATE Appointment SET State = 'Canceled' WHERE (State = 'Active' "
+                            + "And ADate = '" + date + "' AND Partner = '"+ partner +"')";
+                        reg.updateData(updateAppointments);
+                        String bookVac = "INSERT INTO Appointment VALUES( 0, 'CheckUp', '" + partner + "', '" +
+                                date + "', '09:00:00', '18:00:00', 'Vacation', 0)";
+                        return reg.updateData(bookVac);
+                    }
+
+ */
+
 public class DentistGUI extends JFrame {
 
     public void DentistGUI(){
@@ -220,12 +233,13 @@ public class DentistGUI extends JFrame {
                 }
         );
 
-        JButton btnBack = new JButton("Go Back");
-        btnBack.addActionListener(
+        JButton btnBook = new JButton("Book");
+        btnBook.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        dispose();
-                        new DentistGUI().DentistGUI();
+
+
+
                     }
                 }
         );
