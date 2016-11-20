@@ -423,5 +423,82 @@ public class BookAppointment extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
+    public void BookHoliday() {
+        setTitle("Sheffield Dental Practice");
+        setSize(500,600);
+
+        //Creating labels and text fields
+        JLabel title = new JLabel("Enter Holiday Details");
+        final JLabel partner = new JLabel("Partner:");
+        String[] partners = {"Dentist","Hygienist"};
+        final JComboBox partnerBox = new JComboBox(partners);
+        JLabel startDate = new JLabel("Holiday Date:");
+
+        //comboboxes- start date of holiday
+        final JComboBox days = new JComboBox();
+        final JComboBox months = new JComboBox();
+        final JComboBox years = new JComboBox();
+
+        //Use for loops to create the date options
+        days.addItem("Day");
+        for(int i=1;i<=31;i++) {
+            days.addItem(new Integer(i));
+        }
+
+        months.addItem("Month");
+        for(int i=1;i<=12;i++) {
+            months.addItem(new Integer(i));
+        }
+
+        years.addItem("Year");
+        for(int i=(int)(Calendar.getInstance().get(Calendar.YEAR));i<=
+                (int)(Calendar.getInstance().get(Calendar.YEAR))+1;i++) {
+            years.addItem(new Integer(i));
+        }
+
+        //making panel for date of holiday
+        JPanel datePanel = new JPanel();
+        datePanel.add(days);
+        datePanel.add(months);
+        datePanel.add(years);
+
+        //Set the layout of the datePanel
+        datePanel.setLayout(new BoxLayout(datePanel, BoxLayout.X_AXIS));
+
+        JPanel mPanel = new JPanel();
+        mPanel.add(partner);
+        mPanel.add(partnerBox);
+        mPanel.add(startDate);
+        mPanel.add(datePanel);
+
+        JButton btnBack = new JButton("Go Back");
+        btnBack.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        dispose();
+                        new SecretaryGUI().SecretaryGUI();
+                    }
+                }
+        );
+
+        //for adding borders to the components
+        int bHeight = (int)(this.getHeight()*0.1);
+        int bWidth = (int)(this.getWidth()*0.1);
+
+        Container contentPane = getContentPane();
+        contentPane.add(title, BorderLayout.NORTH);
+        contentPane.add(mPanel, BorderLayout.CENTER);
+        contentPane.add(btnBack, BorderLayout.SOUTH);
+
+        //setting the border for the inputs
+        mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
+
+        //Don't forget to pack!
+        pack();
+        //setting the location in the window and the close operation
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
 
 }

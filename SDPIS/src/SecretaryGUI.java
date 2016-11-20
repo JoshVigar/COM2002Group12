@@ -96,6 +96,15 @@ public class SecretaryGUI extends JFrame{
                     }
                 }
         );
+        JButton btnBH = new JButton("Book Holiday");
+        btnBH.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        dispose();
+                        new BookAppointment().BookHoliday();
+                    }
+                }
+        );
 
         JButton btnChk = new JButton("Checkout Patient");
         btnChk.addActionListener(
@@ -115,6 +124,7 @@ public class SecretaryGUI extends JFrame{
         buttonPanel.add(btnReg);
         buttonPanel.add(btnMP);
         buttonPanel.add(btnBA);
+        buttonPanel.add(btnBH);
         buttonPanel.add(btnChk);
 
         //add back button and event handler

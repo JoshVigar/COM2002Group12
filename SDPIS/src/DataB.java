@@ -12,8 +12,8 @@ public class DataB {
 
             stmt = con.createStatement();
 
-/*
-                String sql = "CREATE TABLE Subscription(SubscriptionID INTEGER NOT NULL AUTO_INCREMENT, SubscriptionTitle VARCHAR(40),"+
+
+                /*String sql = "CREATE TABLE Subscription(SubscriptionID INTEGER NOT NULL AUTO_INCREMENT, SubscriptionTitle VARCHAR(40),"+
                         " MonthlyCost INTEGER, CheckUp INTEGER, HygieneVisit INTEGER, Repair INTEGER, EndDate DATE,"+
                         " PRIMARY KEY (SubscriptionID))";
                 stmt.executeUpdate(sql);
@@ -34,8 +34,8 @@ public class DataB {
                 stmt.executeUpdate(sql);
 
 
-            String sql = "SELECT * FROM Customer";
-            ResultSet rs = stmt.executeQuery(sql);
+            String customer = "SELECT * FROM Customer";
+            ResultSet rs = stmt.executeQuery(customer);
             while(rs.next()){
                 //Retrieve by column name
                 int id = rs.getInt("ID");
@@ -55,7 +55,7 @@ public class DataB {
                 System.out.print("Phone: " + phone);
                 System.out.println("AddressID: " + address);
             }
-
+/*
             sql = "SELECT * FROM Address";
             rs = stmt.executeQuery(sql);
             while(rs.next()){
