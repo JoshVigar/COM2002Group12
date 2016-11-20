@@ -394,16 +394,14 @@ public class ViewAppointment extends JFrame {
             if (!rs.next()) {
                 textArea.append("Appointment doesnt't exist");
             } else {
-                //int id = rs.getInt("ID");
+                rs.next();
                 String type = rs.getString("TypeOfVisit");
                 Date dates = rs.getDate("ADate");
                 Time startTime = rs.getTime("StartTime");
                 Time endTime = rs.getTime("EndTime");
                 String appoint = " Customer: " + patientName + " Date: "+dates+" Start Time: " + startTime +
                         " End Time: "+ endTime+ " Visit Type: " + type;
-                //System.out.println(" " + appoint);
                 textArea.append(appoint + newLine);
-
                 //add cancelled button to panel
                 cancel.add(cancelled, BorderLayout.SOUTH);
             }

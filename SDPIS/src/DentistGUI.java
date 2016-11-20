@@ -243,6 +243,15 @@ public class DentistGUI extends JFrame {
                     }
                 }
         );
+        JButton btnBack = new JButton("Go Back");
+        btnBack.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        dispose();
+                        new WelcomeGUI().WelcomeGUI();
+                    }
+                }
+        );
 
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);

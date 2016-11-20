@@ -230,6 +230,18 @@ public class RegistrationPage  extends JFrame {
                                     txtPhone.getText() + "', '" + txtHousenum.getText() + " " + txtPostCode.getText() + "')";
                             reg.updateData(customer);
 
+                            //get count of customer table to alert new cutomers ID
+                            ResultSet s = reg.getData("SELECT COUNT(*) AS rowcount FROM Customer");
+                            int count = 0;
+                            try {
+                                s.next();
+                                count =s.getInt("rowcount");
+                                JOptionPane.showMessageDialog(null, " Name: "+ txtTitle.getText()+" "+txtFName.getText()+
+                                        " "+txtLName.getText() +" Customer ID: "+count);
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
+                            }
+
                             dispose();
                             new SecretaryGUI().SecretaryGUI();
 

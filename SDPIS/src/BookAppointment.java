@@ -239,7 +239,7 @@ public class BookAppointment extends JFrame{
                                         System.out.println(endM);
 
                                         if (((startHours*60 + startMinutes) >= (startH*60 + startM)
-                                                && (startHours*60 + startMinutes) <= (endH*60 + endM))
+                                                && (startHours*60 + startMinutes) < (endH*60 + endM))
                                                 || (startHours*60 + startMinutes) >= (startH*60 + startM)
                                                 && (endHours*60 + endMinutes) <= (endH*60 + endM)) {
                                             validateBooking = false;
@@ -311,7 +311,7 @@ public class BookAppointment extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
-    
+
     public void BookHoliday() {
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
