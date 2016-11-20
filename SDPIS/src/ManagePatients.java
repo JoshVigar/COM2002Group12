@@ -130,7 +130,7 @@ public class ManagePatients extends JFrame {
     public void ManagePatients()throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException{
         final DataAccessBase reg = new DataAccessBase("jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61");
 
-        //setting initial window ssettings
+        //setting initial window settings
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
 
@@ -138,17 +138,13 @@ public class ManagePatients extends JFrame {
         JLabel title = new JLabel("Enter Patient Details");
         JLabel pID = new JLabel("PatientID:");
         final JTextField txtPID = new JTextField(20);
-        String[] sub = {"Subscribe","Cancel Subscription"};
-        JLabel operation= new JLabel("Operation:");
-        final JComboBox Sub = new JComboBox(sub);
         JButton bSubmit = new JButton("Submit");
 
         //add inputs to panel
         JPanel inputsPanel = new JPanel();
         inputsPanel.add(pID);
         inputsPanel.add(txtPID);
-        inputsPanel.add(operation);
-        inputsPanel.add(Sub);
+        inputsPanel.add(bSubmit);
         //setting layout of inputs
         inputsPanel.setLayout(new BoxLayout(inputsPanel, BoxLayout.Y_AXIS));
 
@@ -157,7 +153,7 @@ public class ManagePatients extends JFrame {
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        String[] managedPatient = {txtPID.getText(), (String)Sub.getSelectedItem()};
+                        String[] managedPatient = {txtPID.getText()};
 
                     }
                 }
@@ -165,7 +161,7 @@ public class ManagePatients extends JFrame {
 
 
         //added back button and event listener
-        JButton btnBack = new JButton("Back");
+        JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){

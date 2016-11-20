@@ -365,6 +365,8 @@ public class BookAppointment extends JFrame{
         mPanel.add(startDate);
         mPanel.add(datePanel);
 
+        mPanel.setLayout(new BoxLayout(mPanel, BoxLayout.Y_AXIS));
+
         JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
                 new ActionListener(){
