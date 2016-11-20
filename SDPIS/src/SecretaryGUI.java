@@ -42,7 +42,17 @@ public class SecretaryGUI extends JFrame{
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         dispose();
-                        new ManageAppointments().ManageAppointments();
+                        try {
+                            new ManageAppointments().ManageAppointments();
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        } catch (ClassNotFoundException e1) {
+                            e1.printStackTrace();
+                        } catch (IllegalAccessException e1) {
+                            e1.printStackTrace();
+                        } catch (InstantiationException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
         );
@@ -72,7 +82,17 @@ public class SecretaryGUI extends JFrame{
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         dispose();
-                        new ManagePatients().ManagePatients();
+                        try {
+                            new ManagePatients().ManagePatients();
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        } catch (ClassNotFoundException e1) {
+                            e1.printStackTrace();
+                        } catch (IllegalAccessException e1) {
+                            e1.printStackTrace();
+                        } catch (InstantiationException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
         );
