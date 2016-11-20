@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5424831f-d4cb-4eaa-9bdb-e08e07d4e57c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/BookAppointment.java" afterPath="$PROJECT_DIR$/SDPIS/src/BookAppointment.java" />
     </list>
     <ignored path="COM2002Group12.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -814,7 +813,14 @@
       <option name="project" value="LOCAL" />
       <updated>1479665765337</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="A little update in book appointment">
+      <created>1479666094303</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1479666094303</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -916,7 +922,8 @@
     <MESSAGE value="Adding cancel appointment in manageAppointments, and subscribe/unsubscribe buttons in manage patients" />
     <MESSAGE value="Adding subscription/unsubscription funcs and autosubscription button" />
     <MESSAGE value="Adding bookVacation code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding bookVacation code" />
+    <MESSAGE value="A little update in book appointment" />
+    <option name="LAST_COMMIT_MESSAGE" value="A little update in book appointment" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
