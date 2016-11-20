@@ -76,7 +76,6 @@ public class RegistrationPage  extends JFrame {
         final JTextField txtPostCode = new JTextField(20);
 
         //create submit button
-        JLabel submit = new JLabel("Submit:");
         JButton bSubmit = new JButton("Submit");
 
         //create a panel and add title and name input fields.
@@ -105,7 +104,6 @@ public class RegistrationPage  extends JFrame {
         inputsPanel2.add(txtAddressRegion);
         inputsPanel2.add(postcode);
         inputsPanel2.add(txtPostCode);
-        inputsPanel2.add(submit);
         inputsPanel2.add(bSubmit);
         inputsPanel2.setLayout(new BoxLayout(inputsPanel2, BoxLayout.Y_AXIS));
 
