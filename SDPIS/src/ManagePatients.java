@@ -155,6 +155,7 @@ public class ManagePatients extends JFrame {
                     public void actionPerformed(ActionEvent e){
                         String[] managedPatient = {txtPID.getText()};
 
+
                     }
                 }
         );

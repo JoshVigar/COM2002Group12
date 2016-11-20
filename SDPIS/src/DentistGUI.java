@@ -233,16 +233,6 @@ public class DentistGUI extends JFrame {
                 }
         );
 
-        JButton btnBook = new JButton("Book");
-        btnBook.addActionListener(
-                new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-
-
-
-                    }
-                }
-        );
         JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
                 new ActionListener(){
