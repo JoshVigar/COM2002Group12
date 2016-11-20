@@ -30,31 +30,100 @@ import java.util.Arrays;
 * and copy paste it to the functions
 * the last statement in them should be return reg.updateData which will return 1 if succeeded or 0 if failed
 * */
-
-/*//event handler for suscribe button
-        bSubscribe.addActionListener(
+/* //subscription button
+bSubscription.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         LocalDate localDate = LocalDate.now();
                         String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate.plusYears(1));
 
-                        String firstSubscription = "INSERT INTO Subscription (SubscriptionTitle, MonthlyCost, CheckUp," +
-                                " HygieneVisit, Repair, EndDate) VALUES(";
-                        if (((String)Sub.getSelectedItem()).equals("None")){
-                            firstSubscription += "'" + (String) Sub.getSelectedItem() + "',0,0,0,0" + ", '" + endDate + "')";
-                        } else if (((String) Sub.getSelectedItem()).equals("NHS Free Plan")) {
-                            firstSubscription += "'" + (String) Sub.getSelectedItem() + "', 0,2,2,6" + ", '" + endDate + "')";
-                        } else if (((String) Sub.getSelectedItem()).equals("Maintenance Plan")) {
-                            firstSubscription += "'" + (String) Sub.getSelectedItem() + "', 15,2,2,0" + ", '" + endDate + "')";
-                        } else if (((String) Sub.getSelectedItem()).equals("Oral Health Plan")) {
-                            firstSubscription += "'" + (String) Sub.getSelectedItem() + "', 21,2,4,0" + ", '" + endDate + "')";
-                        } else if (((String) Sub.getSelectedItem()).equals("Dental Repair Plan")) {
-                            firstSubscription += "'" + (String) Sub.getSelectedItem() + "', 36,2,2,2" + ", '" + endDate + "')";
+                        String updateSubscription = "UPDATE Subscription SET ";
+                        if (((String) Sub.getSelectedItem()).equals("NHS Free Plan")) {
+                            updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 0" +
+                                    ", Checkup = 2, HygieneVisit = 2, Repair = 6, EndDate = '" + endDate + "')";
+                        }else if (((String) Sub.getSelectedItem()).equals("Maintenance Plan")) {
+                            updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 15" +
+                                    ", Checkup = 2, HygieneVisit = 2, Repair = 0, EndDate = '" + endDate + "')";
+                        }else if (((String) Sub.getSelectedItem()).equals("Oral Health Plan")) {
+                            updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 21" +
+                                    ", Checkup = 2, HygieneVisit = 4, Repair = 0, EndDate = '" + endDate + "')";
+                        }else if (((String) Sub.getSelectedItem()).equals("Dental Repair Plan")) {
+                            updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 36" +
+                                    ", Checkup = 2, HygieneVisit = 2, Repair = 2, EndDate = '" + endDate + "')";
                         }
-                        reg.updateData(firstSubscription);
+                        updateSubscription += " WHERE SubscriptionID = " + txtPID.getText();
+                        reg.updateData(updateSubscription);
                     }
                 }
+        );
+
+
+ */
+
+/*
+public void unsubscribe(int pID){
+                        String unsubscribe = "UPDATE Subscription Set " +
+                                "SubscriptionTitle = 'None' ,MonthlyCost = 0,CheckUp = 0,HygieneVisit = 0,Repair = 0" +
+                                " WHERE SubscriptionID = " + pID;
+                        reg.updateData(unsubscribe);
+                    }
+ */
+
+
+/*
+public void subscribe(int pID,String subT){
+        LocalDate localDate = LocalDate.now();
+        String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate.plusYears(1));
+
+        String updateSubscription = "UPDATE Subscription SET ";
+        if ((subT.equals("NHS Free Plan")) {
+        updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 0" +
+        ", Checkup = 2, HygieneVisit = 2, Repair = 6, EndDate = '" + endDate + "')";
+        }else if ((subT.equals("Maintenance Plan")) {
+        updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 15" +
+        ", Checkup = 2, HygieneVisit = 2, Repair = 0, EndDate = '" + endDate + "')";
+        }else if ((subT.equals("Oral Health Plan")) {
+        updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 21" +
+        ", Checkup = 2, HygieneVisit = 4, Repair = 0, EndDate = '" + endDate + "')";
+        }else if ((subT.equals("Dental Repair Plan")) {
+        updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 36" +
+        ", Checkup = 2, HygieneVisit = 2, Repair = 2, EndDate = '" + endDate + "')";
+        }
+        updateSubscription += " WHERE SubscriptionID = " + pID;
+        reg.updateData(updateSubscription);
+        }
+        }
         );*/
+
+
+
+/* //Autosubscription button
+ bAutoSubscription.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        LocalDate localDate = LocalDate.now();
+                        String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate.plusYears(1));
+
+                        String updateSubscription = "UPDATE Subscription SET ";
+                        if ((subT.equals("NHS Free Plan")) {
+                            updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 0" +
+                                    ", Checkup = 2, HygieneVisit = 2, Repair = 6, EndDate = '" + endDate + "')";
+                        }else if (((String) Sub.getSelectedItem()).equals("Maintenance Plan")) {
+                            updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 15" +
+                                    ", Checkup = 2, HygieneVisit = 2, Repair = 0, EndDate = '" + endDate + "')";
+                        }else if (((String) Sub.getSelectedItem()).equals("Oral Health Plan")) {
+                            updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 21" +
+                                    ", Checkup = 2, HygieneVisit = 4, Repair = 0, EndDate = '" + endDate + "')";
+                        }else if (((String) Sub.getSelectedItem()).equals("Dental Repair Plan")) {
+                            updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 36" +
+                                    ", Checkup = 2, HygieneVisit = 2, Repair = 2, EndDate = '" + endDate + "')";
+                        }
+                        updateSubscription += " WHERE EndDate = '" + DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate) + "'";
+                        reg.updateData(updateSubscription);
+                    }
+                }
+        );
+ */
 
 public class ManagePatients extends JFrame {
 

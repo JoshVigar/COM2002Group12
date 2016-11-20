@@ -16,8 +16,6 @@ import java.util.Calendar;
             days.getSelectedItem().toString() + "' AND StartTime = '" + hr.getSelectedItem().toString() + ":"+ min.getSelectedItem().toString() +
             ":00'";
     reg.updateData(cancelAppointment);
-
-
  */
 
 public class ManageAppointments extends JFrame{
