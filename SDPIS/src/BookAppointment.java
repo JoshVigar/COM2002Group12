@@ -129,7 +129,6 @@ public class BookAppointment extends JFrame{
 
                         //if validation succeeds then add entry to database
                         if (val) {
-                            //Get the duration of the appointment and calculates the endTime
                             String getVisitDuration = "SELECT Duration FROM VisitType Where TypeOfVisit='"
                                     + (String) aType.getSelectedItem() + "'";
                             int dur = 0;
@@ -166,8 +165,8 @@ public class BookAppointment extends JFrame{
                             } catch (InstantiationException e1) {
                                 e1.printStackTrace();
                             }
+                            System.out.println(dur);
 
-                            //this doesn't allow a patient to have an appointment with both dentist and hygienist during the same time period as his initial appointment
                             int startH, endH, startM, endM,newSM = 0;
                             boolean validateBooking = true, validateID = true;
                             String getClientsID = "SELECT ID FROM Appointment Where (ADate = '"
@@ -220,7 +219,6 @@ public class BookAppointment extends JFrame{
                             } catch (InstantiationException e1) {
                                 e1.printStackTrace();
                             }
-                            //This doesn't let appointments overlap
                             String getOtherAppointments = "SELECT ID,StartTime,EndTime FROM Appointment WHERE ADate = '"
                                     + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
                                     + days.getSelectedItem().toString() + "' AND Partner = '" + Partner.getSelectedItem().toString() + "'" +
@@ -241,11 +239,9 @@ public class BookAppointment extends JFrame{
                                         System.out.println(endM);
 
                                         if (((startHours*60 + startMinutes) >= (startH*60 + startM)
-                                                && (startHours*60 + startMinutes) < (endH*60 + endM))
+                                                && (startHours*60 + startMinutes) <= (endH*60 + endM))
                                                 || (startHours*60 + startMinutes) >= (startH*60 + startM)
-                                                && (endHours*60 + endMinutes) <= (endH*60 + endM)
-                                                || (endHours*60 + endMinutes) > (endH*60 + endM)
-                                                && (endHours*60 + endMinutes) < (endH*60 + endM)) {
+                                                && (endHours*60 + endMinutes) <= (endH*60 + endM)) {
                                             validateBooking = false;
                                         }
                                     }
@@ -266,7 +262,6 @@ public class BookAppointment extends JFrame{
                                 e1.printStackTrace();
                             }
 
-                            //if everything is valid a new appointment will be added to the database
                             if (validateBooking) {
                                 String newBooking = "INSERT INTO Appointment VALUES(" + txtPID.getText() + ", '" +
                                         (String) aType.getSelectedItem() + "', '" + (String) Partner.getSelectedItem() + "', '" +
@@ -317,16 +312,17 @@ public class BookAppointment extends JFrame{
         setVisible(true);
     }
 
-    public void BookHoliday() {
+    public void BookHoliday() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+        final DataAccessBase reg = new DataAccessBase("jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61");
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
 
         //Creating labels and text fields
         JLabel title = new JLabel("Enter Holiday Details");
         final JLabel partner = new JLabel("Partner:");
-        String[] partners = {"Dentist","Hygienist"};
+        String[] partners = {"Partner","Dentist","Hygienist"};
         final JComboBox partnerBox = new JComboBox(partners);
-        JLabel startDate = new JLabel("Holiday Date:");
+        JLabel date = new JLabel("Holiday Date:");
 
         //comboboxes- start date of holiday
         final JComboBox days = new JComboBox();
@@ -359,22 +355,63 @@ public class BookAppointment extends JFrame{
         //Set the layout of the datePanel
         datePanel.setLayout(new BoxLayout(datePanel, BoxLayout.X_AXIS));
 
+        JButton btnSubmit = new JButton("Submit");
+        btnSubmit.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        //boolean for validation
+                        boolean val = true;
+
+                        //checking months and days for consistency eg. No 31st of February
+                        if ((months.getSelectedIndex() == 4
+                                || months.getSelectedIndex() == 6 || months.getSelectedIndex() == 9
+                                || months.getSelectedIndex() == 11) && days.getSelectedIndex() >= 31) {
+                            JOptionPane.showMessageDialog(null, "Invalid day selected");
+                            val = false;
+                        } else if ((months.getSelectedIndex() == 2 && days.getSelectedIndex() >= 30
+                                && years.getSelectedIndex() % 4 != 0)
+                                || months.getSelectedIndex() == 2 && days.getSelectedIndex() <= 29
+                                && years.getSelectedIndex() % 4 == 0) {
+                            JOptionPane.showMessageDialog(null, "Invalid day selected");
+                            val = false;
+                        }
+                        if (years.getSelectedItem().equals("Year") || (months.getSelectedItem().equals("Month") ||
+                                (days.getSelectedItem().equals("Day") || partnerBox.getSelectedItem().equals("Partner")))) {
+                            val = false;
+                            String updateAppointments=null;
+                            if (val)
+                                updateAppointments = "UPDATE Appointment SET State = 'Vacation' WHERE (State = 'Active' "
+                                        + "And ADate = '" + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
+                                        + days.getSelectedItem().toString() + "' AND Partner = '" + partnerBox.getSelectedItem().toString() + "')";
+                            reg.updateData(updateAppointments);
+                            String bookVac = "INSERT INTO Appointment VALUES( 0, 'CheckUp', '" + partnerBox.getSelectedItem() + "', '" +
+                                    years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
+                                    + days.getSelectedItem().toString() + "', '09:00:00', '18:00:00', 'Vacation', 0)";
+                            reg.updateData(bookVac);
+                            dispose();
+                            new SecretaryGUI().SecretaryGUI();
+                        }
+                    }
+                }
+
+        );
+
         JPanel mPanel = new JPanel();
         mPanel.add(partner);
         mPanel.add(partnerBox);
-        mPanel.add(startDate);
+        mPanel.add(date);
         mPanel.add(datePanel);
+        mPanel.add(btnSubmit);
 
-        mPanel.setLayout(new BoxLayout(mPanel, BoxLayout.Y_AXIS));
-
-        JButton btnBack = new JButton("Go Back");
+        //Add back button and event listener
+        JButton btnBack = new JButton("Back");
         btnBack.addActionListener(
                 new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-                        dispose();
-                        new SecretaryGUI().SecretaryGUI();
+                        public void actionPerformed(ActionEvent e){
+                            dispose();
+                            new SecretaryGUI().SecretaryGUI();
+                            }
                     }
-                }
         );
 
         //for adding borders to the components
