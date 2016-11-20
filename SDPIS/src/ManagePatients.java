@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * Created by User on 16/11/2016.
@@ -152,8 +153,18 @@ public class ManagePatients extends JFrame {
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        String[] managedPatient = {txtPID.getText()};
-
+                        int managedPatient = Integer.parseInt(txtPID.getText());
+                        try {
+                            new ViewPatient(managedPatient);
+                        } catch (ClassNotFoundException e1) {
+                            e1.printStackTrace();
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        } catch (InstantiationException e1) {
+                            e1.printStackTrace();
+                        } catch (IllegalAccessException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
         );

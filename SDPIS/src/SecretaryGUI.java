@@ -37,6 +37,7 @@ public class SecretaryGUI extends JFrame{
                     }
                 }
         );
+        //view single Appointment button
         JButton btnMA = new JButton("View A Single Appointment");
         btnMA.addActionListener(
                 new ActionListener(){
@@ -47,6 +48,7 @@ public class SecretaryGUI extends JFrame{
                 }
         );
 
+        //register patient button
         JButton btnReg = new JButton("Register Patient");
         btnReg.addActionListener(
                 new ActionListener(){
@@ -67,6 +69,7 @@ public class SecretaryGUI extends JFrame{
                 }
         );
 
+        //manage patients button
         JButton btnMP = new JButton("Manage Patients");
         btnMP.addActionListener(
                 new ActionListener() {
@@ -84,10 +87,10 @@ public class SecretaryGUI extends JFrame{
                             e1.printStackTrace();
                         }
                     }
-
                 }
         );
 
+        //book appointment button
         JButton btnBA = new JButton("Book Appointment");
         btnBA.addActionListener(
                 new ActionListener(){
@@ -107,6 +110,7 @@ public class SecretaryGUI extends JFrame{
                     }
                 }
         );
+        //book holiday button
         JButton btnBH = new JButton("Book Holiday");
         btnBH.addActionListener(
                 new ActionListener(){
@@ -127,7 +131,7 @@ public class SecretaryGUI extends JFrame{
                 }
         );
 
-
+        //check out patient button
         JButton btnChk = new JButton("Checkout Patient");
         btnChk.addActionListener(
                 new ActionListener(){
@@ -137,7 +141,6 @@ public class SecretaryGUI extends JFrame{
                     }
                 }
         );
-
 
         //add buttons to panel
         JPanel buttonPanel = new JPanel();
