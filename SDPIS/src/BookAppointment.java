@@ -222,7 +222,7 @@ public class BookAppointment extends JFrame{
                             String getOtherAppointments = "SELECT ID,StartTime,EndTime FROM Appointment WHERE ADate = '"
                                     + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
                                     + days.getSelectedItem().toString() + "' AND Partner = '" + Partner.getSelectedItem().toString() + "'" +
-                                    "  AND State = 'Active'";
+                                    "  AND (State = 'Active' OR State = 'Vacation')";
                             ResultSet appointmentDT = reg.getData(getOtherAppointments);
                             try {
                                 while (appointmentDT.next()) {
