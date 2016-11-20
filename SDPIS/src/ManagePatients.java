@@ -2,14 +2,65 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 /**
  * Created by User on 16/11/2016.
  */
+
+/*//event handler for unsubscription button
+        bUnsubscribe.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        String unsubscribe = "UPDATE Subscription Set " +
+                                "SubscriptionTitle = 'None' ,MonthlyCost = 0,CheckUp = 0,HygieneVisit = 0,Repair = 0" +
+                                " WHERE SubscriptionID = " + txtPID.getText().trim();
+                        reg.updateData(unsubscribe);
+                    }
+                }
+        );*/
+
+/* If you need to turn unsubscribe and subscribe to methods
+*  write public int Unsubscribe( int pID) or public int Subscribe(int pID,String typeOfS)
+* and replace the code in the action listener with the correct parameters
+* and copy paste it to the functions
+* the last statement in them should be return reg.updateData which will return 1 if succeeded or 0 if failed
+* */
+
+/*//event handler for suscribe button
+        bSubscribe.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        LocalDate localDate = LocalDate.now();
+                        String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate.plusYears(1));
+
+                        String firstSubscription = "INSERT INTO Subscription (SubscriptionTitle, MonthlyCost, CheckUp," +
+                                " HygieneVisit, Repair, EndDate) VALUES(";
+                        if (((String)Sub.getSelectedItem()).equals("None")){
+                            firstSubscription += "'" + (String) Sub.getSelectedItem() + "',0,0,0,0" + ", '" + endDate + "')";
+                        } else if (((String) Sub.getSelectedItem()).equals("NHS Free Plan")) {
+                            firstSubscription += "'" + (String) Sub.getSelectedItem() + "', 0,2,2,6" + ", '" + endDate + "')";
+                        } else if (((String) Sub.getSelectedItem()).equals("Maintenance Plan")) {
+                            firstSubscription += "'" + (String) Sub.getSelectedItem() + "', 15,2,2,0" + ", '" + endDate + "')";
+                        } else if (((String) Sub.getSelectedItem()).equals("Oral Health Plan")) {
+                            firstSubscription += "'" + (String) Sub.getSelectedItem() + "', 21,2,4,0" + ", '" + endDate + "')";
+                        } else if (((String) Sub.getSelectedItem()).equals("Dental Repair Plan")) {
+                            firstSubscription += "'" + (String) Sub.getSelectedItem() + "', 36,2,2,2" + ", '" + endDate + "')";
+                        }
+                        reg.updateData(firstSubscription);
+                    }
+                }
+        );*/
+
 public class ManagePatients extends JFrame {
 
-    public void ManagePatients(){
+    public void ManagePatients()throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException{
+        final DataAccessBase reg = new DataAccessBase("jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61");
+
         //setting initial window ssettings
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
@@ -39,11 +90,10 @@ public class ManagePatients extends JFrame {
                     public void actionPerformed(ActionEvent e){
                         String[] managedPatient = {txtPID.getText(), (String)Sub.getSelectedItem()};
 
-                        System.out.print(Arrays.toString(managedPatient));
-
                     }
                 }
         );
+
 
         //added back button and event listener
         JButton btnBack = new JButton("Back");

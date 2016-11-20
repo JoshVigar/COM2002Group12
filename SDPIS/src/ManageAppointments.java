@@ -2,15 +2,31 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Calendar;
 
 /**
  * Created by User on 18/11/2016.
  */
+
+/*  //code for cancel appointment
+    String cancelAppointment = "UPDATE Appointment SET State = 'Canceled' WHERE ID = " + txtPID.getText() + " AND ADate = '" +
+            years.getSelectedItem().toString()+"-" + months.getSelectedItem().toString() +"-" +
+            days.getSelectedItem().toString() + "' AND StartTime = '" + hr.getSelectedItem().toString() + ":"+ min.getSelectedItem().toString() +
+            ":00'";
+    reg.updateData(cancelAppointment);
+
+
+ */
+
 public class ManageAppointments extends JFrame{
 
 
-    public void ManageAppointments(){
+    public void ManageAppointments()throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException{
+
+        final DataAccessBase reg = new DataAccessBase("jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61");
+
         //setting initial window settings
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
