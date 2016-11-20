@@ -142,13 +142,19 @@ public class DataB {
                 System.out.println(rs.getString("TypeOfVisit"));
                 System.out.println(rs.getString("Duration"));
                 System.out.println(rs.getString("Cost"));
-            }*/
+            }
             //String[] appTypes = { "CheckUp", "HygieneVisit" , "White Composite Resin Filling", "Gold Crown Filling", "Silver Amalgam Filling"};
             //String sql = "UPDATE VisitType SET TypeOfVisit = 'Silver Amalgam Filling' WHERE TypeOfVisit = 'Silver Almagam Filling'";
             //int rs = stmt.executeUpdate(sql);
             //sql = "UPDATE VisitType SET TypeOfVisit = 'Gold Crown Filling' WHERE TypeOfVisit = 'Gold Crown Fitting'";
             //rs = stmt.executeUpdate(sql);
 
+            stmt.executeUpdate("DROP TABLE Appointment");
+            String sql ="CREATE TABLE Appointment(ID INTEGER, TypeOfVisit VARCHAR(40), Partner VARCHAR(40), ADate DATE ,StartTime TIME,"+
+                    " EndTime TIME, State VARCHAR(10), Cost INTEGER,PRIMARY KEY (Partner,ADate,StartTime,State),FOREIGN KEY (ID) REFERENCES Customer(ID),"+
+                    "FOREIGN KEY (TypeOfVisit) REFERENCES VisitType(TypeOfVisit))";
+            stmt.executeUpdate(sql);
+            */
             new WelcomeGUI().WelcomeGUI();
         }
         catch (SQLException ex) {

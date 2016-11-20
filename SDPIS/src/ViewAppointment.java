@@ -115,6 +115,7 @@ public class ViewAppointment extends JFrame {
 
     }
 
+    //get appointments on a certain date for partners and for a week for secretary
     public void getAppointments(String date, String partner){
         String startDay = date;
         final String user = partner;
@@ -265,9 +266,6 @@ public class ViewAppointment extends JFrame {
                         }
                     }
                 }
-                //add textArea to the panel
-                //dPanel.add(textArea, BorderLayout.CENTER);
-                //hPanel.add(textArea, BorderLayout.CENTER);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -318,5 +316,128 @@ public class ViewAppointment extends JFrame {
             setLocationRelativeTo(null);
             setVisible(true);
         }
+    }
+
+    //get a single active appointment
+    public void getAppointment(String patient, String partners, String time, String date){
+        final String patientID = patient;
+        final String partner = partners;
+        final String appTime = time;
+        final String appDate = date;
+        String patientName ="";
+
+        //Set title and size of frame
+        setTitle("Sheffield Dental Practice");
+        setSize(1300, 600);
+
+        //get content pane
+        Container container = getContentPane();
+
+        //get the patients first name and last name
+        String sql = "SELECT FName, LName FROM Customer WHERE ID ="+Integer.parseInt(patientID);
+        ResultSet rs = view.getData(sql);
+
+        try {
+            //loop through result set appending each appointment to the textArea
+            while (rs.next()) {
+                String fName = rs.getString("FName");
+                String lName = rs.getString("LName");
+                patientName = fName+" "+lName;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //Title of panel
+        JLabel title = new JLabel("View single appointment");
+        //create a panel set its layout, add a title
+        JPanel mPanel = new JPanel();
+        mPanel.setLayout(new BorderLayout());
+        mPanel.add(title, BorderLayout.NORTH);
+
+        //panel to house text area and cancel appointment button
+        JPanel cancel = new JPanel();
+        JLabel title1 = new JLabel(patientName +"'s appointment on " + appDate);
+        cancel.setLayout(new BorderLayout());
+
+        //create a text area to house appointment details
+        JTextArea textArea = new JTextArea();
+        textArea.setMargin(new Insets(10, 10, 10, 10));
+        textArea.setEditable(false);
+        JScrollPane areaScrollPane = new JScrollPane(textArea);
+        areaScrollPane.setVerticalScrollBarPolicy(
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        areaScrollPane.setPreferredSize(new Dimension(300, 300));
+        String newLine = "\n";
+
+        //cancel Appointment button
+        JButton cancelled = new JButton("Cancel Appointment");
+        cancelled.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        view.updateData("UPDATE Appointment SET State = 'Cancelled' WHERE ID = '"+patientID+"' AND ADate = '" + appDate +
+                                "' AND Partner = '"+partner+"' AND StartTime = '"+appTime+"'");
+                        dispose();
+                        JOptionPane.showMessageDialog(null, "Appointment Cancelled");
+                        new ManageAppointments().ManageAppointments();
+                    }
+                }
+        );
+
+        //create string to represent sql query
+        sql = "SELECT * FROM Appointment WHERE ID = '"+patientID+"' AND ADate = '" + appDate +
+                "' AND Partner = '"+partner+"' AND State = 'Active' AND StartTime = '"+appTime+"'";
+        rs = view.getData(sql);
+
+        try {
+            //loop through result set appending each appointment to the textArea
+            if (!rs.next()) {
+                textArea.append("Appointment doesnt't exist");
+            } else {
+                //int id = rs.getInt("ID");
+                String type = rs.getString("TypeOfVisit");
+                Date dates = rs.getDate("ADate");
+                Time startTime = rs.getTime("StartTime");
+                Time endTime = rs.getTime("EndTime");
+                String appoint = " Customer: " + patientName + " Date: "+dates+" Start Time: " + startTime +
+                        " End Time: "+ endTime+ " Visit Type: " + type;
+                //System.out.println(" " + appoint);
+                textArea.append(appoint + newLine);
+
+                //add cancelled button to panel
+                cancel.add(cancelled, BorderLayout.SOUTH);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        cancel.add(title1, BorderLayout.NORTH);
+        cancel.add(textArea, BorderLayout.CENTER);
+
+        //add cancel panel and back button to mpanel
+        mPanel.add(cancel, BorderLayout.CENTER);
+
+        //go back button
+        JButton btnBackMan = new JButton("Go Back");
+        btnBackMan.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        dispose();
+                        new ManageAppointments().ManageAppointments();
+                    }
+                }
+        );
+
+        int bHeight = (int) (this.getHeight() * 0.05);
+        int bWidth = (int) (this.getWidth() * 0.05);
+        mPanel.add(btnBackMan, BorderLayout.SOUTH);
+        mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight, bWidth, bHeight, bWidth));
+        container.add(mPanel);
+
+        //Don't forget to pack! and setVisible to true
+        pack();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
     }
 }

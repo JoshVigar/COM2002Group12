@@ -2,29 +2,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 
 /**
  * Created by User on 18/11/2016.
  */
-
-/*  //code for cancel appointment
-    String cancelAppointment = "UPDATE Appointment SET State = 'Canceled' WHERE ID = " + txtPID.getText() + " AND ADate = '" +
-            years.getSelectedItem().toString()+"-" + months.getSelectedItem().toString() +"-" +
-            days.getSelectedItem().toString() + "' AND StartTime = '" + hr.getSelectedItem().toString() + ":"+ min.getSelectedItem().toString() +
-            ":00'";
-    reg.updateData(cancelAppointment);
- */
-
 public class ManageAppointments extends JFrame{
 
 
-    public void ManageAppointments()throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException{
-
-        final DataAccessBase reg = new DataAccessBase("jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61");
-
+    public void ManageAppointments(){
         //setting initial window settings
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
@@ -93,10 +80,22 @@ public class ManageAppointments extends JFrame{
                     public void actionPerformed(ActionEvent e){
                         //View Particular appointment
                         //Here's an array of strings of all the data
-                        String[] appointmentData = {txtPID.getText(),Partner.getSelectedItem().toString(),
-                                hr.getSelectedItem().toString()+":"+min.getSelectedItem().toString(),
-                                years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" + days.getSelectedItem().toString()} ;
-
+                        dispose();
+                        String patientID = txtPID.getText();
+                        String partner = Partner.getSelectedItem().toString();
+                        String time = hr.getSelectedItem().toString()+":"+min.getSelectedItem().toString()+":00";
+                        String date = years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-" + days.getSelectedItem().toString();
+                        try {
+                            new ViewAppointment().getAppointment(patientID,partner,time,date);
+                        } catch (ClassNotFoundException e1) {
+                            e1.printStackTrace();
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        } catch (InstantiationException e1) {
+                            e1.printStackTrace();
+                        } catch (IllegalAccessException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
         );
