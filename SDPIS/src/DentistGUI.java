@@ -141,6 +141,7 @@ public class DentistGUI extends JFrame {
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
+                        //this checks if an appointment exists
                         boolean appointmentExists = true;
                         String visitType= "",genVT ="";
                         int id = 0;
@@ -160,6 +161,7 @@ public class DentistGUI extends JFrame {
                         } catch (SQLException e1) {
                             e1.printStackTrace();
                         }
+                        //if it does then it wil first check in what category it is
                         if(appointmentExists) {
                             if (visitType.equals("CheckUp") || visitType.equals("HygieneVisit"))
                                 genVT = visitType;
@@ -176,6 +178,7 @@ public class DentistGUI extends JFrame {
                             } catch (InstantiationException e1) {
                                 e1.printStackTrace();
                             }
+                            //this checks if the customer's subscription covers the cost of the appointment
                             boolean valRemainingSubs = true;
                             int changedSubs = 0;
                             String getRemainingSubs = "SELECT " + genVT + " FROM Subscription WHERE ID = " + id;
@@ -203,11 +206,13 @@ public class DentistGUI extends JFrame {
                                 e1.printStackTrace();
                             }
                             int cost = 0;
+                            //if a patient's subscription covered him then remove 1 from the visits/checups/repairs
                             String updateSubs = "UPDATE Subscription SET " + genVT + " = " + changedSubs
                                     + "WHERE SubscriptionID = " + id;
                             if (valRemainingSubs) {
                                 reg.updateData(updateSubs);
                             } else {
+                                //cost = 0 if the subscription covers it, if not get the cost
                                 String getCost = "SELECT Cost FROM VisitType Where TypeOfVisit = '" + visitType + "'";
                                 ResultSet rCost = reg.getData(getCost);
                                 try {
@@ -218,6 +223,7 @@ public class DentistGUI extends JFrame {
                                     e1.printStackTrace();
                                 }
                             }
+                            //update the appointment to waiting and assign a cost to it
                             String updateAppointment = "UPDATE Appointment SET State = 'Waiting' WHERE (State = 'Active' "
                                     + "And ADate = '" + today + "' AND StartTime = '" + hr.getSelectedItem().toString()
                                     + ":" + min.getSelectedItem().toString() + ":00' AND Partner = 'Dentist')";
@@ -243,6 +249,15 @@ public class DentistGUI extends JFrame {
                     }
                 }
         );
+        JButton btnBack = new JButton("Go Back");
+        btnBack.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        dispose();
+                        new WelcomeGUI().WelcomeGUI();
+                    }
+                }
+        );
 
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
@@ -250,7 +265,7 @@ public class DentistGUI extends JFrame {
         Container contentPane = getContentPane();
         contentPane.add(title, BorderLayout.NORTH);
         contentPane.add(mPanel, BorderLayout.CENTER);
-        contentPane.add(btnBook, BorderLayout.SOUTH);
+        //contentPane.add(btnBack, BorderLayout.SOUTH);
 
 
         mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));

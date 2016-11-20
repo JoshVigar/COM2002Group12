@@ -76,7 +76,6 @@ public class RegistrationPage  extends JFrame {
         final JTextField txtPostCode = new JTextField(20);
 
         //create submit button
-        JLabel submit = new JLabel("Submit:");
         JButton bSubmit = new JButton("Submit");
 
         //create a panel and add title and name input fields.
@@ -105,7 +104,6 @@ public class RegistrationPage  extends JFrame {
         inputsPanel2.add(txtAddressRegion);
         inputsPanel2.add(postcode);
         inputsPanel2.add(txtPostCode);
-        inputsPanel2.add(submit);
         inputsPanel2.add(bSubmit);
         inputsPanel2.setLayout(new BoxLayout(inputsPanel2, BoxLayout.Y_AXIS));
 
@@ -138,6 +136,7 @@ public class RegistrationPage  extends JFrame {
                             val = false;}
 
 
+                        //checking for null fields
                         if(txtTitle.getText().trim().equals(""))val = false;
                         if(txtFName.getText().trim().equals(""))val = false;
                         if(txtLName.getText().trim().equals(""))val = false;
@@ -147,6 +146,11 @@ public class RegistrationPage  extends JFrame {
                         if(txtAddressCity.getText().trim().equals(""))val = false;
                         if(txtAddressRegion.getText().trim().equals(""))val = false;
                         if(txtPostCode.getText().trim().equals(""))val = false;
+
+                        //checking no over 18 can get the under 18's plan
+                        if(subList.getSelectedIndex() == 1 && ((int)Calendar.getInstance().get(Calendar.YEAR) - Integer.parseInt(years.getSelectedItem().toString()) > 18)){
+                            val=false;
+                        }
 
                         if(!val){
                             JOptionPane.showMessageDialog(null, "Invalid input, some field(s) is blank or unselected");
@@ -229,6 +233,18 @@ public class RegistrationPage  extends JFrame {
                                     years.getSelectedItem() + "-" + months.getSelectedItem() + "-" + days.getSelectedItem() + "', '" +
                                     txtPhone.getText() + "', '" + txtHousenum.getText() + " " + txtPostCode.getText() + "')";
                             reg.updateData(customer);
+
+                            //get count of customer table to alert new cutomers ID
+                            ResultSet s = reg.getData("SELECT COUNT(*) AS rowcount FROM Customer");
+                            int count = 0;
+                            try {
+                                s.next();
+                                count =s.getInt("rowcount");
+                                JOptionPane.showMessageDialog(null, " Name: "+ txtTitle.getText()+" "+txtFName.getText()+
+                                        " "+txtLName.getText() +" Customer ID: "+count);
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
+                            }
 
                             dispose();
                             new SecretaryGUI().SecretaryGUI();

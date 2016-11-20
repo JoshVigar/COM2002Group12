@@ -98,6 +98,7 @@ public class HygienistGUI extends JFrame {
         setVisible(true);
     }
 
+    //same as in dentsit gui
     public void FinishAppointmment()throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException{
 
         final DataAccessBase reg = new DataAccessBase("jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61");
