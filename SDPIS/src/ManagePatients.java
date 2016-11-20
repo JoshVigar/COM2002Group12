@@ -38,8 +38,7 @@ bSubscription.addActionListener(
                         String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate.plusYears(1));
 
                         String updateSubscription = "UPDATE Subscription SET ";
-                        if (((String) Sub.getSelectedItem()).equals("NHS Free Plan")) {
-                            updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 0" +
+                        if (((String) Sub.getSelectedItem()).equals("NHS Free Plan")) {                            updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 0" +
                                     ", Checkup = 2, HygieneVisit = 2, Repair = 6, EndDate = '" + endDate + "')";
                         }else if (((String) Sub.getSelectedItem()).equals("Maintenance Plan")) {
                             updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 15" +
@@ -127,7 +126,7 @@ public void subscribe(int pID,String subT){
 
 public class ManagePatients extends JFrame {
 
-    public void ManagePatients()throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException{
+    public void ManagePatients() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         final DataAccessBase reg = new DataAccessBase("jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61");
 
         //setting initial window ssettings
@@ -165,7 +164,7 @@ public class ManagePatients extends JFrame {
 
 
         //added back button and event listener
-        JButton btnBack = new JButton("Back");
+        JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){

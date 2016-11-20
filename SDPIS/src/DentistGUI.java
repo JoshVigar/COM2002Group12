@@ -250,7 +250,7 @@ public class DentistGUI extends JFrame {
         Container contentPane = getContentPane();
         contentPane.add(title, BorderLayout.NORTH);
         contentPane.add(mPanel, BorderLayout.CENTER);
-        contentPane.add(btnBack, BorderLayout.SOUTH);
+        contentPane.add(btnBook, BorderLayout.SOUTH);
 
 
         mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
