@@ -136,6 +136,7 @@ public class RegistrationPage  extends JFrame {
                             val = false;}
 
 
+                        //checking for null fields
                         if(txtTitle.getText().trim().equals(""))val = false;
                         if(txtFName.getText().trim().equals(""))val = false;
                         if(txtLName.getText().trim().equals(""))val = false;
@@ -145,6 +146,11 @@ public class RegistrationPage  extends JFrame {
                         if(txtAddressCity.getText().trim().equals(""))val = false;
                         if(txtAddressRegion.getText().trim().equals(""))val = false;
                         if(txtPostCode.getText().trim().equals(""))val = false;
+
+                        //checking no over 18 can get the under 18's plan
+                        if(subList.getSelectedIndex() == 1 && ((int)Calendar.getInstance().get(Calendar.YEAR) - Integer.parseInt(years.getSelectedItem().toString()) > 18)){
+                            val=false;
+                        }
 
                         if(!val){
                             JOptionPane.showMessageDialog(null, "Invalid input, some field(s) is blank or unselected");
