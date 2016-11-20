@@ -12,6 +12,7 @@ public class DataAccessBase {
 
 	}
 
+	//create a connection
 	private Connection getConnection()throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException
 	{
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -30,6 +31,7 @@ public class DataAccessBase {
 		return procedure;
 	}*/
 
+	//updates the database returns a 0 if failed and a 1 if succeeded
 	protected int updateData(String update){
 		try{
 			Connection sqlCon = getConnection();
@@ -45,6 +47,7 @@ public class DataAccessBase {
 		}
 	}
 
+	//gets the data from the database
 	protected ResultSet getData(String query) {
 		try{
 			Connection sqlCon = getConnection();
@@ -60,6 +63,7 @@ public class DataAccessBase {
 		}
 	}
 
+	//closes the connection
 	protected void closeConnection()throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException{
 		Connection sqlCon = getConnection();
 		sqlCon.close();

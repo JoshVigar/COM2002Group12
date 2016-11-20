@@ -69,8 +69,8 @@ public class SecretaryGUI extends JFrame{
 
         JButton btnMP = new JButton("Manage Patients");
         btnMP.addActionListener(
-                new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
                         dispose();
                         try {
                             new ManagePatients().ManagePatients();
@@ -84,6 +84,7 @@ public class SecretaryGUI extends JFrame{
                             e1.printStackTrace();
                         }
                     }
+
                 }
         );
 
@@ -111,10 +112,21 @@ public class SecretaryGUI extends JFrame{
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         dispose();
-                        new BookAppointment().BookHoliday();
+                        try {
+                            new BookAppointment().BookHoliday();
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        } catch (ClassNotFoundException e1) {
+                            e1.printStackTrace();
+                        } catch (IllegalAccessException e1) {
+                            e1.printStackTrace();
+                        } catch (InstantiationException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
         );
+
 
         JButton btnChk = new JButton("Checkout Patient");
         btnChk.addActionListener(
@@ -125,6 +137,7 @@ public class SecretaryGUI extends JFrame{
                     }
                 }
         );
+
 
         //add buttons to panel
         JPanel buttonPanel = new JPanel();
