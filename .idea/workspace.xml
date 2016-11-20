@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5424831f-d4cb-4eaa-9bdb-e08e07d4e57c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SDPIS/src/ViewPatient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$2.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$3.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$4.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$5.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$6.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/DataB.java" afterPath="$PROJECT_DIR$/SDPIS/src/DataB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/DentistGUI.java" afterPath="$PROJECT_DIR$/SDPIS/src/DentistGUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/ManagePatients.java" afterPath="$PROJECT_DIR$/SDPIS/src/ManagePatients.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/SecretaryGUI.java" afterPath="$PROJECT_DIR$/SDPIS/src/SecretaryGUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/ViewAppointment.java" afterPath="$PROJECT_DIR$/SDPIS/src/ViewAppointment.java" />
     </list>
     <ignored path="COM2002Group12.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -802,7 +790,7 @@
       <updated>1479131169879</updated>
       <workItem from="1479131172227" duration="12608000" />
       <workItem from="1479407130428" duration="2073000" />
-      <workItem from="1479472608602" duration="28704000" />
+      <workItem from="1479472608602" duration="28902000" />
     </task>
     <task id="LOCAL-00001" summary="DataB file">
       <created>1479134052618</created>
@@ -951,11 +939,18 @@
       <option name="project" value="LOCAL" />
       <updated>1479670591731</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="manage patient is done">
+      <created>1479683571104</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1479683571104</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43385000" />
+    <option name="totallyTimeSpent" value="43583000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1042,7 +1037,8 @@
     <MESSAGE value="refactoring view appointment" />
     <MESSAGE value="refactoring view appointment: done" />
     <MESSAGE value="refactoring view appointment: done, cancel appointment works as well" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring view appointment: done, cancel appointment works as well" />
+    <MESSAGE value="manage patient is done" />
+    <option name="LAST_COMMIT_MESSAGE" value="manage patient is done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
