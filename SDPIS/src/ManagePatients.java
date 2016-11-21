@@ -128,6 +128,7 @@ public void subscribe(int pID,String subT){
 public class ManagePatients extends JFrame {
 
     public void ManagePatients() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+        //DB variable for updates/changes
         final DataAccessBase reg = new DataAccessBase("jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61");
 
         //setting initial window settings
