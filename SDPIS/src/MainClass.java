@@ -5,9 +5,11 @@ import java.time.format.DateTimeFormatter;
 public class MainClass {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+        //variables for db connections
         Connection con = null;
         Statement stmt;
         try{
+            //Connecting to the db
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             String DB = "jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61";
             con = DriverManager.getConnection(DB);
@@ -190,8 +192,10 @@ public class MainClass {
                 String appoint = "Date: "+ dates+" Start Time: "+ startTime+" End Time: "+endTime+" Customer ID: "+id+" Visit Type: "+type;
                 System.out.println(appoint);
             }
+            //initialise the GUI
             new WelcomeGUI().WelcomeGUI();
         }
+        //Catch for the sql
         catch (SQLException ex) {
             ex.printStackTrace(); }
         finally {

@@ -15,6 +15,7 @@ import java.util.Date;
  * Created by babatundeadeola on 18/11/2016.
  */
 public class ViewAppointment extends JFrame {
+    //variable for DB operations
     private DataAccessBase view = new DataAccessBase("jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61");
 
     public ViewAppointment() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
@@ -70,6 +71,7 @@ public class ViewAppointment extends JFrame {
         mPanel.add(dpanel, BorderLayout.CENTER);
 
 
+        //vent handler for the submit button
         bSubmit.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
@@ -106,15 +108,21 @@ public class ViewAppointment extends JFrame {
                 }
         );
 
+        //dimensions for border size
         int bHeight = (int) (this.getHeight() * 0.05);
         int bWidth = (int) (this.getWidth() * 0.05);
+
         //add back button to panel
         mPanel.add(btnBack, BorderLayout.SOUTH);
+        //create border for inputs
         mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight, bWidth, bHeight, bWidth));
+
+        //add mPanel to the container
         container.add(mPanel);
 
         //Don't forget to pack! and setVisible to true
         pack();
+        //set location and close operation for the window
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -126,6 +134,7 @@ public class ViewAppointment extends JFrame {
         String startDay = date;
         final String user = partner;
 
+        //if for which appointments to get from db
         if(!user.equals("Secretary")){
             //Set title and size of frame
             setTitle("Sheffield Dental Practice");
