@@ -1,4 +1,6 @@
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class DataB {
 
@@ -13,6 +15,26 @@ public class DataB {
             stmt = con.createStatement();
 
 
+            LocalDate localDate = LocalDate.now();
+            String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate.plusYears(1));
+
+            /*String updateSubscription = "UPDATE Subscription SET ";
+            if ((subT.equals("NHS Free Plan")) {
+                updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 0" +
+                        ", Checkup = 2, HygieneVisit = 2, Repair = 6, EndDate = '" + endDate + "')";
+            }else if (((String) Sub.getSelectedItem()).equals("Maintenance Plan")) {
+                updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 15" +
+                        ", Checkup = 2, HygieneVisit = 2, Repair = 0, EndDate = '" + endDate + "')";
+            }else if (((String) Sub.getSelectedItem()).equals("Oral Health Plan")) {
+                updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 21" +
+                        ", Checkup = 2, HygieneVisit = 4, Repair = 0, EndDate = '" + endDate + "')";
+            }else if (((String) Sub.getSelectedItem()).equals("Dental Repair Plan")) {
+                updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 36" +
+                        ", Checkup = 2, HygieneVisit = 2, Repair = 2, EndDate = '" + endDate + "')";
+            }
+            updateSubscription += " WHERE EndDate = '" + DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate) + "'";
+            reg.updateData(updateSubscription);
+*/
                 /*String sql = "CREATE TABLE Subscription(SubscriptionID INTEGER NOT NULL AUTO_INCREMENT, SubscriptionTitle VARCHAR(40),"+
                         " MonthlyCost INTEGER, CheckUp INTEGER, HygieneVisit INTEGER, Repair INTEGER, EndDate DATE,"+
                         " PRIMARY KEY (SubscriptionID))";
