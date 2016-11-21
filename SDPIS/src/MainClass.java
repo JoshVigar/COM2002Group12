@@ -1,40 +1,54 @@
+/**
+ * Created by babatundeadeola on 21/11/2016.
+ */
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class DataB {
-
+public class MainClass {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+        //variables for db connections
         Connection con = null;
         Statement stmt;
         try{
+            //Connecting to the db
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             String DB = "jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61";
             con = DriverManager.getConnection(DB);
-
             stmt = con.createStatement();
-
-
             LocalDate localDate = LocalDate.now();
-            String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate.plusYears(1));
-
-            /*String updateSubscription = "UPDATE Subscription SET ";
-            if ((subT.equals("NHS Free Plan")) {
-                updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 0" +
-                        ", Checkup = 2, HygieneVisit = 2, Repair = 6, EndDate = '" + endDate + "')";
-            }else if (((String) Sub.getSelectedItem()).equals("Maintenance Plan")) {
-                updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 15" +
-                        ", Checkup = 2, HygieneVisit = 2, Repair = 0, EndDate = '" + endDate + "')";
-            }else if (((String) Sub.getSelectedItem()).equals("Oral Health Plan")) {
-                updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 21" +
-                        ", Checkup = 2, HygieneVisit = 4, Repair = 0, EndDate = '" + endDate + "')";
-            }else if (((String) Sub.getSelectedItem()).equals("Dental Repair Plan")) {
-                updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 36" +
-                        ", Checkup = 2, HygieneVisit = 2, Repair = 2, EndDate = '" + endDate + "')";
+            String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate);
+            String subT = "";
+            boolean subExists = true;
+            String updateSubscription = null;
+            String getSubscription = "SELECT SubscriptionTitle FROM Subscription WHERE EndDate = '" +endDate +"'";
+            ResultSet rs = stmt.executeQuery(getSubscription);
+            while(rs.next()){
+                if(!rs.wasNull()) {
+                    subT = rs.getString("SubscriptionTitle").trim();
+                    updateSubscription = "UPDATE Subscription SET ";
+                    if (subT.equals("NHS Free Plan")) {
+                        updateSubscription += "SubscriptionTitle = '" + subT + "', MonthlyCost = 0" +
+                                ", Checkup = 2, HygieneVisit = 2, Repair = 6, EndDate = '" + endDate + "')";
+                    } else if (subT.equals("Maintenance Plan")) {
+                        updateSubscription += "SubscriptionTitle = '" + subT + "', MonthlyCost = 15" +
+                                ", Checkup = 2, HygieneVisit = 2, Repair = 0, EndDate = '" + endDate + "')";
+                    } else if (subT.equals("Oral Health Plan")) {
+                        updateSubscription += "SubscriptionTitle = '" + subT + "', MonthlyCost = 21" +
+                                ", Checkup = 2, HygieneVisit = 4, Repair = 0, EndDate = '" + endDate + "')";
+                    } else if (subT.equals("Dental Repair Plan")) {
+                        updateSubscription += "SubscriptionTitle = '" + subT + "', MonthlyCost = 36" +
+                                ", Checkup = 2, HygieneVisit = 2, Repair = 2, EndDate = '" + endDate + "')";
+                    }
+                    else
+                        subExists = false;
+                    System.out.println(subT);
+                    System.out.println(updateSubscription);
+                    updateSubscription += " WHERE EndDate = '" + DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate) + "'";
+                    if(subExists)
+                        stmt.executeUpdate(updateSubscription);
+                }
             }
-            updateSubscription += " WHERE EndDate = '" + DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate) + "'";
-            reg.updateData(updateSubscription);
-*/
                 /*String sql = "CREATE TABLE Subscription(SubscriptionID INTEGER NOT NULL AUTO_INCREMENT, SubscriptionTitle VARCHAR(40),"+
                         " MonthlyCost INTEGER, CheckUp INTEGER, HygieneVisit INTEGER, Repair INTEGER, EndDate DATE,"+
                         " PRIMARY KEY (SubscriptionID))";
@@ -54,8 +68,6 @@ public class DataB {
                     " EndTime TIME, State VARCHAR(10), Cost INTEGER,PRIMARY KEY (Partner,ADate,StartTime),FOREIGN KEY (ID) REFERENCES Customer(ID),"+
                     "FOREIGN KEY (TypeOfVisit) REFERENCES VisitType(TypeOfVisit))";
                 stmt.executeUpdate(sql);
-
-
             String customer = "SELECT * FROM Customer";
             ResultSet rs = stmt.executeQuery(customer);
             while(rs.next()){
@@ -67,7 +79,6 @@ public class DataB {
                 Date dob = rs.getDate("BirthDate");
                 String phone = rs.getString("PhoneNum");
                 String address = rs.getString("AddressID");
-
                 //Display values
                 System.out.print("ID: " + id);
                 System.out.print(", Title: " + title);
@@ -87,7 +98,6 @@ public class DataB {
                 String d =rs.getString("City");
                 String e =rs.getString("Region");
                 String f =rs.getString("PostCode");
-
                 System.out.print("AddressID:"+a);
                 System.out.print(" House No.:"+b);
                 System.out.print(" Street:"+c);
@@ -95,7 +105,6 @@ public class DataB {
                 System.out.print(" Region:"+e);
                 System.out.println(" PostCode:"+f);
             }
-
             sql = "SELECT * FROM Subscription";
             rs = stmt.executeQuery(sql);
             while(rs.next()){
@@ -106,7 +115,6 @@ public class DataB {
                 int e =rs.getInt("HygieneVisit");
                 int f =rs.getInt("Repair");
                 Date g =rs.getDate("EndDate");
-
                 System.out.print("SubscriptionID:"+a);
                 System.out.print(" SubscriptionTitle:"+b);
                 System.out.print(" MonthlyCost:"+c);
@@ -115,29 +123,22 @@ public class DataB {
                 System.out.print(" Repair:"+f);
                 System.out.println(" EndDate:"+g);
             }
-
             stmt.executeUpdate("INSERT INTO VisitType VALUES ('HygieneVisit', 'Hygienist', 20, 45)");
             stmt.executeUpdate("INSERT INTO VisitType VALUES ('CheckUp', 'Dentist', 20, 45)");
             stmt.executeUpdate("INSERT INTO VisitType VALUES ('Silver Almagam Filling', 'Dentist', 60, 90)");
             stmt.executeUpdate("INSERT INTO VisitType VALUES ('White Composite Resin Filling', 'Dentist', 60, 150)");
             stmt.executeUpdate("INSERT INTO VisitType VALUES ('Gold Crown Fitting', 'Dentist', 60, 500)");
-
             stmt.executeUpdate("ALTER TABLE Appointment ADD FINISHED BOOLEAN");
             stmt.close();
-
             stmt.executeUpdate("DROP TABLE Appointment");
-
-
             //stmt.executeUpdate("INSERT INTO Appointment VALUES(1,'CheckUp','Dentist','2016-11-17','09:00:00','09:20:00','Active')");
             //stmt.executeUpdate("INSERT INTO Appointment VALUES(2,'HygieneVisit','Hygienist','2016-11-17','09:00:00','09:20:00','Active')");
             //stmt.executeUpdate("INSERT INTO Appointment VALUES(1,'CheckUp','Dentist','2016-11-17','09:20:00','09:40:00','Active')");
             //stmt.executeUpdate("INSERT INTO Appointment VALUES(2,'HygieneVisit','Hygienist','2016-11-17','09:20:00','09:40:00','Cancelled')");
-
             //stmt.executeUpdate("INSERT INTO Appointment VALUES(1,'CheckUp','Dentist','2016-11-17','09:40:00','10:00:00','Active')");
             //stmt.executeUpdate("INSERT INTO Appointment VALUES(1,'CheckUp','Dentist','2016-11-17','10:00:00','10:20:00','Active')");
             //stmt.executeUpdate("INSERT INTO Appointment VALUES(1,'CheckUp','Dentist','2016-11-17','10:20:00','10:40:00','Active')");
             //stmt.executeUpdate("INSERT INTO Appointment VALUES(1,'HygieneVisit','Hygienist','2016-11-17','10:00:00','10:20:00','Active')");
-
             String sql = "SELECT ID,TypeOfVisit,ADate,StartTime,EndTime FROM Appointment WHERE Partner = 'Dentist' AND State = 'Active'";
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()) {
@@ -149,7 +150,6 @@ public class DataB {
                 String appoint = "Date: "+ dates+" Start Time: "+ startTime+" End Time: "+endTime+" Customer ID: "+id+" Visit Type: "+type;
                 System.out.println(appoint);
             }
-
             stmt.executeUpdate("DROP TABLE Appointment");
             String sql ="CREATE TABLE Appointment(ID INTEGER, TypeOfVisit VARCHAR(40), Partner VARCHAR(40), ADate DATE ,StartTime TIME,"+
                     " EndTime TIME, State VARCHAR(10), Cost INTEGER,PRIMARY KEY (Partner,ADate,StartTime),FOREIGN KEY (ID) REFERENCES Customer(ID),"+
@@ -157,7 +157,6 @@ public class DataB {
             stmt.executeUpdate(sql);
             */
             //TypeOfVisit VARCHAR(40) , Partner VARCHAR(40), Duration INTEGER, Cost INTEGER ,"
-
             /*String sql = "SELECT * FROM VisitType";
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
@@ -170,17 +169,15 @@ public class DataB {
             //int rs = stmt.executeUpdate(sql);
             //sql = "UPDATE VisitType SET TypeOfVisit = 'Gold Crown Filling' WHERE TypeOfVisit = 'Gold Crown Fitting'";
             //rs = stmt.executeUpdate(sql);
-
             stmt.executeUpdate("DROP TABLE Appointment");
             String sql ="CREATE TABLE Appointment(ID INTEGER, TypeOfVisit VARCHAR(40), Partner VARCHAR(40), ADate DATE ,StartTime TIME,"+
                     " EndTime TIME, State VARCHAR(10), Cost INTEGER,PRIMARY KEY (Partner,ADate,StartTime,State),FOREIGN KEY (ID) REFERENCES Customer(ID),"+
                     "FOREIGN KEY (TypeOfVisit) REFERENCES VisitType(TypeOfVisit))";
             stmt.executeUpdate(sql);
-
+            */
             //stmt.executeUpdate("INSERT INTO Customer VALUES (0, 'Mr.','Defaul', 'customer','2000,01,01','123456789',NULL)");
-
-            String sql = "SELECT ID,TypeOfVisit,ADate,StartTime,EndTime FROM Appointment WHERE State = 'Active'";
-            ResultSet rs = stmt.executeQuery(sql);
+            String sql = "SELECT ID,TypeOfVisit,ADate,StartTime,EndTime FROM Appointment WHERE Partner = 'Dentist' AND State = 'Active'";
+            rs = stmt.executeQuery(sql);
             while(rs.next()) {
                 int id = rs.getInt("ID");
                 String type = rs.getString("TypeOfVisit");
@@ -190,11 +187,10 @@ public class DataB {
                 String appoint = "Date: "+ dates+" Start Time: "+ startTime+" End Time: "+endTime+" Customer ID: "+id+" Visit Type: "+type;
                 System.out.println(appoint);
             }
-            stmt.executeUpdate("DELETE FROM Appointment WHERE TypeOfVisit = 'Gold Crown Filling'");
-            stmt.executeUpdate("UPDATE VisitType SET TypeOfVisit = 'Gold Crown Fitting' WHERE TypeOfVisit = 'Gold Crown Filling'");
-            */
+            //initialise the GUI
             new WelcomeGUI().WelcomeGUI();
         }
+        //Catch for the sql
         catch (SQLException ex) {
             ex.printStackTrace(); }
         finally {
@@ -202,7 +198,6 @@ public class DataB {
                 con.close();
             }
         }
-
-
     }
 }
+
