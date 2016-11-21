@@ -137,9 +137,10 @@ public class HygienistGUI extends JFrame {
         //event listener for submit button
         bSubmit.addActionListener(
                 new ActionListener(){
-                    public void actionPerformed(ActionEvent e){boolean appointmentExists = true;
-                        String visitType= "",genVT ="";
-                        int id = 0;
+                    public void actionPerformed(ActionEvent e){
+                        //this checks if an appointment exists
+                        boolean appointmentExists = true;
+                        String visitType= "";
                         String getVT = "SELECT TypeOfVisit,ID FROM Appointment Where (State = 'Active' "
                                 + "And ADate = '" + today + "' AND StartTime = '" + hr.getSelectedItem().toString()
                                 +":"+ min.getSelectedItem().toString()+":00' AND Partner = 'Hygienist')";
@@ -148,7 +149,6 @@ public class HygienistGUI extends JFrame {
                             while(rVT.next()){
                                 if(!rVT.wasNull()) {
                                     visitType = rVT.getString("TypeOfVisit");
-                                    id = rVT.getInt("ID");
                                 }
                                 else
                                     appointmentExists = false;
@@ -156,64 +156,20 @@ public class HygienistGUI extends JFrame {
                         } catch (SQLException e1) {
                             e1.printStackTrace();
                         }
+                        //if it does then it wil first check in what category it is
                         if(appointmentExists) {
-                            if (visitType.equals("CheckUp") || visitType.equals("HygieneVisit"))
-                                genVT = visitType;
-                            else
-                                genVT = "Repair";
-                            try {
-                                reg.closeConnection();
-                            } catch (SQLException e1) {
-                                e1.printStackTrace();
-                            } catch (ClassNotFoundException e1) {
-                                e1.printStackTrace();
-                            } catch (IllegalAccessException e1) {
-                                e1.printStackTrace();
-                            } catch (InstantiationException e1) {
-                                e1.printStackTrace();
-                            }
-                            boolean valRemainingSubs = true;
-                            int changedSubs = 0;
-                            String getRemainingSubs = "SELECT " + genVT + " FROM Subscription WHERE SubscriptionID = " + id;
-                            ResultSet remainingSubs = reg.getData(getRemainingSubs);
-                            try {
-                                while (remainingSubs.next()) {
-                                    if (remainingSubs.getInt(0) > 0) {
-                                        changedSubs = remainingSubs.getInt(0) - 1;
-                                    } else {
-                                        valRemainingSubs = false;
-                                    }
-                                }
-                            } catch (SQLException e1) {
-                                e1.printStackTrace();
-                            }
-                            try {
-                                reg.closeConnection();
-                            } catch (SQLException e1) {
-                                e1.printStackTrace();
-                            } catch (ClassNotFoundException e1) {
-                                e1.printStackTrace();
-                            } catch (IllegalAccessException e1) {
-                                e1.printStackTrace();
-                            } catch (InstantiationException e1) {
-                                e1.printStackTrace();
-                            }
                             int cost = 0;
-                            String updateSubs = "UPDATE Subscription SET " + genVT + " = " + changedSubs
-                                    + " WHERE SubscriptionID = " + id;
-                            if (valRemainingSubs) {
-                                reg.updateData(updateSubs);
-                            } else {
-                                String getCost = "SELECT Cost FROM VisitType Where TypeOfVisit = '" + visitType + "'";
-                                ResultSet rCost = reg.getData(getCost);
-                                try {
-                                    while (rCost.next()) {
-                                        cost = rCost.getInt("Cost");
-                                    }
-                                } catch (SQLException e1) {
-                                    e1.printStackTrace();
+                            String getCost = "SELECT Cost FROM VisitType Where TypeOfVisit = '" + visitType + "'";
+                            ResultSet rCost = reg.getData(getCost);
+                            try {
+                                while (rCost.next()) {
+                                    cost = rCost.getInt("Cost");
                                 }
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
                             }
+
+                            //update the appointment to waiting and assign a cost to it
                             String updateAppointment = "UPDATE Appointment SET State = 'Waiting' WHERE (State = 'Active' "
                                     + "And ADate = '" + today + "' AND StartTime = '" + hr.getSelectedItem().toString()
                                     + ":" + min.getSelectedItem().toString() + ":00' AND Partner = 'Hygienist')";
