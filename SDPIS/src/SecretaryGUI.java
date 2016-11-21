@@ -215,7 +215,7 @@ public class SecretaryGUI extends JFrame{
         //creating labels, text fields and comboboxes for inputs
         JLabel title = new JLabel("Enter Patient ID To Checkout:");
         JLabel PID = new JLabel();
-        JTextField txtPID = new JTextField();
+        final JTextField txtPID = new JTextField();
         JButton bSubmit = new JButton("Submit");
 
         //adding partner label and combobox to a panel
@@ -232,24 +232,26 @@ public class SecretaryGUI extends JFrame{
         mPanel.setLayout(new BoxLayout(mPanel, BoxLayout.Y_AXIS));
         mPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDate localDate = LocalDate.now();
-        final String today = dtf.format(localDate);
+
 
         //event handling for the submit button
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-//                        String getAppointment = "SELECT ID,VisitType FROM Appointment WHERE (State = 'Waiting' "
-//                                +"And ADate = '" + today + "' AND StartTime = '" + hr.getSelectedItem().toString()
-//                                + ":" + min.getSelectedItem().toString() + ":00' AND Partner =" + partner.getSelectedItem().toString();
-//                        ResultSet appointmentInfo = reg.getData(getAppointment);
-//                        String getSubscription = "SELECT SubscriptionTitle,Checkup,HygieneVisit,Repair FROM Subscription WHERE"
-//                                +"SubscriptionID = " + appointmentInfo;
-//                        ResultSet subInfo = reg.getData(getSubscription);
-//                        //String bill =appointmentInfo"+"subInfo ;
-//                        dispose();
-//                        new SecretaryGUI().SecretaryGUI();
+                        int managedPatient = Integer.parseInt(txtPID.getText());
+                        try {
+                            new CheckOut(managedPatient);
+                        } catch (ClassNotFoundException e1) {
+                            e1.printStackTrace();
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        } catch (InstantiationException e1) {
+                            e1.printStackTrace();
+                        } catch (IllegalAccessException e1) {
+                            e1.printStackTrace();
+                        }
+                        dispose();
+                        //new SecretaryGUI().SecretaryGUI();
 
                     }
                 }

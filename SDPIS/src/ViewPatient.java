@@ -49,57 +49,62 @@ public class ViewPatient extends JFrame{
         unSub.add(title1, BorderLayout.NORTH);
         //variables
         final int customId = id;
-        String address;
-        String subTitle;
+        String address= "";
+        String subTitle ="";
 
+        //customer details
         ResultSet custom = view.getData("SELECT * FROM Customer WHERE ID ="+ customId);
-        do{
-            //Retrieve by column name
-            //int customerId = custom.getInt("ID");
-            custom.next();
-            String customerTitle = custom.getString("Title");
-            String first = custom.getString("Fname");
-            String last = custom.getString("Lname");
-            Date dob = custom.getDate("BirthDate");
-            String phone = custom.getString("PhoneNum");
-            address = custom.getString("AddressID");
-            String customer = "ID: "+customId+" Title: "+customerTitle+" Name: "+first+" "+last+" D.O.B: "+
-                    dob+" Phone No.: "+phone+" ";
-            textArea.append(customer+newLine);
-        }while(custom.next());
-
         //subscription details
         ResultSet subscribe = view.getData("SELECT * FROM Subscription WHERE SubscriptionID ="+ customId);
-        do{
-            //Retrieve by column name
-            //int a = subscribe.getInt("SubscriptionID");
-            subscribe.next();
-            subTitle =subscribe.getString("SubscriptionTitle");
-            int c =subscribe.getInt("MonthlyCost");
-            int d =subscribe.getInt("CheckUp");
-            int e =subscribe.getInt("HygieneVisit");
-            int f =subscribe.getInt("Repair");
-            Date g =subscribe.getDate("EndDate");
-            textArea.append("Subscription Details"+newLine);
-            String subscribtion = "Subscription ID: "+ customId+" Subscription Title: "+subTitle+" Monthly Cost: £"+
-                    c+" Check-Ups: "+d+" Hygiene Visits: "+e+" Repairs: "+f+" End Date: "+ g;
-            textArea.append(subscribtion+newLine);
-        }while(subscribe.next());
-
         //address details
         ResultSet addressDet = view.getData("SELECT * FROM Address WHERE AddressID ='"+ address+"'");
-        do{
-            //Retrieve by column name
-            addressDet.next();
-            String b =addressDet.getString("HouseNum");
-            String c =addressDet.getString("Street");
-            String d =addressDet.getString("City");
-            String e =addressDet.getString("Region");
-            String f =addressDet.getString("PostCode");
-            textArea.append("Address"+newLine);
-            String addressID = "House No.: "+b+" Street: "+c+" City: "+d+" Region: " + e+" PostCode: "+f;
-            textArea.append(addressID+newLine);
-        }while(addressDet.next());
+        if(!custom.next()){
+            textArea.append("Customer Doesn't Exist");
+        }else {
+            do {
+                //Retrieve by column name
+                //int customerId = custom.getInt("ID");
+                //custom.next();
+                String customerTitle = custom.getString("Title");
+                String first = custom.getString("Fname");
+                String last = custom.getString("Lname");
+                Date dob = custom.getDate("BirthDate");
+                String phone = custom.getString("PhoneNum");
+                address = custom.getString("AddressID");
+                String customer = "ID: " + customId + " Title: " + customerTitle + " Name: " + first + " " + last + " D.O.B: " +
+                        dob + " Phone No.: " + phone + " ";
+                textArea.append(customer + newLine);
+            } while (custom.next());
+
+            do {
+                //Retrieve by column name
+                //int a = subscribe.getInt("SubscriptionID");
+                subscribe.next();
+                subTitle = subscribe.getString("SubscriptionTitle");
+                int c = subscribe.getInt("MonthlyCost");
+                int d = subscribe.getInt("CheckUp");
+                int e = subscribe.getInt("HygieneVisit");
+                int f = subscribe.getInt("Repair");
+                Date g = subscribe.getDate("EndDate");
+                textArea.append("Subscription Details" + newLine);
+                String subscribtion = "Subscription ID: " + customId + " Subscription Title: " + subTitle + " Monthly Cost: £" +
+                        c + " Check-Ups: " + d + " Hygiene Visits: " + e + " Repairs: " + f + " End Date: " + g;
+                textArea.append(subscribtion + newLine);
+            } while (subscribe.next());
+
+            do {
+                //Retrieve by column name
+                addressDet.next();
+                String b = addressDet.getString("HouseNum");
+                String c = addressDet.getString("Street");
+                String d = addressDet.getString("City");
+                String e = addressDet.getString("Region");
+                String f = addressDet.getString("PostCode");
+                textArea.append("Address" + newLine);
+                String addressID = "House No.: " + b + " Street: " + c + " City: " + d + " Region: " + e + " PostCode: " + f;
+                textArea.append(addressID + newLine);
+            } while (addressDet.next());
+        }
 
         //add textArea to the panel
         unSub.add(textArea, BorderLayout.CENTER);

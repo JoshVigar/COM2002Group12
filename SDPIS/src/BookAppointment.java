@@ -34,7 +34,7 @@ public class BookAppointment extends JFrame{
         final JComboBox hr = new JComboBox(hour);
         final JComboBox min = new JComboBox(minute);
         //combo boxes for types of appointments
-        String[] appTypes = { "CheckUp", "HygieneVisit" , "White Composite Resin Filling", "Gold Crown Filling", "Silver Amalgam Filling"};
+        String[] appTypes = { "CheckUp", "HygieneVisit" , "White Composite Resin Filling", "Gold Crown Fitting", "Silver Amalgam Filling"};
         final JComboBox aType = new JComboBox(appTypes);
         JButton bBook = new JButton("Book");
 
