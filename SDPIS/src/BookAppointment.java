@@ -127,6 +127,26 @@ public class BookAppointment extends JFrame{
                             JOptionPane.showMessageDialog(null, "Invalid input, some field is blank or incorrect");
                         }
 
+                        if(val){
+                            int year = Integer.parseInt(years.getSelectedItem().toString());
+                            int month = Integer.parseInt(months.getSelectedItem().toString());
+                            int day = Integer.parseInt(days.getSelectedItem().toString());
+
+                            Calendar c = Calendar.getInstance();
+                            c.set(year, month, day);
+
+                            int day_of_week = c.get(Calendar.DAY_OF_WEEK);
+
+                            if (day_of_week == 1 || day_of_week == 7) {
+                                JOptionPane.showMessageDialog(null, "This date is a weekend. Please select another.");
+                                val = false;
+                            }
+                            if (month == 12 && (day == 25 || day == 26) || month == 1 && day == 1) {
+                                JOptionPane.showMessageDialog(null, "This date is a public holiday. Please select another.");
+                                val = false;
+                            }
+                        }
+
                         //if validation succeeds then add entry to database
                         if (val) {
                             String getVisitDuration = "SELECT Duration FROM VisitType Where TypeOfVisit='"
@@ -270,7 +290,8 @@ public class BookAppointment extends JFrame{
                                         + min.getSelectedItem().toString() + ":00', '"
                                         + Integer.toString(endHours) + ":" + Integer.toString(endMinutes) + ":00', 'Active', 0)";
                                 reg.updateData(newBooking);
-                                JOptionPane.showMessageDialog(null, "Appointment Booked");
+                                JOptionPane.showMessageDialog(null, "Appointment booked for Patient "+txtPID.getText()+" for a "+ aType.getSelectedItem()+" with the "+Partner.getSelectedItem()+" at "+ hr.getSelectedItem()
+                                        +":"+min.getSelectedItem()+" on " +days.getSelectedItem()+"/"+ months.getSelectedItem() +"/"+years.getSelectedItem());
                                 dispose();
                                 new SecretaryGUI().SecretaryGUI();
                             }else{
@@ -314,6 +335,8 @@ public class BookAppointment extends JFrame{
     }
 
     public void BookHoliday() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+
+        //initialise the window and database connection
         final DataAccessBase reg = new DataAccessBase("jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61");
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
@@ -356,13 +379,13 @@ public class BookAppointment extends JFrame{
         //Set the layout of the datePanel
         datePanel.setLayout(new BoxLayout(datePanel, BoxLayout.X_AXIS));
 
+        //submit button and eventhandler
         JButton btnSubmit = new JButton("Submit");
         btnSubmit.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         //boolean for validation
                         boolean val = true;
-
 
                         //checking months and days for consistency eg. No 31st of February
                         if ((months.getSelectedIndex() == 4
@@ -377,8 +400,10 @@ public class BookAppointment extends JFrame{
                             JOptionPane.showMessageDialog(null, "Invalid day selected");
                             val = false;
                         }
+                        //check something is selected in the date combobox
+                        String updateAppointments;
                         if (years.getSelectedItem().equals("Year") || (months.getSelectedItem().equals("Month") ||
-                                (days.getSelectedItem().equals("Day") || partnerBox.getSelectedItem().equals("Partner"))))
+                                (days.getSelectedItem().equals("Day") || partnerBox.getSelectedItem().equals("Partner")))) {
                             val = false;
 
                             String updateAppointments=null;
@@ -403,6 +428,7 @@ public class BookAppointment extends JFrame{
 
         );
 
+        //adding the input fields to the main Panel
         JPanel mPanel = new JPanel();
         mPanel.add(partner);
         mPanel.add(partnerBox);
@@ -425,6 +451,7 @@ public class BookAppointment extends JFrame{
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
 
+        //add elements to the container
         Container contentPane = getContentPane();
         contentPane.add(title, BorderLayout.NORTH);
         contentPane.add(mPanel, BorderLayout.CENTER);

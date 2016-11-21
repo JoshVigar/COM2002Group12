@@ -156,6 +156,7 @@ public class ManagePatients extends JFrame {
                         int managedPatient = Integer.parseInt(txtPID.getText());
                         try {
                             new ViewPatient(managedPatient);
+                            dispose();
                         } catch (ClassNotFoundException e1) {
                             e1.printStackTrace();
                         } catch (SQLException e1) {

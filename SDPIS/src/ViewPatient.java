@@ -97,7 +97,7 @@ public class ViewPatient extends JFrame{
             String e =addressDet.getString("Region");
             String f =addressDet.getString("PostCode");
             textArea.append("Address"+newLine);
-            String addressID = "House No.: "+b+" Street: "+c+" City: "+d+" Region" + e+" PostCode: "+f;
+            String addressID = "House No.: "+b+" Street: "+c+" City: "+d+" Region: " + e+" PostCode: "+f;
             textArea.append(addressID+newLine);
         }while(addressDet.next());
 
@@ -141,8 +141,8 @@ public class ViewPatient extends JFrame{
                             }
                             updateSubscription += " WHERE SubscriptionID = " + customId;
                             view.updateData(updateSubscription);
-                            JOptionPane.showMessageDialog(null, "Patient Subscribed");
                             dispose();
+                            JOptionPane.showMessageDialog(null, "Patient Subscribed");
                         }
                     }
             );
@@ -159,8 +159,8 @@ public class ViewPatient extends JFrame{
                             String firstSubscription = "UPDATE Subscription SET SubscriptionTitle= 'None', MonthlyCost = 0,"+
                                     "CheckUp = 0, HygieneVisit = 0, Repair = 0, EndDate = '"+endDate+"'";
                             view.updateData(firstSubscription);
-                            JOptionPane.showMessageDialog(null, "Patient Unsubscribed");
                             dispose();
+                            JOptionPane.showMessageDialog(null, "Patient Unsubscribed");
                         }
                     }
             );
