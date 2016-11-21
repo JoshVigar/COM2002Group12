@@ -29,16 +29,16 @@ public class MainClass {
                     updateSubscription = "UPDATE Subscription SET ";
                     if (subT.equals("NHS Free Plan")) {
                         updateSubscription += "SubscriptionTitle = '" + subT + "', MonthlyCost = 0" +
-                                ", Checkup = 2, HygieneVisit = 2, Repair = 6, EndDate = '" + endDate + "')";
+                                ", Checkup = 2, HygieneVisit = 2, Repair = 6, EndDate = '" + (endDate+1) + "')";
                     } else if (subT.equals("Maintenance Plan")) {
                         updateSubscription += "SubscriptionTitle = '" + subT + "', MonthlyCost = 15" +
-                                ", Checkup = 2, HygieneVisit = 2, Repair = 0, EndDate = '" + endDate + "')";
+                                ", Checkup = 2, HygieneVisit = 2, Repair = 0, EndDate = '" + (endDate+1) + "')";
                     } else if (subT.equals("Oral Health Plan")) {
                         updateSubscription += "SubscriptionTitle = '" + subT + "', MonthlyCost = 21" +
-                                ", Checkup = 2, HygieneVisit = 4, Repair = 0, EndDate = '" + endDate + "')";
+                                ", Checkup = 2, HygieneVisit = 4, Repair = 0, EndDate = '" + (endDate+1) + "')";
                     } else if (subT.equals("Dental Repair Plan")) {
                         updateSubscription += "SubscriptionTitle = '" + subT + "', MonthlyCost = 36" +
-                                ", Checkup = 2, HygieneVisit = 2, Repair = 2, EndDate = '" + endDate + "')";
+                                ", Checkup = 2, HygieneVisit = 2, Repair = 2, EndDate = '" + (endDate+1) + "')";
                     }
                     else
                         subExists = false;
