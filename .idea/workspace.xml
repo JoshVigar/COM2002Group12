@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5424831f-d4cb-4eaa-9bdb-e08e07d4e57c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/DataB.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/DataB.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/RegistrationPage$1.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/RegistrationPage$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/DataB.java" afterPath="$PROJECT_DIR$/SDPIS/src/DataB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/ManagePatients.java" afterPath="$PROJECT_DIR$/SDPIS/src/ManagePatients.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/ViewAppointment.java" afterPath="$PROJECT_DIR$/SDPIS/src/ViewAppointment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/ViewPatient.java" afterPath="$PROJECT_DIR$/SDPIS/src/ViewPatient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/BookAppointment.java" afterPath="$PROJECT_DIR$/SDPIS/src/BookAppointment.java" />
     </list>
     <ignored path="COM2002Group12.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,18 +27,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="BookAppointment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SDPIS/src/BookAppointment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="387" column="46" selection-start-line="387" selection-start-column="46" selection-end-line="387" selection-end-column="46" />
+              <folding>
+                <element signature="e#19537#22567#0" expanded="true" />
+                <element signature="e#22566#22567#0" expanded="true" />
+                <element signature="e#22964#23207#0" expanded="true" />
+                <element signature="e#23206#23207#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="DataB.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SDPIS/src/DataB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
+            <state relative-caret-position="4180">
               <caret line="192" column="13" selection-start-line="192" selection-start-column="13" selection-end-line="192" selection-end-column="13" />
-              <folding>
-                <marker date="1479728157000" expanded="true" signature="8929:8951" ph="DROP TABLE A... " />
-                <marker date="1479728157000" expanded="true" signature="10335:10357" ph="DROP TABLE A... " />
-                <marker date="1479728157000" expanded="true" signature="10386:10736" ph="CREATE TABLE... Appointment" />
-                <marker date="1479728157000" expanded="true" signature="10825:10914" ph="INSERT INTO Customer... " />
-                <marker date="1479728157000" expanded="true" signature="10945:11054" ph="SELECT ID,Ty... Appointment" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -47,7 +55,7 @@
       <file leaf-file-name="DataAccessBase.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SDPIS/src/DataAccessBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
+            <state relative-caret-position="1232">
               <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
               <folding />
             </state>
@@ -57,9 +65,11 @@
       <file leaf-file-name="WelcomeGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SDPIS/src/WelcomeGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="176">
               <caret line="13" column="45" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,11 +77,12 @@
       <file leaf-file-name="ManagePatients.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SDPIS/src/ManagePatients.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
+            <state relative-caret-position="3278">
               <caret line="158" column="38" selection-start-line="158" selection-start-column="38" selection-end-line="158" selection-end-column="38" />
               <folding>
-                <element signature="e#8194#8994#0" expanded="true" />
-                <element signature="e#8993#8994#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#9156#9375#0" expanded="false" />
+                <element signature="e#9374#9375#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -80,17 +91,18 @@
       <file leaf-file-name="RegistrationPage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SDPIS/src/RegistrationPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
+            <state relative-caret-position="4994">
               <caret line="237" column="53" selection-start-line="237" selection-start-column="53" selection-end-line="237" selection-end-column="53" />
               <folding>
-                <element signature="e#13217#13436#0" expanded="true" />
-                <element signature="e#13435#13436#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#4430#13103#0" expanded="false" />
+                <element signature="e#13102#13103#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ViewAppointment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ViewAppointment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SDPIS/src/ViewAppointment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="405">
@@ -103,17 +115,9 @@
       <file leaf-file-name="ViewPatient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SDPIS/src/ViewPatient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
+            <state relative-caret-position="1276">
               <caret line="58" column="12" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="12" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#5372#7422#0" expanded="true" />
-                <element signature="e#7421#7422#0" expanded="true" />
-                <element signature="e#7758#8392#0" expanded="true" />
-                <element signature="e#8391#8392#0" expanded="true" />
-                <element signature="e#8674#9397#0" expanded="true" />
-                <element signature="e#9396#9397#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -144,7 +148,6 @@
         <option value="$PROJECT_DIR$/SDPIS/src/ViewAppointments.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/HygienistGUI.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/ManageAppointments.java" />
-        <option value="$PROJECT_DIR$/SDPIS/src/BookAppointment.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/RegistrationPage.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/SecretaryGUI.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/DentistGUI.java" />
@@ -153,6 +156,7 @@
         <option value="$PROJECT_DIR$/SDPIS/src/DataB.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/ManagePatients.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/ViewAppointment.java" />
+        <option value="$PROJECT_DIR$/SDPIS/src/BookAppointment.java" />
       </list>
     </option>
   </component>
@@ -163,8 +167,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -207,133 +213,6 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="FullScreen" value="true" />
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/SDPIS/src/BookAppointment.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/SDPIS/src/DataB.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/SDPIS/src/DentistGUI.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/SDPIS/src/HygienistGUI.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SDPIS/DataAccessBase.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SDPIS/DataB.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SDPIS/DentistGUI.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SDPIS/HygienistGUI.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SDPIS/RegistrationPage$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SDPIS/RegistrationPage.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$2.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$3.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$4.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$5.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$6.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI.class</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="Application.DataB">
     <configuration default="false" name="SystemViewer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -457,136 +336,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
-      <option name="BCName" value="" />
-      <option name="IOSSimulatorSdkPath" value="" />
-      <option name="adlOptions" value="" />
-      <option name="airProgramParameters" value="" />
-      <option name="appDescriptorForEmulator" value="Android" />
-      <option name="debugTransport" value="USB" />
-      <option name="debuggerSdkRaw" value="BC SDK" />
-      <option name="emulator" value="NexusOne" />
-      <option name="emulatorAdlOptions" value="" />
-      <option name="fastPackaging" value="true" />
-      <option name="fullScreenHeight" value="0" />
-      <option name="fullScreenWidth" value="0" />
-      <option name="launchUrl" value="false" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="mobileRunTarget" value="Emulator" />
-      <option name="moduleName" value="" />
-      <option name="overriddenMainClass" value="" />
-      <option name="overriddenOutputFileName" value="" />
-      <option name="overrideMainClass" value="false" />
-      <option name="runTrusted" value="true" />
-      <option name="screenDpi" value="0" />
-      <option name="screenHeight" value="0" />
-      <option name="screenWidth" value="0" />
-      <option name="url" value="http://" />
-      <option name="usbDebugPort" value="7936" />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
-      <option name="BCName" value="" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="moduleName" value="" />
-      <option name="trusted" value="true" />
-      <method />
-    </configuration>
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -601,14 +350,6 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
-      <setting name="vmparams" value="" />
-      <setting name="cmdLine" value="run-app" />
-      <setting name="passParentEnv" value="true" />
-      <setting name="launchBrowser" value="true" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -674,9 +415,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -708,12 +446,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -770,22 +502,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run-script" />
-      <scripts />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
-      <method />
-    </configuration>
-    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
     <list size="3">
@@ -986,23 +702,22 @@
     <option name="totallyTimeSpent" value="48122000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3253012" sideWeight="0.48229167" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3250283" sideWeight="0.48229167" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39156628" sideWeight="0.53004295" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39156628" sideWeight="0.46995708" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39071348" sideWeight="0.46995708" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33734939" sideWeight="0.490625" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28826895" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1012,6 +727,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1095,7 +811,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="48" column="50" selection-start-line="48" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1115,14 +833,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SDPIS/src/ViewAppointments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-466">
-          <caret line="32" column="59" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/SDPIS/src/ViewAppointments.java" />
     <entry file="file://$PROJECT_DIR$/SDPIS/src/HygienistGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
@@ -1144,8 +855,9 @@
         <state relative-caret-position="161">
           <caret line="198" column="39" selection-start-line="198" selection-start-column="39" selection-end-line="198" selection-end-column="39" />
           <folding>
-            <element signature="e#13217#13436#0" expanded="true" />
-            <element signature="e#13435#13436#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#4430#13103#0" expanded="false" />
+            <element signature="e#13102#13103#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1161,7 +873,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="354">
           <caret line="121" column="5" selection-start-line="121" selection-start-column="5" selection-end-line="121" selection-end-column="5" />
-          <folding />
+          <folding>
+            <element signature="e#19537#22567#0" expanded="true" />
+            <element signature="e#22566#22567#0" expanded="true" />
+            <element signature="e#22964#23207#0" expanded="true" />
+            <element signature="e#23206#23207#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1208,25 +925,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="21" column="52" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="52" />
-          <folding />
+          <folding>
+            <element signature="e#19537#22567#0" expanded="true" />
+            <element signature="e#22566#22567#0" expanded="true" />
+            <element signature="e#22964#23207#0" expanded="true" />
+            <element signature="e#23206#23207#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SDPIS/src/ViewAppointments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/SDPIS/src/ViewAppointments.java" />
     <entry file="file://$PROJECT_DIR$/SDPIS/src/RegistrationPage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3476">
           <caret line="158" column="63" selection-start-line="158" selection-start-column="63" selection-end-line="158" selection-end-column="63" />
           <folding>
-            <element signature="e#13217#13436#0" expanded="true" />
-            <element signature="e#13435#13436#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#4430#13103#0" expanded="false" />
+            <element signature="e#13102#13103#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1243,7 +959,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="946">
           <caret line="48" column="50" selection-start-line="48" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1268,7 +986,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
           <caret line="45" column="50" selection-start-line="45" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1315,30 +1035,8 @@
       </provider>
     </entry>
     <entry file="jar://C:/Program Files (x86)/MySQL/Connector.J 5.1/mysql-connector-java-5.1.40-bin.jar!/com/mysql/jdbc/MysqlIO.class" />
-    <entry file="file://$PROJECT_DIR$/SDPIS/src/ViewAppointments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="386" column="8" selection-start-line="386" selection-start-column="8" selection-end-line="395" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Downloads/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar!/com/mysql/jdbc/MysqlIO.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="345" column="0" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SDPIS/src/BookAppointment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3690">
-          <caret line="246" column="37" selection-start-line="246" selection-start-column="37" selection-end-line="246" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/SDPIS/src/ViewAppointments.java" />
+    <entry file="jar://$USER_HOME$/Downloads/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar!/com/mysql/jdbc/MysqlIO.class" />
     <entry file="file://$PROJECT_DIR$/SDPIS/src/HygienistGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -1368,28 +1066,27 @@
         <state relative-caret-position="-122">
           <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
           <folding>
-            <element signature="e#2441#3727#0" expanded="true" />
-            <element signature="e#3726#3727#0" expanded="true" />
-            <marker date="1479668133000" expanded="false" signature="3841:3926" ph="(e) → {" />
-            <marker date="1479668133000" expanded="false" signature="4037:4060" ph="}" />
+            <element signature="e#2441#3727#0" expanded="false" />
+            <element signature="e#3726#3727#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SDPIS/src/RegistrationPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
+        <state relative-caret-position="4994">
           <caret line="237" column="53" selection-start-line="237" selection-start-column="53" selection-end-line="237" selection-end-column="53" />
           <folding>
-            <element signature="e#13217#13436#0" expanded="true" />
-            <element signature="e#13435#13436#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#4430#13103#0" expanded="false" />
+            <element signature="e#13102#13103#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SDPIS/src/DataAccessBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
+        <state relative-caret-position="1232">
           <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding />
         </state>
@@ -1397,57 +1094,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SDPIS/src/WelcomeGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
+        <state relative-caret-position="176">
           <caret line="13" column="45" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Downloads/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar!/com/mysql/jdbc/ResultSetImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="604" column="0" selection-start-line="604" selection-start-column="0" selection-end-line="604" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar!/com/mysql/jdbc/ResultSetImpl.class" />
     <entry file="file://$PROJECT_DIR$/SDPIS/src/DataB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
+        <state relative-caret-position="4180">
           <caret line="192" column="13" selection-start-line="192" selection-start-column="13" selection-end-line="192" selection-end-column="13" />
-          <folding>
-            <marker date="1479728157000" expanded="true" signature="8929:8951" ph="DROP TABLE A... " />
-            <marker date="1479728157000" expanded="true" signature="10335:10357" ph="DROP TABLE A... " />
-            <marker date="1479728157000" expanded="true" signature="10386:10736" ph="CREATE TABLE... Appointment" />
-            <marker date="1479728157000" expanded="true" signature="10825:10914" ph="INSERT INTO Customer... " />
-            <marker date="1479728157000" expanded="true" signature="10945:11054" ph="SELECT ID,Ty... Appointment" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SDPIS/src/ViewPatient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
+        <state relative-caret-position="1276">
           <caret line="58" column="12" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5372#7422#0" expanded="true" />
-            <element signature="e#7421#7422#0" expanded="true" />
-            <element signature="e#7758#8392#0" expanded="true" />
-            <element signature="e#8391#8392#0" expanded="true" />
-            <element signature="e#8674#9397#0" expanded="true" />
-            <element signature="e#9396#9397#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SDPIS/src/ManagePatients.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
+        <state relative-caret-position="3278">
           <caret line="158" column="38" selection-start-line="158" selection-start-column="38" selection-end-line="158" selection-end-column="38" />
           <folding>
-            <element signature="e#8194#8994#0" expanded="true" />
-            <element signature="e#8993#8994#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#9156#9375#0" expanded="false" />
+            <element signature="e#9374#9375#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1457,6 +1136,19 @@
         <state relative-caret-position="405">
           <caret line="175" column="36" selection-start-line="175" selection-start-column="36" selection-end-line="175" selection-end-column="36" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SDPIS/src/BookAppointment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="387" column="46" selection-start-line="387" selection-start-column="46" selection-end-line="387" selection-end-column="46" />
+          <folding>
+            <element signature="e#19537#22567#0" expanded="true" />
+            <element signature="e#22566#22567#0" expanded="true" />
+            <element signature="e#22964#23207#0" expanded="true" />
+            <element signature="e#23206#23207#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
