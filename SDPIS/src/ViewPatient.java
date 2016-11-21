@@ -61,7 +61,7 @@ public class ViewPatient extends JFrame{
         if(!custom.next()){
             textArea.append("Customer Doesn't Exist");
         }else {
-            do {
+            while (custom.next()){
                 //Retrieve by column name
                 //int customerId = custom.getInt("ID");
                 //custom.next();
@@ -74,7 +74,7 @@ public class ViewPatient extends JFrame{
                 String customer = "ID: " + customId + " Title: " + customerTitle + " Name: " + first + " " + last + " D.O.B: " +
                         dob + " Phone No.: " + phone + " ";
                 textArea.append(customer + newLine);
-            } while (custom.next());
+            }
 
             do {
                 //Retrieve by column name

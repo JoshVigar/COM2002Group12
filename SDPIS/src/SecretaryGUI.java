@@ -215,7 +215,7 @@ public class SecretaryGUI extends JFrame{
         //creating labels, text fields and comboboxes for inputs
         JLabel title = new JLabel("Enter Patient ID To Checkout:");
         JLabel PID = new JLabel();
-        final JTextField txtPID = new JTextField();
+        final JTextField txtPID = new JTextField(20);
         JButton bSubmit = new JButton("Submit");
 
         //adding partner label and combobox to a panel
@@ -241,6 +241,7 @@ public class SecretaryGUI extends JFrame{
                         int managedPatient = Integer.parseInt(txtPID.getText());
                         try {
                             new CheckOut(managedPatient);
+                            dispose();
                         } catch (ClassNotFoundException e1) {
                             e1.printStackTrace();
                         } catch (SQLException e1) {
@@ -250,7 +251,6 @@ public class SecretaryGUI extends JFrame{
                         } catch (IllegalAccessException e1) {
                             e1.printStackTrace();
                         }
-                        dispose();
                         //new SecretaryGUI().SecretaryGUI();
 
                     }

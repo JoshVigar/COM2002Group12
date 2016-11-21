@@ -175,7 +175,7 @@ public class DentistGUI extends JFrame {
                             //update the appointment to waiting and assign a cost to it
                             String updateAppointment = "UPDATE Appointment SET State = 'Waiting' WHERE (State = 'Active' "
                                     + "And ADate = '" + today + "' AND StartTime = '" + hr.getSelectedItem().toString()
-                                    + ":" + min.getSelectedItem().toString() + ":00' AND Partner = 'Dentist')";
+                                    + ":" + min.getSelectedItem().toString() + ":00' AND Partner = 'Dentist' AND Cost = "+cost+" )";
                             reg.updateData(updateAppointment);
                         }
                         else{

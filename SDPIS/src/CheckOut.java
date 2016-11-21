@@ -100,7 +100,7 @@ public class CheckOut extends JFrame{
                 Time startTime = apps.getTime("StartTime");
                 String partner = apps.getString("Partner");
                 int cost = apps.getInt("Cost");
-                Date appDate = apps.getDate("Date");
+                Date appDate = apps.getDate("ADate");
                 String appoint = "Customer ID: " + id + " Date:" + appDate + " Start Time: " + startTime +
                         " Visit Type: " + type + " Partner: " + partner + " Cost: £" + cost;
                 System.out.println(" " + appoint);
@@ -177,6 +177,7 @@ public class CheckOut extends JFrame{
                         view.updateData("UPDATE Appointment SET State = 'Finished' WHERE STATE ='Waiting' AND ID =" + customId);
                         dispose();
                         try {
+                            JOptionPane.showMessageDialog(null, "Patient Checked Out");
                             new SecretaryGUI().CheckoutPatient();
                         } catch (SQLException e1) {
                             e1.printStackTrace();

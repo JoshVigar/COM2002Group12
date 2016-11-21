@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5424831f-d4cb-4eaa-9bdb-e08e07d4e57c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/DentistGUI.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/DentistGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/HygienistGUI.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/HygienistGUI.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/ManagePatients.java" afterPath="$PROJECT_DIR$/SDPIS/src/ManagePatients.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/CheckOut.java" afterPath="$PROJECT_DIR$/SDPIS/src/CheckOut.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/DentistGUI.java" afterPath="$PROJECT_DIR$/SDPIS/src/DentistGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/HygienistGUI.java" afterPath="$PROJECT_DIR$/SDPIS/src/HygienistGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/MainClass.java" afterPath="$PROJECT_DIR$/SDPIS/src/MainClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/SecretaryGUI.java" afterPath="$PROJECT_DIR$/SDPIS/src/SecretaryGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/ViewPatient.java" afterPath="$PROJECT_DIR$/SDPIS/src/ViewPatient.java" />
     </list>
     <ignored path="COM2002Group12.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,50 +30,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="BookAppointment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SDPIS/src/BookAppointment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="36" column="107" selection-start-line="36" selection-start-column="107" selection-end-line="36" selection-end-column="107" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ManagePatients.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SDPIS/src/ManagePatients.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="68" column="58" selection-start-line="68" selection-start-column="58" selection-end-line="68" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DentistGUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SDPIS/src/DentistGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1213">
-              <caret line="137" column="46" selection-start-line="137" selection-start-column="46" selection-end-line="137" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MainClass.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SDPIS/src/MainClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state relative-caret-position="272">
+              <caret line="201" column="149" selection-start-line="201" selection-start-column="149" selection-end-line="201" selection-end-column="149" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <marker date="1479738044000" expanded="true" signature="1001:1075" ph="SELECT Subsc... Subscription" />
-                <marker date="1479738044000" expanded="true" signature="1318:1341" ph="UPDATE Subsc... " />
-                <marker date="1479738044000" expanded="true" signature="11646:11755" ph="SELECT ID,Ty... Appointment" />
+                <marker date="1479739715000" expanded="true" signature="1001:1075" ph="SELECT Subsc... Subscription" />
+                <marker date="1479739715000" expanded="true" signature="1318:1341" ph="UPDATE Subsc... " />
+                <marker date="1479739715000" expanded="true" signature="11632:11699" ph="SELECT ID,Ty... Appointment" />
+                <marker date="1479739715000" expanded="true" signature="12319:12342" ph="DELETE FROM " />
+                <marker date="1479739715000" expanded="true" signature="12374:12399" ph="SELECT * FRO... Appointment" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SecretaryGUI.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SDPIS/src/SecretaryGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6">
+              <caret line="243" column="38" selection-start-line="243" selection-start-column="38" selection-end-line="243" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ManagePatients.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SDPIS/src/ManagePatients.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="461">
+              <caret line="68" column="58" selection-start-line="68" selection-start-column="58" selection-end-line="68" selection-end-column="58" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -88,8 +81,20 @@
       <file leaf-file-name="CheckOut.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SDPIS/src/CheckOut.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2730">
-              <caret line="182" column="61" selection-start-line="182" selection-start-column="61" selection-end-line="182" selection-end-column="61" />
+            <state relative-caret-position="900">
+              <caret line="179" column="84" selection-start-line="179" selection-start-column="84" selection-end-line="179" selection-end-column="84" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DentistGUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SDPIS/src/DentistGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-495">
+              <caret line="150" column="29" selection-start-line="150" selection-start-column="29" selection-end-line="150" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -98,8 +103,8 @@
       <file leaf-file-name="ViewPatient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SDPIS/src/ViewPatient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
+            <state relative-caret-position="-569">
+              <caret line="76" column="13" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,19 +136,19 @@
         <option value="$PROJECT_DIR$/SDPIS/src/Test.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/WelcomeGUI.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/ViewAppointments.java" />
-        <option value="$PROJECT_DIR$/SDPIS/src/HygienistGUI.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/ManageAppointments.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/RegistrationPage.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/DataAccessBase.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/ViewAppointment.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/BookAppointment.java" />
-        <option value="$PROJECT_DIR$/SDPIS/src/DentistGUI.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/DataB.java" />
-        <option value="$PROJECT_DIR$/SDPIS/src/SecretaryGUI.java" />
-        <option value="$PROJECT_DIR$/SDPIS/src/CheckOut.java" />
-        <option value="$PROJECT_DIR$/SDPIS/src/ViewPatient.java" />
-        <option value="$PROJECT_DIR$/SDPIS/src/MainClass.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/ManagePatients.java" />
+        <option value="$PROJECT_DIR$/SDPIS/src/ViewPatient.java" />
+        <option value="$PROJECT_DIR$/SDPIS/src/DentistGUI.java" />
+        <option value="$PROJECT_DIR$/SDPIS/src/HygienistGUI.java" />
+        <option value="$PROJECT_DIR$/SDPIS/src/MainClass.java" />
+        <option value="$PROJECT_DIR$/SDPIS/src/CheckOut.java" />
+        <option value="$PROJECT_DIR$/SDPIS/src/SecretaryGUI.java" />
       </list>
     </option>
   </component>
@@ -754,7 +759,7 @@
       <workItem from="1479131172227" duration="12608000" />
       <workItem from="1479407130428" duration="2073000" />
       <workItem from="1479472608602" duration="41829000" />
-      <workItem from="1479737790002" duration="388000" />
+      <workItem from="1479737790002" duration="2144000" />
     </task>
     <task id="LOCAL-00001" summary="DataB file">
       <created>1479134052618</created>
@@ -931,11 +936,18 @@
       <option name="project" value="LOCAL" />
       <updated>1479738118451</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="manage patient is done">
+      <created>1479738187114</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1479738187114</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56898000" />
+    <option name="totallyTimeSpent" value="58654000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -948,7 +960,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1075,12 +1087,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-282">
           <caret line="160" column="39" selection-start-line="160" selection-start-column="39" selection-end-line="160" selection-end-column="39" />
-          <folding>
-            <element signature="e#9089#9944#0" expanded="false" />
-            <element signature="e#9943#9944#0" expanded="false" />
-            <marker date="1479733233000" expanded="false" signature="10119:10204" ph="(e) → {" />
-            <marker date="1479733233000" expanded="false" signature="10315:10338" ph="}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1124,12 +1131,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2816">
           <caret line="128" column="37" selection-start-line="128" selection-start-column="37" selection-end-line="128" selection-end-column="37" />
-          <folding>
-            <element signature="e#9089#9944#0" expanded="false" />
-            <element signature="e#9943#9944#0" expanded="false" />
-            <marker date="1479733233000" expanded="false" signature="10119:10204" ph="(e) → {" />
-            <marker date="1479733233000" expanded="false" signature="10315:10338" ph="}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1276,14 +1278,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SDPIS/src/HygienistGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-92">
-          <caret line="30" column="61" selection-start-line="30" selection-start-column="61" selection-end-line="30" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SDPIS/src/RegistrationPage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-197">
@@ -1300,19 +1294,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SDPIS/src/SecretaryGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="253" column="26" selection-start-line="253" selection-start-column="26" selection-end-line="253" selection-end-column="26" />
-          <folding>
-            <element signature="e#9089#9944#0" expanded="false" />
-            <element signature="e#9943#9944#0" expanded="false" />
-            <marker date="1479733233000" expanded="false" signature="10119:10204" ph="(e) → {" />
-            <marker date="1479733233000" expanded="false" signature="10315:10338" ph="}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SDPIS/src/BookAppointment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -1323,25 +1304,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SDPIS/src/CheckOut.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2730">
-          <caret line="182" column="61" selection-start-line="182" selection-start-column="61" selection-end-line="182" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SDPIS/src/DataB.java" />
-    <entry file="file://$PROJECT_DIR$/SDPIS/src/ViewPatient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SDPIS/src/ViewAppointment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1350,32 +1313,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SDPIS/src/DentistGUI.java">
+    <entry file="file://$PROJECT_DIR$/SDPIS/src/HygienistGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1213">
-          <caret line="137" column="46" selection-start-line="137" selection-start-column="46" selection-end-line="137" selection-end-column="46" />
+        <state relative-caret-position="405">
+          <caret line="174" column="111" selection-start-line="174" selection-start-column="111" selection-end-line="174" selection-end-column="111" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SDPIS/src/CheckOut.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="179" column="84" selection-start-line="179" selection-start-column="84" selection-end-line="179" selection-end-column="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SDPIS/src/MainClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state relative-caret-position="272">
+          <caret line="201" column="149" selection-start-line="201" selection-start-column="149" selection-end-line="201" selection-end-column="149" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1479738044000" expanded="true" signature="1001:1075" ph="SELECT Subsc... Subscription" />
-            <marker date="1479738044000" expanded="true" signature="1318:1341" ph="UPDATE Subsc... " />
-            <marker date="1479738044000" expanded="true" signature="11646:11755" ph="SELECT ID,Ty... Appointment" />
+            <marker date="1479739715000" expanded="true" signature="1001:1075" ph="SELECT Subsc... Subscription" />
+            <marker date="1479739715000" expanded="true" signature="1318:1341" ph="UPDATE Subsc... " />
+            <marker date="1479739715000" expanded="true" signature="11632:11699" ph="SELECT ID,Ty... Appointment" />
+            <marker date="1479739715000" expanded="true" signature="12319:12342" ph="DELETE FROM " />
+            <marker date="1479739715000" expanded="true" signature="12374:12399" ph="SELECT * FRO... Appointment" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SDPIS/src/DentistGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-495">
+          <caret line="150" column="29" selection-start-line="150" selection-start-column="29" selection-end-line="150" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SDPIS/src/ViewPatient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-569">
+          <caret line="76" column="13" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SDPIS/src/ManagePatients.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
+        <state relative-caret-position="461">
           <caret line="68" column="58" selection-start-line="68" selection-start-column="58" selection-end-line="68" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SDPIS/src/SecretaryGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6">
+          <caret line="243" column="38" selection-start-line="243" selection-start-column="38" selection-end-line="243" selection-end-column="38" />
           <folding />
         </state>
       </provider>

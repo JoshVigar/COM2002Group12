@@ -174,9 +174,9 @@ public class MainClass {
                     " EndTime TIME, State VARCHAR(10), Cost INTEGER,PRIMARY KEY (Partner,ADate,StartTime,State),FOREIGN KEY (ID) REFERENCES Customer(ID),"+
                     "FOREIGN KEY (TypeOfVisit) REFERENCES VisitType(TypeOfVisit))";
             stmt.executeUpdate(sql);
-            */
+
             //stmt.executeUpdate("INSERT INTO Customer VALUES (0, 'Mr.','Defaul', 'customer','2000,01,01','123456789',NULL)");
-            String sql = "SELECT ID,TypeOfVisit,ADate,StartTime,EndTime FROM Appointment WHERE Partner = 'Dentist' AND State = 'Active'";
+            String sql = "SELECT ID,TypeOfVisit,ADate,StartTime,EndTime,Cost FROM Appointment";
             rs = stmt.executeQuery(sql);
             while(rs.next()) {
                 int id = rs.getInt("ID");
@@ -184,9 +184,25 @@ public class MainClass {
                 Date dates = rs.getDate("ADate");
                 Time startTime = rs.getTime("StartTime");
                 Time endTime = rs.getTime("EndTime");
-                String appoint = "Date: "+ dates+" Start Time: "+ startTime+" End Time: "+endTime+" Customer ID: "+id+" Visit Type: "+type;
+                int cost = rs.getInt("Cost");
+                String appoint = "Date: "+ dates+" Start Time: "+ startTime+" End Time: "+endTime+" Customer ID: "+id+" Visit Type: "+type+cost;
                 System.out.println(appoint);
             }
+            stmt.executeUpdate("DELETE FROM Appointment");*/
+            String sql = "SELECT * FROM Appointment";
+            rs = stmt.executeQuery(sql);
+            while(rs.next()) {
+                int id = rs.getInt("ID");
+                String type = rs.getString("TypeOfVisit");
+                Date dates = rs.getDate("ADate");
+                Time startTime = rs.getTime("StartTime");
+                Time endTime = rs.getTime("EndTime");
+                int cost = rs.getInt("Cost");
+                String state =rs.getString("State");
+                String appoint = "Date: "+ dates+" Start Time: "+ startTime+" End Time: "+endTime+" Customer ID: "+id+" Visit Type: "+type+cost+state;
+                System.out.println(appoint);
+            }
+
             //initialise the GUI
             new WelcomeGUI().WelcomeGUI();
         }
