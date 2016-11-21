@@ -244,7 +244,7 @@ public class DentistGUI extends JFrame {
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         dispose();
-                        new WelcomeGUI().WelcomeGUI();
+                        new DentistGUI().DentistGUI();
                     }
                 }
         );
@@ -255,7 +255,7 @@ public class DentistGUI extends JFrame {
         Container contentPane = getContentPane();
         contentPane.add(title, BorderLayout.NORTH);
         contentPane.add(mPanel, BorderLayout.CENTER);
-        //contentPane.add(btnBack, BorderLayout.SOUTH);
+        contentPane.add(btnBack, BorderLayout.SOUTH);
 
 
         mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight,bWidth,bHeight,bWidth));
