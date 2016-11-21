@@ -387,7 +387,6 @@ public class BookAppointment extends JFrame{
                         //boolean for validation
                         boolean val = true;
 
-
                         //checking months and days for consistency eg. No 31st of February
                         if ((months.getSelectedIndex() == 4
                                 || months.getSelectedIndex() == 6 || months.getSelectedIndex() == 9
@@ -404,7 +403,7 @@ public class BookAppointment extends JFrame{
                         //check something is selected in the date combobox
                         String updateAppointments;
                         if (years.getSelectedItem().equals("Year") || (months.getSelectedItem().equals("Month") ||
-                                (days.getSelectedItem().equals("Day") || partnerBox.getSelectedItem().equals("Partner"))))
+                                (days.getSelectedItem().equals("Day") || partnerBox.getSelectedItem().equals("Partner")))) {
                             val = false;
                             updateAppointments = null;
                         }
@@ -417,27 +416,14 @@ public class BookAppointment extends JFrame{
                                     years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
                                     + days.getSelectedItem().toString() + "', '09:00:00', '18:00:00', 'Vacation', 0)";
                             reg.updateData(bookVac);
-                                JOptionPane.showMessageDialog(null, "Holiday booked for "+ partnerBox.getSelectedItem()+" on "
-                                        +days.getSelectedItem()+" "+ months.getSelectedItem() +" "+years.getSelectedItem());
+                            JOptionPane.showMessageDialog(null, "Holiday booked for " + partnerBox.getSelectedItem() + " on "
+                                    + days.getSelectedItem() + " " + months.getSelectedItem() + " " + years.getSelectedItem());
                             dispose();
                             new SecretaryGUI().SecretaryGUI();
 
-                            String updateAppointments=null;
-                            if (val) {
-                                updateAppointments = "UPDATE Appointment SET State = 'Canceled' WHERE (State = 'Active' "
-                                        + "And ADate = '" + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
-                                        + days.getSelectedItem().toString() + "' AND Partner = '" + partnerBox.getSelectedItem().toString() + "')";
-                                reg.updateData(updateAppointments);
-                                String bookVac = "INSERT INTO Appointment VALUES( 0, 'CheckUp', '" + partnerBox.getSelectedItem() + "', '" +
-                                        years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
-                                        + days.getSelectedItem().toString() + "', '09:00:00', '18:00:00', 'Vacation', 0)";
-                                reg.updateData(bookVac);
-                                dispose();
-                                new SecretaryGUI().SecretaryGUI();
-                            }
+                        }
                     }
                 }
-
         );
 
         //adding the input fields to the main Panel
