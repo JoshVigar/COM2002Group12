@@ -385,7 +385,7 @@ public class BookAppointment extends JFrame{
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         //boolean for validation
-                        boolean val = true, pl;
+                        boolean val = true;
 
                         //checking months and days for consistency eg. No 31st of February
                         if ((months.getSelectedIndex() == 4
