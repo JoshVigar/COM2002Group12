@@ -213,32 +213,19 @@ public class SecretaryGUI extends JFrame{
         setSize(500,600);
 
         //creating labels, text fields and comboboxes for inputs
-        JLabel title = new JLabel("Enter Appointment Details To Finish:");
-        JLabel ptnr = new JLabel("Partner:");
-        String[] partners = {"Dentist","Hygienist"};
-        final JComboBox partner = new JComboBox(partners);
-        JLabel sTime = new JLabel("Appointment Start Time:");
-        String[] hour = {"Hour","09","10","11","12","14","15","16","17"};
-        String[] minute = {"Minute","00","20","40"};
-        final JComboBox hr = new JComboBox(hour);
-        final JComboBox min = new JComboBox(minute);
+        JLabel title = new JLabel("Enter Patient ID To Checkout:");
+        JLabel PID = new JLabel();
+        JTextField txtPID = new JTextField();
         JButton bSubmit = new JButton("Submit");
 
         //adding partner label and combobox to a panel
         JPanel inputsPanel = new JPanel();
-        inputsPanel.add(ptnr);
-        inputsPanel.add(partner);
-
-        //adding time of day selectors to a panel
-        JPanel timePanel = new JPanel();
-        timePanel.add(sTime);
-        timePanel.add(hr);
-        timePanel.add(min);
+        inputsPanel.add(PID);
+        inputsPanel.add(txtPID);
 
         //adding subpanels to a main panel
         JPanel mPanel = new JPanel();
         mPanel.add(inputsPanel);
-        mPanel.add(timePanel);
         mPanel.add(bSubmit);
 
         //setting the layout of mPanel
