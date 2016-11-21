@@ -14,27 +14,41 @@ public class DataB {
 
             stmt = con.createStatement();
 
-
             LocalDate localDate = LocalDate.now();
-            String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate.plusYears(1));
+            String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate);
 
-            /*String updateSubscription = "UPDATE Subscription SET ";
-            if ((subT.equals("NHS Free Plan")) {
-                updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 0" +
-                        ", Checkup = 2, HygieneVisit = 2, Repair = 6, EndDate = '" + endDate + "')";
-            }else if (((String) Sub.getSelectedItem()).equals("Maintenance Plan")) {
-                updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 15" +
-                        ", Checkup = 2, HygieneVisit = 2, Repair = 0, EndDate = '" + endDate + "')";
-            }else if (((String) Sub.getSelectedItem()).equals("Oral Health Plan")) {
-                updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 21" +
-                        ", Checkup = 2, HygieneVisit = 4, Repair = 0, EndDate = '" + endDate + "')";
-            }else if (((String) Sub.getSelectedItem()).equals("Dental Repair Plan")) {
-                updateSubscription += "SubscriptionTitle = '" + (String) Sub.getSelectedItem() + "', MonthlyCost = 36" +
-                        ", Checkup = 2, HygieneVisit = 2, Repair = 2, EndDate = '" + endDate + "')";
+            String subT = "";
+            boolean subExists = true;
+            String updateSubscription = null;
+            String getSubscription = "SELECT SubscriptionTitle FROM Subscription WHERE EndDate = '" +endDate +"'";
+            ResultSet rs = stmt.executeQuery(getSubscription);
+            while(rs.next()){
+                if(!rs.wasNull()) {
+                    subT = rs.getString("SubscriptionTitle").trim();
+                    updateSubscription = "UPDATE Subscription SET ";
+                    if (subT.equals("NHS Free Plan")) {
+                        updateSubscription += "SubscriptionTitle = '" + subT + "', MonthlyCost = 0" +
+                                ", Checkup = 2, HygieneVisit = 2, Repair = 6, EndDate = '" + endDate + "')";
+                    } else if (subT.equals("Maintenance Plan")) {
+                        updateSubscription += "SubscriptionTitle = '" + subT + "', MonthlyCost = 15" +
+                                ", Checkup = 2, HygieneVisit = 2, Repair = 0, EndDate = '" + endDate + "')";
+                    } else if (subT.equals("Oral Health Plan")) {
+                        updateSubscription += "SubscriptionTitle = '" + subT + "', MonthlyCost = 21" +
+                                ", Checkup = 2, HygieneVisit = 4, Repair = 0, EndDate = '" + endDate + "')";
+                    } else if (subT.equals("Dental Repair Plan")) {
+                        updateSubscription += "SubscriptionTitle = '" + subT + "', MonthlyCost = 36" +
+                                ", Checkup = 2, HygieneVisit = 2, Repair = 2, EndDate = '" + endDate + "')";
+                    }
+                    else
+                        subExists = false;
+                    System.out.println(subT);
+                    System.out.println(updateSubscription);
+                    updateSubscription += " WHERE EndDate = '" + DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate) + "'";
+                    if(subExists)
+                        stmt.executeUpdate(updateSubscription);
+                }
             }
-            updateSubscription += " WHERE EndDate = '" + DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate) + "'";
-            reg.updateData(updateSubscription);
-*/
+
                 /*String sql = "CREATE TABLE Subscription(SubscriptionID INTEGER NOT NULL AUTO_INCREMENT, SubscriptionTitle VARCHAR(40),"+
                         " MonthlyCost INTEGER, CheckUp INTEGER, HygieneVisit INTEGER, Repair INTEGER, EndDate DATE,"+
                         " PRIMARY KEY (SubscriptionID))";
@@ -180,7 +194,7 @@ public class DataB {
             //stmt.executeUpdate("INSERT INTO Customer VALUES (0, 'Mr.','Defaul', 'customer','2000,01,01','123456789',NULL)");
 
             String sql = "SELECT ID,TypeOfVisit,ADate,StartTime,EndTime FROM Appointment WHERE Partner = 'Dentist' AND State = 'Active'";
-            ResultSet rs = stmt.executeQuery(sql);
+            rs = stmt.executeQuery(sql);
             while(rs.next()) {
                 int id = rs.getInt("ID");
                 String type = rs.getString("TypeOfVisit");
