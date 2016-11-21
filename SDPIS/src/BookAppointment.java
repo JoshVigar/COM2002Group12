@@ -127,6 +127,26 @@ public class BookAppointment extends JFrame{
                             JOptionPane.showMessageDialog(null, "Invalid input, some field is blank or incorrect");
                         }
 
+                        if(val){
+                            int year = Integer.parseInt(years.getSelectedItem().toString());
+                            int month = Integer.parseInt(months.getSelectedItem().toString());
+                            int day = Integer.parseInt(days.getSelectedItem().toString());
+
+                            Calendar c = Calendar.getInstance();
+                            c.set(year, month, day);
+
+                            int day_of_week = c.get(Calendar.DAY_OF_WEEK);
+
+                            if (day_of_week == 1 || day_of_week == 7) {
+                                JOptionPane.showMessageDialog(null, "This date is a weekend. Please select another.");
+                                val = false;
+                            }
+                            if (month == 12 && (day == 25 || day == 26) || month == 1 && day == 1) {
+                                JOptionPane.showMessageDialog(null, "This date is a public holiday. Please select another.");
+                                val = false;
+                            }
+                        }
+
                         //if validation succeeds then add entry to database
                         if (val) {
                             String getVisitDuration = "SELECT Duration FROM VisitType Where TypeOfVisit='"
