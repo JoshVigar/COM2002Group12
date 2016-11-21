@@ -240,16 +240,16 @@ public class SecretaryGUI extends JFrame{
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        String getAppointment = "SELECT ID,VisitType FROM Appointment WHERE (State = 'Waiting' "
-                                +"And ADate = '" + today + "' AND StartTime = '" + hr.getSelectedItem().toString()
-                                + ":" + min.getSelectedItem().toString() + ":00' AND Partner =" + partner.getSelectedItem().toString();
-                        ResultSet appointmentInfo = reg.getData(getAppointment);
-                        String getSubscription = "SELECT SubscriptionTitle,Checkup,HygieneVisit,Repair FROM Subscription WHERE"
-                                +"SubscriptionID = " + appointmentInfo;
-                        ResultSet subInfo = reg.getData(getSubscription);
-                        //String bill =appointmentInfo"+"subInfo ;
-                        dispose();
-                        new SecretaryGUI().SecretaryGUI();
+//                        String getAppointment = "SELECT ID,VisitType FROM Appointment WHERE (State = 'Waiting' "
+//                                +"And ADate = '" + today + "' AND StartTime = '" + hr.getSelectedItem().toString()
+//                                + ":" + min.getSelectedItem().toString() + ":00' AND Partner =" + partner.getSelectedItem().toString();
+//                        ResultSet appointmentInfo = reg.getData(getAppointment);
+//                        String getSubscription = "SELECT SubscriptionTitle,Checkup,HygieneVisit,Repair FROM Subscription WHERE"
+//                                +"SubscriptionID = " + appointmentInfo;
+//                        ResultSet subInfo = reg.getData(getSubscription);
+//                        //String bill =appointmentInfo"+"subInfo ;
+//                        dispose();
+//                        new SecretaryGUI().SecretaryGUI();
 
                     }
                 }
