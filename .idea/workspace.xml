@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5424831f-d4cb-4eaa-9bdb-e08e07d4e57c" name="Default" comment="">
+    <list default="true" id="5424831f-d4cb-4eaa-9bdb-e08e07d4e57c" name="Default" comment="book holiday now submits">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/BookAppointment.java" afterPath="$PROJECT_DIR$/SDPIS/src/BookAppointment.java" />
     </list>
@@ -28,12 +28,12 @@
       <file leaf-file-name="BookAppointment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SDPIS/src/BookAppointment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="397" column="10" selection-start-line="397" selection-start-column="10" selection-end-line="397" selection-end-column="10" />
+            <state relative-caret-position="158">
+              <caret line="389" column="79" selection-start-line="389" selection-start-column="79" selection-end-line="389" selection-end-column="79" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#17939#20648#0" expanded="true" />
-                <element signature="e#20647#20648#0" expanded="true" />
+                <element signature="e#17939#20713#0" expanded="true" />
+                <element signature="e#20712#20713#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,9 +42,11 @@
       <file leaf-file-name="ManagePatients.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SDPIS/src/ManagePatients.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3256">
+            <state relative-caret-position="953">
               <caret line="168" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="e#8194#8955#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1558,7 +1560,14 @@
       <option name="project" value="LOCAL" />
       <updated>1479723271300</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="fixed validation on book holiday, i think....">
+      <created>1479723993465</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1479723993465</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1651,7 +1660,8 @@
     <MESSAGE value="refactoring view appointment: done, cancel appointment works as well" />
     <MESSAGE value="manage patient is done" />
     <MESSAGE value="back button added" />
-    <option name="LAST_COMMIT_MESSAGE" value="back button added" />
+    <MESSAGE value="fixed validation on book holiday, i think...." />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed validation on book holiday, i think...." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1736,8 +1746,8 @@
           <caret line="121" column="5" selection-start-line="121" selection-start-column="5" selection-end-line="121" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#17939#20648#0" expanded="true" />
-            <element signature="e#20647#20648#0" expanded="true" />
+            <element signature="e#17939#20713#0" expanded="true" />
+            <element signature="e#20712#20713#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1787,8 +1797,8 @@
           <caret line="21" column="52" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#17939#20648#0" expanded="true" />
-            <element signature="e#20647#20648#0" expanded="true" />
+            <element signature="e#17939#20713#0" expanded="true" />
+            <element signature="e#20712#20713#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1916,14 +1926,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SDPIS/src/ManagePatients.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3256">
-          <caret line="168" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SDPIS/src/RegistrationPage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -1990,14 +1992,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SDPIS/src/ManagePatients.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="953">
+          <caret line="168" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
+          <folding>
+            <element signature="e#8194#8955#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SDPIS/src/BookAppointment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="397" column="10" selection-start-line="397" selection-start-column="10" selection-end-line="397" selection-end-column="10" />
+        <state relative-caret-position="158">
+          <caret line="389" column="79" selection-start-line="389" selection-start-column="79" selection-end-line="389" selection-end-column="79" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#17939#20648#0" expanded="true" />
-            <element signature="e#20647#20648#0" expanded="true" />
+            <element signature="e#17939#20713#0" expanded="true" />
+            <element signature="e#20712#20713#0" expanded="true" />
           </folding>
         </state>
       </provider>

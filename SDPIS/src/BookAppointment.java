@@ -375,24 +375,27 @@ public class BookAppointment extends JFrame{
                             JOptionPane.showMessageDialog(null, "Invalid day selected");
                             val = false;
                         }
+                        String updateAppointments;
                         if (years.getSelectedItem().equals("Year") || (months.getSelectedItem().equals("Month") ||
                                 (days.getSelectedItem().equals("Day") || partnerBox.getSelectedItem().equals("Partner")))) {
                             JOptionPane.showMessageDialog(null, "Please fill all fields");
                             val = false;
-                            String updateAppointments = null;
-                            if (val)
-                                updateAppointments = "UPDATE Appointment SET State = 'Vacation' WHERE (State = 'Active' "
-                                        + "And ADate = '" + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
-                                        + days.getSelectedItem().toString() + "' AND Partner = '" + partnerBox.getSelectedItem().toString() + "')";
+                            updateAppointments = null;
+                        }
+                        if (val) {
+                            updateAppointments = "UPDATE Appointment SET State = 'Vacation' WHERE (State = 'Active' "
+                                    + "And ADate = '" + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
+                                    + days.getSelectedItem().toString() + "' AND Partner = '" + partnerBox.getSelectedItem().toString() + "')";
                             reg.updateData(updateAppointments);
-                            String bookVac = "INSERT INTO Appointment VALUES( 0, 'CheckUp', '" + partnerBox.getSelectedItem() + "', '" +
+                            String bookVac = "INSERT INTO Appointment VALUES( 1, 'CheckUp', '" + partnerBox.getSelectedItem() + "', '" +
                                     years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
                                     + days.getSelectedItem().toString() + "', '09:00:00', '18:00:00', 'Vacation', 0)";
                             reg.updateData(bookVac);
                             dispose();
                             new SecretaryGUI().SecretaryGUI();
+                            }
                         }
-                    }
+
               }
 
         );
