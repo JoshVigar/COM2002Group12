@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5424831f-d4cb-4eaa-9bdb-e08e07d4e57c" name="Default" comment="manage patient is done">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/DataAccessBase.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/DataAccessBase.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/DentistGUI.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/DentistGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/HygienistGUI.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/HygienistGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/RegistrationPage$1.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/RegistrationPage$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/RegistrationPage.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/RegistrationPage.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$1.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$2.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$3.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$4.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$5.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$6.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI.class" afterPath="$PROJECT_DIR$/out/production/SDPIS/SecretaryGUI.class" />
+    <list default="true" id="5424831f-d4cb-4eaa-9bdb-e08e07d4e57c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/DentistGUI.java" afterPath="$PROJECT_DIR$/SDPIS/src/DentistGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDPIS/src/BookAppointment.java" afterPath="$PROJECT_DIR$/SDPIS/src/BookAppointment.java" />
     </list>
     <ignored path="COM2002Group12.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,10 +28,12 @@
       <file leaf-file-name="BookAppointment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SDPIS/src/BookAppointment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="378" column="82" selection-start-line="378" selection-start-column="82" selection-end-line="378" selection-end-column="82" />
+            <state relative-caret-position="219">
+              <caret line="397" column="10" selection-start-line="397" selection-start-column="10" selection-end-line="397" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#17939#20648#0" expanded="true" />
+                <element signature="e#20647#20648#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -169,7 +159,6 @@
         <option value="$PROJECT_DIR$/SDPIS/src/ViewAppointments.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/HygienistGUI.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/ManageAppointments.java" />
-        <option value="$PROJECT_DIR$/SDPIS/src/BookAppointment.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/RegistrationPage.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/DataB.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/SecretaryGUI.java" />
@@ -178,6 +167,7 @@
         <option value="$PROJECT_DIR$/SDPIS/src/DataAccessBase.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/ViewPatient.java" />
         <option value="$PROJECT_DIR$/SDPIS/src/DentistGUI.java" />
+        <option value="$PROJECT_DIR$/SDPIS/src/BookAppointment.java" />
       </list>
     </option>
   </component>
@@ -1561,7 +1551,14 @@
       <option name="project" value="LOCAL" />
       <updated>1479683571104</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="back button added">
+      <created>1479723271300</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1479723271300</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1569,7 +1566,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1578,7 +1575,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39638555" sideWeight="0.52447915" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39187706" sideWeight="0.47552082" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39187706" sideWeight="0.47552082" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37650934" sideWeight="0.490625" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1653,7 +1650,8 @@
     <MESSAGE value="refactoring view appointment: done" />
     <MESSAGE value="refactoring view appointment: done, cancel appointment works as well" />
     <MESSAGE value="manage patient is done" />
-    <option name="LAST_COMMIT_MESSAGE" value="manage patient is done" />
+    <MESSAGE value="back button added" />
+    <option name="LAST_COMMIT_MESSAGE" value="back button added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1738,6 +1736,8 @@
           <caret line="121" column="5" selection-start-line="121" selection-start-column="5" selection-end-line="121" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#17939#20648#0" expanded="true" />
+            <element signature="e#20647#20648#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1787,6 +1787,8 @@
           <caret line="21" column="52" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#17939#20648#0" expanded="true" />
+            <element signature="e#20647#20648#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1960,6 +1962,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="130" column="113" selection-start-line="130" selection-start-column="113" selection-end-line="130" selection-end-column="113" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5370#7420#0" expanded="true" />
+            <element signature="e#7419#7420#0" expanded="true" />
+            <element signature="e#7756#8390#0" expanded="true" />
+            <element signature="e#8389#8390#0" expanded="true" />
+            <element signature="e#8672#9395#0" expanded="true" />
+            <element signature="e#9394#9395#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1981,10 +1992,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SDPIS/src/BookAppointment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="378" column="82" selection-start-line="378" selection-start-column="82" selection-end-line="378" selection-end-column="82" />
+        <state relative-caret-position="219">
+          <caret line="397" column="10" selection-start-line="397" selection-start-column="10" selection-end-line="397" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#17939#20648#0" expanded="true" />
+            <element signature="e#20647#20648#0" expanded="true" />
           </folding>
         </state>
       </provider>

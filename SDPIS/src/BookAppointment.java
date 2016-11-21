@@ -381,8 +381,9 @@ public class BookAppointment extends JFrame{
                         //check something is selected in the date combobox
                         if (years.getSelectedItem().equals("Year") || (months.getSelectedItem().equals("Month") ||
                                 (days.getSelectedItem().equals("Day") || partnerBox.getSelectedItem().equals("Partner")))) {
+                            JOptionPane.showMessageDialog(null, "Please fill all fields");
                             val = false;
-                            String updateAppointments=null;
+                            String updateAppointments = null;
                             if (val)
                                 updateAppointments = "UPDATE Appointment SET State = 'Vacation' WHERE (State = 'Active' "
                                         + "And ADate = '" + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
@@ -396,7 +397,7 @@ public class BookAppointment extends JFrame{
                             new SecretaryGUI().SecretaryGUI();
                         }
                     }
-                }
+              }
 
         );
 
