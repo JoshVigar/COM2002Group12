@@ -177,6 +177,19 @@ public class DataB {
                     "FOREIGN KEY (TypeOfVisit) REFERENCES VisitType(TypeOfVisit))";
             stmt.executeUpdate(sql);
             */
+            //stmt.executeUpdate("INSERT INTO Customer VALUES (0, 'Mr.','Defaul', 'customer','2000,01,01','123456789',NULL)");
+
+            String sql = "SELECT ID,TypeOfVisit,ADate,StartTime,EndTime FROM Appointment WHERE Partner = 'Dentist' AND State = 'Active'";
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()) {
+                int id = rs.getInt("ID");
+                String type = rs.getString("TypeOfVisit");
+                Date dates = rs.getDate("ADate");
+                Time startTime = rs.getTime("StartTime");
+                Time endTime = rs.getTime("EndTime");
+                String appoint = "Date: "+ dates+" Start Time: "+ startTime+" End Time: "+endTime+" Customer ID: "+id+" Visit Type: "+type;
+                System.out.println(appoint);
+            }
             new WelcomeGUI().WelcomeGUI();
         }
         catch (SQLException ex) {

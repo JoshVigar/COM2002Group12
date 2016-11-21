@@ -126,7 +126,7 @@ public class ViewAppointment extends JFrame {
         String startDay = date;
         final String user = partner;
 
-        if(!partner.equals("Secretary")){
+        if(!user.equals("Secretary")){
             //Set title and size of frame
             setTitle("Sheffield Dental Practice");
             setSize(1300, 600);
@@ -224,11 +224,6 @@ public class ViewAppointment extends JFrame {
 
             //store result set of executing Query
             ResultSet rs = view.getData(sql);
-
-            //dentist panel
-            //JPanel dPanel = new JPanel();
-            //hygienist panel
-            //JPanel hPanel = new JPanel();
 
             //create a text area to house appointment details
             //dentist text area
