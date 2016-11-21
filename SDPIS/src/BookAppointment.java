@@ -313,6 +313,8 @@ public class BookAppointment extends JFrame{
     }
 
     public void BookHoliday() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+
+        //initialise the window and database connection
         final DataAccessBase reg = new DataAccessBase("jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61");
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
@@ -355,6 +357,7 @@ public class BookAppointment extends JFrame{
         //Set the layout of the datePanel
         datePanel.setLayout(new BoxLayout(datePanel, BoxLayout.X_AXIS));
 
+        //submit button and eventhandler
         JButton btnSubmit = new JButton("Submit");
         btnSubmit.addActionListener(
                 new ActionListener() {
@@ -375,6 +378,7 @@ public class BookAppointment extends JFrame{
                             JOptionPane.showMessageDialog(null, "Invalid day selected");
                             val = false;
                         }
+                        //check something is selected in the date combobox
                         if (years.getSelectedItem().equals("Year") || (months.getSelectedItem().equals("Month") ||
                                 (days.getSelectedItem().equals("Day") || partnerBox.getSelectedItem().equals("Partner")))) {
                             val = false;
@@ -396,6 +400,7 @@ public class BookAppointment extends JFrame{
 
         );
 
+        //adding the input fields to the main Panel
         JPanel mPanel = new JPanel();
         mPanel.add(partner);
         mPanel.add(partnerBox);
@@ -418,6 +423,7 @@ public class BookAppointment extends JFrame{
         int bHeight = (int)(this.getHeight()*0.1);
         int bWidth = (int)(this.getWidth()*0.1);
 
+        //add elements to the container
         Container contentPane = getContentPane();
         contentPane.add(title, BorderLayout.NORTH);
         contentPane.add(mPanel, BorderLayout.CENTER);
