@@ -127,6 +127,26 @@ public class BookAppointment extends JFrame{
                             JOptionPane.showMessageDialog(null, "Invalid input, some field is blank or incorrect");
                         }
 
+                        if(val){
+                            int year = Integer.parseInt(years.getSelectedItem().toString());
+                            int month = Integer.parseInt(months.getSelectedItem().toString());
+                            int day = Integer.parseInt(days.getSelectedItem().toString());
+
+                            Calendar c = Calendar.getInstance();
+                            c.set(year, month, day);
+
+                            int day_of_week = c.get(Calendar.DAY_OF_WEEK);
+
+                            if (day_of_week == 1 || day_of_week == 7) {
+                                JOptionPane.showMessageDialog(null, "This date is a weekend. Please select another.");
+                                val = false;
+                            }
+                            if (month == 12 && (day == 25 || day == 26) || month == 1 && day == 1) {
+                                JOptionPane.showMessageDialog(null, "This date is a public holiday. Please select another.");
+                                val = false;
+                            }
+                        }
+
                         //if validation succeeds then add entry to database
                         if (val) {
                             String getVisitDuration = "SELECT Duration FROM VisitType Where TypeOfVisit='"
@@ -144,14 +164,14 @@ public class BookAppointment extends JFrame{
                             int startMinutes = Integer.parseInt(min.getSelectedItem().toString());
                             int startHours = Integer.parseInt(hr.getSelectedItem().toString());
 
-                            int endMinutes=0;
-                            int endHours=0;
+                            int endMinutes= startMinutes;
+                            int endHours= startHours;
 
                             if (dur + startMinutes >= 60) {
-                                endMinutes = startMinutes + dur - 60;
-                                endHours = startHours + 1;
+                                endMinutes = endMinutes + dur - 60;
+                                endHours = endHours + 1;
                             } else {
-                                endMinutes = startMinutes + dur;
+                                endMinutes = endMinutes + dur;
                             }
 
                             try {
@@ -367,6 +387,7 @@ public class BookAppointment extends JFrame{
                         //boolean for validation
                         boolean val = true;
 
+
                         //checking months and days for consistency eg. No 31st of February
                         if ((months.getSelectedIndex() == 4
                                 || months.getSelectedIndex() == 6 || months.getSelectedIndex() == 9
@@ -383,8 +404,7 @@ public class BookAppointment extends JFrame{
                         //check something is selected in the date combobox
                         String updateAppointments;
                         if (years.getSelectedItem().equals("Year") || (months.getSelectedItem().equals("Month") ||
-                                (days.getSelectedItem().equals("Day") || partnerBox.getSelectedItem().equals("Partner")))) {
-                            JOptionPane.showMessageDialog(null, "Please fill all fields");
+                                (days.getSelectedItem().equals("Day") || partnerBox.getSelectedItem().equals("Partner"))))
                             val = false;
                             updateAppointments = null;
                         }
@@ -401,10 +421,22 @@ public class BookAppointment extends JFrame{
                                         +days.getSelectedItem()+" "+ months.getSelectedItem() +" "+years.getSelectedItem());
                             dispose();
                             new SecretaryGUI().SecretaryGUI();
-                            }
-                        }
 
-              }
+                            String updateAppointments=null;
+                            if (val) {
+                                updateAppointments = "UPDATE Appointment SET State = 'Canceled' WHERE (State = 'Active' "
+                                        + "And ADate = '" + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
+                                        + days.getSelectedItem().toString() + "' AND Partner = '" + partnerBox.getSelectedItem().toString() + "')";
+                                reg.updateData(updateAppointments);
+                                String bookVac = "INSERT INTO Appointment VALUES( 0, 'CheckUp', '" + partnerBox.getSelectedItem() + "', '" +
+                                        years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
+                                        + days.getSelectedItem().toString() + "', '09:00:00', '18:00:00', 'Vacation', 0)";
+                                reg.updateData(bookVac);
+                                dispose();
+                                new SecretaryGUI().SecretaryGUI();
+                            }
+                    }
+                }
 
         );
 
