@@ -144,7 +144,7 @@ public class DentistGUI extends JFrame {
                         //this checks if an appointment exists
                         boolean appointmentExists = true;
                         String visitType= "";
-                        String getVT = "SELECT TypeOfVisit,ID FROM Appointment Where (State = 'Active' "
+                        String getVT = "SELECT TypeOfVisit FROM Appointment Where (State = 'Active' "
                                 + "And ADate = '" + today + "' AND StartTime = '" + hr.getSelectedItem().toString()
                                 +":"+ min.getSelectedItem().toString()+":00' AND Partner = 'Dentist')";
                         ResultSet rVT = reg.getData(getVT);
@@ -173,9 +173,9 @@ public class DentistGUI extends JFrame {
                             }
 
                             //update the appointment to waiting and assign a cost to it
-                            String updateAppointment = "UPDATE Appointment SET State = 'Waiting' WHERE (State = 'Active' "
+                            String updateAppointment = "UPDATE Appointment SET State = 'Waiting',Cost = " + cost + " WHERE (State = 'Active' "
                                     + "And ADate = '" + today + "' AND StartTime = '" + hr.getSelectedItem().toString()
-                                    + ":" + min.getSelectedItem().toString() + ":00' AND Partner = 'Dentist' AND Cost = "+cost+" )";
+                                    + ":" + min.getSelectedItem().toString() + ":00' AND Partner = 'Dentist' )";
                             reg.updateData(updateAppointment);
                         }
                         else{

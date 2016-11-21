@@ -170,9 +170,9 @@ public class HygienistGUI extends JFrame {
                             }
 
                             //update the appointment to waiting and assign a cost to it
-                            String updateAppointment = "UPDATE Appointment SET State = 'Waiting' WHERE (State = 'Active' "
+                            String updateAppointment = "UPDATE Appointment SET State = 'Waiting', Cost = " + cost + " WHERE (State = 'Active' "
                                     + "And ADate = '" + today + "' AND StartTime = '" + hr.getSelectedItem().toString()
-                                    + ":" + min.getSelectedItem().toString() + ":00' AND Partner = 'Hygienist' AND Cost = "+cost+")";
+                                    + ":" + min.getSelectedItem().toString() + ":00' AND Partner = 'Hygienist' )";
                             reg.updateData(updateAppointment);
                         }
                         else{

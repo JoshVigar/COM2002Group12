@@ -151,6 +151,7 @@ public class CheckOut extends JFrame{
                     }
                 }
                 textArea.append("Actual Cost: £"+tempCost);
+                subscribe = view.getData("SELECT * FROM Subscription WHERE SubscriptionID ="+ customId);
                 while (subscribe.next()){
                     //Retrieve by column name
                     //int a = subscribe.getInt("SubscriptionID");
