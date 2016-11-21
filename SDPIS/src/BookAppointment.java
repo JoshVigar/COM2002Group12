@@ -270,6 +270,8 @@ public class BookAppointment extends JFrame{
                                         + min.getSelectedItem().toString() + ":00', '"
                                         + Integer.toString(endHours) + ":" + Integer.toString(endMinutes) + ":00', 'Active', 0)";
                                 reg.updateData(newBooking);
+                                JOptionPane.showMessageDialog(null, "Appointment booked for Patient "+txtPID.getText()+" for a "+ aType.getSelectedItem()+" with the "+Partner.getSelectedItem()+" at "+ hr.getSelectedItem()
+                                        +":"+min.getSelectedItem()+" on " +days.getSelectedItem()+"/"+ months.getSelectedItem() +"/"+years.getSelectedItem());
                                 dispose();
                                 new SecretaryGUI().SecretaryGUI();
                             }else{
@@ -395,6 +397,8 @@ public class BookAppointment extends JFrame{
                                     years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
                                     + days.getSelectedItem().toString() + "', '09:00:00', '18:00:00', 'Vacation', 0)";
                             reg.updateData(bookVac);
+                                JOptionPane.showMessageDialog(null, "Holiday booked for "+ partnerBox.getSelectedItem()+" on "
+                                        +days.getSelectedItem()+" "+ months.getSelectedItem() +" "+years.getSelectedItem());
                             dispose();
                             new SecretaryGUI().SecretaryGUI();
                             }
