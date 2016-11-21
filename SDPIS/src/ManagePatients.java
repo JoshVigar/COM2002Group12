@@ -40,10 +40,10 @@ public class ManagePatients extends JFrame {
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
+                        dispose();
                         int managedPatient = Integer.parseInt(txtPID.getText());
                         try {
                             new ViewPatient(managedPatient);
-                            dispose();
                         } catch (ClassNotFoundException e1) {
                             e1.printStackTrace();
                         } catch (SQLException e1) {

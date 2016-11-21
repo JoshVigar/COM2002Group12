@@ -16,6 +16,8 @@ public class ViewPatient extends JFrame{
 
     //private int customId = 0;
     public ViewPatient(int id) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        final int customId = id;
+
         //Set title and size of frame
         setTitle("Sheffield Dental Practice");
         setSize(1300, 600);
@@ -30,9 +32,10 @@ public class ViewPatient extends JFrame{
         mPanel.setLayout(new BorderLayout());
         mPanel.add(title, BorderLayout.NORTH);
 
-        //panel to house text area and cancel appointment button
+        //panel to house text area and subscribe button
         JPanel unSub = new JPanel();
         unSub.setLayout(new BorderLayout());
+        JPanel subC = new JPanel();
 
         //create a text area to house patient details details
         JTextArea textArea = new JTextArea();
@@ -47,21 +50,18 @@ public class ViewPatient extends JFrame{
         //add title to unsub panel
         JLabel title1 = new JLabel("Customer Details"+newLine);
         unSub.add(title1, BorderLayout.NORTH);
+
         //variables
-        final int customId = id;
-        String address= "";
+        String address;
         String subTitle ="";
 
         //customer details
         ResultSet custom = view.getData("SELECT * FROM Customer WHERE ID ="+ customId);
-        //subscription details
-        ResultSet subscribe = view.getData("SELECT * FROM Subscription WHERE SubscriptionID ="+ customId);
-        //address details
-        ResultSet addressDet = view.getData("SELECT * FROM Address WHERE AddressID ='"+ address+"'");
+
         if(!custom.next()){
             textArea.append("Customer Doesn't Exist");
         }else {
-            while (custom.next()){
+            do{
                 //Retrieve by column name
                 //int customerId = custom.getInt("ID");
                 //custom.next();
@@ -74,12 +74,15 @@ public class ViewPatient extends JFrame{
                 String customer = "ID: " + customId + " Title: " + customerTitle + " Name: " + first + " " + last + " D.O.B: " +
                         dob + " Phone No.: " + phone + " ";
                 textArea.append(customer + newLine);
-            }
+            }while (custom.next());
+            //subscription details
+            ResultSet subscribe = view.getData("SELECT * FROM Subscription WHERE SubscriptionID ="+ customId);
+            //address details
+            ResultSet addressDet = view.getData("SELECT * FROM Address WHERE AddressID ='"+ address+"'");
 
-            do {
+            while (subscribe.next()){
                 //Retrieve by column name
                 //int a = subscribe.getInt("SubscriptionID");
-                subscribe.next();
                 subTitle = subscribe.getString("SubscriptionTitle");
                 int c = subscribe.getInt("MonthlyCost");
                 int d = subscribe.getInt("CheckUp");
@@ -90,11 +93,10 @@ public class ViewPatient extends JFrame{
                 String subscribtion = "Subscription ID: " + customId + " Subscription Title: " + subTitle + " Monthly Cost: £" +
                         c + " Check-Ups: " + d + " Hygiene Visits: " + e + " Repairs: " + f + " End Date: " + g;
                 textArea.append(subscribtion + newLine);
-            } while (subscribe.next());
+            }
 
-            do {
+            while (addressDet.next()){
                 //Retrieve by column name
-                addressDet.next();
                 String b = addressDet.getString("HouseNum");
                 String c = addressDet.getString("Street");
                 String d = addressDet.getString("City");
@@ -103,16 +105,14 @@ public class ViewPatient extends JFrame{
                 textArea.append("Address" + newLine);
                 String addressID = "House No.: " + b + " Street: " + c + " City: " + d + " Region: " + e + " PostCode: " + f;
                 textArea.append(addressID + newLine);
-            } while (addressDet.next());
+            }
+
+            subC.setLayout(new BorderLayout());
+            //Title of panel
+            JLabel title2 = new JLabel("Patient Details");
+            subC.add(title2,BorderLayout.NORTH);
         }
 
-        //add textArea to the panel
-        unSub.add(textArea, BorderLayout.CENTER);
-        JPanel subC = new JPanel();
-        subC.setLayout(new BorderLayout());
-        //Title of panel
-        JLabel title2 = new JLabel("Patient Details");
-        subC.add(title2,BorderLayout.NORTH);
 
         //get end date of subscription
         LocalDate localDate = LocalDate.now();
@@ -147,6 +147,17 @@ public class ViewPatient extends JFrame{
                             updateSubscription += " WHERE SubscriptionID = " + customId;
                             view.updateData(updateSubscription);
                             dispose();
+                            try {
+                                new ManagePatients().ManagePatients();
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
+                            } catch (ClassNotFoundException e1) {
+                                e1.printStackTrace();
+                            } catch (IllegalAccessException e1) {
+                                e1.printStackTrace();
+                            } catch (InstantiationException e1) {
+                                e1.printStackTrace();
+                            }
                             JOptionPane.showMessageDialog(null, "Patient Subscribed");
                         }
                     }
@@ -154,25 +165,38 @@ public class ViewPatient extends JFrame{
             subC.add(sub);
             subC.add(subList, BorderLayout.CENTER);
             subC.add(subcr, BorderLayout.SOUTH);
-        }else{
+        }else if(subTitle.equals("None")&&subTitle.equals("")){
             JLabel sub = new JLabel("Unsubscription:");
             JButton subcr = new JButton("Unsubscribe Patient");
             subcr.addActionListener(
-                    new ActionListener(){
-                        public void actionPerformed(ActionEvent e){
+                    new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
                             //create sql command to unscubscribe patient
-                            String firstSubscription = "UPDATE Subscription SET SubscriptionTitle= 'None', MonthlyCost = 0,"+
-                                    "CheckUp = 0, HygieneVisit = 0, Repair = 0, EndDate = '"+endDate+"'";
+                            String firstSubscription = "UPDATE Subscription SET SubscriptionTitle= 'None', MonthlyCost = 0," +
+                                    "CheckUp = 0, HygieneVisit = 0, Repair = 0, EndDate = '" + endDate + "'";
                             view.updateData(firstSubscription);
                             dispose();
+                            try {
+                                new ManagePatients().ManagePatients();
+                            } catch (SQLException e1) {
+                                e1.printStackTrace();
+                            } catch (ClassNotFoundException e1) {
+                                e1.printStackTrace();
+                            } catch (IllegalAccessException e1) {
+                                e1.printStackTrace();
+                            } catch (InstantiationException e1) {
+                                e1.printStackTrace();
+                            }
                             JOptionPane.showMessageDialog(null, "Patient Unsubscribed");
+
                         }
                     }
             );
             subC.add(sub);
             subC.add(subcr, BorderLayout.CENTER);
         }
-
+        //add textArea to the panel
+        unSub.add(textArea, BorderLayout.CENTER);
         unSub.add(subC, BorderLayout.SOUTH);
 
         //go back button
