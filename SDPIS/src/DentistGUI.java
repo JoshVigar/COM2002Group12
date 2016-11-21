@@ -185,8 +185,8 @@ public class DentistGUI extends JFrame {
                             ResultSet remainingSubs = reg.getData(getRemainingSubs);
                             try {
                                 while (remainingSubs.next()) {
-                                    if (remainingSubs.getInt(0) > 0) {
-                                        changedSubs = remainingSubs.getInt(0) - 1;
+                                    if (remainingSubs.getInt(1) > 0) {
+                                        changedSubs = remainingSubs.getInt(1) - 1;
                                     } else {
                                         valRemainingSubs = false;
                                     }
@@ -208,7 +208,7 @@ public class DentistGUI extends JFrame {
                             int cost = 0;
                             //if a patient's subscription covered him then remove 1 from the visits/checups/repairs
                             String updateSubs = "UPDATE Subscription SET " + genVT + " = " + changedSubs
-                                    + "WHERE SubscriptionID = " + id;
+                                    + " WHERE SubscriptionID = " + id;
                             if (valRemainingSubs) {
                                 reg.updateData(updateSubs);
                             } else {

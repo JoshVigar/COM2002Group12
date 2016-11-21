@@ -270,6 +270,7 @@ public class BookAppointment extends JFrame{
                                         + min.getSelectedItem().toString() + ":00', '"
                                         + Integer.toString(endHours) + ":" + Integer.toString(endMinutes) + ":00', 'Active', 0)";
                                 reg.updateData(newBooking);
+                                JOptionPane.showMessageDialog(null, "Appointment Booked");
                                 dispose();
                                 new SecretaryGUI().SecretaryGUI();
                             }else{
@@ -386,10 +387,14 @@ public class BookAppointment extends JFrame{
                                         + "And ADate = '" + years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
                                         + days.getSelectedItem().toString() + "' AND Partner = '" + partnerBox.getSelectedItem().toString() + "')";
                                 reg.updateData(updateAppointments);
-                                String bookVac = "INSERT INTO Appointment VALUES( 0, 'CheckUp', '" + partnerBox.getSelectedItem() + "', '" +
+                                String bookVac = "INSERT INTO Appointment VALUES( 1, 'CheckUp', '" + partnerBox.getSelectedItem() + "', '" +
                                         years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
                                         + days.getSelectedItem().toString() + "', '09:00:00', '18:00:00', 'Vacation', 0)";
                                 reg.updateData(bookVac);
+
+                                JOptionPane.showMessageDialog(null, "Booked Holiday on " +years.getSelectedItem().toString()
+                                        + "-" + months.getSelectedItem().toString() + "-"+ days.getSelectedItem().toString()
+                                        +" for the " + partnerBox.getSelectedItem());
                                 dispose();
                                 new SecretaryGUI().SecretaryGUI();
                             }

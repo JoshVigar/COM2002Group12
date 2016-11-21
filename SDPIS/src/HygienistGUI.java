@@ -200,7 +200,7 @@ public class HygienistGUI extends JFrame {
                             }
                             int cost = 0;
                             String updateSubs = "UPDATE Subscription SET " + genVT + " = " + changedSubs
-                                    + "WHERE SubscriptionID = " + id;
+                                    + " WHERE SubscriptionID = " + id;
                             if (valRemainingSubs) {
                                 reg.updateData(updateSubs);
                             } else {
