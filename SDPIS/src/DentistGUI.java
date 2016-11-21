@@ -181,7 +181,7 @@ public class DentistGUI extends JFrame {
                             //this checks if the customer's subscription covers the cost of the appointment
                             boolean valRemainingSubs = true;
                             int changedSubs = 0;
-                            String getRemainingSubs = "SELECT " + genVT + " FROM Subscription WHERE ID = " + id;
+                            String getRemainingSubs = "SELECT " + genVT + " FROM Subscription WHERE SubscriptionID = " + id;
                             ResultSet remainingSubs = reg.getData(getRemainingSubs);
                             try {
                                 while (remainingSubs.next()) {

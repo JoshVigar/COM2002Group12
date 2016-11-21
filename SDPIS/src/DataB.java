@@ -52,8 +52,8 @@ public class DataB {
                 System.out.print(", First: " + first);
                 System.out.print(", Last: " + last);
                 System.out.print(", DOB: " + dob);
-                System.out.print("Phone: " + phone);
-                System.out.println("AddressID: " + address);
+                System.out.print(" Phone: " + phone);
+                System.out.println(" AddressID: " + address);
             }
 /*
             sql = "SELECT * FROM Address";

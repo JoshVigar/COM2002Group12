@@ -95,7 +95,13 @@ public class ViewAppointment extends JFrame {
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         dispose();
-                        new WelcomeGUI().WelcomeGUI();
+                        if(person.equals("Dentist")) {
+                            new DentistGUI().DentistGUI();
+                        }else if(person.equals("Hygienist")){
+                            new HygienistGUI().HygienistGUI();
+                        }else {
+                            new SecretaryGUI().SecretaryGUI();
+                        }
                     }
                 }
         );
@@ -116,7 +122,7 @@ public class ViewAppointment extends JFrame {
     }
 
     //get appointments on a certain date for partners and for a week for secretary
-    public void getAppointments(String date, String partner){
+    public void getAppointments(String date, String partner) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         String startDay = date;
         final String user = partner;
 
@@ -250,7 +256,7 @@ public class ViewAppointment extends JFrame {
                     textArea.append("No Appointments this Week");
                     textArea1.append("No Appointments this Week");
                 } else {
-                    while (rs.next()) {
+                    do{
                         int id = rs.getInt("ID");
                         String type = rs.getString("TypeOfVisit");
                         String partners = rs.getString("Partner");
@@ -264,7 +270,7 @@ public class ViewAppointment extends JFrame {
                         }else if(partners.equals("Hygienist")){
                             textArea1.append(appoint + newLine);
                         }
-                    }
+                    }while (rs.next());
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -316,10 +322,11 @@ public class ViewAppointment extends JFrame {
             setLocationRelativeTo(null);
             setVisible(true);
         }
+        view.closeConnection();
     }
 
     //get a single active appointment
-    public void getAppointment(String patient, String partners, String time, String date){
+    public void getAppointment(String patient, String partners, String time, String date) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         final String patientID = patient;
         final String partner = partners;
         final String appTime = time;
@@ -394,7 +401,6 @@ public class ViewAppointment extends JFrame {
             if (!rs.next()) {
                 textArea.append("Appointment doesnt't exist");
             } else {
-                rs.next();
                 String type = rs.getString("TypeOfVisit");
                 Date dates = rs.getDate("ADate");
                 Time startTime = rs.getTime("StartTime");
@@ -432,6 +438,7 @@ public class ViewAppointment extends JFrame {
         mPanel.setBorder(BorderFactory.createEmptyBorder(bHeight, bWidth, bHeight, bWidth));
         container.add(mPanel);
 
+        view.closeConnection();
         //Don't forget to pack! and setVisible to true
         pack();
         setLocationRelativeTo(null);

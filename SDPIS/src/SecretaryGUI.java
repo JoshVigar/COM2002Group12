@@ -2,7 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.io.File;
 import java.io.PrintStream;
@@ -37,6 +40,7 @@ public class SecretaryGUI extends JFrame{
                     }
                 }
         );
+        //view single Appointment button
         JButton btnMA = new JButton("View A Single Appointment");
         btnMA.addActionListener(
                 new ActionListener(){
@@ -47,6 +51,7 @@ public class SecretaryGUI extends JFrame{
                 }
         );
 
+        //register patient button
         JButton btnReg = new JButton("Register Patient");
         btnReg.addActionListener(
                 new ActionListener(){
@@ -67,6 +72,7 @@ public class SecretaryGUI extends JFrame{
                 }
         );
 
+        //manage patients button
         JButton btnMP = new JButton("Manage Patients");
         btnMP.addActionListener(
                 new ActionListener() {
@@ -84,10 +90,10 @@ public class SecretaryGUI extends JFrame{
                             e1.printStackTrace();
                         }
                     }
-
                 }
         );
 
+        //book appointment button
         JButton btnBA = new JButton("Book Appointment");
         btnBA.addActionListener(
                 new ActionListener(){
@@ -107,6 +113,7 @@ public class SecretaryGUI extends JFrame{
                     }
                 }
         );
+        //book holiday button
         JButton btnBH = new JButton("Book Holiday");
         btnBH.addActionListener(
                 new ActionListener(){
@@ -127,17 +134,26 @@ public class SecretaryGUI extends JFrame{
                 }
         );
 
-
+        //check out patient button
         JButton btnChk = new JButton("Checkout Patient");
         btnChk.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         dispose();
-                        new SecretaryGUI().CheckoutPatient();
+                        try {
+                            new SecretaryGUI().CheckoutPatient();
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        } catch (ClassNotFoundException e1) {
+                            e1.printStackTrace();
+                        } catch (IllegalAccessException e1) {
+                            e1.printStackTrace();
+                        } catch (InstantiationException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
         );
-
 
         //add buttons to panel
         JPanel buttonPanel = new JPanel();
@@ -189,7 +205,9 @@ public class SecretaryGUI extends JFrame{
 
     }
 
-    public void CheckoutPatient(){
+    public void CheckoutPatient() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+        final DataAccessBase reg = new DataAccessBase("jdbc:mysql://stusql.dcs.shef.ac.uk/team012?user=team012&password=a735fd61");
+
         //initial setting for window
         setTitle("Sheffield Dental Practice");
         setSize(500,600);
@@ -227,24 +245,31 @@ public class SecretaryGUI extends JFrame{
         mPanel.setLayout(new BoxLayout(mPanel, BoxLayout.Y_AXIS));
         mPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDate localDate = LocalDate.now();
+        final String today = dtf.format(localDate);
 
         //event handling for the submit button
         bSubmit.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        String finishedApp = (String)partner.getSelectedItem()+(String)hr.getSelectedItem()+":"+(String)min.getSelectedItem();
-                       // File file = new File("receipt.txt");
-                       // PrintStream printStreamToFile = new PrintStream(file);
-                       // System.setOut(printStreamToFile);
-                        //System.out.println("Hello I am writing to File xyz.txt");
-                        System.out.println(finishedApp);
+                        String getAppointment = "SELECT ID,VisitType FROM Appointment WHERE (State = 'Waiting' "
+                                +"And ADate = '" + today + "' AND StartTime = '" + hr.getSelectedItem().toString()
+                                + ":" + min.getSelectedItem().toString() + ":00' AND Partner =" + partner.getSelectedItem().toString();
+                        ResultSet appointmentInfo = reg.getData(getAppointment);
+                        String getSubscription = "SELECT SubscriptionTitle,Checkup,HygieneVisit,Repair FROM Subscription WHERE"
+                                +"SubscriptionID = " + appointmentInfo;
+                        ResultSet subInfo = reg.getData(getSubscription);
+                        //String bill =appointmentInfo"+"subInfo ;
+                        dispose();
+                        new SecretaryGUI().SecretaryGUI();
 
                     }
                 }
         );
 
         //creating and adding event handling for back button
-        JButton btnBack = new JButton("Back");
+        JButton btnBack = new JButton("Go Back");
         btnBack.addActionListener(
                 new ActionListener(){
                     public void actionPerformed(ActionEvent e){
