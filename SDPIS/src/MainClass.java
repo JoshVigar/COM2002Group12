@@ -22,7 +22,7 @@ public class MainClass {
             String endDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate.plusYears(1));
             boolean subExists = true;
             String updateSubscription = null;
-            String getSubscription = "SELECT SubscriptionTitle FROM Subscription WHERE EndDate = '" +endDate +"'";
+            String getSubscription = "SELECT SubscriptionTitle, EndDate FROM Subscription WHERE EndDate = '" +date +"'";
             ResultSet rs = stmt.executeQuery(getSubscription);
             while(rs.next()){
                 if(!rs.wasNull()) {
@@ -45,7 +45,7 @@ public class MainClass {
                         subExists = false;
                     System.out.println(subT);
                     System.out.println(updateSubscription);
-                    updateSubscription += " WHERE EndDate = '" + DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate) + "'";
+                    updateSubscription += "EndDate = '"+endDate+"' WHERE EndDate = '" + DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate) + "'";
                     if(subExists)
                         stmt.executeUpdate(updateSubscription);
                 }

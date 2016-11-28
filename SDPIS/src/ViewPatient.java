@@ -165,7 +165,7 @@ public class ViewPatient extends JFrame{
             subC.add(sub);
             subC.add(subList, BorderLayout.CENTER);
             subC.add(subcr, BorderLayout.SOUTH);
-        }else if(subTitle.equals("None")&&subTitle.equals("")){
+        }else if(!subTitle.equals("None")||!subTitle.equals("")){
             JLabel sub = new JLabel("Unsubscription:");
             JButton subcr = new JButton("Unsubscribe Patient");
             subcr.addActionListener(

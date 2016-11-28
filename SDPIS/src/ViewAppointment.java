@@ -228,8 +228,8 @@ public class ViewAppointment extends JFrame {
             JLabel denTitle = new JLabel("Dentist Weekly Calendar from: " + startDay);
             JLabel hygTitle = new JLabel("Hygienist Weekly Calendar from: " + startDay);
 
-            String sql = "SELECT ID,TypeOfVisit,Partner,ADate,StartTime FROM Appointment WHERE ADate BETWEEN '" +
-                    startDay + "' AND '" + endDate + "' AND State = 'Active'";
+            String sql = "SELECT ID,TypeOfVisit,Partner,ADate,StartTime,State FROM Appointment WHERE ADate BETWEEN '" +
+                    startDay + "' AND '" + endDate + "' AND (State = 'Active' OR State = 'Vacation')";
 
             //store result set of executing Query
             ResultSet rs = view.getData(sql);
@@ -266,8 +266,13 @@ public class ViewAppointment extends JFrame {
                         String partners = rs.getString("Partner");
                         Date appDay = rs.getDate("ADate");
                         Time startTime = rs.getTime("StartTime");
-                        String appoint = "Date: "+appDay+" Start Time: " + startTime + " Customer ID: " + id +
-                                " Visit Type: " + type;
+                        String appoint="";
+                        if(rs.getString("State").equals("Vacation")){
+                            appoint = "Date: "+appDay+" Start Time: " + startTime + " Type: "+rs.getString("State");
+                        }else{
+                            appoint = "Date: "+appDay+" Start Time: " + startTime + " Customer ID: " + id +
+                                    " Visit Type: " + type;
+                        }
                         System.out.println(" " + appoint);
                         if(partners.equals("Dentist")) {
                             textArea.append(appoint + newLine);

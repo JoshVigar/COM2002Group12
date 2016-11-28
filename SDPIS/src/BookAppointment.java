@@ -344,7 +344,7 @@ public class BookAppointment extends JFrame{
         //Creating labels and text fields
         JLabel title = new JLabel("Enter Holiday Details");
         final JLabel partner = new JLabel("Partner:");
-        String[] partners = {"Partner","Dentist","Hygienist"};
+        String[] partners = {"Dentist","Hygienist"};
         final JComboBox partnerBox = new JComboBox(partners);
         JLabel date = new JLabel("Holiday Date:");
 
@@ -414,7 +414,7 @@ public class BookAppointment extends JFrame{
                             reg.updateData(updateAppointments);
                             String bookVac = "INSERT INTO Appointment VALUES( 1, 'CheckUp', '" + partnerBox.getSelectedItem() + "', '" +
                                     years.getSelectedItem().toString() + "-" + months.getSelectedItem().toString() + "-"
-                                    + days.getSelectedItem().toString() + "', '09:00:00', '18:00:00', 'Vacation', 0)";
+                                    + days.getSelectedItem().toString() + "', '09:00:00', '17:00:00', 'Vacation', 0)";
                             reg.updateData(bookVac);
 
                             JOptionPane.showMessageDialog(null, "Booked Holiday on " +years.getSelectedItem().toString()
